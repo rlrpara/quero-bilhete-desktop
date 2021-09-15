@@ -1,0 +1,40 @@
+﻿<Window x:Class="QueroBilhete.Pdv.Views.HomeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QueroBilhete.Pdv.Views"
+        mc:Ignorable="d"
+        Title="Ponto de Venda" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200px"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100px" />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="2" Foreground="Blue"
+                   Text="Banner aqui" Height="30" Width="400" VerticalAlignment="Center"
+                   TextAlignment="Center" FontWeight="Bold"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Foreground="Black"
+                   Text="Código Produto" Width="180"
+                   VerticalAlignment="Top" FontSize="9" FontFamily="Roboto"
+                   TextAlignment="Left" FontWeight="Bold"/>
+        <Border Grid.Row="1" Grid.Column="0"
+                BorderBrush="#FF0B232F" BorderThickness="2"
+                VerticalAlignment="Top"
+                VerticalAlignment="Center" TextAlignment="Left">
+            <TextBlock Grid.Row="1" Grid.Column="0"
+                   Text="0012345678" FontFamily="Roboto" FontSize="30"
+                   Height="40" Width="180"
+                   VerticalAlignment="Center" TextAlignment="Left"
+                   Padding="5 1 1 5"/>
+        </Border>
+    </Grid>
+</Window>
