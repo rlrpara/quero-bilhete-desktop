@@ -60,7 +60,11 @@ namespace QueroBilhete.Desktop.formularios.PDV
             LimpaCampos();
             ValoresPadrao();
             AtivaTab(0);
+            LayoutSalmista();
+        }
 
+        private void LayoutSalmista()
+        {
             //posicao   letra|de|ate|topo|esquerda|colunas|orientacao
             GerarAssentos("C", 1, 5, 40, 20, 1);
             GerarAssentos("A", 1, 5, 40, 560, 1);
@@ -82,7 +86,6 @@ namespace QueroBilhete.Desktop.formularios.PDV
             GerarAssentos("D", 17, 18, 777, 515, 2);
 
             GerarAssentos("D", 19, 30, 815, 47, 12);
-
         }
 
         private void frmPDV_KeyDown(object sender, KeyEventArgs e)
