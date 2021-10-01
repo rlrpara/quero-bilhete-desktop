@@ -5,6 +5,8 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
+    <StartupObject>QueroBilhete.Desktop.Program</StartupObject>
+    <ApplicationIcon>ticket-_2_.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>

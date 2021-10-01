@@ -1,4 +1,5 @@
 ﻿using QueroBilhete.Desktop.Enumeradores;
+using System;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -15,16 +16,16 @@ namespace QueroBilhete.Desktop.formularios.PDV
             tabPdv.ItemSize = new Size(0, 1);
             tabPdv.SizeMode = TabSizeMode.Fixed;
         }
-
         private void LimpaCampos()
         {
-            txtCpf.Text = "";
-            txtRg.Text = "";
-            txtNascimento.Text = "";
-            lblNomePassageiro.Text = "";
-            lblTipoPassagem.Text = "";
-            lblQuantidade.Text = "";
-            lblCarteira.Text = "";
+            foreach (Control c in grpFormaPagto.Controls)
+            {
+                if (c is TextBox)
+                    ((TextBox)c).Text = "";
+
+                if (c is Label)
+                    ((Label)c).Text = "";
+            }
         }
 
         private void ValoresPadrao()
@@ -32,7 +33,6 @@ namespace QueroBilhete.Desktop.formularios.PDV
             txtNacionalidade.Text = "BRASILEIRA";
             txtTipoPassagem.Text = "1";
             lblTipoPassagem.Text = "INTEIRA";
-            txtQuantidade.Text = "1";
             txtCarteira.Text = "1";
             lblCarteira.Text = "DINHEIRO";
             txtValorPago.Text = "0.00";
@@ -43,7 +43,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
 
         private void AbreCaixa()
         {
-            panelSelecaoAcentos.Enabled = true;
+            MessageBox.Show("Abre o caixa quando estiver fechado para o dia");
         }
 
         private void FecharCaixa()
@@ -60,7 +60,6 @@ namespace QueroBilhete.Desktop.formularios.PDV
             LimpaCampos();
             ValoresPadrao();
             AtivaTab(0);
-            LayoutSalmista();
         }
 
         private void LayoutSalmista()
@@ -95,7 +94,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
                 case Keys.F1:
                     break;
                 case Keys.F2:
-                    AbreCaixa();
+                    NovaVenda();
                     break;
                 case Keys.F3:
                     break;
@@ -131,7 +130,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             Button button = new Button();
             button.Left = eixoY;
             button.Top = eixoX;
-            button.Click += botao_acento;
+            button.Click += botaoAcento;
             button.Name = nomeBotao;
             button.Text = nomeBotao;
             button.Tag = nomeBotao;
@@ -169,7 +168,37 @@ namespace QueroBilhete.Desktop.formularios.PDV
 
         private void btnNovaVenda_Click(object sender, System.EventArgs e)
         {
-            AbreCaixa();
+            NovaVenda();
+        }
+
+        private void NovaVenda()
+        {
+            if (layoutSelecionado())
+            {
+                AbreCaixa();
+                MessageBox.Show ($"Inicia nova venda com a data({DateTime.Now:dd/MM/yyyy}) e hora ({DateTime.Now:HH:mm:ss}).");
+                panelSelecaoAcentos.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show($"Selecione o layout");
+                cmbEmbarcacao.Focus();
+                cmbEmbarcacao.DroppedDown = true;
+            }
+        }
+
+        private bool layoutSelecionado()
+        {
+            return !string.IsNullOrEmpty(cmbEmbarcacao.Text);
+        }
+
+        private void FechaVenda()
+        {
+            MessageBox.Show($"Fecha venda, imprime cupons, salva no banco.");
+            panelSelecaoAcentos.Enabled = false;
+            panelInformaPessoa.Enabled = false;
+            panelInformaPessoa.Visible = false;
+            LimpaCampos();
         }
 
         private void btnFecharCaixa_Click(object sender, System.EventArgs e)
@@ -183,7 +212,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
 
             if (!string.IsNullOrEmpty(cpf) && cpf.Contains("1234567890"))
             {
-                lblNomePassageiro.Text = "MARCELO MALATO";
+                txtNome.Text = "MARCELO MALATO";
                 txtRg.Text = "242424";
                 txtNascimento.Text = "24/12/1990";
             }
@@ -197,7 +226,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
         }
 
 
-        private void botao_acento(object sender, System.EventArgs e)
+        private void botaoAcento(object sender, System.EventArgs e)
         {
             var botaoClicado = ((Button)sender).Text.ToString();
             var listaAssentos = new StringBuilder();
@@ -207,16 +236,49 @@ namespace QueroBilhete.Desktop.formularios.PDV
                 if (c is Button button && button.Tag != null && button.Text == botaoClicado)
                 {
                     ((Button)sender).BackColor = (((Button)sender).BackColor == Color.LimeGreen ? Color.White : Color.LimeGreen);
-                    if(((Button)sender).BackColor == Color.LimeGreen){
-                        //listaAssentos.AppendLine(((Button)sender).Tag.ToString());
-                        txtAssentos.Text = string.Join(",", ((Button)sender).Tag.ToString());
-                    }
+
+                    if (((Button)sender).BackColor == Color.LimeGreen)
+                        txtAssento.Text = ((Button)sender).Tag.ToString();
+
+                    InformaPassageiroAssento(((Button)sender).Tag.ToString());
                 }
             }
-
             _assentosSelecionados = listaAssentos.ToString().Replace($"\r\n", ",");
-
         }
 
+        private void InformaPassageiroAssento(string tag)
+        {
+            panelInformaPessoa.Visible = true;
+            panelInformaPessoa.Enabled = true;
+            txtTipoPassagem.Focus();
+        }
+
+        private void txtEmbarcacao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbEmbarcacao.Text.Contains("3352"))
+            {
+                LayoutSalmista();
+            }
+            else
+            {
+                RemoveControles(panelSelecaoAcentos);
+            }
+        }
+
+        private void RemoveControles(Panel controles)
+        {
+            controles.Controls.Clear();
+        }
+
+        private void btnF4_Click(object sender, EventArgs e)
+        {
+            FechaVenda();
+        }
+
+        private void txtTroco_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MessageBox.Show("Valida todos os campos. Exibe tela informando a impressão de todas as passagens.");
+            FechaVenda();
+        }
     }
 }
