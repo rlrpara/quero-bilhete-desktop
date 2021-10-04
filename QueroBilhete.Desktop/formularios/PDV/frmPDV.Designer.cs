@@ -29,11 +29,11 @@ namespace QueroBilhete.Desktop.formularios.PDV
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Passagem = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -174,8 +174,8 @@ namespace QueroBilhete.Desktop.formularios.PDV
             // Id
             // 
             this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Id.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Id.DefaultCellStyle = dataGridViewCellStyle1;
             this.Id.FillWeight = 26.6417F;
             this.Id.HeaderText = "Cód.";
             this.Id.Name = "Id";
@@ -185,8 +185,8 @@ namespace QueroBilhete.Desktop.formularios.PDV
             // Passagem
             // 
             this.Passagem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.Passagem.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Passagem.DefaultCellStyle = dataGridViewCellStyle2;
             this.Passagem.FillWeight = 279.1878F;
             this.Passagem.HeaderText = "Descricao";
             this.Passagem.Name = "Passagem";
@@ -195,8 +195,8 @@ namespace QueroBilhete.Desktop.formularios.PDV
             // Qtd
             // 
             this.Qtd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Qtd.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Qtd.DefaultCellStyle = dataGridViewCellStyle3;
             this.Qtd.FillWeight = 52.32397F;
             this.Qtd.HeaderText = "Qtd.";
             this.Qtd.Name = "Qtd";
@@ -206,8 +206,8 @@ namespace QueroBilhete.Desktop.formularios.PDV
             // ValorUnitario
             // 
             this.ValorUnitario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ValorUnitario.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ValorUnitario.DefaultCellStyle = dataGridViewCellStyle4;
             this.ValorUnitario.FillWeight = 63.46081F;
             this.ValorUnitario.HeaderText = "Preço";
             this.ValorUnitario.Name = "ValorUnitario";
@@ -217,8 +217,8 @@ namespace QueroBilhete.Desktop.formularios.PDV
             // ValorTotal
             // 
             this.ValorTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ValorTotal.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ValorTotal.DefaultCellStyle = dataGridViewCellStyle5;
             this.ValorTotal.FillWeight = 78.3857F;
             this.ValorTotal.HeaderText = "Total";
             this.ValorTotal.Name = "ValorTotal";
@@ -1024,6 +1024,8 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.KeyPreview = true;
             this.MinimizeBox = false;
             this.Name = "frmPDV";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmPDV";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmPDV_KeyDown);

@@ -1,4 +1,7 @@
-﻿using QueroBilhete.Desktop.formularios.PDV;
+﻿using dotenv.net;
+using QueroBilhete.Data.Database;
+using QueroBilhete.Desktop.formularios.Login;
+using QueroBilhete.Desktop.formularios.PDV;
 using QueroBilhete.Desktop.formularios.Usuario;
 using System;
 using System.Windows.Forms;
@@ -49,6 +52,18 @@ namespace QueroBilhete.Desktop
             InitializeComponent();
         }
         #endregion
-        
+
+        private void Home_Load(object sender, EventArgs e)
+        {
+            DotEnv.Fluent().WithEnvFiles(".env").WithTrimValues().Load();
+            DatabaseConfiguration.GerenciarBanco();
+            AbreTelaLogin();
+        }
+
+        private void AbreTelaLogin()
+        {
+            var janela = new frmLogin();
+            janela.ShowDialog();
+        }
     }
 }
