@@ -99,8 +99,8 @@ namespace QueroBilhete.Infra.Data.Contex
         }
         public static string RetornaInsert<T>(T entidade) where T : class
         {
-            List<string> campos = new();
-            List<string> valores = new();
+            List<string> campos = new List<string>();
+            List<string> valores = new List<string>();
 
             foreach (PropertyInfo item in entidade.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Public))
             {
@@ -185,7 +185,7 @@ namespace QueroBilhete.Infra.Data.Contex
 
         public static string RetornaUpdate<T>(int id, T entidade) where T : class
         {
-            List<string> condicao = new();
+            List<string> condicao = new List<string>();
             string campoChave = string.Empty;
 
             foreach (PropertyInfo item in entidade.GetType().GetProperties(BindingFlags.GetProperty | BindingFlags.Instance | BindingFlags.Public))
