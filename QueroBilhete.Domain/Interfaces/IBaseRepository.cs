@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 namespace QueroBilhete.Domain.Interfaces
 {
-    public interface IBaseRepository<TEntity> : IDisposable where TEntity : class
+    public interface IBaseRepository : IDisposable
     {
-        List<TEntity> Query(string where);
-        TEntity BuscarPorId(int id);
-        TEntity BuscarPorQuery(string query);
-        TEntity BuscarPorQueryGerador(string sqlWhere = null);
-        IEnumerable<TEntity> BuscarTodosPorQuery(string query = null);
-        IEnumerable<TEntity> BuscarTodosPorQueryGerador(string sqlWhere = null);
-        int Adicionar(TEntity entidade);
-        int Atualizar(int id, TEntity entidade);
-        int Excluir(int id);
+        List<TEntity> Query<TEntity>(string where) where TEntity : class;
+        TEntity BuscarPorId<TEntity>(int id) where TEntity : class;
+        TEntity BuscarPorQuery<TEntity>(string query) where TEntity : class;
+        TEntity BuscarPorQueryGerador<TEntity>(string sqlWhere = null) where TEntity : class;
+        IEnumerable<TEntity> BuscarTodosPorQuery<TEntity>(string query = null) where TEntity : class;
+        IEnumerable<TEntity> BuscarTodosPorQueryGerador<TEntity>(string sqlWhere = null) where TEntity : class;
+        int Adicionar<TEntity>(TEntity entidade) where TEntity : class;
+        int Atualizar<TEntity>(int id, TEntity entidade) where TEntity : class;
+        int Excluir<TEntity>(int id) where TEntity : class;
     }
 }

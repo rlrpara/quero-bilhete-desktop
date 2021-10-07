@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using QueroBilhete.Domain.Entities;
 using QueroBilhete.Domain.Interfaces;
 using QueroBilhete.Infra.Data.Contex;
 using System;
@@ -10,7 +9,7 @@ using System.Text;
 
 namespace QueroBilhete.Data.Repositories
 {
-    public class BaseRepository<TEntity> : IDisposable, IBaseRepository<TEntity> where TEntity : class
+    public class BaseRepository : IDisposable, IBaseRepository
     {
         #region Propriedades Privadas
         protected readonly IDbConnection _conexao;
@@ -49,31 +48,31 @@ namespace QueroBilhete.Data.Repositories
         #endregion
 
         #region Métodos Públicos
-        public int Adicionar(TEntity entidade)
+        public int Adicionar<TEntity>(TEntity entidade) where TEntity : class
         {
             AbrirConexao();
             return _conexao.Execute(GeradorDapper.RetornaInsert(entidade));
         }
 
-        public int Atualizar(int id, TEntity entidade)
+        public int Atualizar<TEntity>(int id, TEntity entidade) where TEntity : class
         {
             AbrirConexao();
             return _conexao.Execute(GeradorDapper.RetornaUpdate(id, entidade));
         }
 
-        public TEntity BuscarPorId(int id)
+        public TEntity BuscarPorId<TEntity>(int id) where TEntity : class
         {
             AbrirConexao();
             return _conexao.QueryFirstOrDefault<TEntity>($"{GeradorDapper.RetornaSelect<TEntity>(id)}", commandTimeout: 80000000, commandType: CommandType.Text);
         }
 
-        public TEntity BuscarPorQuery(string query)
+        public TEntity BuscarPorQuery<TEntity>(string query) where TEntity : class
         {
             AbrirConexao();
             return _conexao.QueryFirstOrDefault<TEntity>(query, commandTimeout: 80000000, commandType: CommandType.Text);
         }
 
-        public TEntity BuscarPorQueryGerador(string sqlWhere = null)
+        public TEntity BuscarPorQueryGerador<TEntity>(string sqlWhere = null) where TEntity : class
         {
             AbrirConexao();
             var sqlPesquisa = new StringBuilder().AppendLine($"{GeradorDapper.RetornaSelect<TEntity>()}");
@@ -83,7 +82,7 @@ namespace QueroBilhete.Data.Repositories
             return _conexao.Query<TEntity>(sqlPesquisa.ToString(), commandTimeout: 80000000, commandType: CommandType.Text).FirstOrDefault();
         }
 
-        public IEnumerable<TEntity> BuscarTodosPorQuery(string query = null)
+        public IEnumerable<TEntity> BuscarTodosPorQuery<TEntity>(string query = null) where TEntity : class
         {
             AbrirConexao();
             var sqlPesquisa = new StringBuilder();
@@ -99,7 +98,7 @@ namespace QueroBilhete.Data.Repositories
             return _conexao.Query<TEntity>(sqlPesquisa.ToString(), commandTimeout: 80000000, commandType: CommandType.Text);
         }
 
-        public IEnumerable<TEntity> BuscarTodosPorQueryGerador(string sqlWhere = null)
+        public IEnumerable<TEntity> BuscarTodosPorQueryGerador<TEntity>(string sqlWhere = null) where TEntity : class
         {
             AbrirConexao();
             var sqlPesquisa = new StringBuilder().AppendLine($"{GeradorDapper.RetornaSelect<TEntity>()}");
@@ -108,13 +107,13 @@ namespace QueroBilhete.Data.Repositories
             return _conexao.Query<TEntity>(sqlPesquisa.ToString(), commandTimeout: 80000000, commandType: CommandType.Text).ToList();
         }
 
-        public int Excluir(int id)
+        public int Excluir<TEntity>(int id) where TEntity : class
         {
             AbrirConexao();
             return _conexao.Execute($"{GeradorDapper.RetornaDelete<TEntity>(id)}");
         }
 
-        public List<TEntity> Query(string where)
+        public List<TEntity> Query<TEntity>(string where) where TEntity : class
         {
             return _conexao.Query<TEntity>(where, commandTimeout: 80000000, commandType: CommandType.Text).ToList();
         }

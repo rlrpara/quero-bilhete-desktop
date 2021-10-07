@@ -4,17 +4,17 @@ using QueroBilhete.Domain.Interfaces;
 
 namespace QueroBilhete.Infra.Data.Repositories
 {
-    public class LoginRepository : BaseRepository<Login>, ILoginRepository
+    public class LoginRepository : BaseRepository, ILoginRepository
     {
-        private readonly IBaseRepository<Login> _repositorio;
-        public LoginRepository(IBaseRepository<Login> repositorio)
+        private readonly IBaseRepository _repositorio;
+        public LoginRepository(IBaseRepository repositorio)
         {
             _repositorio = repositorio;
         }
 
         public Login logar(string email, string senha)
         {
-            return _repositorio.BuscarPorQueryGerador($"EMAIL = {email} AND SENHA = {senha}");
+            return _repositorio.BuscarPorQueryGerador<Login>($"EMAIL = {email} AND SENHA = {senha}");
         }
     }
 }
