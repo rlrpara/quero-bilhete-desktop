@@ -36,11 +36,13 @@ namespace QueroBilhete.Desktop.formularios.Login
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblAlerta = new System.Windows.Forms.Label();
             this.grpLogin.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpLogin
             // 
+            this.grpLogin.Controls.Add(this.lblAlerta);
             this.grpLogin.Controls.Add(this.txtSenha);
             this.grpLogin.Controls.Add(this.label2);
             this.grpLogin.Controls.Add(this.btnLogin);
@@ -95,6 +97,14 @@ namespace QueroBilhete.Desktop.formularios.Login
             this.label1.TabIndex = 0;
             this.label1.Text = "E-Mail";
             // 
+            // lblAlerta
+            // 
+            this.lblAlerta.Location = new System.Drawing.Point(119, 261);
+            this.lblAlerta.Name = "lblAlerta";
+            this.lblAlerta.Size = new System.Drawing.Size(182, 19);
+            this.lblAlerta.TabIndex = 4;
+            this.lblAlerta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -122,5 +132,6 @@ namespace QueroBilhete.Desktop.formularios.Login
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblAlerta;
     }
 }

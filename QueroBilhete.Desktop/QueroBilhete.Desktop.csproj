@@ -37,6 +37,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\QueroBilhete.Data.Database\QueroBilhete.Infra.Data.Database.csproj" />
+    <ProjectReference Include="..\QueroBilhete.Service\QueroBilhete.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>
