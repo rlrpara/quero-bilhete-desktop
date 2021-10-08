@@ -3,6 +3,7 @@ using QueroBilhete.Data.Database;
 using QueroBilhete.Desktop.formularios.Login;
 using QueroBilhete.Desktop.formularios.PDV;
 using QueroBilhete.Desktop.formularios.Usuario;
+using QueroBilhete.Desktop.Globais;
 using System;
 using System.Windows.Forms;
 
@@ -58,12 +59,51 @@ namespace QueroBilhete.Desktop
             DotEnv.Fluent().WithEnvFiles(".env").WithTrimValues().Load();
             DatabaseConfiguration.GerenciarBanco();
             AbreTelaLogin();
+
+            if (!Variaveis.Logado)
+                Close();
         }
 
         private void AbreTelaLogin()
         {
             var janela = new frmLogin();
             janela.ShowDialog();
+        }
+
+        private void Home_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F1:
+                    break;
+                case Keys.F2:
+                    break;
+                case Keys.F3:
+                    break;
+                case Keys.F4:
+                    break;
+                case Keys.F5:
+                    break;
+                case Keys.F6:
+                    break;
+                case Keys.F7:
+                    break;
+                case Keys.F8:
+                    break;
+                case Keys.F9:
+                    break;
+                case Keys.F10:
+                    break;
+                case Keys.F11:
+                    break;
+                case Keys.F12:
+                    break;
+                case Keys.Enter:
+                    SelectNextControl(this.ActiveControl, !e.Shift, true, true, true);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

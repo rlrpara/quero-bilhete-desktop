@@ -31,12 +31,12 @@ namespace QueroBilhete.Desktop.formularios.Login
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.grpLogin = new System.Windows.Forms.GroupBox();
+            this.lblAlerta = new System.Windows.Forms.Label();
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblAlerta = new System.Windows.Forms.Label();
             this.grpLogin.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,10 +54,19 @@ namespace QueroBilhete.Desktop.formularios.Login
             this.grpLogin.TabIndex = 0;
             this.grpLogin.TabStop = false;
             // 
+            // lblAlerta
+            // 
+            this.lblAlerta.Location = new System.Drawing.Point(119, 261);
+            this.lblAlerta.Name = "lblAlerta";
+            this.lblAlerta.Size = new System.Drawing.Size(182, 19);
+            this.lblAlerta.TabIndex = 4;
+            this.lblAlerta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // txtSenha
             // 
             this.txtSenha.Location = new System.Drawing.Point(119, 178);
             this.txtSenha.Name = "txtSenha";
+            this.txtSenha.PlaceholderText = "Informe sua senha";
             this.txtSenha.Size = new System.Drawing.Size(182, 23);
             this.txtSenha.TabIndex = 2;
             this.txtSenha.UseSystemPasswordChar = true;
@@ -83,8 +92,10 @@ namespace QueroBilhete.Desktop.formularios.Login
             // 
             // txtEmail
             // 
+            this.txtEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.txtEmail.Location = new System.Drawing.Point(119, 124);
             this.txtEmail.Name = "txtEmail";
+            this.txtEmail.PlaceholderText = "Digite seu e-mail";
             this.txtEmail.Size = new System.Drawing.Size(182, 23);
             this.txtEmail.TabIndex = 1;
             // 
@@ -97,14 +108,6 @@ namespace QueroBilhete.Desktop.formularios.Login
             this.label1.TabIndex = 0;
             this.label1.Text = "E-Mail";
             // 
-            // lblAlerta
-            // 
-            this.lblAlerta.Location = new System.Drawing.Point(119, 261);
-            this.lblAlerta.Name = "lblAlerta";
-            this.lblAlerta.Size = new System.Drawing.Size(182, 19);
-            this.lblAlerta.TabIndex = 4;
-            this.lblAlerta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -113,11 +116,13 @@ namespace QueroBilhete.Desktop.formularios.Login
             this.Controls.Add(this.grpLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Autenticação";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmLogin_KeyDown);
             this.grpLogin.ResumeLayout(false);
             this.grpLogin.PerformLayout();
             this.ResumeLayout(false);

@@ -1,4 +1,5 @@
-﻿using QueroBilhete.Desktop.Enumeradores;
+﻿using QueroBilhete.Data.Repositories;
+using QueroBilhete.Desktop.Enumeradores;
 using System;
 using System.Drawing;
 using System.Text;
@@ -8,7 +9,12 @@ namespace QueroBilhete.Desktop.formularios.PDV
 {
     public partial class frmPDV : Form
     {
+        #region Propriedades Privadas
+        private readonly BaseRepository baseRepository = new BaseRepository();
         private string _assentosSelecionados = string.Empty;
+        #endregion
+
+        #region Métodos Privados
         private void AtivaTab(int numero)
         {
             tabPdv.SelectedTab = tabPdv.TabPages[numero];
@@ -27,7 +33,6 @@ namespace QueroBilhete.Desktop.formularios.PDV
                     ((Label)c).Text = "";
             }
         }
-
         private void ValoresPadrao()
         {
             txtNacionalidade.Text = "BRASILEIRA";
@@ -40,12 +45,10 @@ namespace QueroBilhete.Desktop.formularios.PDV
             txtTotal.Text = "0.00";
             cmbTrecho.SelectedIndex = 1;
         }
-
         private void AbreCaixa()
         {
             MessageBox.Show("Abre o caixa quando estiver fechado para o dia");
         }
-
         private void FecharCaixa()
         {
             panelSelecaoAcentos.Enabled = false;
@@ -53,15 +56,6 @@ namespace QueroBilhete.Desktop.formularios.PDV
             ValoresPadrao();
             AtivaTab(0);
         }
-
-        public frmPDV()
-        {
-            InitializeComponent();
-            LimpaCampos();
-            ValoresPadrao();
-            AtivaTab(0);
-        }
-
         private void LayoutSalmista()
         {
             //posicao   letra|de|ate|topo|esquerda|colunas|orientacao
@@ -86,6 +80,128 @@ namespace QueroBilhete.Desktop.formularios.PDV
 
             GerarAssentos("D", 19, 30, 815, 47, 12);
         }
+        private void DesenhaBotao(string letra, int numero, int eixoX, int eixoY)
+        {
+            var nomeBotao = $"{letra}{numero.ToString().PadLeft(3, '0')}";
+            Button button = new Button();
+            button.Left = eixoY;
+            button.Top = eixoX;
+            button.Click += botaoAcento;
+            button.Name = nomeBotao;
+            button.Text = nomeBotao;
+            button.Tag = nomeBotao;
+            button.BackColor = Color.White;
+            button.Width = 45;
+            button.Height = 25;
+            button.Font = new Font(button.Font.FontFamily, 9);
+            panel1.Controls.Add(button); // here
+            panelSelecaoAcentos.Controls.Add(button);
+        }
+        private void GerarAssentos(string letra, int inicaEm, int terminaEm, int eixoX, int eixoY, int totalColunas, EDirecao direcao = EDirecao.EsquerdaDireita)
+        {
+            var esquerda = eixoY;
+
+            for (int i = inicaEm; i <= terminaEm; i++)
+            {
+                for (int c = 0; c < totalColunas; c++)
+                {
+                    if (i <= terminaEm)
+                    {
+                        DesenhaBotao(letra, i, eixoX, eixoY);
+                        if(direcao == EDirecao.EsquerdaDireita) 
+                            eixoY += 45;
+                        else
+                            eixoY += -45;
+                        i++;
+                    }
+                }
+                i--;
+                eixoY = esquerda;
+                eixoX += 25;
+            }
+        }
+        private void btnNovaVenda_Click(object sender, System.EventArgs e)
+        {
+            NovaVenda();
+        }
+        private void NovaVenda()
+        {
+            if (layoutSelecionado())
+            {
+                AbreCaixa();
+                MessageBox.Show ($"Inicia nova venda com a data({DateTime.Now:dd/MM/yyyy}) e hora ({DateTime.Now:HH:mm:ss}).");
+                panelSelecaoAcentos.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show($"Selecione o layout");
+                cmbEmbarcacao.Focus();
+                cmbEmbarcacao.DroppedDown = true;
+            }
+        }
+        private bool layoutSelecionado()
+        {
+            return !string.IsNullOrEmpty(cmbEmbarcacao.Text);
+        }
+        private void FechaVenda()
+        {
+            MessageBox.Show($"Fecha venda, imprime cupons, salva no banco.");
+            panelSelecaoAcentos.Enabled = false;
+            panelInformaPessoa.Enabled = false;
+            panelInformaPessoa.Visible = false;
+            LimpaCampos();
+        }
+        private void botaoAcento(object sender, System.EventArgs e)
+        {
+            var botaoClicado = ((Button)sender).Text.ToString();
+            var listaAssentos = new StringBuilder();
+
+            foreach (Control c in panelSelecaoAcentos.Controls)
+            {
+                if (c is Button button && button.Tag != null && button.Text == botaoClicado)
+                {
+                    ((Button)sender).BackColor = (((Button)sender).BackColor == Color.LimeGreen ? Color.White : Color.LimeGreen);
+
+                    if (((Button)sender).BackColor == Color.LimeGreen)
+                        txtAssento.Text = ((Button)sender).Tag.ToString();
+
+                    InformaPassageiroAssento(((Button)sender).Tag.ToString());
+                }
+            }
+            _assentosSelecionados = listaAssentos.ToString().Replace($"\r\n", ",");
+        }
+        private void InformaPassageiroAssento(string tag)
+        {
+            panelInformaPessoa.Visible = true;
+            panelInformaPessoa.Enabled = true;
+            txtTipoPassagem.Focus();
+        }
+        private void txtEmbarcacao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbEmbarcacao.Text.Contains("3352"))
+            {
+                LayoutSalmista();
+            }
+            else
+            {
+                RemoveControles(panelSelecaoAcentos);
+            }
+        }
+        private void RemoveControles(Panel controles)
+        {
+            controles.Controls.Clear();
+        }
+        #endregion
+
+        #region Construtor
+        public frmPDV()
+        {
+            InitializeComponent();
+            LimpaCampos();
+            ValoresPadrao();
+            AtivaTab(0);
+        }
+        #endregion
 
         private void frmPDV_KeyDown(object sender, KeyEventArgs e)
         {
@@ -124,157 +240,20 @@ namespace QueroBilhete.Desktop.formularios.PDV
                     break;
             }
         }
-        private void DesenhaBotao(string letra, int numero, int eixoX, int eixoY)
-        {
-            var nomeBotao = $"{letra}{numero.ToString().PadLeft(3, '0')}";
-            Button button = new Button();
-            button.Left = eixoY;
-            button.Top = eixoX;
-            button.Click += botaoAcento;
-            button.Name = nomeBotao;
-            button.Text = nomeBotao;
-            button.Tag = nomeBotao;
-            button.BackColor = Color.White;
-            button.Width = 45;
-            button.Height = 25;
-            button.Font = new Font(button.Font.FontFamily, 9);
-            panel1.Controls.Add(button); // here
-            panelSelecaoAcentos.Controls.Add(button);
-        }
-
-        private void GerarAssentos(string letra, int inicaEm, int terminaEm, int eixoX, int eixoY, int totalColunas, EDirecao direcao = EDirecao.EsquerdaDireita)
-        {
-            var esquerda = eixoY;
-
-            for (int i = inicaEm; i <= terminaEm; i++)
-            {
-                for (int c = 0; c < totalColunas; c++)
-                {
-                    if (i <= terminaEm)
-                    {
-                        DesenhaBotao(letra, i, eixoX, eixoY);
-                        if(direcao == EDirecao.EsquerdaDireita) 
-                            eixoY += 45;
-                        else
-                            eixoY += -45;
-                        i++;
-                    }
-                }
-                i--;
-                eixoY = esquerda;
-                eixoX += 25;
-            }
-        }
-
-        private void btnNovaVenda_Click(object sender, System.EventArgs e)
-        {
-            NovaVenda();
-        }
-
-        private void NovaVenda()
-        {
-            if (layoutSelecionado())
-            {
-                AbreCaixa();
-                MessageBox.Show ($"Inicia nova venda com a data({DateTime.Now:dd/MM/yyyy}) e hora ({DateTime.Now:HH:mm:ss}).");
-                panelSelecaoAcentos.Enabled = true;
-            }
-            else
-            {
-                MessageBox.Show($"Selecione o layout");
-                cmbEmbarcacao.Focus();
-                cmbEmbarcacao.DroppedDown = true;
-            }
-        }
-
-        private bool layoutSelecionado()
-        {
-            return !string.IsNullOrEmpty(cmbEmbarcacao.Text);
-        }
-
-        private void FechaVenda()
-        {
-            MessageBox.Show($"Fecha venda, imprime cupons, salva no banco.");
-            panelSelecaoAcentos.Enabled = false;
-            panelInformaPessoa.Enabled = false;
-            panelInformaPessoa.Visible = false;
-            LimpaCampos();
-        }
-
         private void btnFecharCaixa_Click(object sender, System.EventArgs e)
         {
             FecharCaixa();
         }
-
-        private void txtCpf_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            var cpf = txtCpf.Text.Replace(".", "").Replace(",", "").Replace("-", "");
-
-            if (!string.IsNullOrEmpty(cpf) && cpf.Contains("1234567890"))
-            {
-                txtNome.Text = "MARCELO MALATO";
-                txtRg.Text = "242424";
-                txtNascimento.Text = "24/12/1990";
-            }
-        }
-
         private void txtTotal_Validated(object sender, System.EventArgs e)
         {
             MessageBox.Show("Encerrando a venda. Iniciando nova.");
             FecharCaixa();
             AbreCaixa();
         }
-
-
-        private void botaoAcento(object sender, System.EventArgs e)
-        {
-            var botaoClicado = ((Button)sender).Text.ToString();
-            var listaAssentos = new StringBuilder();
-
-            foreach (Control c in panelSelecaoAcentos.Controls)
-            {
-                if (c is Button button && button.Tag != null && button.Text == botaoClicado)
-                {
-                    ((Button)sender).BackColor = (((Button)sender).BackColor == Color.LimeGreen ? Color.White : Color.LimeGreen);
-
-                    if (((Button)sender).BackColor == Color.LimeGreen)
-                        txtAssento.Text = ((Button)sender).Tag.ToString();
-
-                    InformaPassageiroAssento(((Button)sender).Tag.ToString());
-                }
-            }
-            _assentosSelecionados = listaAssentos.ToString().Replace($"\r\n", ",");
-        }
-
-        private void InformaPassageiroAssento(string tag)
-        {
-            panelInformaPessoa.Visible = true;
-            panelInformaPessoa.Enabled = true;
-            txtTipoPassagem.Focus();
-        }
-
-        private void txtEmbarcacao_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbEmbarcacao.Text.Contains("3352"))
-            {
-                LayoutSalmista();
-            }
-            else
-            {
-                RemoveControles(panelSelecaoAcentos);
-            }
-        }
-
-        private void RemoveControles(Panel controles)
-        {
-            controles.Controls.Clear();
-        }
-
         private void btnF4_Click(object sender, EventArgs e)
         {
             FechaVenda();
         }
-
         private void txtTroco_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             MessageBox.Show("Valida todos os campos. Exibe tela informando a impressão de todas as passagens.");

@@ -18,7 +18,7 @@ namespace QueroBilhete.Service.Service
             var loginViewModel = new LoginViewModel();
 
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(senha))
-                throw new ArgumentException("Email/Senha obrigatório");
+                return loginViewModel;
 
             var login = _baseRepository.BuscarPorQueryGerador<Login>($"EMAIL = '{email}' AND SENHA = '{senha}'");
 
