@@ -16,11 +16,11 @@ namespace QueroBilhete.Desktop.formularios.Login
 
         private async void btnLogin_Click(object sender, System.EventArgs e)
         {
-            Variaveis.Logado = ValidaLogin(txtEmail.Text, txtSenha.Text);
+            Gerais.Logado = ValidaLogin(txtEmail.Text, txtSenha.Text);
 
-            lblAlerta.Text = Variaveis.Logado ? "Liberado" : "Email/Senha inválido.";
+            lblAlerta.Text = Gerais.Logado ? "Liberado" : "Email/Senha inválido.";
 
-            if (Variaveis.Logado)
+            if (Gerais.Logado)
             {
                 lblAlerta.Text = "Liberado";
                 await PausaComTaskDelay();
@@ -43,8 +43,8 @@ namespace QueroBilhete.Desktop.formularios.Login
 
             if(!string.IsNullOrEmpty(login.Email) && !string.IsNullOrEmpty(login.Senha))
             {
-                Variaveis.Email = login.Email;
-                Variaveis.Senha = login.Senha;
+                Gerais.Email = login.Email;
+                Gerais.Senha = login.Senha;
 
                 return true;
             }

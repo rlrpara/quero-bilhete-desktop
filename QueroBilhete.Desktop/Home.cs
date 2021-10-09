@@ -60,7 +60,7 @@ namespace QueroBilhete.Desktop
             DatabaseConfiguration.GerenciarBanco();
             AbreTelaLogin();
 
-            if (!Variaveis.Logado)
+            if (!Gerais.Logado)
                 Close();
         }
 
