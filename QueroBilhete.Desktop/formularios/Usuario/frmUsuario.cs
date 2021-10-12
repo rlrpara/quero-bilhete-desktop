@@ -1,8 +1,11 @@
 ﻿using QueroBilhete.Desktop.Enumeradores;
+using QueroBilhete.Desktop.formularios.Pesquisa;
 using QueroBilhete.Desktop.Globais;
 using QueroBilhete.Infra.Utilities.ExtensionMethods;
 using QueroBilhete.Service.ViewModels;
 using System;
+using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace QueroBilhete.Desktop.formularios.Usuario
@@ -22,6 +25,7 @@ namespace QueroBilhete.Desktop.formularios.Usuario
         private void BloquearCampos(bool ativar)
         {
             Configuracao.BloquearCampos(!ativar, grpCadastro.Controls);
+            txtCodigo.Enabled = false;
         }
 
         private void AtivaBotoes(EBotoes acao)
@@ -56,6 +60,9 @@ namespace QueroBilhete.Desktop.formularios.Usuario
 
         private void Localizar()
         {
+            var janela = new frmPesquisaGenerica();
+            janela.ShowDialog();
+
             AtivaBotoes(EBotoes.Pesquisar);
             BloquearCampos(true);
         }
@@ -68,19 +75,32 @@ namespace QueroBilhete.Desktop.formularios.Usuario
 
         private void Salvar()
         {
-            AtivaBotoes(EBotoes.Salvar);
-            BloquearCampos(true);
 
             _usuarioViewModel = ObterDadosUsuario();
 
-            if (_usuarioViewModel.Valido())
+            _usuarioViewModel.Validate();
+
+            if (_usuarioViewModel.Valido)
             {
-                //Salvar os dados
+                AtivaBotoes(EBotoes.Salvar);
+                BloquearCampos(true);
             }
             else
             {
-                //emite alerta de dados inválidos
+                txtCodigo.Focus();
+                AlertaInconsistencias();
             }
+        }
+
+        private void AlertaInconsistencias()
+        {
+            var alerta = new StringBuilder();
+            alerta.AppendLine("Foram encontrados os serguintes erros:");
+
+            foreach (var item in _usuarioViewModel.Mensagens)
+                alerta.AppendLine(item.ToString());
+
+            MessageBox.Show(alerta.ToString());
         }
 
         private UsuarioViewModel ObterDadosUsuario() => new UsuarioViewModel()

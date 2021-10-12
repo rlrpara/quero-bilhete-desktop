@@ -101,8 +101,8 @@ namespace QueroBilhete.Data.Repositories
         public IEnumerable<TEntity> BuscarTodosPorQueryGerador<TEntity>(string sqlWhere = null) where TEntity : class
         {
             AbrirConexao();
-            var sqlPesquisa = new StringBuilder().AppendLine($"{GeradorDapper.RetornaSelect<TEntity>()}");
-            if (!string.IsNullOrEmpty(sqlWhere)) sqlPesquisa.AppendLine($"AND {sqlWhere}");
+            var sqlPesquisa = new StringBuilder().Append($"{GeradorDapper.RetornaSelect<TEntity>()}");
+            if (!string.IsNullOrEmpty(sqlWhere)) sqlPesquisa.Append($"AND {sqlWhere}");
 
             return _conexao.Query<TEntity>(sqlPesquisa.ToString(), commandTimeout: 80000000, commandType: CommandType.Text).ToList();
         }

@@ -8,10 +8,11 @@ namespace QueroBilhete.Desktop.formularios.Login
 {
     public partial class frmLogin : Form
     {
-        private readonly BaseRepository baseRepository = new BaseRepository();
+        private readonly BaseRepository baseRepository;
         public frmLogin()
         {
             InitializeComponent();
+            baseRepository = new BaseRepository();
         }
 
         private async void btnLogin_Click(object sender, System.EventArgs e)

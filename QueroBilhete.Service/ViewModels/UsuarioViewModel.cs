@@ -1,28 +1,91 @@
-﻿using System;
+﻿using QueroBilhete.Infra.Utilities.ExtensionMethods;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace QueroBilhete.Service.ViewModels
 {
-    public class UsuarioViewModel
+    public class UsuarioViewModel : Entidade
     {
+        private string _nome;
+        private string _email;
+        private string _cep;
+        private string _estado;
+        private string _cidade;
+        private string _bairro;
+        private string _rua;
+
+
         public int? Codigo { get; set; }
         public string Uid { get; set; }
-        public string Nome { get; set; }
-        public string Email { get; set; }
+        public string  Nome
+        {
+            get { return _nome; }
+            set { _nome = value.RemoveAcentos(); }
+        }
+        public string Email
+        {
+            get { return _email; }
+            set { _email = value.ToLower(); }
+        }
         public string Senha { get; set; }
         public int CodigoNivelAcesso { get; set; }
-        public string Cep { get; set; }
-        public string Estado { get; set; }
-        public string Cidade { get; set; }
-        public string Bairro { get; set; }
-        public string Rua { get; set; }
+        public string Cep
+        {
+            get { return _cep; }
+            set { _cep = value.ApenasNumeros(); }
+        }
+        public string Estado
+        {
+            get { return _estado; }
+            set { _estado = value.RemoveAcentos(); }
+        }
+
+        public string Cidade
+        {
+            get { return _cidade; }
+            set { _cidade = value.RemoveAcentos(); }
+        }
+
+        public string Bairro
+        {
+            get { return _bairro; }
+            set { _bairro = value.RemoveAcentos() ; }
+        }
+
+        public string Rua
+        {
+            get { return _rua; }
+            set { _rua = value.ApenasNumeros() ; }
+        }
+
         public int? Numero { get; set; }
-        public bool Ativo { get; set; }
+
+        public bool Ativo { get; set; } = true;
+
         public DateTime DataCadastro { get; set; } = DateTime.Now;
         public DateTime DataAtualizacao { get; set; } = DateTime.Now;
 
-        public bool Valido()
+        public override void Validate()
         {
-            throw new NotImplementedException();
+            LimpaAlerta();
+
+            if (string.IsNullOrEmpty(Nome))
+                AdicionaAlerta("O NOME é obrigatório");
+
+            if (string.IsNullOrEmpty(Email))
+                AdicionaAlerta("O E-MAIL é obrigatório");
+
+            if (string.IsNullOrEmpty(Senha))
+                AdicionaAlerta("A SENHA é obrigatório");
+
+            if (CodigoNivelAcesso == 0)
+                AdicionaAlerta("O NÍVEL DE ACESSO é obrigatório");
+
+            if (Cep.Length > 9)
+                AdicionaAlerta("Limite máximo de 9 caracteres");
+
+            if (Estado.Length > 9)
+                AdicionaAlerta("Limite máximo de 2 caracteres");
         }
     }
 }

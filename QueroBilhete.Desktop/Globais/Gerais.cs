@@ -1,5 +1,4 @@
 ﻿using QueroBilhete.Desktop.Enumeradores;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace QueroBilhete.Desktop.Globais
@@ -69,9 +68,9 @@ namespace QueroBilhete.Desktop.Globais
                     cancelar.Enabled = false;
                     break;
                 case EBotoes.Salvar:
-                    novo.Enabled = false;
-                    editar.Enabled = true;
-                    excluir.Enabled = true;
+                    novo.Enabled = true;
+                    editar.Enabled = false;
+                    excluir.Enabled = false;
                     pesquisar.Enabled = true;
                     imprimir.Enabled = true;
                     salvar.Enabled = false;
