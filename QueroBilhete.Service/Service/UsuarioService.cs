@@ -73,7 +73,8 @@ namespace QueroBilhete.Service.Service
 
         public UsuarioViewModel ObterUsuario(int codigoSelecionado)
         {
-            return ObterUsuario(_baseRepository.BuscarPorQueryGerador<Usuario>($"ID = {codigoSelecionado}"));
+            var usuarioEncontrado = _baseRepository.BuscarPorQueryGerador<Usuario>($"ID = {codigoSelecionado}");
+            return usuarioEncontrado != null ? ObterUsuario(_baseRepository.BuscarPorQueryGerador<Usuario>($"ID = {codigoSelecionado}")) : new UsuarioViewModel();
         }
         #endregion
     }

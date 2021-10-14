@@ -24,6 +24,15 @@ namespace QueroBilhete.Componentes.TextBox
             set { _textoDireita = value; lblDireita.Text = TextoDireita; }
         }
 
+        private string _textoCentro;
+
+        public string TextoCentro
+        {
+            get { return _textoCentro; }
+            set { _textoCentro = value; txtBox.Text = TextoCentro; }
+        }
+
+
         private string _textoStatus;
         public string TextoStatus
         {
@@ -38,7 +47,7 @@ namespace QueroBilhete.Componentes.TextBox
             set { _statusBarComponent = value; }
         }
 
-        private bool _enableAll;
+        private bool _enableAll = true;
         public bool EnableAll
         {
             get { return _enableAll; }
@@ -94,7 +103,7 @@ namespace QueroBilhete.Componentes.TextBox
 
         private void txtBox_Enter(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(TextoStatus))
+            if (!string.IsNullOrEmpty(TextoStatus) && StatuBarComponent != null)
                 StatuBarComponent.Text = TextoStatus;
             QTextBoxEnter(sender, e);
         }

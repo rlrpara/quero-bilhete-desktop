@@ -9,6 +9,12 @@ namespace QueroBilhete.Desktop.formularios.Login
     public partial class frmLogin : Form
     {
         private readonly BaseRepository baseRepository;
+
+        private void Sair()
+        {
+            this.Close();
+        }
+
         public frmLogin()
         {
             InitializeComponent();
@@ -59,6 +65,9 @@ namespace QueroBilhete.Desktop.formularios.Login
             {
                 case Keys.Enter:
                     SelectNextControl(this.ActiveControl, !e.Shift, true, true, true);
+                    break;
+                case Keys.Escape:
+                    Sair();
                     break;
                 default:
                     break;

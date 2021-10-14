@@ -51,9 +51,9 @@ namespace QueroBilhete.Componentes.TextBox
             // 
             // btn1
             // 
-            this.btn1.Location = new System.Drawing.Point(206, 0);
+            this.btn1.Location = new System.Drawing.Point(202, 0);
             this.btn1.Name = "btn1";
-            this.btn1.Size = new System.Drawing.Size(24, 25);
+            this.btn1.Size = new System.Drawing.Size(27, 24);
             this.btn1.TabIndex = 2;
             this.btn1.TabStop = false;
             this.btn1.Text = "...";
@@ -65,7 +65,7 @@ namespace QueroBilhete.Componentes.TextBox
             this.lblDireita.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDireita.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblDireita.Location = new System.Drawing.Point(232, 3);
+            this.lblDireita.Location = new System.Drawing.Point(233, 3);
             this.lblDireita.Name = "lblDireita";
             this.lblDireita.Size = new System.Drawing.Size(421, 18);
             this.lblDireita.TabIndex = 3;
@@ -83,7 +83,7 @@ namespace QueroBilhete.Componentes.TextBox
             // 
             // txtBox
             // 
-            this.txtBox.Location = new System.Drawing.Point(152, 1);
+            this.txtBox.Location = new System.Drawing.Point(149, 1);
             this.txtBox.Name = "txtBox";
             this.txtBox.Size = new System.Drawing.Size(53, 23);
             this.txtBox.TabIndex = 1;
@@ -98,6 +98,7 @@ namespace QueroBilhete.Componentes.TextBox
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "QTextBox";
             this.Size = new System.Drawing.Size(661, 26);
             this.panel1.ResumeLayout(false);

@@ -33,6 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\QueroBilhete.Componentes\QueroBilhete.Componentes.csproj" />
     <ProjectReference Include="..\QueroBilhete.Data.Database\QueroBilhete.Infra.Data.Database.csproj" />
     <ProjectReference Include="..\QueroBilhete.Domain\QueroBilhete.Domain.csproj" />
     <ProjectReference Include="..\QueroBilhete.Infra.Utilities\QueroBilhete.Infra.Utilities.csproj" />

@@ -33,7 +33,10 @@ namespace QueroBilhete.Componentes
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtCliente = new QueroBilhete.Componentes.TextBox.QTextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.qTextBox1 = new QueroBilhete.Componentes.TextBox.QTextBox();
             this.statusStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtCodigo
@@ -82,11 +85,36 @@ namespace QueroBilhete.Componentes
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.qTextBox1);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(0, 52);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(800, 100);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
+            // 
+            // qTextBox1
+            // 
+            this.qTextBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.qTextBox1.EnableAll = false;
+            this.qTextBox1.Location = new System.Drawing.Point(3, 19);
+            this.qTextBox1.Name = "qTextBox1";
+            this.qTextBox1.Size = new System.Drawing.Size(794, 26);
+            this.qTextBox1.StatuBarComponent = null;
+            this.qTextBox1.TabIndex = 0;
+            this.qTextBox1.TextoDireita = "";
+            this.qTextBox1.TextoEsquerda = "";
+            this.qTextBox1.TextoStatus = null;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.txtCliente);
             this.Controls.Add(this.txtCodigo);
@@ -94,6 +122,7 @@ namespace QueroBilhete.Componentes
             this.Text = "Form1";
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -105,6 +134,8 @@ namespace QueroBilhete.Componentes
         private TextBox.QTextBox txtCliente;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private TextBox.QTextBox qTextBox1;
     }
 }
 

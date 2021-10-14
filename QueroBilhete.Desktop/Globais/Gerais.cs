@@ -1,4 +1,5 @@
-﻿using QueroBilhete.Desktop.Enumeradores;
+﻿using QueroBilhete.Componentes.TextBox;
+using QueroBilhete.Desktop.Enumeradores;
 using System.Windows.Forms;
 
 namespace QueroBilhete.Desktop.Globais
@@ -24,6 +25,9 @@ namespace QueroBilhete.Desktop.Globais
 
                 if (item is Label && ((Label)item).Name.Substring(0, 3).Contains("lbl"))
                     ((Label)item).Text = "";
+
+                if (item is QTextBox && !string.IsNullOrEmpty(((QTextBox)item).TextoDireita))
+                    ((QTextBox)item).TextoDireita = "";
             }
         }
 
@@ -102,6 +106,9 @@ namespace QueroBilhete.Desktop.Globais
 
                 if (item is Label && ((Label)item).Name.Contains("txt"))
                     ((Label)item).Enabled = ativar;
+
+                if (item is QTextBox)
+                    ((QTextBox)item).EnableAll = ativar;
             }
         }
     }

@@ -49,12 +49,15 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             AtivaBotoes(EBotoes.Novo);
             BloquearCampos(false);
             _usuarioViewModel = new UsuarioViewModel();
+            PesquisarDados(0);
         }
 
         private void Editar()
         {
             AtivaBotoes(EBotoes.Editar);
             BloquearCampos(false);
+            txtUid.Select();
+            txtUid.Focus();
         }
 
         private void Excluir()
@@ -77,12 +80,29 @@ namespace QueroBilhete.Desktop.formularios.Usuario
 
         private void PesquisarDados(int codigoSelecionado)
         {
-            UsuarioViewModel usuario = ObterDadosUsuario(codigoSelecionado);
-        }
-
-        private UsuarioViewModel ObterDadosUsuario(int codigoSelecionado)
-        {
-            return usuarioService.ObterUsuario(codigoSelecionado);
+            _usuarioViewModel = usuarioService.ObterUsuario(codigoSelecionado);
+            if(_usuarioViewModel != null)
+            {
+                txtCodigo.Text = _usuarioViewModel.Codigo.ToString();
+                txtUid.Text = _usuarioViewModel.Uid;
+                txtNome.Text = _usuarioViewModel.Nome;
+                txtEmail.Text = _usuarioViewModel.Email;
+                txtSenha.Text = _usuarioViewModel.Senha;
+                txtNivelAcesso.TextoCentro = _usuarioViewModel.CodigoNivelAcesso.ToString();
+                txtNivelAcesso.TextoDireita = "";
+                txtCep.TextoCentro = _usuarioViewModel.Cep;
+                txtCep.TextoDireita = "";
+                txtEstado.Text = _usuarioViewModel.Estado;
+                txtCidade.Text = _usuarioViewModel.Cidade;
+                txtBairro.Text = _usuarioViewModel.Bairro;
+                txtRua.Text = _usuarioViewModel.Rua;
+                txtNumero.Text = _usuarioViewModel.Numero.ToString();
+                chkStatus.Checked = _usuarioViewModel.Ativo;
+            }
+            else
+            {
+                Configuracao.LimparCampos(grpCadastro.Controls);
+            }
         }
 
         private List<Domain.Entities.Usuario> ObterConsultaUsuario(string nome = "")

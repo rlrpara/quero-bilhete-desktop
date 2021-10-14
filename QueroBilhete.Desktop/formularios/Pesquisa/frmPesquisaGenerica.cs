@@ -72,9 +72,10 @@ namespace QueroBilhete.Desktop.formularios.Pesquisa
         private void dgvDados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvDados.Rows.Count > 0)
-                CodigoSelecionado = Convert.ToInt32(dgvDados.Rows[dgvDados.CurrentRow.Index].Cells[0].Value);
+                CodigoSelecionado = Convert.ToInt32(dgvDados.SelectedRows[e.RowIndex].Cells["Codigo"].Value);
             else
                 CodigoSelecionado = 0;
+            Close();
         }
     }
 }
