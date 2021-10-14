@@ -61,7 +61,7 @@ namespace QueroBilhete.Service.Service
             Numero = usuario.Numero,
             Ativo = usuario.Ativo,
             DataCadastro = usuario.DataCadastro,
-            DataAtualizacao = itusuarioem.DataAtualizacao
+            DataAtualizacao = usuario.DataAtualizacao
         };
         #endregion
 
