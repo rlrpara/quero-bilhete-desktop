@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QueroBilhete.Componentes
@@ -17,9 +10,37 @@ namespace QueroBilhete.Componentes
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void txtCodigo_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Clicou no Código");
+        }
+
+        private void txtCliente_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Clicou no Cliente");
+        }
+
+        private void txtCodigo_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
 
+        }
+
+        private void txtCodigo_Enter(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "Código em foco";
+        }
+
+        private void txtCodigo_Leave(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "";
+        }
+
+        private void txtCodigo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.F5)
+            {
+                MessageBox.Show("Apertou f5");
+            }
         }
     }
 }

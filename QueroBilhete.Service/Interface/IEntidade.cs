@@ -1,7 +1,6 @@
 ﻿namespace QueroBilhete.Service.Interface
 {
-    public interface IEntidadeModel
+    public interface IEntidade
     {
-        bool Valido();
     }
 }

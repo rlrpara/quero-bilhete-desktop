@@ -2,6 +2,7 @@
 using QueroBilhete.Domain.Interfaces;
 using QueroBilhete.Service.Interface;
 using QueroBilhete.Service.ViewModels;
+using System;
 using System.Collections.Generic;
 
 namespace QueroBilhete.Service.Service
@@ -17,7 +18,7 @@ namespace QueroBilhete.Service.Service
         #endregion
 
         #region Métodos Privados
-        private List<UsuarioViewModel> UsuarioModel(IEnumerable<Usuario> usuarios)
+        private List<UsuarioViewModel> ObterUsuarios(IEnumerable<Usuario> usuarios)
         {
             var usuarioModel = new List<UsuarioViewModel>();
 
@@ -44,13 +45,35 @@ namespace QueroBilhete.Service.Service
 
             return usuarioModel;
         }
+
+        private UsuarioViewModel ObterUsuario(Usuario usuario) => new UsuarioViewModel()
+        {
+            Codigo = usuario.Codigo,
+            Uid = usuario.Uid,
+            Nome = usuario.Nome,
+            Email = usuario.Email,
+            Senha = usuario.Senha,
+            Cep = usuario.Cep,
+            Estado = usuario.Estado,
+            Cidade = usuario.Cidade,
+            Bairro = usuario.Bairro,
+            Rua = usuario.Rua,
+            Numero = usuario.Numero,
+            Ativo = usuario.Ativo,
+            DataCadastro = usuario.DataCadastro,
+            DataAtualizacao = itusuarioem.DataAtualizacao
+        };
         #endregion
 
         #region Métodos Públicos
         public List<UsuarioViewModel> ObterTodos(string nome)
         {
-            var usuario = _baseRepository.BuscarTodosPorQueryGerador<Usuario>($"NOME LIKE '%{nome}%'");
-            return UsuarioModel(usuario);
+            return ObterUsuarios(_baseRepository.BuscarTodosPorQueryGerador<Usuario>($"NOME LIKE '%{nome}%'"));
+        }
+
+        public UsuarioViewModel ObterUsuario(int codigoSelecionado)
+        {
+            return ObterUsuario(_baseRepository.BuscarPorQueryGerador<Usuario>($"ID = {codigoSelecionado}"));
         }
         #endregion
     }

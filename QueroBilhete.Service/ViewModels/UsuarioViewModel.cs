@@ -1,10 +1,11 @@
-﻿using QueroBilhete.Infra.Utilities.ExtensionMethods;
+﻿using QueroBilhete.Domain.Interfaces;
+using QueroBilhete.Infra.Utilities.ExtensionMethods;
+using QueroBilhete.Service.Interface;
 using System;
-using System.ComponentModel.DataAnnotations;
 
 namespace QueroBilhete.Service.ViewModels
 {
-    public class UsuarioViewModel : Entidade
+    public class UsuarioViewModel : Entidade, IEntity
     {
         private string _nome;
         private string _email;

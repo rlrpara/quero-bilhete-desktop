@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using QueroBilhete.Domain.Interfaces;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QueroBilhete.Domain.Entities
 {
     [Table(name: "USUARIO")]
-    public class Usuario : Entity
+    public class Usuario : Entity, IEntity
     {
         [Column("UID")]
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]

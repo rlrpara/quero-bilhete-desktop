@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using QueroBilhete.Service.Interface;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace QueroBilhete.Service.ViewModels
 {
-    public abstract class Entidade
+    public abstract class Entidade : IEntidade
     {
         private List<string> _mensagens;
         public List<string> Mensagens

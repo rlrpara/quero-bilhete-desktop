@@ -1,9 +1,12 @@
-﻿using QueroBilhete.Desktop.Enumeradores;
+﻿using QueroBilhete.Data.Repositories;
+using QueroBilhete.Desktop.Enumeradores;
 using QueroBilhete.Desktop.formularios.Pesquisa;
 using QueroBilhete.Desktop.Globais;
 using QueroBilhete.Infra.Utilities.ExtensionMethods;
+using QueroBilhete.Service.Service;
 using QueroBilhete.Service.ViewModels;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -14,6 +17,8 @@ namespace QueroBilhete.Desktop.formularios.Usuario
     {
         #region Propriedades Privadas
         private UsuarioViewModel _usuarioViewModel = new UsuarioViewModel();
+        private readonly BaseRepository _baseRepository;
+        private UsuarioService usuarioService;
         #endregion
 
         #region Metodos Privadas
@@ -61,10 +66,28 @@ namespace QueroBilhete.Desktop.formularios.Usuario
         private void Localizar()
         {
             var janela = new frmPesquisaGenerica();
+            janela.CarregaDados(ObterConsultaUsuario());
             janela.ShowDialog();
+
+            PesquisarDados(janela.CodigoSelecionado);
 
             AtivaBotoes(EBotoes.Pesquisar);
             BloquearCampos(true);
+        }
+
+        private void PesquisarDados(int codigoSelecionado)
+        {
+            UsuarioViewModel usuario = ObterDadosUsuario(codigoSelecionado);
+        }
+
+        private UsuarioViewModel ObterDadosUsuario(int codigoSelecionado)
+        {
+            return usuarioService.ObterUsuario(codigoSelecionado);
+        }
+
+        private List<Domain.Entities.Usuario> ObterConsultaUsuario(string nome = "")
+        {
+            return usuarioService.BuscarTodosPorQueryGerador<Domain.Entities.Usuario>($"NOME LIKE '%{nome}%'").ToList();
         }
 
         private void Imprimir()
@@ -134,6 +157,8 @@ namespace QueroBilhete.Desktop.formularios.Usuario
         {
             InitializeComponent();
             AtivaConfiguracaoPadrao();
+            _baseRepository = new BaseRepository();
+            usuarioService = new UsuarioService(_baseRepository);
         }
 
 

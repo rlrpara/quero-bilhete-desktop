@@ -1,6 +1,6 @@
 ﻿namespace QueroBilhete.Service.Interface
 {
-    public interface IUsuarioService : IBaseService
+    public interface IUsuarioService : IBaseService, IEntidade
     {
     }
 }

@@ -1,14 +1,15 @@
 ﻿using QueroBilhete.Domain.Interfaces;
+using QueroBilhete.Service.Interface;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace QueroBilhete.Service.Service
 {
-    public class GenericService<T> : BaseService where T : class
+    public class GenericService : BaseService
     {
         #region Construtor
-        public GenericService(IBaseRepository repositorio) :
-            base(repositorio)
+        public GenericService(IBaseRepository repositorio)
+            : base(repositorio)
         {
         }
         #endregion
@@ -17,9 +18,9 @@ namespace QueroBilhete.Service.Service
         #endregion
 
         #region Métodos Públicos
-        public List<T> ObterTodos(string sql)
+        public List<T> ObterTodos<T>(string sql) where T: class
         {
-            return _baseRepository.BuscarTodosPorQuery<T>(sql).ToList();
+            return _baseRepository.BuscarTodosPorQueryGerador<T>(sql).ToList();
         }
         #endregion
     }

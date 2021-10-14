@@ -102,7 +102,7 @@ namespace QueroBilhete.Infra.Data.Contex
             List<string> campos = new List<string>();
             List<string> valores = new List<string>();
 
-            foreach (PropertyInfo item in entidade.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Public))
+            foreach (PropertyInfo item in entidade.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance))
             {
                 var tipoCampo = item.PropertyType;
                 var opcoesBase = (OpcoesBase)item.GetCustomAttribute(typeof(OpcoesBase));

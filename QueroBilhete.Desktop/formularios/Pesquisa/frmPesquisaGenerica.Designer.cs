@@ -31,20 +31,21 @@ namespace QueroBilhete.Desktop.formularios.Pesquisa
         {
             this.grpPesquisa = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.listVDados = new System.Windows.Forms.ListView();
+            this.dgvDados = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.grpTexto = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.cmbCondicao = new System.Windows.Forms.ComboBox();
             this.cmbFiltro = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.grpPesquisa.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDados)).BeginInit();
             this.panel1.SuspendLayout();
             this.grpTexto.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -65,7 +66,7 @@ namespace QueroBilhete.Desktop.formularios.Pesquisa
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.listVDados);
+            this.panel2.Controls.Add(this.dgvDados);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 97);
             this.panel2.Name = "panel2";
@@ -73,15 +74,21 @@ namespace QueroBilhete.Desktop.formularios.Pesquisa
             this.panel2.Size = new System.Drawing.Size(1259, 505);
             this.panel2.TabIndex = 1;
             // 
-            // lsvDados
+            // dgvDados
             // 
-            this.listVDados.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listVDados.HideSelection = false;
-            this.listVDados.Location = new System.Drawing.Point(10, 10);
-            this.listVDados.Name = "lsvDados";
-            this.listVDados.Size = new System.Drawing.Size(1239, 485);
-            this.listVDados.TabIndex = 0;
-            this.listVDados.UseCompatibleStateImageBehavior = false;
+            this.dgvDados.AllowUserToDeleteRows = false;
+            this.dgvDados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvDados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDados.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDados.Location = new System.Drawing.Point(10, 10);
+            this.dgvDados.MultiSelect = false;
+            this.dgvDados.Name = "dgvDados";
+            this.dgvDados.ReadOnly = true;
+            this.dgvDados.RowTemplate.Height = 25;
+            this.dgvDados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDados.Size = new System.Drawing.Size(1239, 485);
+            this.dgvDados.TabIndex = 0;
+            this.dgvDados.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDados_CellDoubleClick);
             // 
             // panel1
             // 
@@ -106,6 +113,15 @@ namespace QueroBilhete.Desktop.formularios.Pesquisa
             this.grpTexto.Size = new System.Drawing.Size(831, 68);
             this.grpTexto.TabIndex = 1;
             this.grpTexto.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 15);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Texto";
             // 
             // txtPesquisa
             // 
@@ -149,6 +165,24 @@ namespace QueroBilhete.Desktop.formularios.Pesquisa
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "TIPO DO FILTRO";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(141, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 15);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Método";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 15);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Campo";
+            // 
             // cmbCondicao
             // 
             this.cmbCondicao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -175,33 +209,6 @@ namespace QueroBilhete.Desktop.formularios.Pesquisa
             this.cmbFiltro.Size = new System.Drawing.Size(130, 23);
             this.cmbFiltro.TabIndex = 0;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 15);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Campo";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(141, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 15);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Método";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 20);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 15);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Texto";
-            // 
             // frmPesquisaGenerica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -220,6 +227,7 @@ namespace QueroBilhete.Desktop.formularios.Pesquisa
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmPesquisaGenerica_KeyDown);
             this.grpPesquisa.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDados)).EndInit();
             this.panel1.ResumeLayout(false);
             this.grpTexto.ResumeLayout(false);
             this.grpTexto.PerformLayout();
@@ -234,7 +242,6 @@ namespace QueroBilhete.Desktop.formularios.Pesquisa
 
         private System.Windows.Forms.GroupBox grpPesquisa;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ListView listVDados;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cmbCondicao;
@@ -246,5 +253,6 @@ namespace QueroBilhete.Desktop.formularios.Pesquisa
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridView dgvDados;
     }
 }

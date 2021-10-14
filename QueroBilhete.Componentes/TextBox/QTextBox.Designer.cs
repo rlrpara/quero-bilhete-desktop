@@ -30,10 +30,10 @@ namespace QueroBilhete.Componentes.TextBox
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtBox = new System.Windows.Forms.TextBox();
-            this.labelEsquerda = new System.Windows.Forms.Label();
-            this.lblDireita = new System.Windows.Forms.Label();
             this.btn1 = new System.Windows.Forms.Button();
+            this.lblDireita = new System.Windows.Forms.Label();
+            this.labelEsquerda = new System.Windows.Forms.Label();
+            this.txtBox = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,41 +49,49 @@ namespace QueroBilhete.Componentes.TextBox
             this.panel1.Size = new System.Drawing.Size(661, 26);
             this.panel1.TabIndex = 0;
             // 
-            // txtBox
+            // btn1
             // 
-            this.txtBox.Location = new System.Drawing.Point(152, 1);
-            this.txtBox.Name = "txtBox";
-            this.txtBox.Size = new System.Drawing.Size(53, 23);
-            this.txtBox.TabIndex = 0;
+            this.btn1.Location = new System.Drawing.Point(206, 0);
+            this.btn1.Name = "btn1";
+            this.btn1.Size = new System.Drawing.Size(24, 25);
+            this.btn1.TabIndex = 2;
+            this.btn1.TabStop = false;
+            this.btn1.Text = "...";
+            this.btn1.UseVisualStyleBackColor = true;
+            this.btn1.Click += new System.EventHandler(this.btn1_Click);
+            // 
+            // lblDireita
+            // 
+            this.lblDireita.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDireita.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblDireita.Location = new System.Drawing.Point(232, 3);
+            this.lblDireita.Name = "lblDireita";
+            this.lblDireita.Size = new System.Drawing.Size(421, 18);
+            this.lblDireita.TabIndex = 3;
+            this.lblDireita.Text = "label2";
+            this.lblDireita.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelEsquerda
             // 
             this.labelEsquerda.Location = new System.Drawing.Point(8, 3);
             this.labelEsquerda.Name = "labelEsquerda";
             this.labelEsquerda.Size = new System.Drawing.Size(128, 18);
-            this.labelEsquerda.TabIndex = 1;
+            this.labelEsquerda.TabIndex = 0;
             this.labelEsquerda.Text = "label1";
             this.labelEsquerda.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lblDireita
+            // txtBox
             // 
-            this.lblDireita.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDireita.Location = new System.Drawing.Point(232, 3);
-            this.lblDireita.Name = "lblDireita";
-            this.lblDireita.Size = new System.Drawing.Size(421, 18);
-            this.lblDireita.TabIndex = 2;
-            this.lblDireita.Text = "label2";
-            this.lblDireita.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btn1
-            // 
-            this.btn1.Location = new System.Drawing.Point(206, 0);
-            this.btn1.Name = "btn1";
-            this.btn1.Size = new System.Drawing.Size(24, 25);
-            this.btn1.TabIndex = 3;
-            this.btn1.Text = "...";
-            this.btn1.UseVisualStyleBackColor = true;
+            this.txtBox.Location = new System.Drawing.Point(152, 1);
+            this.txtBox.Name = "txtBox";
+            this.txtBox.Size = new System.Drawing.Size(53, 23);
+            this.txtBox.TabIndex = 1;
+            this.txtBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtBox.Enter += new System.EventHandler(this.txtBox_Enter);
+            this.txtBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBox_KeyDown);
+            this.txtBox.Leave += new System.EventHandler(this.txtBox_Leave);
+            this.txtBox.Validating += new System.ComponentModel.CancelEventHandler(this.txtBox_Validating);
             // 
             // QTextBox
             // 
@@ -101,9 +109,9 @@ namespace QueroBilhete.Componentes.TextBox
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btn1;
         private System.Windows.Forms.Label lblDireita;
         private System.Windows.Forms.Label labelEsquerda;
         private System.Windows.Forms.TextBox txtBox;
+        public System.Windows.Forms.Button btn1;
     }
 }
