@@ -26,8 +26,8 @@ namespace QueroBilhete.Desktop.Globais
                 if (item is Label && ((Label)item).Name.Substring(0, 3).Contains("lbl"))
                     ((Label)item).Text = "";
 
-                if (item is QTextBox && !string.IsNullOrEmpty(((QTextBox)item).TextoDireita))
-                    ((QTextBox)item).TextoDireita = "";
+                if (item is txtBoxBtnLabel && !string.IsNullOrEmpty(((txtBoxBtnLabel)item).TextoDireita))
+                    ((txtBoxBtnLabel)item).TextoDireita = "";
             }
         }
 
@@ -107,8 +107,8 @@ namespace QueroBilhete.Desktop.Globais
                 if (item is Label && ((Label)item).Name.Contains("txt"))
                     ((Label)item).Enabled = ativar;
 
-                if (item is QTextBox)
-                    ((QTextBox)item).EnableAll = ativar;
+                if (item is txtBoxBtnLabel)
+                    ((txtBoxBtnLabel)item).EnableAll = ativar;
             }
         }
     }

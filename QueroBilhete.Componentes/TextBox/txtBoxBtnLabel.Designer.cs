@@ -1,7 +1,7 @@
 ﻿
 namespace QueroBilhete.Componentes.TextBox
 {
-    partial class QTextBox
+    partial class txtBoxBtnLabel
     {
         /// <summary> 
         /// Required designer variable.
@@ -44,16 +44,20 @@ namespace QueroBilhete.Componentes.TextBox
             this.panel1.Controls.Add(this.labelEsquerda);
             this.panel1.Controls.Add(this.txtBox);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(661, 26);
+            this.panel1.Size = new System.Drawing.Size(662, 24);
             this.panel1.TabIndex = 0;
             // 
             // btn1
             // 
+            this.btn1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btn1.Location = new System.Drawing.Point(202, 0);
+            this.btn1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btn1.Name = "btn1";
-            this.btn1.Size = new System.Drawing.Size(27, 24);
+            this.btn1.Size = new System.Drawing.Size(27, 22);
             this.btn1.TabIndex = 2;
             this.btn1.TabStop = false;
             this.btn1.Text = "...";
@@ -64,28 +68,33 @@ namespace QueroBilhete.Componentes.TextBox
             // 
             this.lblDireita.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDireita.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblDireita.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblDireita.Location = new System.Drawing.Point(233, 3);
+            this.lblDireita.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDireita.Name = "lblDireita";
-            this.lblDireita.Size = new System.Drawing.Size(421, 18);
+            this.lblDireita.Size = new System.Drawing.Size(421, 17);
             this.lblDireita.TabIndex = 3;
             this.lblDireita.Text = "label2";
             this.lblDireita.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelEsquerda
             // 
+            this.labelEsquerda.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelEsquerda.Location = new System.Drawing.Point(8, 3);
+            this.labelEsquerda.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelEsquerda.Name = "labelEsquerda";
-            this.labelEsquerda.Size = new System.Drawing.Size(128, 18);
+            this.labelEsquerda.Size = new System.Drawing.Size(128, 17);
             this.labelEsquerda.TabIndex = 0;
             this.labelEsquerda.Text = "label1";
             this.labelEsquerda.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtBox
             // 
+            this.txtBox.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtBox.Location = new System.Drawing.Point(149, 1);
+            this.txtBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtBox.Name = "txtBox";
-            this.txtBox.Size = new System.Drawing.Size(53, 23);
+            this.txtBox.Size = new System.Drawing.Size(53, 21);
             this.txtBox.TabIndex = 1;
             this.txtBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtBox.Enter += new System.EventHandler(this.txtBox_Enter);
@@ -93,14 +102,15 @@ namespace QueroBilhete.Componentes.TextBox
             this.txtBox.Leave += new System.EventHandler(this.txtBox_Leave);
             this.txtBox.Validating += new System.ComponentModel.CancelEventHandler(this.txtBox_Validating);
             // 
-            // QTextBox
+            // txtBoxBtnLabel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Name = "QTextBox";
-            this.Size = new System.Drawing.Size(661, 26);
+            this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.Name = "txtBoxBtnLabel";
+            this.Size = new System.Drawing.Size(662, 24);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

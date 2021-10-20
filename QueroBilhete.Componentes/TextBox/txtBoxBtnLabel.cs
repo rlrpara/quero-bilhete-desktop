@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace QueroBilhete.Componentes.TextBox
 {
-    public partial class QTextBox : UserControl
+    public partial class txtBoxBtnLabel : UserControl
     {
         private string _textoEsquerda;
         public string TextoEsquerda
@@ -84,7 +84,7 @@ namespace QueroBilhete.Componentes.TextBox
             this.OnKeyDown(e);
         }
 
-        public QTextBox()
+        public txtBoxBtnLabel()
         {
             InitializeComponent();
             TextoEsquerda = "";

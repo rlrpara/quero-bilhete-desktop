@@ -30,7 +30,20 @@ namespace QueroBilhete.Desktop.formularios.Usuario
         private void BloquearCampos(bool ativar)
         {
             Configuracao.BloquearCampos(!ativar, grpCadastro.Controls);
-            txtCodigo.Enabled = false;
+            txtCodigo.EnableAll = !ativar;
+            txtUid.EnableAll = !ativar;
+            txtNome.EnableAll = !ativar;
+            txtEmail.EnableAll = !ativar;
+            txtSenha.EnableAll = !ativar;
+            txtNivelAcesso.EnableAll = !ativar;
+            txtCep.EnableAll = !ativar;
+            txtEstado.EnableAll = !ativar;
+            txtCidade.EnableAll = !ativar;
+            txtBairro.EnableAll = !ativar;
+            txtRua.EnableAll = !ativar;
+            txtNumero.EnableAll = !ativar;
+            panelStatus.Enabled = !ativar;
+
         }
 
         private void AtivaBotoes(EBotoes acao)
@@ -56,6 +69,7 @@ namespace QueroBilhete.Desktop.formularios.Usuario
         {
             AtivaBotoes(EBotoes.Editar);
             BloquearCampos(false);
+            txtCodigo.Enabled = false;
             txtUid.Select();
             txtUid.Focus();
         }
@@ -83,20 +97,21 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             _usuarioViewModel = usuarioService.ObterUsuario(codigoSelecionado);
             if(_usuarioViewModel != null)
             {
-                txtCodigo.Text = _usuarioViewModel.Codigo.ToString();
-                txtUid.Text = _usuarioViewModel.Uid;
-                txtNome.Text = _usuarioViewModel.Nome;
-                txtEmail.Text = _usuarioViewModel.Email;
-                txtSenha.Text = _usuarioViewModel.Senha;
-                txtNivelAcesso.TextoCentro = _usuarioViewModel.CodigoNivelAcesso.ToString();
+                txtCodigo.Texto = _usuarioViewModel.Codigo.ToString();
+                txtUid.Texto = _usuarioViewModel.Uid;
+                txtNome.Texto = _usuarioViewModel.Nome;
+                txtEmail.Texto = _usuarioViewModel.Email;
+                txtSenha.Texto = _usuarioViewModel.Senha;
+                txtNivelAcesso.TextoCentro = _usuarioViewModel.CodigoNivelAcesso > 0 ? _usuarioViewModel.CodigoNivelAcesso.ToString() : "";
                 txtNivelAcesso.TextoDireita = "";
                 txtCep.TextoCentro = _usuarioViewModel.Cep;
                 txtCep.TextoDireita = "";
-                txtEstado.Text = _usuarioViewModel.Estado;
-                txtCidade.Text = _usuarioViewModel.Cidade;
-                txtBairro.Text = _usuarioViewModel.Bairro;
-                txtRua.Text = _usuarioViewModel.Rua;
-                txtNumero.Text = _usuarioViewModel.Numero.ToString();
+                txtEstado.TextoCentro = _usuarioViewModel.Estado;
+                txtEstado.TextoDireita = "";
+                txtCidade.Texto = _usuarioViewModel.Cidade;
+                txtBairro.Texto = _usuarioViewModel.Bairro;
+                txtRua.Texto = _usuarioViewModel.Rua;
+                txtNumero.Texto = _usuarioViewModel.Numero.ToString();
                 chkStatus.Checked = _usuarioViewModel.Ativo;
             }
             else

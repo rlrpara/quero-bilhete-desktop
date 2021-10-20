@@ -29,12 +29,13 @@ namespace QueroBilhete.Componentes
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtCodigo = new QueroBilhete.Componentes.TextBox.QTextBox();
+            this.txtCodigo = new QueroBilhete.Componentes.TextBox.txtBoxBtnLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.txtCliente = new QueroBilhete.Componentes.TextBox.QTextBox();
+            this.txtCliente = new QueroBilhete.Componentes.TextBox.txtBoxBtnLabel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.qTextBox1 = new QueroBilhete.Componentes.TextBox.QTextBox();
+            this.qTextBox1 = new QueroBilhete.Componentes.TextBox.txtBoxBtnLabel();
+            this.txtBoxLabel1 = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -43,11 +44,14 @@ namespace QueroBilhete.Componentes
             // 
             this.txtCodigo.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtCodigo.EnableAll = true;
+            this.txtCodigo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtCodigo.Location = new System.Drawing.Point(0, 0);
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(800, 26);
             this.txtCodigo.StatuBarComponent = this.toolStripStatusLabel1;
             this.txtCodigo.TabIndex = 0;
+            this.txtCodigo.TextoCentro = null;
             this.txtCodigo.TextoDireita = "CÓDIGO";
             this.txtCodigo.TextoEsquerda = "Código";
             this.txtCodigo.TextoStatus = "Código de Registro";
@@ -65,11 +69,14 @@ namespace QueroBilhete.Componentes
             // 
             this.txtCliente.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtCliente.EnableAll = true;
+            this.txtCliente.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtCliente.Location = new System.Drawing.Point(0, 26);
+            this.txtCliente.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.Size = new System.Drawing.Size(800, 26);
             this.txtCliente.StatuBarComponent = null;
             this.txtCliente.TabIndex = 1;
+            this.txtCliente.TextoCentro = null;
             this.txtCliente.TextoDireita = "CLIENTE";
             this.txtCliente.TextoEsquerda = "Cliente";
             this.txtCliente.TextoStatus = null;
@@ -87,6 +94,7 @@ namespace QueroBilhete.Componentes
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtBoxLabel1);
             this.groupBox1.Controls.Add(this.qTextBox1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 52);
@@ -100,14 +108,32 @@ namespace QueroBilhete.Componentes
             // 
             this.qTextBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.qTextBox1.EnableAll = false;
+            this.qTextBox1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.qTextBox1.Location = new System.Drawing.Point(3, 19);
+            this.qTextBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.qTextBox1.Name = "qTextBox1";
             this.qTextBox1.Size = new System.Drawing.Size(794, 26);
             this.qTextBox1.StatuBarComponent = null;
             this.qTextBox1.TabIndex = 0;
+            this.qTextBox1.TextoCentro = null;
             this.qTextBox1.TextoDireita = "";
             this.qTextBox1.TextoEsquerda = "";
             this.qTextBox1.TextoStatus = null;
+            // 
+            // txtBoxLabel1
+            // 
+            this.txtBoxLabel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtBoxLabel1.EnableAll = true;
+            this.txtBoxLabel1.Location = new System.Drawing.Point(3, 45);
+            this.txtBoxLabel1.Name = "txtBoxLabel1";
+            this.txtBoxLabel1.Size = new System.Drawing.Size(794, 24);
+            this.txtBoxLabel1.TabIndex = 1;
+            this.txtBoxLabel1.Texto = "";
+            this.txtBoxLabel1.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
+            this.txtBoxLabel1.TextoEsquerda = "Fornecedor";
+            this.txtBoxLabel1.TextoLargura = 53;
+            this.txtBoxLabel1.TextoStatus = "";
+            this.txtBoxLabel1.VisibleAll = true;
             // 
             // Form1
             // 
@@ -130,12 +156,13 @@ namespace QueroBilhete.Componentes
 
         #endregion
 
-        private TextBox.QTextBox txtCodigo;
-        private TextBox.QTextBox txtCliente;
+        private TextBox.txtBoxBtnLabel txtCodigo;
+        private TextBox.txtBoxBtnLabel txtCliente;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private TextBox.QTextBox qTextBox1;
+        private TextBox.txtBoxBtnLabel qTextBox1;
+        private TextBox.txtBoxLabel txtBoxLabel1;
     }
 }
 

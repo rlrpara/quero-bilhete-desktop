@@ -32,6 +32,7 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUsuario));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,66 +50,44 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.grpCadastro = new System.Windows.Forms.GroupBox();
-            this.panel16 = new System.Windows.Forms.Panel();
+            this.panelStatus = new System.Windows.Forms.Panel();
             this.chkStatus = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.txtNumero = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.txtRua = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.txtBairro = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.txtCidade = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.txtEstado = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtCep = new QueroBilhete.Componentes.TextBox.QTextBox();
-            this.txtNivelAcesso = new QueroBilhete.Componentes.TextBox.QTextBox();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.txtSenha = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.txtNome = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel15 = new System.Windows.Forms.Panel();
-            this.txtUid = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.txtNumero = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
+            this.txtRua = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
+            this.txtBairro = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
+            this.txtCidade = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
+            this.txtEstado = new QueroBilhete.Componentes.TextBox.txtBoxBtnLabel();
+            this.txtCep = new QueroBilhete.Componentes.TextBox.txtBoxBtnLabel();
+            this.txtNivelAcesso = new QueroBilhete.Componentes.TextBox.txtBoxBtnLabel();
+            this.txtSenha = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
+            this.txtEmail = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
+            this.txtNome = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
+            this.txtUid = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
+            this.txtCodigo = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
+            this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
             this.grpCadastro.SuspendLayout();
-            this.panel16.SuspendLayout();
-            this.panel14.SuspendLayout();
-            this.panel13.SuspendLayout();
-            this.panel12.SuspendLayout();
-            this.panel11.SuspendLayout();
-            this.panel10.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel15.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.panelStatus.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
             // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 452);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 12, 0);
             this.statusStrip1.Size = new System.Drawing.Size(1002, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
             // 
             // panel1
             // 
@@ -267,6 +246,7 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             // 
             // splitter1
             // 
+            this.splitter1.Cursor = System.Windows.Forms.Cursors.Default;
             this.splitter1.Location = new System.Drawing.Point(73, 1);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(3, 21);
@@ -320,19 +300,19 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             // 
             // grpCadastro
             // 
-            this.grpCadastro.Controls.Add(this.panel16);
-            this.grpCadastro.Controls.Add(this.panel14);
-            this.grpCadastro.Controls.Add(this.panel13);
-            this.grpCadastro.Controls.Add(this.panel12);
-            this.grpCadastro.Controls.Add(this.panel11);
-            this.grpCadastro.Controls.Add(this.panel10);
+            this.grpCadastro.Controls.Add(this.panelStatus);
+            this.grpCadastro.Controls.Add(this.txtNumero);
+            this.grpCadastro.Controls.Add(this.txtRua);
+            this.grpCadastro.Controls.Add(this.txtBairro);
+            this.grpCadastro.Controls.Add(this.txtCidade);
+            this.grpCadastro.Controls.Add(this.txtEstado);
             this.grpCadastro.Controls.Add(this.txtCep);
             this.grpCadastro.Controls.Add(this.txtNivelAcesso);
-            this.grpCadastro.Controls.Add(this.panel5);
-            this.grpCadastro.Controls.Add(this.panel4);
-            this.grpCadastro.Controls.Add(this.panel3);
-            this.grpCadastro.Controls.Add(this.panel15);
-            this.grpCadastro.Controls.Add(this.panel2);
+            this.grpCadastro.Controls.Add(this.txtSenha);
+            this.grpCadastro.Controls.Add(this.txtEmail);
+            this.grpCadastro.Controls.Add(this.txtNome);
+            this.grpCadastro.Controls.Add(this.txtUid);
+            this.grpCadastro.Controls.Add(this.txtCodigo);
             this.grpCadastro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpCadastro.Location = new System.Drawing.Point(0, 46);
             this.grpCadastro.Name = "grpCadastro";
@@ -340,182 +320,142 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             this.grpCadastro.TabIndex = 2;
             this.grpCadastro.TabStop = false;
             // 
-            // panel16
+            // panelStatus
             // 
-            this.panel16.Controls.Add(this.chkStatus);
-            this.panel16.Controls.Add(this.label14);
-            this.panel16.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel16.Location = new System.Drawing.Point(3, 320);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(996, 25);
-            this.panel16.TabIndex = 12;
+            this.panelStatus.Controls.Add(this.chkStatus);
+            this.panelStatus.Controls.Add(this.label14);
+            this.panelStatus.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelStatus.Location = new System.Drawing.Point(3, 306);
+            this.panelStatus.Name = "panelStatus";
+            this.panelStatus.Size = new System.Drawing.Size(996, 25);
+            this.panelStatus.TabIndex = 12;
             // 
             // chkStatus
             // 
             this.chkStatus.AutoSize = true;
-            this.chkStatus.Location = new System.Drawing.Point(142, 4);
+            this.chkStatus.Location = new System.Drawing.Point(149, 5);
             this.chkStatus.Name = "chkStatus";
             this.chkStatus.Size = new System.Drawing.Size(61, 17);
-            this.chkStatus.TabIndex = 2;
+            this.chkStatus.TabIndex = 12;
             this.chkStatus.Text = "Inativo";
             this.chkStatus.UseVisualStyleBackColor = true;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(87, 6);
+            this.label14.Location = new System.Drawing.Point(94, 6);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(39, 13);
             this.label14.TabIndex = 1;
             this.label14.Text = "Status";
             // 
-            // panel14
-            // 
-            this.panel14.Controls.Add(this.txtNumero);
-            this.panel14.Controls.Add(this.label12);
-            this.panel14.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel14.Location = new System.Drawing.Point(3, 295);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(996, 25);
-            this.panel14.TabIndex = 11;
-            // 
             // txtNumero
             // 
-            this.txtNumero.Location = new System.Drawing.Point(142, 1);
+            this.txtNumero.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtNumero.EnableAll = true;
+            this.txtNumero.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtNumero.Location = new System.Drawing.Point(3, 282);
+            this.txtNumero.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Size = new System.Drawing.Size(57, 22);
-            this.txtNumero.TabIndex = 2;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(78, 6);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(48, 13);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "Numero";
-            // 
-            // panel13
-            // 
-            this.panel13.Controls.Add(this.txtRua);
-            this.panel13.Controls.Add(this.label11);
-            this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel13.Location = new System.Drawing.Point(3, 270);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(996, 25);
-            this.panel13.TabIndex = 10;
+            this.txtNumero.Size = new System.Drawing.Size(996, 24);
+            this.txtNumero.StatuBarComponent = this.toolStripStatusLabel1;
+            this.txtNumero.TabIndex = 11;
+            this.txtNumero.Texto = "";
+            this.txtNumero.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
+            this.txtNumero.TextoEsquerda = "Número";
+            this.txtNumero.TextoLargura = 53;
+            this.txtNumero.TextoMaiusculo = false;
+            this.txtNumero.TextoSenha = false;
+            this.txtNumero.TextoStatus = "";
+            this.txtNumero.VisibleAll = true;
             // 
             // txtRua
             // 
-            this.txtRua.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtRua.Location = new System.Drawing.Point(142, 1);
+            this.txtRua.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtRua.EnableAll = true;
+            this.txtRua.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtRua.Location = new System.Drawing.Point(3, 258);
+            this.txtRua.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtRua.Name = "txtRua";
-            this.txtRua.Size = new System.Drawing.Size(554, 22);
-            this.txtRua.TabIndex = 2;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(99, 6);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(27, 13);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "Rua";
-            // 
-            // panel12
-            // 
-            this.panel12.Controls.Add(this.txtBairro);
-            this.panel12.Controls.Add(this.label10);
-            this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel12.Location = new System.Drawing.Point(3, 245);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(996, 25);
-            this.panel12.TabIndex = 9;
+            this.txtRua.Size = new System.Drawing.Size(996, 24);
+            this.txtRua.StatuBarComponent = this.toolStripStatusLabel1;
+            this.txtRua.TabIndex = 10;
+            this.txtRua.Texto = "";
+            this.txtRua.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
+            this.txtRua.TextoEsquerda = "Rua";
+            this.txtRua.TextoLargura = 555;
+            this.txtRua.TextoMaiusculo = false;
+            this.txtRua.TextoSenha = false;
+            this.txtRua.TextoStatus = "";
+            this.txtRua.VisibleAll = true;
             // 
             // txtBairro
             // 
-            this.txtBairro.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtBairro.Location = new System.Drawing.Point(142, 1);
+            this.txtBairro.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtBairro.EnableAll = true;
+            this.txtBairro.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtBairro.Location = new System.Drawing.Point(3, 234);
             this.txtBairro.Name = "txtBairro";
-            this.txtBairro.Size = new System.Drawing.Size(140, 22);
-            this.txtBairro.TabIndex = 2;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(89, 6);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(37, 13);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "Bairro";
-            // 
-            // panel11
-            // 
-            this.panel11.Controls.Add(this.txtCidade);
-            this.panel11.Controls.Add(this.label9);
-            this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel11.Location = new System.Drawing.Point(3, 220);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(996, 25);
-            this.panel11.TabIndex = 8;
+            this.txtBairro.Size = new System.Drawing.Size(996, 24);
+            this.txtBairro.TabIndex = 9;
+            this.txtBairro.Texto = "";
+            this.txtBairro.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
+            this.txtBairro.TextoEsquerda = "Bairro";
+            this.txtBairro.TextoLargura = 140;
+            this.txtBairro.TextoMaiusculo = false;
+            this.txtBairro.TextoSenha = false;
+            this.txtBairro.TextoStatus = "";
+            this.txtBairro.VisibleAll = true;
             // 
             // txtCidade
             // 
-            this.txtCidade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCidade.Location = new System.Drawing.Point(142, 1);
+            this.txtCidade.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtCidade.EnableAll = true;
+            this.txtCidade.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtCidade.Location = new System.Drawing.Point(3, 210);
+            this.txtCidade.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtCidade.Name = "txtCidade";
-            this.txtCidade.Size = new System.Drawing.Size(93, 22);
-            this.txtCidade.TabIndex = 2;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(83, 6);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(43, 13);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "Cidade";
-            // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.txtEstado);
-            this.panel10.Controls.Add(this.label8);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel10.Location = new System.Drawing.Point(3, 195);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(996, 25);
-            this.panel10.TabIndex = 7;
+            this.txtCidade.Size = new System.Drawing.Size(996, 24);
+            this.txtCidade.StatuBarComponent = this.toolStripStatusLabel1;
+            this.txtCidade.TabIndex = 8;
+            this.txtCidade.Texto = "";
+            this.txtCidade.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
+            this.txtCidade.TextoEsquerda = "Cidade";
+            this.txtCidade.TextoLargura = 140;
+            this.txtCidade.TextoMaiusculo = false;
+            this.txtCidade.TextoSenha = false;
+            this.txtCidade.TextoStatus = "";
+            this.txtCidade.VisibleAll = true;
             // 
             // txtEstado
             // 
-            this.txtEstado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtEstado.Location = new System.Drawing.Point(142, 2);
+            this.txtEstado.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtEstado.EnableAll = true;
+            this.txtEstado.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtEstado.Location = new System.Drawing.Point(3, 186);
+            this.txtEstado.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtEstado.Name = "txtEstado";
-            this.txtEstado.Size = new System.Drawing.Size(57, 22);
-            this.txtEstado.TabIndex = 2;
-            this.txtEstado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(84, 7);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(42, 13);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "Estado";
+            this.txtEstado.Size = new System.Drawing.Size(996, 24);
+            this.txtEstado.StatuBarComponent = this.toolStripStatusLabel1;
+            this.txtEstado.TabIndex = 7;
+            this.txtEstado.TextoCentro = null;
+            this.txtEstado.TextoDireita = "";
+            this.txtEstado.TextoEsquerda = "Estado";
+            this.txtEstado.TextoStatus = null;
             // 
             // txtCep
             // 
             this.txtCep.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtCep.EnableAll = true;
             this.txtCep.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCep.Location = new System.Drawing.Point(3, 169);
+            this.txtCep.Location = new System.Drawing.Point(3, 162);
+            this.txtCep.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtCep.Name = "txtCep";
-            this.txtCep.Size = new System.Drawing.Size(996, 26);
-            this.txtCep.StatuBarComponent = null;
+            this.txtCep.Size = new System.Drawing.Size(996, 24);
+            this.txtCep.StatuBarComponent = this.toolStripStatusLabel1;
             this.txtCep.TabIndex = 6;
             this.txtCep.TextoCentro = null;
-            this.txtCep.TextoDireita = "CEP";
+            this.txtCep.TextoDireita = "";
             this.txtCep.TextoEsquerda = "Cep";
             this.txtCep.TextoStatus = null;
             // 
@@ -523,152 +463,116 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             // 
             this.txtNivelAcesso.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtNivelAcesso.EnableAll = true;
-            this.txtNivelAcesso.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtNivelAcesso.Location = new System.Drawing.Point(3, 143);
+            this.txtNivelAcesso.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtNivelAcesso.Location = new System.Drawing.Point(3, 138);
+            this.txtNivelAcesso.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtNivelAcesso.Name = "txtNivelAcesso";
-            this.txtNivelAcesso.Size = new System.Drawing.Size(996, 26);
-            this.txtNivelAcesso.StatuBarComponent = null;
+            this.txtNivelAcesso.Size = new System.Drawing.Size(996, 24);
+            this.txtNivelAcesso.StatuBarComponent = this.toolStripStatusLabel1;
             this.txtNivelAcesso.TabIndex = 5;
-            this.txtNivelAcesso.Tag = "";
             this.txtNivelAcesso.TextoCentro = null;
-            this.txtNivelAcesso.TextoDireita = "NÍVEL ACESSO";
+            this.txtNivelAcesso.TextoDireita = "";
             this.txtNivelAcesso.TextoEsquerda = "Nível Acesso";
-            this.txtNivelAcesso.TextoStatus = "Nível de Acesso";
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.txtSenha);
-            this.panel5.Controls.Add(this.label5);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(3, 118);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(996, 25);
-            this.panel5.TabIndex = 4;
+            this.txtNivelAcesso.TextoStatus = null;
             // 
             // txtSenha
             // 
-            this.txtSenha.Location = new System.Drawing.Point(142, 2);
+            this.txtSenha.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtSenha.EnableAll = true;
+            this.txtSenha.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSenha.Location = new System.Drawing.Point(3, 114);
+            this.txtSenha.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtSenha.Name = "txtSenha";
-            this.txtSenha.Size = new System.Drawing.Size(140, 22);
-            this.txtSenha.TabIndex = 2;
-            this.txtSenha.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtSenha.UseSystemPasswordChar = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(87, 7);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Senha";
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.txtEmail);
-            this.panel4.Controls.Add(this.label4);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(3, 93);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(996, 25);
-            this.panel4.TabIndex = 3;
+            this.txtSenha.Size = new System.Drawing.Size(996, 24);
+            this.txtSenha.StatuBarComponent = this.toolStripStatusLabel1;
+            this.txtSenha.TabIndex = 4;
+            this.txtSenha.Texto = "";
+            this.txtSenha.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
+            this.txtSenha.TextoEsquerda = "Senha";
+            this.txtSenha.TextoLargura = 140;
+            this.txtSenha.TextoMaiusculo = false;
+            this.txtSenha.TextoSenha = true;
+            this.txtSenha.TextoStatus = "";
+            this.txtSenha.VisibleAll = true;
             // 
             // txtEmail
             // 
-            this.txtEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.txtEmail.Location = new System.Drawing.Point(142, 2);
+            this.txtEmail.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtEmail.EnableAll = true;
+            this.txtEmail.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtEmail.Location = new System.Drawing.Point(3, 90);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(233, 22);
-            this.txtEmail.TabIndex = 2;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(88, 7);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 13);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "E-mail";
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.txtNome);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(3, 68);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(996, 25);
-            this.panel3.TabIndex = 2;
+            this.txtEmail.Size = new System.Drawing.Size(996, 24);
+            this.txtEmail.StatuBarComponent = this.toolStripStatusLabel1;
+            this.txtEmail.TabIndex = 3;
+            this.txtEmail.Texto = "";
+            this.txtEmail.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
+            this.txtEmail.TextoEsquerda = "E-Mail";
+            this.txtEmail.TextoLargura = 232;
+            this.txtEmail.TextoMaiusculo = false;
+            this.txtEmail.TextoSenha = false;
+            this.txtEmail.TextoStatus = "";
+            this.txtEmail.VisibleAll = true;
             // 
             // txtNome
             // 
-            this.txtNome.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNome.Location = new System.Drawing.Point(142, 2);
+            this.txtNome.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtNome.EnableAll = true;
+            this.txtNome.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtNome.Location = new System.Drawing.Point(3, 66);
+            this.txtNome.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(554, 22);
+            this.txtNome.Size = new System.Drawing.Size(996, 24);
+            this.txtNome.StatuBarComponent = this.toolStripStatusLabel1;
             this.txtNome.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(89, 7);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Nome";
-            // 
-            // panel15
-            // 
-            this.panel15.Controls.Add(this.txtUid);
-            this.panel15.Controls.Add(this.label13);
-            this.panel15.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel15.Location = new System.Drawing.Point(3, 43);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(996, 25);
-            this.panel15.TabIndex = 1;
+            this.txtNome.Texto = "";
+            this.txtNome.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
+            this.txtNome.TextoEsquerda = "Nome";
+            this.txtNome.TextoLargura = 555;
+            this.txtNome.TextoMaiusculo = false;
+            this.txtNome.TextoSenha = false;
+            this.txtNome.TextoStatus = "";
+            this.txtNome.VisibleAll = true;
             // 
             // txtUid
             // 
-            this.txtUid.Location = new System.Drawing.Point(142, 1);
+            this.txtUid.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtUid.EnableAll = true;
+            this.txtUid.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtUid.Location = new System.Drawing.Point(3, 42);
+            this.txtUid.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUid.Name = "txtUid";
-            this.txtUid.Size = new System.Drawing.Size(233, 22);
-            this.txtUid.TabIndex = 2;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(101, 6);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(25, 13);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "UId";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.txtCodigo);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(3, 18);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(996, 25);
-            this.panel2.TabIndex = 0;
+            this.txtUid.Size = new System.Drawing.Size(996, 24);
+            this.txtUid.StatuBarComponent = this.toolStripStatusLabel1;
+            this.txtUid.TabIndex = 1;
+            this.txtUid.Texto = "";
+            this.txtUid.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
+            this.txtUid.TextoEsquerda = "UID";
+            this.txtUid.TextoLargura = 232;
+            this.txtUid.TextoMaiusculo = false;
+            this.txtUid.TextoSenha = false;
+            this.txtUid.TextoStatus = "";
+            this.txtUid.VisibleAll = true;
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(142, 2);
+            this.txtCodigo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtCodigo.EnableAll = true;
+            this.txtCodigo.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtCodigo.Location = new System.Drawing.Point(3, 18);
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(93, 22);
-            this.txtCodigo.TabIndex = 2;
-            this.txtCodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(81, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Código";
+            this.txtCodigo.Size = new System.Drawing.Size(996, 24);
+            this.txtCodigo.StatuBarComponent = this.toolStripStatusLabel1;
+            this.txtCodigo.TabIndex = 0;
+            this.txtCodigo.Texto = "";
+            this.txtCodigo.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Centro;
+            this.txtCodigo.TextoEsquerda = "Código";
+            this.txtCodigo.TextoLargura = 90;
+            this.txtCodigo.TextoMaiusculo = false;
+            this.txtCodigo.TextoSenha = false;
+            this.txtCodigo.TextoStatus = "";
+            this.txtCodigo.VisibleAll = true;
             // 
             // frmUsuario
             // 
@@ -683,33 +587,15 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             this.Name = "frmUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Usuario";
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.grpCadastro.ResumeLayout(false);
-            this.panel16.ResumeLayout(false);
-            this.panel16.PerformLayout();
-            this.panel14.ResumeLayout(false);
-            this.panel14.PerformLayout();
-            this.panel13.ResumeLayout(false);
-            this.panel13.PerformLayout();
-            this.panel12.ResumeLayout(false);
-            this.panel12.PerformLayout();
-            this.panel11.ResumeLayout(false);
-            this.panel11.PerformLayout();
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel15.ResumeLayout(false);
-            this.panel15.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.panelStatus.ResumeLayout(false);
+            this.panelStatus.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -721,9 +607,6 @@ namespace QueroBilhete.Desktop.formularios.Usuario
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.GroupBox grpCadastro;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox txtCodigo;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel6;
@@ -737,38 +620,22 @@ namespace QueroBilhete.Desktop.formularios.Usuario
         private System.Windows.Forms.Splitter splitter3;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnSalvar;
-        private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.TextBox txtRua;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Panel panel12;
-        private System.Windows.Forms.TextBox txtBairro;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.TextBox txtCidade;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.TextBox txtEstado;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.TextBox txtSenha;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox txtNome;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.TextBox txtNumero;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.Panel panel15;
-        private System.Windows.Forms.TextBox txtUid;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.Panel panelStatus;
         private System.Windows.Forms.CheckBox chkStatus;
         private System.Windows.Forms.Label label14;
-        private Componentes.TextBox.QTextBox txtNivelAcesso;
-        private Componentes.TextBox.QTextBox txtCep;
+        private Componentes.TextBox.txtBoxBtnLabel txtCep;
+        private Componentes.TextBox.txtBoxLabel txtCodigo;
+        private Componentes.TextBox.txtBoxLabel txtUid;
+        private Componentes.TextBox.txtBoxLabel txtNome;
+        private Componentes.TextBox.txtBoxLabel txtEmail;
+        private Componentes.TextBox.txtBoxLabel txtSenha;
+        private Componentes.TextBox.txtBoxBtnLabel txtEstado;
+        private Componentes.TextBox.txtBoxBtnLabel txtNivelAcesso;
+        private Componentes.TextBox.txtBoxLabel txtCidade;
+        private Componentes.TextBox.txtBoxLabel txtRua;
+        private Componentes.TextBox.txtBoxLabel txtNumero;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private Componentes.TextBox.txtBoxLabel txtBairro;
     }
 }
