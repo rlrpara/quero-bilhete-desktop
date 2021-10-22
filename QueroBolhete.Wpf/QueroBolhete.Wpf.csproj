@@ -6,4 +6,47 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Views\cadastro.png" />
+    <None Remove="Views\dashboard.png" />
+    <None Remove="Views\dashboard2.png" />
+    <None Remove="Views\icons8_database_view_35px.png" />
+    <None Remove="Views\icons8_engineering_40px.png" />
+    <None Remove="Views\icons8_exit_sign_35px.png" />
+    <None Remove="Views\icons8_fingerprint_scan_40px.png" />
+    <None Remove="Views\icons8_technical_support_40px.png" />
+    <None Remove="Views\menu.png" />
+    <None Remove="Views\menu2.png" />
+    <None Remove="Views\register.png" />
+    <None Remove="Views\sair.png" />
+    <None Remove="Views\setting.png" />
+    <None Remove="Views\ticket.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Caliburn.Micro" Version="4.0.173" />
+    <PackageReference Include="Caliburn.Micro.Core" Version="4.0.173" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Views\cadastro.png" />
+    <Resource Include="Views\dashboard.png" />
+    <Resource Include="Views\dashboard2.png" />
+    <Resource Include="Views\icons8_database_view_35px.png" />
+    <Resource Include="Views\icons8_engineering_40px.png" />
+    <Resource Include="Views\icons8_exit_sign_35px.png" />
+    <Resource Include="Views\icons8_fingerprint_scan_40px.png" />
+    <Resource Include="Views\icons8_technical_support_40px.png" />
+    <Resource Include="Views\menu.png" />
+    <Resource Include="Views\menu2.png" />
+    <Resource Include="Views\register.png" />
+    <Resource Include="Views\sair.png" />
+    <Resource Include="Views\setting.png" />
+    <Resource Include="Views\ticket.png" />
+  </ItemGroup>
+
 </Project>
