@@ -7,12 +7,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Views\dashboard.png" />
+    <None Remove="Views\icons8_database_view_35px.png" />
+    <None Remove="Views\icons8_exit_sign_35px.png" />
+    <None Remove="Views\menu.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Caliburn.Micro" Version="4.0.173" />
     <PackageReference Include="Caliburn.Micro.Core" Version="4.0.173" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Views\Home\dashboard.png" />
+    <Resource Include="Views\Home\icons8_database_view_35px.png" />
+    <Resource Include="Views\Home\icons8_exit_sign_35px.png" />
+    <Resource Include="Views\Home\menu.png" />
   </ItemGroup>
 
 </Project>

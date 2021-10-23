@@ -8,29 +8,35 @@
         Title="BPE" Height="450" Width="800" WindowStartupLocation="CenterScreen"
         WindowState="Maximized">
     <Grid Background="#FFB0B0B0">
+
+        <Grid x:Name="panelContent" VerticalAlignment="Stretch" Background="#FFF" HorizontalAlignment="Stretch" Margin="56 56 5 5">
+            <ContentControl x:Name="Conteudo" Content="ContentControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        </Grid>
+        
         <Grid x:Name="panelHeader" VerticalAlignment="Top" Height="50"  Background="#FF2C2C2C" MouseDown="panelHeader_MouseDown">
             <TextBlock Text="Menu principal" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Tahoma" FontWeight="Bold" FontSize="22" Foreground="White" />
         </Grid>
+
         <Grid x:Name="sidePanel" Background="#FFF" HorizontalAlignment="Left" Width="180">
             <StackPanel>
                 <Grid Height="150" Background="White">
                     <Button Margin="0 6 8 0" HorizontalAlignment="Right" VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent" Height="35" Click="Button_Click">
-                        <Image Source="/Views/menu.png" />
+                        <Image Source="/Views/Home/menu.png" />
                     </Button>
                 </Grid>
                 <StackPanel VerticalAlignment="Top" Margin="5 0 0 0">
-                    <Button FontFamily="Tahoma" FontSize="14" FontWeight="Bold" Foreground="#FF959595" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Transparent" BorderBrush="Transparent" Height="35" Click="Sair">
+                    <Button FontFamily="Tahoma" FontSize="14" FontWeight="Bold" Foreground="#FF959595" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Transparent" BorderBrush="Transparent" Height="35" Click="Click_Dashboard">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Views/dashboard.png" VerticalAlignment="Center" />
+                            <Image Source="/Views/Home/dashboard.png" VerticalAlignment="Center" />
                             <TextBlock Text="Dashboard" Margin="10 0 0 0" VerticalAlignment="Center" />
                         </StackPanel>
                         <Button.ToolTip>
                             <ToolTip Content="Dashboard" />
                         </Button.ToolTip>
                     </Button>
-                    <Button FontFamily="Tahoma" FontSize="14" FontWeight="Bold" Foreground="#FF959595" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Transparent" BorderBrush="Transparent" Height="35" Click="Sair">
+                    <Button FontFamily="Tahoma" FontSize="14" FontWeight="Bold" Foreground="#FF959595" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Transparent" BorderBrush="Transparent" Height="35" Click="Click_Cadastro">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Views/icons8_database_view_35px.png" VerticalAlignment="Center" />
+                            <Image Source="/Views/Home/icons8_database_view_35px.png" VerticalAlignment="Center" />
                             <TextBlock Text="Cadastro" Margin="10 0 0 0" VerticalAlignment="Center" />
                         </StackPanel>
                         <Button.ToolTip>
@@ -42,9 +48,12 @@
             <StackPanel VerticalAlignment="Bottom" Margin="5 0 0 10">
                 <Button FontFamily="Tahoma" FontSize="14" FontWeight="Bold" Foreground="#FF959595" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Transparent" BorderBrush="Transparent" Height="35" Click="Sair">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Views/icons8_exit_sign_35px.png" VerticalAlignment="Center" />
+                        <Image Source="/Views/Home/icons8_exit_sign_35px.png" VerticalAlignment="Center" />
                         <TextBlock Text="Sair" Margin="10 0 0 0" VerticalAlignment="Center" />
                     </StackPanel>
+                    <Button.ToolTip>
+                        <ToolTip Content="Sair do sistema" />
+                    </Button.ToolTip>
                 </Button>
             </StackPanel>
         </Grid>

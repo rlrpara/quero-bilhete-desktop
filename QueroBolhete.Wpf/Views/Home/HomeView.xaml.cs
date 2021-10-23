@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QueroBolhete.Wpf.Views.Dashboard;
+using System;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
@@ -66,6 +67,16 @@ namespace QueroBolhete.Wpf.Views
         private void Sair(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void Click_Dashboard(object sender, RoutedEventArgs e)
+        {
+            Conteudo.Content = new DashboardView();
+        }
+
+        private void Click_Cadastro(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
