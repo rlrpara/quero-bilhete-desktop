@@ -1,5 +1,4 @@
-﻿using QueroBolhete.Wpf.Views.Dashboard;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
@@ -14,7 +13,6 @@ namespace QueroBolhete.Wpf.Views
         DispatcherTimer timer;
         double panelWidth;
         bool hidden;
-
 
         public HomeView()
         {
@@ -69,14 +67,5 @@ namespace QueroBolhete.Wpf.Views
             Close();
         }
 
-        private void Click_Dashboard(object sender, RoutedEventArgs e)
-        {
-            Conteudo.Content = new DashboardView();
-        }
-
-        private void Click_Cadastro(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QueroBolhete.Wpf.Views.Dashboard"
         mc:Ignorable="d"
-        Title="DashboardView" Height="450" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="SingleBorderWindow">
+        Title="DashboardView" Height="450" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="SingleBorderWindow" Background="#FF3C0EB8">
     <Grid>
         <Grid>
             <StackPanel>

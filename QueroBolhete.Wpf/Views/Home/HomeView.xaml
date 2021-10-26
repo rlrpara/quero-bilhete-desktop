@@ -9,8 +9,20 @@
         WindowState="Maximized">
     <Grid Background="#FFB0B0B0">
 
-        <Grid x:Name="panelContent" VerticalAlignment="Stretch" Background="#FFF" HorizontalAlignment="Stretch" Margin="56 56 5 5">
-            <ContentControl x:Name="Conteudo" Content="ContentControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        <Grid x:Name="panelContent" VerticalAlignment="Stretch"
+              Background="#FFF" HorizontalAlignment="Stretch"
+              Margin="56 56 5 5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="10" />
+            </Grid.RowDefinitions>
+            <ContentControl x:Name="ActiveItem"
+                            Grid.Column="1" Grid.Row="1"/>
+            <TextBlock Text="Teste" HorizontalAlignment="Center"
+                       Grid.Column="1" Grid.Row="2"/>
         </Grid>
         
         <Grid x:Name="panelHeader" VerticalAlignment="Top" Height="50"  Background="#FF2C2C2C" MouseDown="panelHeader_MouseDown">
@@ -25,7 +37,7 @@
                     </Button>
                 </Grid>
                 <StackPanel VerticalAlignment="Top" Margin="5 0 0 0">
-                    <Button FontFamily="Tahoma" FontSize="14" FontWeight="Bold" Foreground="#FF959595" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Transparent" BorderBrush="Transparent" Height="35" Click="Click_Dashboard">
+                    <Button FontFamily="Tahoma" FontSize="14" FontWeight="Bold" Foreground="#FF959595" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Transparent" BorderBrush="Transparent" Height="35" x:Name="LoadPageOne">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Views/Home/dashboard.png" VerticalAlignment="Center" />
                             <TextBlock Text="Dashboard" Margin="10 0 0 0" VerticalAlignment="Center" />
@@ -34,7 +46,7 @@
                             <ToolTip Content="Dashboard" />
                         </Button.ToolTip>
                     </Button>
-                    <Button FontFamily="Tahoma" FontSize="14" FontWeight="Bold" Foreground="#FF959595" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Transparent" BorderBrush="Transparent" Height="35" Click="Click_Cadastro">
+                    <Button FontFamily="Tahoma" FontSize="14" FontWeight="Bold" Foreground="#FF959595" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Transparent" BorderBrush="Transparent" Height="35" x:Name="LoadPageTwo">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Views/Home/icons8_database_view_35px.png" VerticalAlignment="Center" />
                             <TextBlock Text="Cadastro" Margin="10 0 0 0" VerticalAlignment="Center" />
