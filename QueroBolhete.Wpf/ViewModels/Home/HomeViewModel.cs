@@ -6,17 +6,9 @@ namespace QueroBolhete.Wpf.ViewModels
 {
     public class HomeViewModel : Conductor<object>
     {
-        private string _teste;
-
-        public string Teste
-        {
-            get { return _teste; }
-            set { _teste = value; }
-        }
-
         public HomeViewModel()
         {
-            Teste = "Rodrigo";
+            ActivateItem(new DashboardViewModel());
         }
 
 

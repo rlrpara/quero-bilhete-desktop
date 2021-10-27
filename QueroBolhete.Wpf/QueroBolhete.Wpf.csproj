@@ -7,10 +7,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="icones\dashboard.png" />
+    <None Remove="icones\icons8_database_view_35px.png" />
+    <None Remove="icones\icons8_engineering_40px.png" />
+    <None Remove="icones\icons8_exit_sign_35px.png" />
+    <None Remove="icones\icons8_fingerprint_scan_40px.png" />
+    <None Remove="icones\icons8_pdf_35px.png" />
+    <None Remove="icones\icons8_technical_support_40px.png" />
+    <None Remove="icones\menu.png" />
+    <None Remove="icones\register.png" />
+    <None Remove="icones\sair.png" />
+    <None Remove="icones\setting.png" />
+    <None Remove="icones\ticket.png" />
     <None Remove="Views\dashboard.png" />
     <None Remove="Views\icons8_database_view_35px.png" />
     <None Remove="Views\icons8_exit_sign_35px.png" />
     <None Remove="Views\menu.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="icones\dashboard.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,10 +39,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Views\Home\dashboard.png" />
-    <Resource Include="Views\Home\icons8_database_view_35px.png" />
-    <Resource Include="Views\Home\icons8_exit_sign_35px.png" />
-    <Resource Include="Views\Home\menu.png" />
+    <Resource Include="icones\icons8_database_view_35px.png" />
+    <Resource Include="icones\icons8_engineering_40px.png" />
+    <Resource Include="icones\icons8_exit_sign_35px.png" />
+    <Resource Include="icones\icons8_fingerprint_scan_40px.png" />
+    <Resource Include="icones\icons8_pdf_35px.png" />
+    <Resource Include="icones\icons8_technical_support_40px.png" />
+    <Resource Include="icones\menu.png" />
+    <Resource Include="icones\register.png" />
+    <Resource Include="icones\sair.png" />
+    <Resource Include="icones\setting.png" />
+    <Resource Include="icones\ticket.png" />
   </ItemGroup>
 
 </Project>

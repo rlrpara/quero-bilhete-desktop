@@ -17,12 +17,8 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
-                <RowDefinition Height="10" />
             </Grid.RowDefinitions>
-            <ContentControl x:Name="ActiveItem"
-                            Grid.Column="1" Grid.Row="1"/>
-            <TextBlock Text="Teste" HorizontalAlignment="Center"
-                       Grid.Column="1" Grid.Row="2"/>
+            <ContentControl Grid.Row="0" Grid.Column="0" x:Name="ActiveItem" Visibility="Visible" />
         </Grid>
         
         <Grid x:Name="panelHeader" VerticalAlignment="Top" Height="50"  Background="#FF2C2C2C" MouseDown="panelHeader_MouseDown">
@@ -33,22 +29,28 @@
             <StackPanel>
                 <Grid Height="150" Background="White">
                     <Button Margin="0 6 8 0" HorizontalAlignment="Right" VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent" Height="35" Click="Button_Click">
-                        <Image Source="/Views/Home/menu.png" />
+                        <Image Source="/icones/menu.png" Stretch="Uniform" />
                     </Button>
                 </Grid>
                 <StackPanel VerticalAlignment="Top" Margin="5 0 0 0">
-                    <Button FontFamily="Tahoma" FontSize="14" FontWeight="Bold" Foreground="#FF959595" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Transparent" BorderBrush="Transparent" Height="35" x:Name="LoadPageOne">
+                    <Button FontFamily="Tahoma" FontSize="14" FontWeight="Bold"
+                            Foreground="#FF959595" HorizontalAlignment="Left"
+                            VerticalAlignment="Center" Background="Transparent"
+                            BorderBrush="Transparent" Height="35" x:Name="LoadPageOne">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Views/Home/dashboard.png" VerticalAlignment="Center" />
+                            <Image Source="/icones/dashboard.png" VerticalAlignment="Center" />
                             <TextBlock Text="Dashboard" Margin="10 0 0 0" VerticalAlignment="Center" />
                         </StackPanel>
                         <Button.ToolTip>
                             <ToolTip Content="Dashboard" />
                         </Button.ToolTip>
                     </Button>
-                    <Button FontFamily="Tahoma" FontSize="14" FontWeight="Bold" Foreground="#FF959595" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Transparent" BorderBrush="Transparent" Height="35" x:Name="LoadPageTwo">
+                    <Button FontFamily="Tahoma" FontSize="14" FontWeight="Bold"
+                            Foreground="#FF959595" HorizontalAlignment="Left"
+                            VerticalAlignment="Center" Background="Transparent"
+                            BorderBrush="Transparent" Height="35" x:Name="LoadPageTwo">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Views/Home/icons8_database_view_35px.png" VerticalAlignment="Center" />
+                            <Image Source="/icones/icons8_database_view_35px.png" VerticalAlignment="Center" />
                             <TextBlock Text="Cadastro" Margin="10 0 0 0" VerticalAlignment="Center" />
                         </StackPanel>
                         <Button.ToolTip>
@@ -60,7 +62,7 @@
             <StackPanel VerticalAlignment="Bottom" Margin="5 0 0 10">
                 <Button FontFamily="Tahoma" FontSize="14" FontWeight="Bold" Foreground="#FF959595" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Transparent" BorderBrush="Transparent" Height="35" Click="Sair">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Views/Home/icons8_exit_sign_35px.png" VerticalAlignment="Center" />
+                        <Image Source="/icones/icons8_exit_sign_35px.png" VerticalAlignment="Center" />
                         <TextBlock Text="Sair" Margin="10 0 0 0" VerticalAlignment="Center" />
                     </StackPanel>
                     <Button.ToolTip>

@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace QueroBolhete.Wpf.Views.Usuario
@@ -17,7 +18,7 @@ namespace QueroBolhete.Wpf.Views.Usuario
     /// <summary>
     /// Interaction logic for UsuarioView.xaml
     /// </summary>
-    public partial class UsuarioView : Window
+    public partial class UsuarioView : UserControl
     {
         public UsuarioView()
         {
