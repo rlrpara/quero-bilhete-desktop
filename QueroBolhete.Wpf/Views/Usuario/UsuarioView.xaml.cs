@@ -1,28 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace QueroBolhete.Wpf.Views.Usuario
 {
     /// <summary>
     /// Interaction logic for UsuarioView.xaml
     /// </summary>
-    public partial class UsuarioView : UserControl
+    public partial class UsuarioView : Window
     {
         public UsuarioView()
         {
             InitializeComponent();
+            ControleDadosLista.Visibility = Visibility.Collapsed;
+            ControleDadosCadastro.Visibility = Visibility.Collapsed;
+        }
+
+        private void MudarAba(int value)
+        {
+            ControleDados.SelectedIndex = value;
+        }
+
+        private void Button_Novo(object sender, RoutedEventArgs e)
+        {
+            MudarAba(1);
+        }
+
+        private void Button_Salvar(object sender, RoutedEventArgs e)
+        {
+            MudarAba(0);
+        }
+
+        private void Button_Cancelar(object sender, RoutedEventArgs e)
+        {
+            MudarAba(0);
         }
     }
 }

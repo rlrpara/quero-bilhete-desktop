@@ -1,21 +1,21 @@
 ﻿using Caliburn.Micro;
 using QueroBilhete.Data.Repositories;
 using QueroBilhete.Service.Service;
+using QueroBilhete.Service.ViewModels;
 using System.Collections.Generic;
 
-namespace QueroBolhete.Wpf.ViewModels.Usuario
+namespace QueroBolhete.Wpf.ViewModels.Cadastros
 {
-    public class UsuarioViewModel : Screen
+    public class CadastrosViewModel : Screen
     {
-
         #region [Propriedades Privadas]
-        private List<QueroBilhete.Service.ViewModels.UsuarioViewModel> _usuarioViewModel;
+        private List<UsuarioViewModel> _usuarioViewModel;
         private readonly BaseRepository _baseRepository;
         private UsuarioService usuarioService;
         #endregion
 
         #region [Propriedades Públicas]
-        public List<QueroBilhete.Service.ViewModels.UsuarioViewModel> ListaUsuarios
+        public List<UsuarioViewModel> ListaUsuarios
         {
             get { return _usuarioViewModel; }
             set
@@ -26,14 +26,14 @@ namespace QueroBolhete.Wpf.ViewModels.Usuario
         }
         #endregion
 
+
         #region [Construtor]
-        public UsuarioViewModel()
+        public CadastrosViewModel()
         {
             _baseRepository = new BaseRepository();
             usuarioService = new UsuarioService(_baseRepository);
             _usuarioViewModel = usuarioService.ObterTodos("");
         }
         #endregion
-
     }
 }

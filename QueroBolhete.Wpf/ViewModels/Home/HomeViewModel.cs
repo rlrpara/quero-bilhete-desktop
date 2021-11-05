@@ -1,25 +1,31 @@
 ﻿using Caliburn.Micro;
+using QueroBolhete.Wpf.ViewModels.Cadastros;
 using QueroBolhete.Wpf.ViewModels.Dashboard;
 using QueroBolhete.Wpf.ViewModels.Usuario;
 
 namespace QueroBolhete.Wpf.ViewModels
 {
-    public class HomeViewModel : Conductor<object>
+    public class HomeViewModel : Conductor<IScreen>.Collection.OneActive
     {
         public HomeViewModel()
         {
-            ActivateItem(new DashboardViewModel());
+            ActiveItem = new DashboardViewModel();
         }
 
 
-        public void LoadPageOne()
+        public void pageDashboard()
         {
-            ActivateItem(new DashboardViewModel());
+            ActiveItem = new DashboardViewModel();
         }
 
-        public void LoadPageTwo()
+        public void pageUsuario()
         {
-            ActivateItem(new UsuarioViewModel());
+            ActiveItem = new UsuarioViewModel();
+        }
+
+        public void pageCadastros()
+        {
+            ActiveItem = new CadastrosViewModel();
         }
     }
 }

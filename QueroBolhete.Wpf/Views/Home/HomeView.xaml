@@ -36,7 +36,8 @@
                     <Button FontFamily="Tahoma" FontSize="14" FontWeight="Bold"
                             Foreground="#FF959595" HorizontalAlignment="Left"
                             VerticalAlignment="Center" Background="Transparent"
-                            BorderBrush="Transparent" Height="35" x:Name="LoadPageOne">
+                            BorderBrush="Transparent" Height="35"
+                            x:Name="pageDashboard">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/icones/dashboard.png" VerticalAlignment="Center" />
                             <TextBlock Text="Dashboard" Margin="10 0 0 0" VerticalAlignment="Center" />
@@ -48,7 +49,8 @@
                     <Button FontFamily="Tahoma" FontSize="14" FontWeight="Bold"
                             Foreground="#FF959595" HorizontalAlignment="Left"
                             VerticalAlignment="Center" Background="Transparent"
-                            BorderBrush="Transparent" Height="35" x:Name="LoadPageTwo">
+                            BorderBrush="Transparent" Height="35"
+                            x:Name="pageCadastros">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/icones/icons8_database_view_35px.png" VerticalAlignment="Center" />
                             <TextBlock Text="Cadastro" Margin="10 0 0 0" VerticalAlignment="Center" />

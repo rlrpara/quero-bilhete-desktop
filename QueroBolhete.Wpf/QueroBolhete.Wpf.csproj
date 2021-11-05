@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="icones\24x24\cancel24x24.png" />
+    <None Remove="icones\24x24\delete24x24.png" />
+    <None Remove="icones\24x24\edit24x24.png" />
+    <None Remove="icones\24x24\new24x24.png" />
+    <None Remove="icones\24x24\novo24x24.png" />
+    <None Remove="icones\24x24\print24x24.png" />
+    <None Remove="icones\24x24\save24x24.png" />
+    <None Remove="icones\24x24\search24x24.png" />
     <None Remove="icones\dashboard.png" />
     <None Remove="icones\icons8_database_view_35px.png" />
     <None Remove="icones\icons8_engineering_40px.png" />
@@ -26,16 +34,23 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="icones\24x24\cancel24x24.png" />
+    <Resource Include="icones\24x24\delete24x24.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="icones\24x24\edit24x24.png" />
+    <Resource Include="icones\24x24\novo24x24.png" />
+    <Resource Include="icones\24x24\print24x24.png" />
+    <Resource Include="icones\24x24\save24x24.png" />
+    <Resource Include="icones\24x24\search24x24.png" />
     <Resource Include="icones\dashboard.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Caliburn.Micro" Version="3.1.0" />
-    <PackageReference Include="Caliburn.Micro.Core" Version="3.1.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\" />
+    <PackageReference Include="Caliburn.Micro" Version="4.0.173" />
+    <PackageReference Include="Caliburn.Micro.Core" Version="4.0.173" />
+    <PackageReference Include="dotenv.net" Version="3.1.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,6 +65,21 @@
     <Resource Include="icones\sair.png" />
     <Resource Include="icones\setting.png" />
     <Resource Include="icones\ticket.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\enums\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\QueroBilhete.Data\QueroBilhete.Infra.Data.csproj" />
+    <ProjectReference Include="..\QueroBilhete.Service\QueroBilhete.Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update=".env">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

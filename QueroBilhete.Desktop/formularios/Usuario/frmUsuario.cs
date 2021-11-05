@@ -94,7 +94,7 @@ namespace QueroBilhete.Desktop.formularios.Usuario
 
         private void PesquisarDados(int codigoSelecionado)
         {
-            _usuarioViewModel = usuarioService.ObterUsuario(codigoSelecionado);
+            _usuarioViewModel = usuarioService.CarregaUsuario(codigoSelecionado);
             if(_usuarioViewModel != null)
             {
                 txtCodigo.Texto = _usuarioViewModel.Codigo.ToString();

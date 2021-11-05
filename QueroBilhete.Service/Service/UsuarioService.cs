@@ -71,9 +71,9 @@ namespace QueroBilhete.Service.Service
             return ObterUsuarios(_baseRepository.BuscarTodosPorQueryGerador<Usuario>($"NOME LIKE '%{nome}%'"));
         }
 
-        public UsuarioViewModel ObterUsuario(int codigoSelecionado)
+        public UsuarioViewModel CarregaUsuario(int codigoSelecionado)
         {
-            var usuarioEncontrado = _baseRepository.BuscarPorQueryGerador<Usuario>($"ID = {codigoSelecionado}");
+            var usuarioEncontrado = _baseRepository.BuscarPorQueryGerador<Usuario>(codigoSelecionado == 0 ? "" : $"ID = {codigoSelecionado}");
             return usuarioEncontrado != null ? ObterUsuario(_baseRepository.BuscarPorQueryGerador<Usuario>($"ID = {codigoSelecionado}")) : new UsuarioViewModel();
         }
         #endregion
