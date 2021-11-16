@@ -7,6 +7,7 @@ using QueroBilhete.Service.Service;
 using QueroBilhete.Service.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -16,7 +17,7 @@ namespace QueroBilhete.Desktop.formularios.Usuario
     public partial class frmUsuario : Form
     {
         #region Propriedades Privadas
-        private UsuarioViewModel _usuarioViewModel = new UsuarioViewModel();
+        private UsuarioViewModel _usuarioViewModel;
         private readonly BaseRepository _baseRepository;
         private UsuarioService usuarioService;
         #endregion
@@ -63,6 +64,8 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             BloquearCampos(false);
             _usuarioViewModel = new UsuarioViewModel();
             PesquisarDados(0);
+            txtNome.Focus();
+            txtNome.Select();
         }
 
         private void Editar()
@@ -76,14 +79,19 @@ namespace QueroBilhete.Desktop.formularios.Usuario
 
         private void Excluir()
         {
-            AtivaBotoes(EBotoes.Apagar);
-            BloquearCampos(true);
+            if (MessageBox.Show("Deseja remover este registro?", "ATENÇÃO", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                usuarioService.RemoverUsuario(Convert.ToInt32(txtCodigo.Texto));
+                Configuracao.LimparCampos(grpCadastro.Controls);
+                AtivaBotoes(EBotoes.Apagar);
+                BloquearCampos(true);
+            }
         }
 
         private void Localizar()
         {
             var janela = new frmPesquisaGenerica();
-            janela.CarregaDados(ObterConsultaUsuario());
+            janela.CarregaDados<Domain.Entities.Usuario>("AND ATIVO = 1");
             janela.ShowDialog();
 
             PesquisarDados(janela.CodigoSelecionado);
@@ -94,7 +102,7 @@ namespace QueroBilhete.Desktop.formularios.Usuario
 
         private void PesquisarDados(int codigoSelecionado)
         {
-            _usuarioViewModel = usuarioService.CarregaUsuario(codigoSelecionado);
+            _usuarioViewModel = codigoSelecionado > 0 ? usuarioService.CarregaUsuario(codigoSelecionado) : new UsuarioViewModel();
             if(_usuarioViewModel != null)
             {
                 txtCodigo.Texto = _usuarioViewModel.Codigo.ToString();
@@ -104,10 +112,8 @@ namespace QueroBilhete.Desktop.formularios.Usuario
                 txtSenha.Texto = _usuarioViewModel.Senha;
                 txtNivelAcesso.TextoCentro = _usuarioViewModel.CodigoNivelAcesso > 0 ? _usuarioViewModel.CodigoNivelAcesso.ToString() : "";
                 txtNivelAcesso.TextoDireita = "";
-                txtCep.TextoCentro = _usuarioViewModel.Cep;
-                txtCep.TextoDireita = "";
-                txtEstado.TextoCentro = _usuarioViewModel.Estado;
-                txtEstado.TextoDireita = "";
+                txtCep.Texto = _usuarioViewModel.Cep;
+                txtEstado.Texto = _usuarioViewModel.Estado;
                 txtCidade.Texto = _usuarioViewModel.Cidade;
                 txtBairro.Texto = _usuarioViewModel.Bairro;
                 txtRua.Texto = _usuarioViewModel.Rua;
@@ -118,11 +124,6 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             {
                 Configuracao.LimparCampos(grpCadastro.Controls);
             }
-        }
-
-        private List<Domain.Entities.Usuario> ObterConsultaUsuario(string nome = "")
-        {
-            return usuarioService.BuscarTodosPorQueryGerador<Domain.Entities.Usuario>($"NOME LIKE '%{nome}%'").ToList();
         }
 
         private void Imprimir()
@@ -141,6 +142,13 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             if (_usuarioViewModel.Valido)
             {
                 AtivaBotoes(EBotoes.Salvar);
+                BloquearCampos(true);
+                if(_usuarioViewModel.Codigo == 0)
+                    usuarioService.AdicionarUsuario(_usuarioViewModel);
+                else
+                    usuarioService.AtualizarUsuario(_usuarioViewModel);
+                PesquisarDados(Convert.ToInt32(!txtCodigo.Texto.IsNumeric() ? "0" : txtCodigo.Texto));
+                AtivaBotoes(EBotoes.Pesquisar);
                 BloquearCampos(true);
             }
             else
@@ -163,27 +171,29 @@ namespace QueroBilhete.Desktop.formularios.Usuario
 
         private UsuarioViewModel ObterDadosUsuario() => new UsuarioViewModel()
         {
-            Uid = txtUid.Text,
-            Nome = txtNome.Text,
-            Senha = txtSenha.Text,
-            CodigoNivelAcesso = txtNivelAcesso.Text.IsNumeric() ? int.Parse(txtNivelAcesso.Text) : 0,
-            Cep = txtCep.Text,
-            Estado = txtEstado.Text,
-            Cidade = txtCidade.Text,
-            Bairro = txtBairro.Text,
-            Rua = txtRua.Text,
-            Numero = txtNumero.Text.IsNumeric() ? int.Parse(txtNumero.Text) : 0,
+            Codigo = !txtCodigo.Texto.IsNumeric() ? 0 : Convert.ToInt32(txtCodigo.Texto),
+            Uid = txtUid.Texto,
+            Nome = txtNome.Texto,
+            Email = txtEmail.Texto,
+            Senha = txtSenha.Texto,
+            CodigoNivelAcesso = txtNivelAcesso.TextoCentro.IsNumeric() ? int.Parse(txtNivelAcesso.TextoCentro) : 0,
+            Cep = txtCep.Texto,
+            Estado = txtEstado.Texto,
+            Cidade = txtCidade.Texto,
+            Bairro = txtBairro.Texto,
+            Rua = txtRua.Texto,
+            Numero = txtNumero.Texto.IsNumeric() ? int.Parse(txtNumero.Texto) : 0,
             Ativo = chkStatus.Checked,
+            DataCadastro = DateTime.Now,
             DataAtualizacao = DateTime.Now
         };
 
         private void Cancelar()
         {
+            Configuracao.LimparCampos(grpCadastro.Controls);
             AtivaBotoes(EBotoes.Cancelar);
             BloquearCampos(true);
         }
-
-
         
         #endregion
 
@@ -193,10 +203,10 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             InitializeComponent();
             AtivaConfiguracaoPadrao();
             _baseRepository = new BaseRepository();
+            _usuarioViewModel = new UsuarioViewModel();
             usuarioService = new UsuarioService(_baseRepository);
+            lblLog.Text = "Cadastrado em:  por:  Atualizado em:  por: ";
         }
-
-
 
         #endregion
 
@@ -238,6 +248,11 @@ namespace QueroBilhete.Desktop.formularios.Usuario
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Cancelar();
+        }
+
+        private void chkStatus_Enter(object sender, EventArgs e)
+        {
+            chkStatus.Text = chkStatus.Checked ? "Ativo" : "Inativo";
         }
 
         #endregion

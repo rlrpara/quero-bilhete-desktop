@@ -7,6 +7,9 @@ namespace QueroBilhete.Domain.Entities
         public bool ChavePrimaria { get; set; }
         public bool UsarNoBancoDeDados { get; set; }
         public bool UsarParaBuscar { get; set; }
+        public bool UsarNaGrid { get; set; } = true;
+        public int TamanhoColunaGrid { get; set; } = 80;
+        public bool VisivelGrid { get; set; }
         public string ChaveEstrangeira { get; set; }
     }
 }

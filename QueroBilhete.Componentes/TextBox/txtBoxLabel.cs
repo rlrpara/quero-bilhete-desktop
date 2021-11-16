@@ -1,5 +1,4 @@
 ﻿using QueroBilhete.Componentes.Enumeradores;
-using System;
 using System.Windows.Forms;
 
 namespace QueroBilhete.Componentes.TextBox
@@ -120,13 +119,15 @@ namespace QueroBilhete.Componentes.TextBox
         {
             if (!string.IsNullOrEmpty(TextoStatus) && StatuBarComponent != null)
                 StatuBarComponent.Text = TextoStatus;
+            _texto = txtBox.Text;
             this.OnEnter(e);
-        }
+        }   
 
         private void txtBoxLeave(object sender, System.EventArgs e)
         {
             if (StatuBarComponent != null)
                 StatuBarComponent.Text = "";
+            _texto = txtBox.Text;
             this.OnLeave(e);
         }
 

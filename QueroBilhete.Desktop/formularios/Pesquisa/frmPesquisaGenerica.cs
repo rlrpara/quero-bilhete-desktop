@@ -1,7 +1,12 @@
-﻿using QueroBilhete.Data.Repositories;
-using QueroBilhete.Domain.Interfaces;
+﻿using MySql.Data.MySqlClient;
+using QueroBilhete.Data.Repositories;
+using QueroBilhete.Desktop.Globais;
+using QueroBilhete.Infra.Data.Contex;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace QueroBilhete.Desktop.formularios.Pesquisa
@@ -26,15 +31,26 @@ namespace QueroBilhete.Desktop.formularios.Pesquisa
             txtPesquisa.Focus();
         }
 
-        public void CarregaDados<T>(IList<T> list)
+        public void CarregaDados<T>(string sqlWhere) where T : class
         {
-            
-            dgvDados.DataSource = list;
+            IEnumerable<T> lista = baseRepository.BuscarTodosPorQuery<T>(GeradorDapper.ObterDadosGrid<T>(sqlWhere));
+            dgvDados.DataSource = lista;
+            ConfiguraGrid(dgvDados, lista);
+
         }
 
-        private void ConfiguraListView(IEntity dados)
+        private void ConfiguraGrid<T>(DataGridView dgvDados, IEnumerable<T> lista) where T : class
         {
-            dgvDados.DataSource = dados;
+            Configuracao.ConfiguraGrid(dgvDados);
+            var contador = 0;
+            var colunas = GeradorDapper.ObterColunasGrid(lista);
+
+            foreach (var campos in colunas.Replace($"\r\n", "").Split(';').ToArray())
+            {
+                var coluna = campos.Replace(@"\r\n", "").Split('|');
+                Configuracao.GridDados(dgvDados, coluna[1].ToString(), coluna[1].ToString(), 2, Convert.ToInt32(coluna[2]), Convert.ToBoolean(coluna[3]), false, contador);
+                contador += 1;
+            }
         }
 
         public frmPesquisaGenerica()
@@ -72,7 +88,7 @@ namespace QueroBilhete.Desktop.formularios.Pesquisa
         private void dgvDados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvDados.Rows.Count > 0)
-                CodigoSelecionado = Convert.ToInt32(dgvDados.SelectedRows[e.RowIndex].Cells["Codigo"].Value);
+                CodigoSelecionado = Convert.ToInt32(dgvDados.CurrentRow.Cells["Codigo"].Value);
             else
                 CodigoSelecionado = 0;
             Close();

@@ -1,11 +1,12 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace QueroBolhete.Wpf.Views.Usuario
 {
     /// <summary>
     /// Interaction logic for UsuarioView.xaml
     /// </summary>
-    public partial class UsuarioView : Window
+    public partial class UsuarioView : Page
     {
         public UsuarioView()
         {

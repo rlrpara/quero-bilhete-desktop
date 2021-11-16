@@ -1,5 +1,6 @@
 ﻿using QueroBolhete.Wpf.Views.Usuario;
 using System.Windows.Controls;
+using System.Windows;
 
 namespace QueroBolhete.Wpf.Views.Cadastros
 {
@@ -13,10 +14,10 @@ namespace QueroBolhete.Wpf.Views.Cadastros
             InitializeComponent();
         }
 
-        private void Button_Usuarios(object sender, System.Windows.RoutedEventArgs e)
+        private void btnClickCadastroUsuario(object sender, RoutedEventArgs e)
         {
-            UsuarioView janela = new UsuarioView();
-            janela.Show();
+            stpBotoes.Visibility = Visibility.Collapsed;
+            Main.Content = new UsuarioView();
         }
     }
 }

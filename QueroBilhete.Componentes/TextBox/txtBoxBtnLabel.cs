@@ -7,14 +7,17 @@ namespace QueroBilhete.Componentes.TextBox
     public partial class txtBoxBtnLabel : UserControl
     {
         private string _textoEsquerda;
+        private string _textoDireita;
+        private string _textoCentro;
+        private string _textoStatus;
+        private ToolStripStatusLabel _statusBarComponent;
+        private bool _enableAll = true;
+
         public string TextoEsquerda
         {
             get { return _textoEsquerda; }
             set { _textoEsquerda = value; labelEsquerda.Text = TextoEsquerda; }
         }
-
-        private string _textoDireita;
-
         public string TextoDireita
         {
             get
@@ -23,31 +26,25 @@ namespace QueroBilhete.Componentes.TextBox
             }
             set { _textoDireita = value; lblDireita.Text = TextoDireita; }
         }
-
-        private string _textoCentro;
-
         public string TextoCentro
         {
             get { return _textoCentro; }
-            set { _textoCentro = value; txtBox.Text = TextoCentro; }
+            set
+            {
+                _textoCentro = value;
+                txtBox.Text = TextoCentro;
+            }
         }
-
-
-        private string _textoStatus;
         public string TextoStatus
         {
             get { return _textoStatus; }
             set {_textoStatus = value; }
         }
-
-        private ToolStripStatusLabel _statusBarComponent;
         public ToolStripStatusLabel StatuBarComponent
         {
             get { return _statusBarComponent; }
             set { _statusBarComponent = value; }
         }
-
-        private bool _enableAll = true;
         public bool EnableAll
         {
             get { return _enableAll; }
@@ -57,7 +54,6 @@ namespace QueroBilhete.Componentes.TextBox
                 panel1.Enabled = _enableAll;
             }
         }
-
 
         private void QTextBoxOnClick(object sender, EventArgs e)
         {
@@ -105,6 +101,7 @@ namespace QueroBilhete.Componentes.TextBox
         {
             if (!string.IsNullOrEmpty(TextoStatus) && StatuBarComponent != null)
                 StatuBarComponent.Text = TextoStatus;
+            _textoCentro = txtBox.Text;
             QTextBoxEnter(sender, e);
         }
 
@@ -112,6 +109,7 @@ namespace QueroBilhete.Componentes.TextBox
         {
             if (StatuBarComponent != null)
                 StatuBarComponent.Text = "";
+            _textoCentro = txtBox.Text;
             QTextBoxLeave(sender, e);
         }
 

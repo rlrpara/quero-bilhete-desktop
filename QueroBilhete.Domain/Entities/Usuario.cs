@@ -1,52 +1,51 @@
-﻿using QueroBilhete.Domain.Interfaces;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QueroBilhete.Domain.Entities
 {
     [Table(name: "USUARIO")]
-    public class Usuario : Entity, IEntity
+    public class Usuario : Entity
     {
-        [Column("UID")]
-        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
+        [Column("UID", Order = 2)]
+        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true, TamanhoColunaGrid = 120)]
         public string Uid { get; set; }
 
-        [Column("NOME")]
-        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
+        [Column("NOME", Order = 3)]
+        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true, TamanhoColunaGrid = 500)]
         public string Nome { get; set; }
 
-        [Column("EMAIL")]
+        [Column("EMAIL", Order = 4)]
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
         public string Email { get; set; }
 
-        [Column("SENHA")]
-        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
+        [Column("SENHA", Order = 5)]
+        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true, UsarNaGrid = false)]
         public string Senha { get; set; }
 
-        [Column("ID_NIVEL_ACESSO")]
-        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
+        [Column("ID_NIVEL_ACESSO", Order = 6)]
+        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true, UsarNaGrid = false)]
         public int CodigoNivelAcesso { get; set; }
 
-        [Column("CEP")]
+        [Column("CEP", Order = 7)]
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
         public string Cep { get; set; }
 
-        [Column("ESTADO")]
-        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
+        [Column("ESTADO", Order = 8)]
+        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true, TamanhoColunaGrid = 50)]
         public string Estado { get; set; }
 
-        [Column("CIDADE")]
-        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
+        [Column("CIDADE", Order = 9)]
+        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true, TamanhoColunaGrid = 100)]
         public string Cidade { get; set; }
 
-        [Column("BAIRRO")]
+        [Column("BAIRRO", Order = 10)]
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
         public string Bairro { get; set; }
 
-        [Column("RUA")]
-        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
+        [Column("RUA", Order = 11)]
+        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true, TamanhoColunaGrid = 150)]
         public string Rua { get; set; }
 
-        [Column("NUMERO")]
+        [Column("NUMERO", Order = 12)]
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
         public int? Numero { get; set; }
     }

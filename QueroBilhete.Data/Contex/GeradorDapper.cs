@@ -38,6 +38,62 @@ namespace QueroBilhete.Infra.Data.Contex
             }
             return listaParametros;
         }
+
+        public static string ObterColunasGrid<T>(IEnumerable<T> list) where T : class
+        {
+            string chavePrimaria = string.Empty;
+            List<string> campos = new List<string>();
+
+            foreach (var lista in list)
+            {
+                foreach (var item in lista.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance).OrderBy(p => ((ColumnAttribute)p.GetCustomAttributes(typeof(ColumnAttribute)).FirstOrDefault()).Order))
+                {
+                    var opcoesBase = (OpcoesBase)item.GetCustomAttribute(typeof(OpcoesBase));
+                    if (opcoesBase != null)
+                    {
+                        if (opcoesBase.UsarParaBuscar && item.GetCustomAttribute<ColumnAttribute>().Name != "")
+                            campos.Add($"{item.GetCustomAttribute<ColumnAttribute>().Name}|{item.Name}|{opcoesBase.TamanhoColunaGrid}|{opcoesBase.UsarNaGrid}");
+                    }
+                }
+                break;
+            }
+
+            var sqlPesquisa = new StringBuilder().AppendLine($"{(string.Join($";", campos.ToArray()))}");
+
+            return sqlPesquisa.ToString();
+        }
+
+        public static string ObterDadosGrid<T>(string sqlWhere) where T : class
+        {
+            string chavePrimaria = string.Empty;
+            List<string> campos = new List<string>();
+
+            foreach (var item in typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).OrderBy(p => ((ColumnAttribute)p.GetCustomAttributes(typeof(ColumnAttribute)).FirstOrDefault()).Order))
+            {
+                var opcoesBase = (OpcoesBase)item.GetCustomAttribute(typeof(OpcoesBase));
+                if (opcoesBase != null)
+                {
+                    var tipoCampo = item.PropertyType.Name;
+
+                    if (opcoesBase.ChavePrimaria)
+                        chavePrimaria = item.GetCustomAttribute<ColumnAttribute>().Name;
+
+                    if (opcoesBase.UsarParaBuscar && item.GetCustomAttribute<ColumnAttribute>().Name != "" && opcoesBase.UsarNaGrid)
+                        campos.Add($"{item.GetCustomAttribute<ColumnAttribute>().Name} AS {item.Name}");
+                }
+            }
+
+            var sqlPesquisa = new StringBuilder();
+
+            sqlPesquisa.AppendLine($"USE {_nomeBanco};");
+            sqlPesquisa.AppendLine($"SELECT {(string.Join($",{Environment.NewLine}       ", campos.ToArray()))}");
+            sqlPesquisa.AppendLine($"  FROM {ObterNomeTabela<T>()}");
+            sqlPesquisa.AppendLine($" WHERE {chavePrimaria} IS NOT NULL");
+            sqlPesquisa.AppendLine(sqlWhere);
+
+            return sqlPesquisa.ToString();
+        }
+
         private static string TipoPropriedade(PropertyInfo item)
         {
             return item.PropertyType.Name switch
@@ -70,7 +126,7 @@ namespace QueroBilhete.Infra.Data.Contex
             string chavePrimaria = string.Empty;
             List<string> campos = new List<string>();
 
-            foreach (PropertyInfo item in typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance))
+            foreach (PropertyInfo item in typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).OrderBy(p => ((ColumnAttribute)p.GetCustomAttributes(typeof(ColumnAttribute)).FirstOrDefault()).Order))
             {
                 var opcoesBase = (OpcoesBase)item.GetCustomAttribute(typeof(OpcoesBase));
                 if (opcoesBase != null)
@@ -102,7 +158,7 @@ namespace QueroBilhete.Infra.Data.Contex
             List<string> campos = new List<string>();
             List<string> valores = new List<string>();
 
-            foreach (PropertyInfo item in entidade.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance))
+            foreach (PropertyInfo item in entidade.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance).OrderBy(p => ((ColumnAttribute)p.GetCustomAttributes(typeof(ColumnAttribute)).FirstOrDefault()).Order))
             {
                 var tipoCampo = item.PropertyType;
                 var opcoesBase = (OpcoesBase)item.GetCustomAttribute(typeof(OpcoesBase));
@@ -188,7 +244,7 @@ namespace QueroBilhete.Infra.Data.Contex
             List<string> condicao = new List<string>();
             string campoChave = string.Empty;
 
-            foreach (PropertyInfo item in entidade.GetType().GetProperties(BindingFlags.GetProperty | BindingFlags.Instance | BindingFlags.Public))
+            foreach (PropertyInfo item in entidade.GetType().GetProperties(BindingFlags.GetProperty | BindingFlags.Instance | BindingFlags.Public).OrderBy(p => ((ColumnAttribute)p.GetCustomAttributes(typeof(ColumnAttribute)).FirstOrDefault()).Order))
             {
                 OpcoesBase opcoesBase = (OpcoesBase)item.GetCustomAttribute(typeof(OpcoesBase));
 
@@ -241,7 +297,7 @@ namespace QueroBilhete.Infra.Data.Contex
         {
             string campoChave = string.Empty;
 
-            foreach (PropertyInfo item in typeof(T).GetProperties(BindingFlags.GetProperty | BindingFlags.Instance | BindingFlags.Public))
+            foreach (PropertyInfo item in typeof(T).GetProperties(BindingFlags.GetProperty | BindingFlags.Instance | BindingFlags.Public).OrderBy(p => ((ColumnAttribute)p.GetCustomAttributes(typeof(ColumnAttribute)).FirstOrDefault()).Order))
             {
                 OpcoesBase opcoesBase = (OpcoesBase)item.GetCustomAttribute(typeof(OpcoesBase));
 

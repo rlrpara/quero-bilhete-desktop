@@ -26,8 +26,14 @@ namespace QueroBilhete.Desktop.Globais
                 if (item is Label && ((Label)item).Name.Substring(0, 3).Contains("lbl"))
                     ((Label)item).Text = "";
 
+                if (item is txtBoxLabel && ((txtBoxLabel)item).Name.Substring(0, 3).Contains("txt"))
+                    ((txtBoxLabel)item).Texto = "";
+
                 if (item is txtBoxBtnLabel && !string.IsNullOrEmpty(((txtBoxBtnLabel)item).TextoDireita))
                     ((txtBoxBtnLabel)item).TextoDireita = "";
+
+                if (item is txtBoxBtnLabel && !string.IsNullOrEmpty(((txtBoxBtnLabel)item).TextoCentro))
+                    ((txtBoxBtnLabel)item).TextoCentro = "";
             }
         }
 
@@ -110,6 +116,49 @@ namespace QueroBilhete.Desktop.Globais
                 if (item is txtBoxBtnLabel)
                     ((txtBoxBtnLabel)item).EnableAll = ativar;
             }
+        }
+
+        public static void ConfiguraGrid(DataGridView grid)
+        {
+            grid.AllowUserToAddRows = false;
+            grid.AllowUserToDeleteRows = false;
+            grid.AllowUserToOrderColumns = true;
+            grid.ReadOnly = true;
+            grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            grid.MultiSelect = false;
+            grid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+            grid.AllowUserToResizeColumns = false;
+            grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            grid.AllowUserToResizeRows = false;
+            grid.RowHeadersVisible = false;
+            grid.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            //grid.DefaultCellStyle.Font = new System.Drawing.Font("Calibri", 12);
+        }
+
+        public static void GridDados(DataGridView grid, string coluna, string titulo_coluna, int alinhamento, int tamanho, bool visivel, bool moeda = false, int ordem = 0)
+        {
+            grid.Columns[coluna].HeaderText = titulo_coluna;
+            grid.Columns[coluna].Width = tamanho;
+            grid.Columns[coluna].Visible = visivel;
+            grid.Columns[coluna].DisplayIndex = ordem;
+
+            switch (alinhamento)
+            {
+                case 1:
+                    grid.Columns[coluna].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                    grid.Columns[coluna].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                    break;
+                case 2:
+                    grid.Columns[coluna].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    grid.Columns[coluna].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    break;
+                case 3:
+                    grid.Columns[coluna].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    grid.Columns[coluna].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    break;
+            }
+            if (moeda)
+                grid.Columns[coluna].DefaultCellStyle.Format = "N2";
         }
     }
 }

@@ -18,15 +18,19 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
-        <DockPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Stretch">
-            <DockPanel VerticalAlignment="Top" HorizontalAlignment="Left">
-                <Button Click="Button_Usuarios">
-                    <StackPanel>
-                        <TextBlock Text="Cadastro de Usuários" />
-                    </StackPanel>
-                </Button>
-            </DockPanel>
-            
+        <DockPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <StackPanel Orientation="Vertical">
+                <StackPanel x:Name="stpBotoes">
+                    <Button Content="Usuários" Click="btnClickCadastroUsuario"
+                        Width="70" HorizontalAlignment="Left"
+                        Visibility="Visible"/>
+                </StackPanel>                
+                <Frame x:Name="Main" HorizontalAlignment="Stretch"
+                       VerticalAlignment="Stretch"
+                       HorizontalContentAlignment="Stretch"
+                       VerticalContentAlignment="Stretch"
+                       NavigationUIVisibility="Hidden"/>
+            </StackPanel>
         </DockPanel>
     </Grid>
 </UserControl>

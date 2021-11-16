@@ -56,7 +56,7 @@ namespace QueroBilhete.Service.ViewModels
         public string Rua
         {
             get { return _rua; }
-            set { _rua = value.ApenasNumeros() ; }
+            set { _rua = value.RemoveAcentos() ; }
         }
 
         public int? Numero { get; set; }
@@ -82,11 +82,11 @@ namespace QueroBilhete.Service.ViewModels
             if (CodigoNivelAcesso == 0)
                 AdicionaAlerta("O NÍVEL DE ACESSO é obrigatório");
 
-            if (Cep.Length > 9)
-                AdicionaAlerta("Limite máximo de 9 caracteres");
+            if (Cep == null || Cep.Length > 9)
+                AdicionaAlerta("O CEP tem limite máximo de 9 caracteres");
 
-            if (Estado.Length > 9)
-                AdicionaAlerta("Limite máximo de 2 caracteres");
+            if (Estado == null || Estado.Length > 9)
+                AdicionaAlerta("O Estado tem limite máximo de 2 caracteres");
         }
     }
 }
