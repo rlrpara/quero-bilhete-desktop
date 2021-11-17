@@ -35,7 +35,9 @@ namespace QueroBilhete.Desktop.formularios.Pesquisa
         {
             IEnumerable<T> lista = baseRepository.BuscarTodosPorQuery<T>(GeradorDapper.ObterDadosGrid<T>(sqlWhere));
             dgvDados.DataSource = lista;
-            ConfiguraGrid(dgvDados, lista);
+            
+            if(lista.Count() > 0)
+                ConfiguraGrid(dgvDados, lista);
 
         }
 

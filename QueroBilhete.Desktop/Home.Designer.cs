@@ -120,20 +120,21 @@
             // empresaToolStripMenuItem
             // 
             this.empresaToolStripMenuItem.Name = "empresaToolStripMenuItem";
-            this.empresaToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.empresaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.empresaToolStripMenuItem.Text = "Empresa";
+            this.empresaToolStripMenuItem.Click += new System.EventHandler(this.empresaToolStripMenuItem_Click);
             // 
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
             // embarcaçãoToolStripMenuItem
             // 
             this.embarcaçãoToolStripMenuItem.Name = "embarcaçãoToolStripMenuItem";
-            this.embarcaçãoToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.embarcaçãoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.embarcaçãoToolStripMenuItem.Text = "Embarcação";
             // 
             // passagemToolStripMenuItem
@@ -141,7 +142,7 @@
             this.passagemToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tipoDePassagemToolStripMenuItem});
             this.passagemToolStripMenuItem.Name = "passagemToolStripMenuItem";
-            this.passagemToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.passagemToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.passagemToolStripMenuItem.Text = "Tabelas";
             // 
             // tipoDePassagemToolStripMenuItem
@@ -153,13 +154,13 @@
             // trajetosToolStripMenuItem
             // 
             this.trajetosToolStripMenuItem.Name = "trajetosToolStripMenuItem";
-            this.trajetosToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.trajetosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.trajetosToolStripMenuItem.Text = "Trajetos";
             // 
             // viagemToolStripMenuItem
             // 
             this.viagemToolStripMenuItem.Name = "viagemToolStripMenuItem";
-            this.viagemToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.viagemToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.viagemToolStripMenuItem.Text = "Viagem";
             // 
             // relatóriosToolStripMenuItem

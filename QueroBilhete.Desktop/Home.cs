@@ -1,5 +1,6 @@
 ﻿using dotenv.net;
 using QueroBilhete.Data.Database;
+using QueroBilhete.Desktop.formularios.Empresa;
 using QueroBilhete.Desktop.formularios.Login;
 using QueroBilhete.Desktop.formularios.PDV;
 using QueroBilhete.Desktop.formularios.Usuario;
@@ -104,6 +105,11 @@ namespace QueroBilhete.Desktop
                 default:
                     break;
             }
+        }
+
+        private void empresaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddJanela(new frmEmpresa());
         }
     }
 }

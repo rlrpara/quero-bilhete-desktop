@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using QueroBilhete.Domain.Entities;
+﻿using QueroBilhete.Domain.Entities;
 using QueroBilhete.Domain.Interfaces;
 using QueroBilhete.Service.Interface;
 using QueroBilhete.Service.ViewModels;

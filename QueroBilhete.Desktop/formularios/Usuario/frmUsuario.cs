@@ -6,9 +6,6 @@ using QueroBilhete.Infra.Utilities.ExtensionMethods;
 using QueroBilhete.Service.Service;
 using QueroBilhete.Service.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -16,13 +13,13 @@ namespace QueroBilhete.Desktop.formularios.Usuario
 {
     public partial class frmUsuario : Form
     {
-        #region Propriedades Privadas
+        #region [Propriedades Privadas]
         private UsuarioViewModel _usuarioViewModel;
         private readonly BaseRepository _baseRepository;
         private UsuarioService usuarioService;
         #endregion
 
-        #region Metodos Privadas
+        #region [Metodos Privados]
         private void Sair()
         {
             Close();

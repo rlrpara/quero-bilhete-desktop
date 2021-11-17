@@ -69,6 +69,7 @@ namespace QueroBilhete.Data.Database
                 //Criar tabelas
                 Criar(conexao, ObterProcedureDropConstraint(nomeBanco));
                 Criar(conexao, GeradorDapper.CriarTabela<Usuario>(nomeBanco));
+                Criar(conexao, GeradorDapper.CriarTabela<Empresa>(nomeBanco));
                 //Criar(conexao, GeradorDapper.CriarTabela<Embarcacao>(nomeBanco));
                 //Criar(conexao, GeradorDapper.CriarTabela<Usuario>(nomeBanco));
                 //Criar(conexao, GeradorDapper.CriarTabela<Trajeto>(nomeBanco));
