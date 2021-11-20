@@ -1,7 +1,9 @@
 ﻿using dotenv.net;
 using QueroBilhete.Data.Database;
+using QueroBilhete.Desktop.formularios.Embarcacao;
 using QueroBilhete.Desktop.formularios.Empresa;
 using QueroBilhete.Desktop.formularios.Login;
+using QueroBilhete.Desktop.formularios.Passageiro;
 using QueroBilhete.Desktop.formularios.PDV;
 using QueroBilhete.Desktop.formularios.Usuario;
 using QueroBilhete.Desktop.Globais;
@@ -110,6 +112,16 @@ namespace QueroBilhete.Desktop
         private void empresaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddJanela(new frmEmpresa());
+        }
+
+        private void embarcaçãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddJanela(new frmEmbarcacao());
+        }
+
+        private void passageiroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddJanela(new frmPassageiro());
         }
     }
 }

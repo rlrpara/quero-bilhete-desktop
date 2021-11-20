@@ -123,6 +123,6 @@ namespace QueroBilhete.Componentes.TextBox
         private System.Windows.Forms.Label lblDireita;
         private System.Windows.Forms.Label labelEsquerda;
         private System.Windows.Forms.TextBox txtBox;
-        public System.Windows.Forms.Button btn1;
+        protected System.Windows.Forms.Button btn1;
     }
 }

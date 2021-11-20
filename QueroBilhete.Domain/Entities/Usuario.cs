@@ -22,7 +22,7 @@ namespace QueroBilhete.Domain.Entities
         public string Senha { get; set; }
 
         [Column("ID_NIVEL_ACESSO", Order = 6)]
-        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true, UsarNaGrid = false)]
+        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true, UsarNaGrid = false, ChaveEstrangeira = "NIVEL_ACESSO")]
         public int CodigoNivelAcesso { get; set; }
 
         [Column("CEP", Order = 7)]

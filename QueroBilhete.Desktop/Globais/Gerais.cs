@@ -23,16 +23,19 @@ namespace QueroBilhete.Desktop.Globais
                 if (item is TextBox)
                     ((TextBox)item).Clear();
 
+                if (item is CheckBox)
+                    ((CheckBox)item).Checked = false;
+
                 if (item is Label && ((Label)item).Name.Substring(0, 3).Contains("lbl"))
                     ((Label)item).Text = "";
 
                 if (item is txtBoxLabel && ((txtBoxLabel)item).Name.Substring(0, 3).Contains("txt"))
                     ((txtBoxLabel)item).Texto = "";
 
-                if (item is txtBoxBtnLabel && !string.IsNullOrEmpty(((txtBoxBtnLabel)item).TextoDireita))
+                if (item is txtBoxBtnLabel && !string.IsNullOrEmpty(((txtBoxBtnLabel)item).TextoDireita) && ((txtBoxLabel)item).Name.Substring(0, 3).Contains("txt"))
                     ((txtBoxBtnLabel)item).TextoDireita = "";
 
-                if (item is txtBoxBtnLabel && !string.IsNullOrEmpty(((txtBoxBtnLabel)item).TextoCentro))
+                if (item is txtBoxBtnLabel && !string.IsNullOrEmpty(((txtBoxBtnLabel)item).TextoCentro) && ((txtBoxBtnLabel)item).Name.Substring(0, 3).Contains("txt"))
                     ((txtBoxBtnLabel)item).TextoCentro = "";
             }
         }
@@ -113,8 +116,14 @@ namespace QueroBilhete.Desktop.Globais
                 if (item is Label && ((Label)item).Name.Contains("txt"))
                     ((Label)item).Enabled = ativar;
 
-                if (item is txtBoxBtnLabel)
+                if (item is txtBoxBtnLabel && ((txtBoxBtnLabel)item).Name.Substring(0, 3).Contains("txt"))
                     ((txtBoxBtnLabel)item).EnableAll = ativar;
+
+                if (item is txtBoxLabel && ((txtBoxLabel)item).Name.Substring(0, 3).Contains("txt"))
+                    ((txtBoxLabel)item).EnableAll = ativar;
+
+                if (item is CheckBox)
+                    ((CheckBox)item).Enabled = ativar;
             }
         }
 

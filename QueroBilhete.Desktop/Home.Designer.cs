@@ -51,6 +51,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.passageiroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -112,7 +113,8 @@
             this.embarcaçãoToolStripMenuItem,
             this.passagemToolStripMenuItem,
             this.trajetosToolStripMenuItem,
-            this.viagemToolStripMenuItem});
+            this.viagemToolStripMenuItem,
+            this.passageiroToolStripMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.cadastrosToolStripMenuItem.Text = "Cadastros";
@@ -136,6 +138,7 @@
             this.embarcaçãoToolStripMenuItem.Name = "embarcaçãoToolStripMenuItem";
             this.embarcaçãoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.embarcaçãoToolStripMenuItem.Text = "Embarcação";
+            this.embarcaçãoToolStripMenuItem.Click += new System.EventHandler(this.embarcaçãoToolStripMenuItem_Click);
             // 
             // passagemToolStripMenuItem
             // 
@@ -221,6 +224,13 @@
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(62, 17);
             this.toolStripStatusLabel2.Text = "Versão: 1.0";
             // 
+            // passageiroToolStripMenuItem
+            // 
+            this.passageiroToolStripMenuItem.Name = "passageiroToolStripMenuItem";
+            this.passageiroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.passageiroToolStripMenuItem.Text = "Passageiro";
+            this.passageiroToolStripMenuItem.Click += new System.EventHandler(this.passageiroToolStripMenuItem_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -273,5 +283,6 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripMenuItem passageiroToolStripMenuItem;
     }
 }

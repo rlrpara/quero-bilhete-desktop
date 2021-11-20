@@ -1,11 +1,8 @@
-﻿using MySql.Data.MySqlClient;
-using QueroBilhete.Data.Repositories;
+﻿using QueroBilhete.Data.Repositories;
 using QueroBilhete.Desktop.Globais;
 using QueroBilhete.Infra.Data.Contex;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -22,6 +19,14 @@ namespace QueroBilhete.Desktop.formularios.Pesquisa
             set { _codigoSelecionado = value; }
         }
 
+        private string _textoSelecionado;
+
+        public string TextoSelecionado
+        {
+            get { return _textoSelecionado; }
+            set { _textoSelecionado = value; }
+        }
+
 
         private void ConfiguracaoInicial()
         {
@@ -29,6 +34,8 @@ namespace QueroBilhete.Desktop.formularios.Pesquisa
             cmbCondicao.SelectedIndex = 0;
             txtPesquisa.Select();
             txtPesquisa.Focus();
+            CodigoSelecionado = 0;
+            TextoSelecionado = "";
         }
 
         public void CarregaDados<T>(string sqlWhere) where T : class
@@ -59,7 +66,6 @@ namespace QueroBilhete.Desktop.formularios.Pesquisa
         {
             InitializeComponent();
             ConfiguracaoInicial();
-            CodigoSelecionado = 0;
         }
 
         private void Limpar()
@@ -90,9 +96,15 @@ namespace QueroBilhete.Desktop.formularios.Pesquisa
         private void dgvDados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvDados.Rows.Count > 0)
+            {
                 CodigoSelecionado = Convert.ToInt32(dgvDados.CurrentRow.Cells["Codigo"].Value);
+                _textoSelecionado = dgvDados.CurrentRow.Cells["Codigo"].Value.ToString();
+            }
             else
+            {
                 CodigoSelecionado = 0;
+                _textoSelecionado = "";
+            }
             Close();
         }
     }

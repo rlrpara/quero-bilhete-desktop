@@ -55,8 +55,14 @@ namespace QueroBilhete.Componentes.TextBox
             }
         }
 
+        [Browsable(true)]
+        [Category("Action")]
+        [Description("Invoked when user clicks button")]
+        public event EventHandler ButtonClick;
+
         private void QTextBoxOnClick(object sender, EventArgs e)
         {
+            ButtonClick?.Invoke(this, e);
             this.OnClick(e);
         }
 
@@ -87,7 +93,7 @@ namespace QueroBilhete.Componentes.TextBox
             TextoDireita = "";
         }
 
-        private void btn1_Click(object sender, EventArgs e)
+        protected void btn1_Click(object sender, EventArgs e)
         {
             QTextBoxOnClick(sender, e);
         }

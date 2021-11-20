@@ -1,5 +1,4 @@
 ﻿using QueroBilhete.Domain.Interfaces;
-using QueroBilhete.Service.Interface;
 using System.Collections.Generic;
 using System.Linq;
 

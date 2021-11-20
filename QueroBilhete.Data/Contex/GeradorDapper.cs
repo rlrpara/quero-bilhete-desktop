@@ -341,10 +341,10 @@ namespace QueroBilhete.Infra.Data.Contex
                         string tabelaChaveEstrangeira = $"{opcoesBase.ChaveEstrangeira.ToLower()}";
                         string campoChaveEstrangeira = $"{nomeCampo}";
 
-                        sqlConstraint.AppendLine($"CALL PROC_DROP_FOREIGN_KEY('{ObterNomeTabela<T>()}', 'FK_{ObterNomeTabela<T>()}_{tabelaChaveEstrangeira}_ID');");
-                        sqlConstraint.AppendLine($"ALTER TABLE {ObterNomeTabela<T>()}");
-                        sqlConstraint.AppendLine($"ADD CONSTRAINT FK_{ObterNomeTabela<T>()}_{tabelaChaveEstrangeira}_ID FOREIGN KEY ({campoChaveEstrangeira})");
-                        sqlConstraint.AppendLine($"REFERENCES {tabelaChaveEstrangeira} (ID) ON DELETE NO ACTION ON UPDATE NO ACTION;{Environment.NewLine}");
+                        sqlConstraint.AppendLine($"CALL PROC_DROP_FOREIGN_KEY('{ObterNomeTabela<T>()}', 'FK_{ObterNomeTabela<T>()}_ID_{tabelaChaveEstrangeira}');");
+                        sqlConstraint.AppendLine($"ALTER TABLE {nomeBanco}.{ObterNomeTabela<T>()}");
+                        sqlConstraint.AppendLine($"ADD CONSTRAINT FK_{ObterNomeTabela<T>()}_ID_{tabelaChaveEstrangeira} FOREIGN KEY ({campoChaveEstrangeira})");
+                        sqlConstraint.AppendLine($"REFERENCES {nomeBanco}.{tabelaChaveEstrangeira} (ID) ON DELETE NO ACTION ON UPDATE NO ACTION;{Environment.NewLine}");
                     }
                 }
             }
@@ -352,7 +352,7 @@ namespace QueroBilhete.Infra.Data.Contex
             var sqlPesquisa = new StringBuilder();
 
             sqlPesquisa.AppendLine($"USE {nomeBanco};");
-            sqlPesquisa.AppendLine($"CREATE TABLE IF NOT EXISTS {ObterNomeTabela<T>()} (");
+            sqlPesquisa.AppendLine($"CREATE TABLE IF NOT EXISTS {nomeBanco}.{ObterNomeTabela<T>()} (");
             sqlPesquisa.AppendLine($"  {chavePrimaria} int(11) NOT NULL AUTO_INCREMENT,");
             sqlPesquisa.AppendLine($"  {string.Join($",{Environment.NewLine}   ", campos.ToArray())},");
             sqlPesquisa.AppendLine($"  PRIMARY KEY ({chavePrimaria})");

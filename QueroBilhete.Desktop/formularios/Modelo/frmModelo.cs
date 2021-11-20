@@ -27,14 +27,33 @@ namespace QueroBilhete.Desktop.formularios.Modelo
         {
             Configuracao.BloquearCampos(!ativar, grpCadastro.Controls);
         }
-
-
+        protected void AlteraStatusCheckBox(ref CheckBox chkStatus)
+        {
+            chkStatus.Text = chkStatus.Checked ? "Ativo" : "Inativo";
+        }
         #endregion
 
+        #region [Construtor]
         public frmModelo()
         {
             InitializeComponent();
             lblLog.Text = "Cadastrado em:  por:  Atualizado em:  por: ";
+        }
+        #endregion
+
+        private void frmModelo_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    SelectNextControl(this.ActiveControl, !e.Shift, true, true, true);
+                    break;
+                case Keys.Escape:
+                    Sair();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

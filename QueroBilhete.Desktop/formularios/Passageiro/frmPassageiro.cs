@@ -1,22 +1,26 @@
-﻿using QueroBilhete.Data.Repositories;
+﻿using Newtonsoft.Json;
+using QueroBilhete.Data.Repositories;
 using QueroBilhete.Desktop.Enumeradores;
+using QueroBilhete.Desktop.formularios.Modelo;
 using QueroBilhete.Desktop.formularios.Pesquisa;
 using QueroBilhete.Desktop.Globais;
 using QueroBilhete.Infra.Utilities.ExtensionMethods;
+using QueroBilhete.Infra.Utilities.Utilitarios;
 using QueroBilhete.Service.Service;
 using QueroBilhete.Service.ViewModels;
 using System;
+using System.Net.Http;
 using System.Text;
 using System.Windows.Forms;
 
-namespace QueroBilhete.Desktop.formularios.Usuario
+namespace QueroBilhete.Desktop.formularios.Passageiro
 {
-    public partial class frmUsuario : Form
+    public partial class frmPassageiro : frmModelo
     {
         #region [Propriedades Privadas]
-        private UsuarioViewModel _usuarioViewModel;
+        private PassageiroViewModel _passageiroViewModel;
         private readonly BaseRepository _baseRepository;
-        private UsuarioService usuarioService;
+        private PassageiroService passageiroService;
         #endregion
 
         #region [Metodos Privados]
@@ -24,22 +28,9 @@ namespace QueroBilhete.Desktop.formularios.Usuario
         {
             Close();
         }
-
         private void BloquearCampos(bool ativar)
         {
             Configuracao.BloquearCampos(!ativar, grpCadastro.Controls);
-            txtCodigo.EnableAll = !ativar;
-            txtUid.EnableAll = !ativar;
-            txtNome.EnableAll = !ativar;
-            txtEmail.EnableAll = !ativar;
-            txtSenha.EnableAll = !ativar;
-            txtNivelAcesso.EnableAll = !ativar;
-            txtCep.EnableAll = !ativar;
-            txtEstado.EnableAll = !ativar;
-            txtCidade.EnableAll = !ativar;
-            txtBairro.EnableAll = !ativar;
-            txtRua.EnableAll = !ativar;
-            txtNumero.EnableAll = !ativar;
             panelStatus.Enabled = !ativar;
 
         }
@@ -59,8 +50,9 @@ namespace QueroBilhete.Desktop.formularios.Usuario
         {
             AtivaBotoes(EBotoes.Novo);
             BloquearCampos(false);
-            _usuarioViewModel = new UsuarioViewModel();
+            _passageiroViewModel = new PassageiroViewModel();
             PesquisarDados(0);
+            txtCodigo.EnableAll = false;
             txtNome.Focus();
             txtNome.Select();
         }
@@ -69,16 +61,16 @@ namespace QueroBilhete.Desktop.formularios.Usuario
         {
             AtivaBotoes(EBotoes.Editar);
             BloquearCampos(false);
-            txtCodigo.Enabled = false;
-            txtUid.Select();
-            txtUid.Focus();
+            txtCodigo.EnableAll = false;
+            txtNome.Select();
+            txtNome.Focus();
         }
 
         private void Excluir()
         {
             if (MessageBox.Show("Deseja remover este registro?", "ATENÇÃO", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                usuarioService.RemoverUsuario(Convert.ToInt32(txtCodigo.Texto));
+                passageiroService.RemoverPassageiro(Convert.ToInt32(txtCodigo.Texto));
                 Configuracao.LimparCampos(grpCadastro.Controls);
                 AtivaBotoes(EBotoes.Apagar);
                 BloquearCampos(true);
@@ -88,7 +80,7 @@ namespace QueroBilhete.Desktop.formularios.Usuario
         private void Localizar()
         {
             var janela = new frmPesquisaGenerica();
-            janela.CarregaDados<Domain.Entities.Usuario>("AND ATIVO = 1");
+            janela.CarregaDados<Domain.Entities.Passageiro>("AND ATIVO = 1");
             janela.ShowDialog();
 
             PesquisarDados(janela.CodigoSelecionado);
@@ -99,23 +91,23 @@ namespace QueroBilhete.Desktop.formularios.Usuario
 
         private void PesquisarDados(int codigoSelecionado)
         {
-            _usuarioViewModel = codigoSelecionado > 0 ? usuarioService.CarregaUsuario(codigoSelecionado) : new UsuarioViewModel();
-            if(_usuarioViewModel != null)
+            _passageiroViewModel = codigoSelecionado > 0 ? passageiroService.CarregaPassageiro(codigoSelecionado) : new PassageiroViewModel();
+            if (_passageiroViewModel != null)
             {
-                txtCodigo.Texto = _usuarioViewModel.Codigo.ToString();
-                txtUid.Texto = _usuarioViewModel.Uid;
-                txtNome.Texto = _usuarioViewModel.Nome;
-                txtEmail.Texto = _usuarioViewModel.Email;
-                txtSenha.Texto = _usuarioViewModel.Senha;
-                txtNivelAcesso.TextoCentro = _usuarioViewModel.CodigoNivelAcesso > 0 ? _usuarioViewModel.CodigoNivelAcesso.ToString() : "";
-                txtNivelAcesso.TextoDireita = "";
-                txtCep.Texto = _usuarioViewModel.Cep;
-                txtEstado.Texto = _usuarioViewModel.Estado;
-                txtCidade.Texto = _usuarioViewModel.Cidade;
-                txtBairro.Texto = _usuarioViewModel.Bairro;
-                txtRua.Texto = _usuarioViewModel.Rua;
-                txtNumero.Texto = _usuarioViewModel.Numero.ToString();
-                chkStatus.Checked = _usuarioViewModel.Ativo;
+                txtCodigo.Texto = _passageiroViewModel.Codigo.ToString();
+                txtNome.Texto = _passageiroViewModel.Nome;
+                txtRG.Texto = _passageiroViewModel.RG;
+                txtCPF.Texto = _passageiroViewModel.CPF;
+                txtTelefone.Texto = _passageiroViewModel.Telefone;
+                txtCelular.Texto = _passageiroViewModel.Celular;
+                txtEmail.Texto = _passageiroViewModel.Email;
+                txtCep.Texto = _passageiroViewModel.Cep;
+                txtEstado.Texto = _passageiroViewModel.Estado;
+                txtCidade.Texto = _passageiroViewModel.Cidade;
+                txtBairro.Texto = _passageiroViewModel.Bairro;
+                txtRua.Texto = _passageiroViewModel.Rua;
+                txtNumero.Texto = _passageiroViewModel.Numero.ToString();
+                chkStatus.Checked = _passageiroViewModel.Ativo;
             }
             else
             {
@@ -132,18 +124,18 @@ namespace QueroBilhete.Desktop.formularios.Usuario
         private void Salvar()
         {
 
-            _usuarioViewModel = ObterDadosUsuario();
+            _passageiroViewModel = ObterDados();
 
-            _usuarioViewModel.Validate();
+            _passageiroViewModel.Validate();
 
-            if (_usuarioViewModel.Valido)
+            if (_passageiroViewModel.Valido)
             {
                 AtivaBotoes(EBotoes.Salvar);
                 BloquearCampos(true);
-                if(_usuarioViewModel.Codigo == 0)
-                    usuarioService.AdicionarUsuario(_usuarioViewModel);
+                if (_passageiroViewModel.Codigo == 0)
+                    passageiroService.AdicionarPassageiro(_passageiroViewModel);
                 else
-                    usuarioService.AtualizarUsuario(_usuarioViewModel);
+                    passageiroService.AtualizarPassageiro(_passageiroViewModel);
                 PesquisarDados(Convert.ToInt32(!txtCodigo.Texto.IsNumeric() ? "0" : txtCodigo.Texto));
                 AtivaBotoes(EBotoes.Pesquisar);
                 BloquearCampos(true);
@@ -160,20 +152,21 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             var alerta = new StringBuilder();
             alerta.AppendLine("Foram encontrados os serguintes erros:");
 
-            foreach (var item in _usuarioViewModel.Mensagens)
+            foreach (var item in _passageiroViewModel.Mensagens)
                 alerta.AppendLine(item.ToString());
 
             MessageBox.Show(alerta.ToString());
         }
 
-        private UsuarioViewModel ObterDadosUsuario() => new UsuarioViewModel()
+        private PassageiroViewModel ObterDados() => new PassageiroViewModel()
         {
             Codigo = !txtCodigo.Texto.IsNumeric() ? 0 : Convert.ToInt32(txtCodigo.Texto),
-            Uid = txtUid.Texto,
             Nome = txtNome.Texto,
+            RG = txtRG.Texto,
+            CPF = txtCPF.Texto,
+            Telefone = txtTelefone.Texto,
+            Celular = txtCelular.Texto,
             Email = txtEmail.Texto,
-            Senha = txtSenha.Texto,
-            CodigoNivelAcesso = txtNivelAcesso.TextoCentro.IsNumeric() ? int.Parse(txtNivelAcesso.TextoCentro) : 0,
             Cep = txtCep.Texto,
             Estado = txtEstado.Texto,
             Cidade = txtCidade.Texto,
@@ -191,33 +184,22 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             AtivaBotoes(EBotoes.Cancelar);
             BloquearCampos(true);
         }
-
-        private void txtNivelAcesso_ButtonClick(object sender, EventArgs e)
-        {
-            var janela = new frmPesquisaGenerica();
-            janela.CarregaDados<Domain.Entities.NivelAcesso>("AND ATIVO = 1");
-            janela.ShowDialog();
-
-            txtNivelAcesso.TextoCentro = janela.CodigoSelecionado.ToString();
-            txtNivelAcesso.TextoDireita = janela.TextoSelecionado;
-        }
-
         #endregion
 
         #region Construtor
-        public frmUsuario()
+        public frmPassageiro()
         {
             InitializeComponent();
             AtivaConfiguracaoPadrao();
             _baseRepository = new BaseRepository();
-            _usuarioViewModel = new UsuarioViewModel();
-            usuarioService = new UsuarioService(_baseRepository);
+            _passageiroViewModel = new PassageiroViewModel();
+            passageiroService = new PassageiroService(_baseRepository);
             lblLog.Text = "Cadastrado em:  por:  Atualizado em:  por: ";
+            Novo();
         }
 
         #endregion
 
-        #region Métodos Formulario
         private void btnNovo_Click(object sender, EventArgs e)
         {
             Novo();
@@ -228,7 +210,7 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             Editar();
         }
 
-        private void btnRemover_Click(object sender, EventArgs e)
+        private void btnExcluir_Click(object sender, EventArgs e)
         {
             Excluir();
         }
@@ -243,10 +225,6 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             Imprimir();
         }
 
-        private void btnSair_Click(object sender, System.EventArgs e)
-        {
-            Sair();
-        }
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             Salvar();
@@ -257,11 +235,46 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             Cancelar();
         }
 
-        private void chkStatus_Enter(object sender, EventArgs e)
+        private void btnSair_Click(object sender, EventArgs e)
         {
-            chkStatus.Text = chkStatus.Checked ? "Ativo" : "Inativo";
+            Sair();
         }
 
-        #endregion
+        private void chkStatus_Enter(object sender, EventArgs e)
+        {
+            AlteraStatusCheckBox(ref chkStatus);
+        }
+
+        private void chkStatus_Click(object sender, EventArgs e)
+        {
+            AlteraStatusCheckBox(ref chkStatus);
+        }
+
+        private async void txtCep_Validated(object sender, EventArgs e)
+        {
+            if (txtCep.Texto.ApenasNumeros().IsNumeric())
+            {
+                if (Utils.ChecaConexaoInternet())
+                {
+                    using (var client = new HttpClient())
+                    {
+                        client.BaseAddress = new Uri($"https://ws.apicep.com/cep.json?code={txtCep.Texto.Trim().ApenasNumeros()}");
+                        var resposta = await client.GetAsync("");
+                        string dados = await resposta.Content.ReadAsStringAsync();
+                        if (resposta.IsSuccessStatusCode)
+                        {
+                            var dadosConvertidos = JsonConvert.DeserializeObject<ConsultaCepViewModel>(dados);
+                            if (dadosConvertidos != null && dadosConvertidos.Ok)
+                            {
+                                txtEstado.Texto = dadosConvertidos?.State;
+                                txtCidade.Texto = dadosConvertidos?.City;
+                                txtBairro.Texto = dadosConvertidos?.District;
+                                txtRua.Texto = dadosConvertidos?.Address;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

@@ -1,12 +1,15 @@
-﻿using QueroBilhete.Data.Repositories;
+﻿using Newtonsoft.Json;
+using QueroBilhete.Data.Repositories;
 using QueroBilhete.Desktop.Enumeradores;
 using QueroBilhete.Desktop.formularios.Modelo;
 using QueroBilhete.Desktop.formularios.Pesquisa;
 using QueroBilhete.Desktop.Globais;
 using QueroBilhete.Infra.Utilities.ExtensionMethods;
+using QueroBilhete.Infra.Utilities.Utilitarios;
 using QueroBilhete.Service.Service;
 using QueroBilhete.Service.ViewModels;
 using System;
+using System.Net.Http;
 using System.Text;
 using System.Windows.Forms;
 
@@ -19,7 +22,6 @@ namespace QueroBilhete.Desktop.formularios.Empresa
         private readonly BaseRepository _baseRepository;
         private EmpresaService empresaService;
         #endregion
-
 
         #region [Métodos Privados]
         private void Novo()
@@ -178,6 +180,7 @@ namespace QueroBilhete.Desktop.formularios.Empresa
         }
         #endregion
 
+        #region [Métodos Formulário]
         private void btnNovo_Click(object sender, System.EventArgs e)
         {
             Novo();
@@ -221,6 +224,34 @@ namespace QueroBilhete.Desktop.formularios.Empresa
         private void chkStatus_Enter(object sender, EventArgs e)
         {
             chkStatus.Text = chkStatus.Checked ? "Ativo" : "Inativo";
+        }
+        #endregion
+
+        private async void txtCep_Validated(object sender, EventArgs e)
+        {
+            if (txtCep.Texto.ApenasNumeros().IsNumeric())
+            {
+                if (Utils.ChecaConexaoInternet())
+                {
+                    using (var client = new HttpClient())
+                    {
+                        client.BaseAddress = new Uri($"https://ws.apicep.com/cep.json?code={txtCep.Texto.Trim().ApenasNumeros()}");
+                        var resposta = await client.GetAsync("");
+                        string dados = await resposta.Content.ReadAsStringAsync();
+                        if (resposta.IsSuccessStatusCode)
+                        {
+                            var dadosConvertidos = JsonConvert.DeserializeObject<ConsultaCepViewModel>(dados);
+                            if (dadosConvertidos != null && dadosConvertidos.Ok)
+                            {
+                                txtEstado.Texto = dadosConvertidos?.State;
+                                txtCidade.Texto = dadosConvertidos?.City;
+                                txtBairro.Texto = dadosConvertidos?.District;
+                                txtRua.Texto = dadosConvertidos?.Address;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

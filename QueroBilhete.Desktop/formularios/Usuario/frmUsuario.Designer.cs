@@ -483,6 +483,7 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             this.txtNivelAcesso.TextoDireita = "";
             this.txtNivelAcesso.TextoEsquerda = "Nível Acesso";
             this.txtNivelAcesso.TextoStatus = "Nível Acesso";
+            this.txtNivelAcesso.ButtonClick += new System.EventHandler(this.txtNivelAcesso_ButtonClick);
             // 
             // txtSenha
             // 

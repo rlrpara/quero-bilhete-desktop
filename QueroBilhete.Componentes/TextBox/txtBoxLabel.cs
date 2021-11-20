@@ -1,4 +1,6 @@
 ﻿using QueroBilhete.Componentes.Enumeradores;
+using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace QueroBilhete.Componentes.TextBox
@@ -110,12 +112,13 @@ namespace QueroBilhete.Componentes.TextBox
             set { _statusBarComponent = value; }
         }
 
-        private void txtBoxValidating(object sender, System.ComponentModel.CancelEventArgs e)
+        private void txtBoxValidating(object sender, CancelEventArgs e)
         {
+            TextBoxValidate?.Invoke(this, e);
             this.OnValidating(e);
         }
 
-        private void txtBoxEnter(object sender, System.EventArgs e)
+        private void txtBoxEnter(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(TextoStatus) && StatuBarComponent != null)
                 StatuBarComponent.Text = TextoStatus;
@@ -123,7 +126,7 @@ namespace QueroBilhete.Componentes.TextBox
             this.OnEnter(e);
         }   
 
-        private void txtBoxLeave(object sender, System.EventArgs e)
+        private void txtBoxLeave(object sender, EventArgs e)
         {
             if (StatuBarComponent != null)
                 StatuBarComponent.Text = "";
@@ -151,17 +154,21 @@ namespace QueroBilhete.Componentes.TextBox
             TextoSenha = false;
         }
 
-        private void txtBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        [Browsable(true)]
+        [Category("Action")]
+        [Description("Invoked when user exit textbox")]
+        public event EventHandler TextBoxValidate;
+        protected void txtBox_Validating(object sender, CancelEventArgs e)
         {
             txtBoxValidating(sender, e);
         }
 
-        private void txtBox_Enter(object sender, System.EventArgs e)
+        private void txtBox_Enter(object sender, EventArgs e)
         {
             txtBoxEnter(sender, e);
         }
 
-        private void txtBox_Leave(object sender, System.EventArgs e)
+        private void txtBox_Leave(object sender, EventArgs e)
         {
             txtBoxLeave(sender, e);
         }

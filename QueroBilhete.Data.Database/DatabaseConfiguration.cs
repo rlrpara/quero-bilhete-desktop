@@ -59,34 +59,58 @@ namespace QueroBilhete.Data.Database
         {
             try
             {
-                var nomeBanco = ObterNomeBanco();
-                using MySqlConnection conexao = (MySqlConnection)ConnectionConfiguration.ObterConexao();
+                //Verificar se o mysql está funcionando
+                if (ServidorAtivo())
+                {
+                    var nomeBanco = ObterNomeBanco();
+                    using MySqlConnection conexao = (MySqlConnection)ConnectionConfiguration.ObterConexao();
 
-                //Criar banco
-                if (!ExisteBanco(conexao, nomeBanco))
-                    Criar(conexao, ObterSqlCriarBanco(nomeBanco));
+                    //Criar banco
+                    if (!ExisteBanco(conexao, nomeBanco))
+                        Criar(conexao, ObterSqlCriarBanco(nomeBanco));
 
-                //Criar tabelas
-                Criar(conexao, ObterProcedureDropConstraint(nomeBanco));
-                Criar(conexao, GeradorDapper.CriarTabela<Usuario>(nomeBanco));
-                Criar(conexao, GeradorDapper.CriarTabela<Empresa>(nomeBanco));
-                //Criar(conexao, GeradorDapper.CriarTabela<Embarcacao>(nomeBanco));
-                //Criar(conexao, GeradorDapper.CriarTabela<Usuario>(nomeBanco));
-                //Criar(conexao, GeradorDapper.CriarTabela<Trajeto>(nomeBanco));
-                //Criar(conexao, GeradorDapper.CriarTabela<Viagem>(nomeBanco));
-                //Criar(conexao, GeradorDapper.CriarTabela<TipoPassagem>(nomeBanco));
-                //Criar(conexao, GeradorDapper.CriarTabela<Passageiro>(nomeBanco));
-                //Criar(conexao, GeradorDapper.CriarTabela<Passagem>(nomeBanco));
-                //Criar(conexao, GeradorDapper.CriarTabela<VersaoBanco>(nomeBanco));
+                    //Criar tabelas
+                    Criar(conexao, ObterProcedureDropConstraint(nomeBanco));
+                    Criar(conexao, GeradorDapper.CriarTabela<NivelAcesso>(nomeBanco));
+                    Criar(conexao, GeradorDapper.CriarTabela<Usuario>(nomeBanco));
+                    Criar(conexao, GeradorDapper.CriarTabela<Embarcacao>(nomeBanco));
+                    Criar(conexao, GeradorDapper.CriarTabela<Empresa>(nomeBanco));
+                    Criar(conexao, GeradorDapper.CriarTabela<Passageiro>(nomeBanco));
+                    //Criar(conexao, GeradorDapper.CriarTabela<Usuario>(nomeBanco));
+                    //Criar(conexao, GeradorDapper.CriarTabela<Trajeto>(nomeBanco));
+                    //Criar(conexao, GeradorDapper.CriarTabela<Viagem>(nomeBanco));
+                    //Criar(conexao, GeradorDapper.CriarTabela<TipoPassagem>(nomeBanco));
+                    //Criar(conexao, GeradorDapper.CriarTabela<Passageiro>(nomeBanco));
+                    //Criar(conexao, GeradorDapper.CriarTabela<Passagem>(nomeBanco));
+                    //Criar(conexao, GeradorDapper.CriarTabela<VersaoBanco>(nomeBanco));
 
-                //Criar procedures
-                Criar(conexao, GeradorDapper.GerarProcedureAddIfColumnNotExists(nomeBanco));
+                    //Criar procedures
+                    Criar(conexao, GeradorDapper.GerarProcedureAddIfColumnNotExists(nomeBanco));
 
-                //executar scripts da versao
+                    //executar scripts da versao
+                }
+                else
+                {
+                    throw new Exception("Base de dados Offline.");
+                }
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
+            }
+        }
+
+        private static bool ServidorAtivo()
+        {
+            try
+            {
+                using MySqlConnection conexao = (MySqlConnection)ConnectionConfiguration.ObterConexao();
+                ExisteBanco(conexao, ObterNomeBanco());
+                return true;
+            }
+            catch
+            {
+                return false;
             }
         }
 
