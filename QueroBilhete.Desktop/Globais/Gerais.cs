@@ -32,7 +32,7 @@ namespace QueroBilhete.Desktop.Globais
                 if (item is txtBoxLabel && ((txtBoxLabel)item).Name.Substring(0, 3).Contains("txt"))
                     ((txtBoxLabel)item).Texto = "";
 
-                if (item is txtBoxBtnLabel && !string.IsNullOrEmpty(((txtBoxBtnLabel)item).TextoDireita) && ((txtBoxLabel)item).Name.Substring(0, 3).Contains("txt"))
+                if (item is txtBoxBtnLabel && !string.IsNullOrEmpty(((txtBoxBtnLabel)item).TextoDireita) && ((txtBoxBtnLabel)item).Name.Substring(0, 3).Contains("txt"))
                     ((txtBoxBtnLabel)item).TextoDireita = "";
 
                 if (item is txtBoxBtnLabel && !string.IsNullOrEmpty(((txtBoxBtnLabel)item).TextoCentro) && ((txtBoxBtnLabel)item).Name.Substring(0, 3).Contains("txt"))
@@ -112,6 +112,9 @@ namespace QueroBilhete.Desktop.Globais
 
                 if (item is TextBox && ((TextBox)item).Name.Contains("txt"))
                     ((TextBox)item).Enabled = ativar;
+
+                if (item is Label && ((Label)item).Name.Contains("label"))
+                    ((Label)item).Enabled = ativar;
 
                 if (item is Label && ((Label)item).Name.Contains("txt"))
                     ((Label)item).Enabled = ativar;

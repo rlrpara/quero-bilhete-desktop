@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace QueroBilhete.Service.Interface
 {
@@ -14,5 +15,6 @@ namespace QueroBilhete.Service.Interface
         int Adicionar<TEntity>(TEntity entidade) where TEntity : class;
         int Atualizar<TEntity>(int id, TEntity entidade) where TEntity : class;
         int Excluir<TEntity>(int id) where TEntity : class;
+        Task<T> ConsultaGenericaApi<T>(string url) where T : class;
     }
 }

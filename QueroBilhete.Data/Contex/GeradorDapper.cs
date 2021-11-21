@@ -16,12 +16,6 @@ namespace QueroBilhete.Infra.Data.Contex
         private readonly static string _nomeBanco = Environment.GetEnvironmentVariable("MYSQL_DATABASE");
         private static bool EhBrancoNulo(string valor)
             => string.IsNullOrWhiteSpace(valor.ToString().Trim());
-        private static string ObterNomeTabela<T>() where T : class
-        {
-            dynamic tableattr = typeof(T).GetCustomAttributes(false).SingleOrDefault(attr => attr.GetType().Name == "TableAttribute");
-
-            return (tableattr != null ? tableattr.Name.ToLower() : "");
-        }
         private static DynamicParameters RetornaListaParametros(ColumnAttribute atributo, object valor, string nome)
         {
             var listaParametros = new DynamicParameters();
@@ -109,6 +103,37 @@ namespace QueroBilhete.Infra.Data.Contex
             };
         }
 
+        public static string InserirDadosPadroes<T>() where T : class
+        {
+            var nomeTabela = ObterNomeTabela<T>();
+
+            var sqlInsert = new StringBuilder();
+
+            switch (nomeTabela.ToLower())
+            {
+                case "usuario":
+                        sqlInsert.AppendLine("INSERT INTO usuario (           NOME,             EMAIL, SENHA, ID_NIVEL_ACESSO)");
+                        sqlInsert.AppendLine("             VALUES ('Administrador', 'admin@email.com', '123',               1)");
+                    break;
+                case "nivel_acesso":
+                    sqlInsert.AppendLine("INSERT INTO nivel_acesso(         TITULO,       DESCRICAO)");
+                    sqlInsert.AppendLine("                  VALUES('ADMINISTRADOR', 'ADMINISTRADOR');");
+                    sqlInsert.AppendLine("INSERT INTO nivel_acesso(        TITULO,      DESCRICAO)");
+                    sqlInsert.AppendLine("                  VALUES('PROPRIETARIO', 'PROPRIETARIO');");
+                    sqlInsert.AppendLine("INSERT INTO nivel_acesso(    TITULO,  DESCRICAO)");
+                    sqlInsert.AppendLine("                  VALUES('VENDEDOR', 'VENDEDOR')");
+                    break;
+                case "empresa":
+                    sqlInsert.AppendLine("INSERT INTO empresa (RAZAO_SOCIAL,             CNPJ)");
+                    sqlInsert.AppendLine("              VALUES(    'PADRAO', '00000000000000')");
+                    break;
+                default:
+                    break;
+            }
+
+            return sqlInsert.ToString();
+        }
+
         private static string ObterParaTipoNulo(string fullName)
         {
             if (fullName.Contains("Int32"))
@@ -121,6 +146,12 @@ namespace QueroBilhete.Infra.Data.Contex
         #endregion
 
         #region Métodos Públicos
+        public static string ObterNomeTabela<T>() where T : class
+        {
+            dynamic tableattr = typeof(T).GetCustomAttributes(false).SingleOrDefault(attr => attr.GetType().Name == "TableAttribute");
+
+            return (tableattr != null ? tableattr.Name.ToLower() : "");
+        }
         public static string RetornaSelect<T>(int? id = null) where T : class
         {
             string chavePrimaria = string.Empty;

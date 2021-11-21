@@ -1,6 +1,11 @@
-﻿using QueroBilhete.Domain.Interfaces;
+﻿using Newtonsoft.Json;
+using QueroBilhete.Domain.Interfaces;
+using QueroBilhete.Infra.Utilities.Utilitarios;
 using QueroBilhete.Service.Interface;
+using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace QueroBilhete.Service.Service
 {
@@ -117,6 +122,29 @@ namespace QueroBilhete.Service.Service
         public void Dispose()
         {
             _baseRepository.Dispose();
+        }
+
+        public async Task<T> ConsultaGenericaApi<T>(string url) where T : class
+        {
+            if (Utils.ChecaConexaoInternet())
+            {
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri($"{url}");
+                    var resposta = await client.GetAsync("");
+                    string dados = await resposta.Content.ReadAsStringAsync();
+
+                    if (resposta.IsSuccessStatusCode)
+                    {
+                        var dadosConvertidos = JsonConvert.DeserializeObject<T>(dados);
+                        return dadosConvertidos;
+                    }
+
+                    return default(T);
+                }
+            }
+
+            return default(T);
         }
     }
 }

@@ -1,6 +1,12 @@
-﻿using QueroBilhete.Domain.Interfaces;
+﻿using Newtonsoft.Json;
+using QueroBilhete.Domain.Interfaces;
+using QueroBilhete.Infra.Data.Contex;
+using QueroBilhete.Infra.Utilities.Utilitarios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace QueroBilhete.Service.Service
 {
@@ -21,6 +27,12 @@ namespace QueroBilhete.Service.Service
         {
             return _baseRepository.BuscarTodosPorQueryGerador<T>(sql).ToList();
         }
+        public string ObterDescricao<T>(int codigoSelecionado, string coluna) where T : class
+        {
+            var sql = $"SELECT {coluna} FROM {GeradorDapper.ObterNomeTabela<T>()} WHERE ID = {codigoSelecionado};";
+            return _baseRepository.BuscarPorQuery<string>(sql);
+        }
+
         #endregion
     }
 }

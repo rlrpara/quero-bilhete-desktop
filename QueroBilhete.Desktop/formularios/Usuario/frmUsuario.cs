@@ -16,7 +16,8 @@ namespace QueroBilhete.Desktop.formularios.Usuario
         #region [Propriedades Privadas]
         private UsuarioViewModel _usuarioViewModel;
         private readonly BaseRepository _baseRepository;
-        private UsuarioService usuarioService;
+        private UsuarioService _usuarioService;
+        private GenericService _genericService;
         #endregion
 
         #region [Metodos Privados]
@@ -78,7 +79,7 @@ namespace QueroBilhete.Desktop.formularios.Usuario
         {
             if (MessageBox.Show("Deseja remover este registro?", "ATENÇÃO", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                usuarioService.RemoverUsuario(Convert.ToInt32(txtCodigo.Texto));
+                _usuarioService.RemoverUsuario(Convert.ToInt32(txtCodigo.Texto));
                 Configuracao.LimparCampos(grpCadastro.Controls);
                 AtivaBotoes(EBotoes.Apagar);
                 BloquearCampos(true);
@@ -99,7 +100,7 @@ namespace QueroBilhete.Desktop.formularios.Usuario
 
         private void PesquisarDados(int codigoSelecionado)
         {
-            _usuarioViewModel = codigoSelecionado > 0 ? usuarioService.CarregaUsuario(codigoSelecionado) : new UsuarioViewModel();
+            _usuarioViewModel = codigoSelecionado > 0 ? _usuarioService.CarregaUsuario(codigoSelecionado) : new UsuarioViewModel();
             if(_usuarioViewModel != null)
             {
                 txtCodigo.Texto = _usuarioViewModel.Codigo.ToString();
@@ -108,7 +109,7 @@ namespace QueroBilhete.Desktop.formularios.Usuario
                 txtEmail.Texto = _usuarioViewModel.Email;
                 txtSenha.Texto = _usuarioViewModel.Senha;
                 txtNivelAcesso.TextoCentro = _usuarioViewModel.CodigoNivelAcesso > 0 ? _usuarioViewModel.CodigoNivelAcesso.ToString() : "";
-                txtNivelAcesso.TextoDireita = "";
+                txtNivelAcesso.TextoDireita = _genericService.ObterDescricao<Domain.Entities.NivelAcesso>(_usuarioViewModel.CodigoNivelAcesso, "DESCRICAO"); ;
                 txtCep.Texto = _usuarioViewModel.Cep;
                 txtEstado.Texto = _usuarioViewModel.Estado;
                 txtCidade.Texto = _usuarioViewModel.Cidade;
@@ -141,9 +142,9 @@ namespace QueroBilhete.Desktop.formularios.Usuario
                 AtivaBotoes(EBotoes.Salvar);
                 BloquearCampos(true);
                 if(_usuarioViewModel.Codigo == 0)
-                    usuarioService.AdicionarUsuario(_usuarioViewModel);
+                    _usuarioService.AdicionarUsuario(_usuarioViewModel);
                 else
-                    usuarioService.AtualizarUsuario(_usuarioViewModel);
+                    _usuarioService.AtualizarUsuario(_usuarioViewModel);
                 PesquisarDados(Convert.ToInt32(!txtCodigo.Texto.IsNumeric() ? "0" : txtCodigo.Texto));
                 AtivaBotoes(EBotoes.Pesquisar);
                 BloquearCampos(true);
@@ -197,9 +198,12 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             var janela = new frmPesquisaGenerica();
             janela.CarregaDados<Domain.Entities.NivelAcesso>("AND ATIVO = 1");
             janela.ShowDialog();
-
-            txtNivelAcesso.TextoCentro = janela.CodigoSelecionado.ToString();
-            txtNivelAcesso.TextoDireita = janela.TextoSelecionado;
+            
+            if(janela.CodigoSelecionado > 0)
+            {
+                txtNivelAcesso.TextoCentro = janela.CodigoSelecionado.ToString();
+                txtNivelAcesso.TextoDireita = _genericService.ObterDescricao<Domain.Entities.NivelAcesso>(janela.CodigoSelecionado, "DESCRICAO");
+            }
         }
 
         #endregion
@@ -211,7 +215,8 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             AtivaConfiguracaoPadrao();
             _baseRepository = new BaseRepository();
             _usuarioViewModel = new UsuarioViewModel();
-            usuarioService = new UsuarioService(_baseRepository);
+            _usuarioService = new UsuarioService(_baseRepository);
+            _genericService = new GenericService(_baseRepository);
             lblLog.Text = "Cadastrado em:  por:  Atualizado em:  por: ";
         }
 

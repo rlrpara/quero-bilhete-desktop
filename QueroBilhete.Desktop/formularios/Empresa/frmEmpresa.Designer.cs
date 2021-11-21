@@ -205,6 +205,7 @@
             this.txtCnpj.TextoSenha = false;
             this.txtCnpj.TextoStatus = "Cnpj";
             this.txtCnpj.VisibleAll = true;
+            this.txtCnpj.Validating += new System.ComponentModel.CancelEventHandler(this.txtCnpj_Validating);
             // 
             // txtIE
             // 
@@ -214,7 +215,6 @@
             this.txtIE.Location = new System.Drawing.Point(3, 113);
             this.txtIE.Name = "txtIE";
             this.txtIE.Size = new System.Drawing.Size(953, 24);
-            this.txtIE.StatuBarComponent = this.toolStripStatusLabel2;
             this.txtIE.TabIndex = 4;
             this.txtIE.Texto = "";
             this.txtIE.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
@@ -233,7 +233,6 @@
             this.txtIM.Location = new System.Drawing.Point(3, 137);
             this.txtIM.Name = "txtIM";
             this.txtIM.Size = new System.Drawing.Size(953, 24);
-            this.txtIM.StatuBarComponent = this.toolStripStatusLabel2;
             this.txtIM.TabIndex = 5;
             this.txtIM.Texto = "";
             this.txtIM.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
@@ -444,6 +443,7 @@
             this.chkStatus.TabIndex = 12;
             this.chkStatus.Text = "Ativo";
             this.chkStatus.UseVisualStyleBackColor = true;
+            this.chkStatus.Click += new System.EventHandler(this.chkStatus_Enter);
             this.chkStatus.Enter += new System.EventHandler(this.chkStatus_Enter);
             // 
             // label14

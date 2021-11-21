@@ -59,12 +59,12 @@ namespace QueroBilhete.Service.ViewModels
         public string Email
         {
             get { return _email; }
-            set { _email = value.ToLower(); }
+            set { _email = value == null ? value : value.ToLower(); }
         }
         public string Site
         {
             get { return _site; }
-            set { _site = value.ToLower(); }
+            set { _site = value == null ? value : value.ToLower(); }
         }
         public string Logo
         {

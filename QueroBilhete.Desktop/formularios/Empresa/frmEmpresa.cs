@@ -20,7 +20,8 @@ namespace QueroBilhete.Desktop.formularios.Empresa
         #region [Propriedades Privadas]
         private EmpresaViewModel _empresaViewModel;
         private readonly BaseRepository _baseRepository;
-        private EmpresaService empresaService;
+        private EmpresaService _empresaService;
+        private GenericService _genericService;
         #endregion
 
         #region [Métodos Privados]
@@ -47,7 +48,7 @@ namespace QueroBilhete.Desktop.formularios.Empresa
         {
             if (MessageBox.Show("Deseja remover este registro?", "ATENÇÃO", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                empresaService.RemoverEmpresa(Convert.ToInt32(txtCodigo.Texto));
+                _empresaService.RemoverEmpresa(Convert.ToInt32(txtCodigo.Texto));
                 Configuracao.LimparCampos(grpCadastro.Controls);
                 AtivaBotoes(EBotoes.Apagar);
                 BloquearCampos(true);
@@ -68,7 +69,7 @@ namespace QueroBilhete.Desktop.formularios.Empresa
 
         private void PesquisarDados(int codigoSelecionado)
         {
-            _empresaViewModel = codigoSelecionado > 0 ? empresaService.CarregaEmpresa(codigoSelecionado) : new EmpresaViewModel();
+            _empresaViewModel = codigoSelecionado > 0 ? _empresaService.CarregaEmpresa(codigoSelecionado) : new EmpresaViewModel();
             if (_empresaViewModel != null)
             {
                 txtCodigo.Texto = _empresaViewModel.Codigo.ToString();
@@ -113,9 +114,9 @@ namespace QueroBilhete.Desktop.formularios.Empresa
                 AtivaBotoes(EBotoes.Salvar);
                 BloquearCampos(true);
                 if (_empresaViewModel.Codigo == 0)
-                    empresaService.AdicionarEmpresa(_empresaViewModel);
+                    _empresaService.AdicionarEmpresa(_empresaViewModel);
                 else
-                    empresaService.AtualizarEmpresa(_empresaViewModel);
+                    _empresaService.AtualizarEmpresa(_empresaViewModel);
                 PesquisarDados(Convert.ToInt32(!txtCodigo.Texto.IsNumeric() ? "0" : txtCodigo.Texto));
                 AtivaBotoes(EBotoes.Pesquisar);
                 BloquearCampos(true);
@@ -174,7 +175,8 @@ namespace QueroBilhete.Desktop.formularios.Empresa
             InitializeComponent();
             _baseRepository = new BaseRepository();
             _empresaViewModel = new EmpresaViewModel();
-            empresaService = new EmpresaService(_baseRepository);
+            _empresaService = new EmpresaService(_baseRepository);
+            _genericService = new GenericService(_baseRepository);
             lblLog.Text = "Cadastrado em:  por:  Atualizado em:  por: ";
             Novo();
         }
@@ -223,7 +225,7 @@ namespace QueroBilhete.Desktop.formularios.Empresa
 
         private void chkStatus_Enter(object sender, EventArgs e)
         {
-            chkStatus.Text = chkStatus.Checked ? "Ativo" : "Inativo";
+            AlteraStatusCheckBox(ref chkStatus);
         }
         #endregion
 
@@ -231,25 +233,30 @@ namespace QueroBilhete.Desktop.formularios.Empresa
         {
             if (txtCep.Texto.ApenasNumeros().IsNumeric())
             {
-                if (Utils.ChecaConexaoInternet())
+                var retornoConsulta = await _empresaService.ConsultaGenericaApi<ConsultaCepViewModel>($"https://ws.apicep.com/cep.json?code={txtCep.Texto.Trim().ApenasNumeros()}");
+                if (retornoConsulta != null && retornoConsulta.Ok)
                 {
-                    using (var client = new HttpClient())
-                    {
-                        client.BaseAddress = new Uri($"https://ws.apicep.com/cep.json?code={txtCep.Texto.Trim().ApenasNumeros()}");
-                        var resposta = await client.GetAsync("");
-                        string dados = await resposta.Content.ReadAsStringAsync();
-                        if (resposta.IsSuccessStatusCode)
-                        {
-                            var dadosConvertidos = JsonConvert.DeserializeObject<ConsultaCepViewModel>(dados);
-                            if (dadosConvertidos != null && dadosConvertidos.Ok)
-                            {
-                                txtEstado.Texto = dadosConvertidos?.State;
-                                txtCidade.Texto = dadosConvertidos?.City;
-                                txtBairro.Texto = dadosConvertidos?.District;
-                                txtRua.Texto = dadosConvertidos?.Address;
-                            }
-                        }
-                    }
+                    txtEstado.Texto = retornoConsulta?.State;
+                    txtCidade.Texto = retornoConsulta?.City;
+                    txtBairro.Texto = retornoConsulta?.District;
+                    txtRua.Texto = retornoConsulta?.Address;
+                }
+            }
+        }
+
+        private async void txtCnpj_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (txtCnpj.Texto.Trim().ApenasNumeros().IsNumeric() && (txtCnpj.Texto.Trim().ApenasNumeros().Length == 14))
+            {
+                var retornoConsulta = await _empresaService.ConsultaGenericaApi<ConsultaCnpjViewModel>($"https://www.receitaws.com.br/v1/cnpj/{txtCnpj.Texto.ApenasNumeros()}");
+
+                if(retornoConsulta != null && retornoConsulta.status.Contains("OK"))
+                {
+                    txtRazaoSocial.Texto = retornoConsulta.nome;
+                    txtCnpj.Texto = retornoConsulta.cnpj;
+                    txtCep.Texto = retornoConsulta.cep;
+                    txtEstado.Texto = retornoConsulta.uf;
+                    txtCidade.Texto = retornoConsulta.municipio;
                 }
             }
         }

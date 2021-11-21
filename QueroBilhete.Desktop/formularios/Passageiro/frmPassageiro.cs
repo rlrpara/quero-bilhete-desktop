@@ -20,7 +20,7 @@ namespace QueroBilhete.Desktop.formularios.Passageiro
         #region [Propriedades Privadas]
         private PassageiroViewModel _passageiroViewModel;
         private readonly BaseRepository _baseRepository;
-        private PassageiroService passageiroService;
+        private PassageiroService _passageiroService;
         #endregion
 
         #region [Metodos Privados]
@@ -70,7 +70,7 @@ namespace QueroBilhete.Desktop.formularios.Passageiro
         {
             if (MessageBox.Show("Deseja remover este registro?", "ATENÇÃO", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                passageiroService.RemoverPassageiro(Convert.ToInt32(txtCodigo.Texto));
+                _passageiroService.RemoverPassageiro(Convert.ToInt32(txtCodigo.Texto));
                 Configuracao.LimparCampos(grpCadastro.Controls);
                 AtivaBotoes(EBotoes.Apagar);
                 BloquearCampos(true);
@@ -91,7 +91,7 @@ namespace QueroBilhete.Desktop.formularios.Passageiro
 
         private void PesquisarDados(int codigoSelecionado)
         {
-            _passageiroViewModel = codigoSelecionado > 0 ? passageiroService.CarregaPassageiro(codigoSelecionado) : new PassageiroViewModel();
+            _passageiroViewModel = codigoSelecionado > 0 ? _passageiroService.CarregaPassageiro(codigoSelecionado) : new PassageiroViewModel();
             if (_passageiroViewModel != null)
             {
                 txtCodigo.Texto = _passageiroViewModel.Codigo.ToString();
@@ -133,9 +133,9 @@ namespace QueroBilhete.Desktop.formularios.Passageiro
                 AtivaBotoes(EBotoes.Salvar);
                 BloquearCampos(true);
                 if (_passageiroViewModel.Codigo == 0)
-                    passageiroService.AdicionarPassageiro(_passageiroViewModel);
+                    _passageiroService.AdicionarPassageiro(_passageiroViewModel);
                 else
-                    passageiroService.AtualizarPassageiro(_passageiroViewModel);
+                    _passageiroService.AtualizarPassageiro(_passageiroViewModel);
                 PesquisarDados(Convert.ToInt32(!txtCodigo.Texto.IsNumeric() ? "0" : txtCodigo.Texto));
                 AtivaBotoes(EBotoes.Pesquisar);
                 BloquearCampos(true);
@@ -193,7 +193,7 @@ namespace QueroBilhete.Desktop.formularios.Passageiro
             AtivaConfiguracaoPadrao();
             _baseRepository = new BaseRepository();
             _passageiroViewModel = new PassageiroViewModel();
-            passageiroService = new PassageiroService(_baseRepository);
+            _passageiroService = new PassageiroService(_baseRepository);
             lblLog.Text = "Cadastrado em:  por:  Atualizado em:  por: ";
             Novo();
         }
@@ -254,25 +254,13 @@ namespace QueroBilhete.Desktop.formularios.Passageiro
         {
             if (txtCep.Texto.ApenasNumeros().IsNumeric())
             {
-                if (Utils.ChecaConexaoInternet())
+                var retornoConsulta = await _passageiroService.ConsultaGenericaApi<ConsultaCepViewModel>($"https://ws.apicep.com/cep.json?code={txtCep.Texto.Trim().ApenasNumeros()}");
+                if (retornoConsulta != null && retornoConsulta.Ok)
                 {
-                    using (var client = new HttpClient())
-                    {
-                        client.BaseAddress = new Uri($"https://ws.apicep.com/cep.json?code={txtCep.Texto.Trim().ApenasNumeros()}");
-                        var resposta = await client.GetAsync("");
-                        string dados = await resposta.Content.ReadAsStringAsync();
-                        if (resposta.IsSuccessStatusCode)
-                        {
-                            var dadosConvertidos = JsonConvert.DeserializeObject<ConsultaCepViewModel>(dados);
-                            if (dadosConvertidos != null && dadosConvertidos.Ok)
-                            {
-                                txtEstado.Texto = dadosConvertidos?.State;
-                                txtCidade.Texto = dadosConvertidos?.City;
-                                txtBairro.Texto = dadosConvertidos?.District;
-                                txtRua.Texto = dadosConvertidos?.Address;
-                            }
-                        }
-                    }
+                    txtEstado.Texto = retornoConsulta?.State;
+                    txtCidade.Texto = retornoConsulta?.City;
+                    txtBairro.Texto = retornoConsulta?.District;
+                    txtRua.Texto = retornoConsulta?.Address;
                 }
             }
         }

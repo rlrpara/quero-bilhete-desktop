@@ -52,6 +52,21 @@ namespace QueroBilhete.Data.Database
             => conexao.Query<string>($"SHOW DATABASES LIKE '{nomeBanco}';").ToList().Count > 0;
         private static void Criar(MySqlConnection conexao, string sqlCondicao)
                     => conexao.Execute(sqlCondicao);
+        private static bool ExisteDados<T>(MySqlConnection conexao) where T : class
+            => conexao.QueryFirstOrDefault<int>($"SELECT COUNT(*) AS Total FROM {GeradorDapper.ObterNomeTabela<T>()};") > 0;
+        private static bool ServidorAtivo()
+        {
+            try
+            {
+                using MySqlConnection conexao = (MySqlConnection)ConnectionConfiguration.ObterConexao();
+                ExisteBanco(conexao, ObterNomeBanco());
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         #endregion
 
         #region Métodos Públicos
@@ -73,9 +88,9 @@ namespace QueroBilhete.Data.Database
                     Criar(conexao, ObterProcedureDropConstraint(nomeBanco));
                     Criar(conexao, GeradorDapper.CriarTabela<NivelAcesso>(nomeBanco));
                     Criar(conexao, GeradorDapper.CriarTabela<Usuario>(nomeBanco));
-                    Criar(conexao, GeradorDapper.CriarTabela<Embarcacao>(nomeBanco));
-                    Criar(conexao, GeradorDapper.CriarTabela<Empresa>(nomeBanco));
                     Criar(conexao, GeradorDapper.CriarTabela<Passageiro>(nomeBanco));
+                    Criar(conexao, GeradorDapper.CriarTabela<Empresa>(nomeBanco));
+                    Criar(conexao, GeradorDapper.CriarTabela<Embarcacao>(nomeBanco));
                     //Criar(conexao, GeradorDapper.CriarTabela<Usuario>(nomeBanco));
                     //Criar(conexao, GeradorDapper.CriarTabela<Trajeto>(nomeBanco));
                     //Criar(conexao, GeradorDapper.CriarTabela<Viagem>(nomeBanco));
@@ -86,6 +101,14 @@ namespace QueroBilhete.Data.Database
 
                     //Criar procedures
                     Criar(conexao, GeradorDapper.GerarProcedureAddIfColumnNotExists(nomeBanco));
+
+                    //Adicionar registros base
+                    if (!ExisteDados<NivelAcesso>(conexao))
+                        Criar(conexao, GeradorDapper.InserirDadosPadroes<NivelAcesso>());
+                    if (!ExisteDados<Usuario>(conexao))
+                        Criar(conexao, GeradorDapper.InserirDadosPadroes<Usuario>());
+                    if (!ExisteDados<Empresa>(conexao))
+                        Criar(conexao, GeradorDapper.InserirDadosPadroes<Empresa>());
 
                     //executar scripts da versao
                 }
@@ -99,21 +122,6 @@ namespace QueroBilhete.Data.Database
                 throw new Exception(ex.Message);
             }
         }
-
-        private static bool ServidorAtivo()
-        {
-            try
-            {
-                using MySqlConnection conexao = (MySqlConnection)ConnectionConfiguration.ObterConexao();
-                ExisteBanco(conexao, ObterNomeBanco());
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
         #endregion
     }
 }
