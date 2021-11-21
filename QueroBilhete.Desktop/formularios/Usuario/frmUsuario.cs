@@ -60,10 +60,13 @@ namespace QueroBilhete.Desktop.formularios.Usuario
         {
             AtivaBotoes(EBotoes.Novo);
             BloquearCampos(false);
+            Configuracao.LimparCampos(grpCadastro.Controls);
+
             _usuarioViewModel = new UsuarioViewModel();
-            PesquisarDados(0);
+            txtCodigo.EnableAll = false;
             txtNome.Focus();
             txtNome.Select();
+            chkStatus.Checked = true;
         }
 
         private void Editar()
@@ -109,7 +112,7 @@ namespace QueroBilhete.Desktop.formularios.Usuario
                 txtEmail.Texto = _usuarioViewModel.Email;
                 txtSenha.Texto = _usuarioViewModel.Senha;
                 txtNivelAcesso.TextoCentro = _usuarioViewModel.CodigoNivelAcesso > 0 ? _usuarioViewModel.CodigoNivelAcesso.ToString() : "";
-                txtNivelAcesso.TextoDireita = _genericService.ObterDescricao<Domain.Entities.NivelAcesso>(_usuarioViewModel.CodigoNivelAcesso, "DESCRICAO"); ;
+                txtNivelAcesso.TextoDireita = _genericService.ObterDescricao<Domain.Entities.NivelAcesso>(_usuarioViewModel.CodigoNivelAcesso, "DESCRICAO");
                 txtCep.Texto = _usuarioViewModel.Cep;
                 txtEstado.Texto = _usuarioViewModel.Estado;
                 txtCidade.Texto = _usuarioViewModel.Cidade;
@@ -218,6 +221,7 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             _usuarioService = new UsuarioService(_baseRepository);
             _genericService = new GenericService(_baseRepository);
             lblLog.Text = "Cadastrado em:  por:  Atualizado em:  por: ";
+            Novo();
         }
 
         #endregion

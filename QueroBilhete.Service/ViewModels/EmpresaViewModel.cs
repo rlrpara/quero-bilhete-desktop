@@ -79,22 +79,22 @@ namespace QueroBilhete.Service.ViewModels
         public string Estado
         {
             get { return _estado; }
-            set { _estado = value.ApenasNumeros(); }
+            set { _estado = value.RemoveAcentos(); }
         }
         public string Cidade
         {
             get { return _cidade; }
-            set { _cidade = value; }
+            set { _cidade = value.RemoveAcentos(); }
         }
         public string Bairro
         {
             get { return _bairro; }
-            set { _bairro = value; }
+            set { _bairro = value.RemoveAcentos(); }
         }
         public string Rua
         {
             get { return _rua; }
-            set { _rua = value; }
+            set { _rua = value.RemoveAcentos(); }
         }
         public int? Numero
         {
@@ -110,8 +110,11 @@ namespace QueroBilhete.Service.ViewModels
         {
             LimpaAlerta();
 
-            if (string.IsNullOrEmpty(Email))
-                AdicionaAlerta("O E-MAIL é obrigatório");
+            if (string.IsNullOrEmpty(RazaoSocial))
+                AdicionaAlerta("A RAZÃO SOCIAL é obrigatória");
+
+            if (string.IsNullOrEmpty(Cnpj))
+                AdicionaAlerta("O CNPJ é obrigatório");
         }
     }
 }

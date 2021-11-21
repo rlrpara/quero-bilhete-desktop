@@ -14,5 +14,6 @@ namespace QueroBilhete.Domain.Interfaces
         int Adicionar<TEntity>(TEntity entidade) where TEntity : class;
         int Atualizar<TEntity>(int id, TEntity entidade) where TEntity : class;
         int Excluir<TEntity>(int id) where TEntity : class;
+        int ObterUltimoRegistro<TEntity>() where TEntity : class;
     }
 }

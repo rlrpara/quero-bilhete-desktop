@@ -195,7 +195,6 @@
             this.txtCnpj.Location = new System.Drawing.Point(3, 89);
             this.txtCnpj.Name = "txtCnpj";
             this.txtCnpj.Size = new System.Drawing.Size(953, 24);
-            this.txtCnpj.StatuBarComponent = this.toolStripStatusLabel2;
             this.txtCnpj.TabIndex = 3;
             this.txtCnpj.Texto = "";
             this.txtCnpj.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
@@ -325,7 +324,7 @@
             this.txtCep.Size = new System.Drawing.Size(953, 24);
             this.txtCep.TabIndex = 11;
             this.txtCep.Texto = "";
-            this.txtCep.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
+            this.txtCep.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Centro;
             this.txtCep.TextoEsquerda = "CEP";
             this.txtCep.TextoLargura = 90;
             this.txtCep.TextoMaiusculo = false;
@@ -364,7 +363,7 @@
             this.txtCidade.Texto = "";
             this.txtCidade.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
             this.txtCidade.TextoEsquerda = "Cidade";
-            this.txtCidade.TextoLargura = 90;
+            this.txtCidade.TextoLargura = 150;
             this.txtCidade.TextoMaiusculo = true;
             this.txtCidade.TextoSenha = false;
             this.txtCidade.TextoStatus = "Cidade";
@@ -398,7 +397,7 @@
             this.txtNumero.Size = new System.Drawing.Size(953, 24);
             this.txtNumero.TabIndex = 16;
             this.txtNumero.Texto = "";
-            this.txtNumero.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
+            this.txtNumero.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Centro;
             this.txtNumero.TextoEsquerda = "Número";
             this.txtNumero.TextoLargura = 70;
             this.txtNumero.TextoMaiusculo = false;
@@ -418,7 +417,7 @@
             this.txtBairro.Texto = "";
             this.txtBairro.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
             this.txtBairro.TextoEsquerda = "Bairro";
-            this.txtBairro.TextoLargura = 90;
+            this.txtBairro.TextoLargura = 150;
             this.txtBairro.TextoMaiusculo = true;
             this.txtBairro.TextoSenha = false;
             this.txtBairro.TextoStatus = "Bairro";

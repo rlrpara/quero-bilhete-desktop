@@ -123,6 +123,11 @@ namespace QueroBilhete.Data.Repositories
             _conexao.Close();
             _conexao.Dispose();
         }
+
+        public int ObterUltimoRegistro<TEntity>() where TEntity : class
+        {
+            return _conexao.QueryFirst<int>($"SELECT ID FROM {ObterNomeTabela<TEntity>()} ORDER BY ID DESC LIMIT 1");
+        }
         #endregion
     }
 }

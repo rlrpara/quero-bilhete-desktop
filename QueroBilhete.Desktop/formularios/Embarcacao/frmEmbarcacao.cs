@@ -17,7 +17,8 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
         #region [Propriedades Privadas]
         private EmbarcacaoViewModel _embarcacaoViewModel;
         private readonly BaseRepository _baseRepository;
-        private EmbarcacaoService embarcacaoService;
+        private EmbarcacaoService _embarcacaoService;
+        private GenericService _genericService;
         #endregion
 
         #region [Métodos Privados]
@@ -25,10 +26,13 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
         {
             AtivaBotoes(EBotoes.Novo);
             BloquearCampos(false);
+            Configuracao.LimparCampos(grpCadastro.Controls);
 
             _embarcacaoViewModel = new EmbarcacaoViewModel();
+            txtCodigo.EnableAll = false;
             txtEmpresa.Focus();
             txtEmpresa.Select();
+            chkStatus.Checked = true;
         }
 
         private void Editar()
@@ -44,7 +48,7 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
         {
             if (MessageBox.Show("Deseja remover este registro?", "ATENÇÃO", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                embarcacaoService.RemoverEmbarcacao(Convert.ToInt32(txtCodigo.Texto));
+                _embarcacaoService.RemoverEmbarcacao(Convert.ToInt32(txtCodigo.Texto));
                 Configuracao.LimparCampos(grpCadastro.Controls);
                 AtivaBotoes(EBotoes.Apagar);
                 BloquearCampos(true);
@@ -57,7 +61,8 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
             janela.CarregaDados<Domain.Entities.Embarcacao>("AND ATIVO = 1");
             janela.ShowDialog();
 
-            PesquisarDados(janela.CodigoSelecionado);
+            if(janela.CodigoSelecionado > 0)
+                PesquisarDados(janela.CodigoSelecionado);
 
             AtivaBotoes(EBotoes.Pesquisar);
             BloquearCampos(true);
@@ -65,11 +70,12 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
 
         private void PesquisarDados(int codigoSelecionado)
         {
-            _embarcacaoViewModel = codigoSelecionado > 0 ? embarcacaoService.CarregaEmbarcacao(codigoSelecionado) : new EmbarcacaoViewModel();
+            _embarcacaoViewModel = codigoSelecionado > 0 ? _embarcacaoService.CarregaEmbarcacao(codigoSelecionado) : new EmbarcacaoViewModel();
             if (_embarcacaoViewModel != null)
             {
                 txtCodigo.Texto = _embarcacaoViewModel.Codigo.ToString();
                 txtEmpresa.TextoCentro = _embarcacaoViewModel.CodigoEmpresa.ToString();
+                txtEmpresa.TextoDireita = _genericService.ObterDescricao<Domain.Entities.Empresa>(_embarcacaoViewModel.CodigoEmpresa, "RAZAO_SOCIAL");
                 txtNome.Texto = _embarcacaoViewModel.Nome;
                 chkStatus.Checked = _embarcacaoViewModel.Ativo;
             }
@@ -96,9 +102,12 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
                 AtivaBotoes(EBotoes.Salvar);
                 BloquearCampos(true);
                 if (_embarcacaoViewModel.Codigo == 0)
-                    embarcacaoService.AdicionarEmbarcacao(_embarcacaoViewModel);
+                {
+                    _embarcacaoService.AdicionarEmbarcacao(_embarcacaoViewModel);
+                    txtCodigo.Texto = _embarcacaoService.ObterUltimoRegistro<Domain.Entities.Embarcacao>().ToString();
+                }
                 else
-                    embarcacaoService.AtualizarEmbarcacao(_embarcacaoViewModel);
+                    _embarcacaoService.AtualizarEmbarcacao(_embarcacaoViewModel);
                 PesquisarDados(Convert.ToInt32(!txtCodigo.Texto.IsNumeric() ? "0" : txtCodigo.Texto));
                 AtivaBotoes(EBotoes.Pesquisar);
                 BloquearCampos(true);
@@ -143,7 +152,8 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
             InitializeComponent();
             _baseRepository = new BaseRepository();
             _embarcacaoViewModel = new EmbarcacaoViewModel();
-            embarcacaoService = new EmbarcacaoService(_baseRepository);
+            _embarcacaoService = new EmbarcacaoService(_baseRepository);
+            _genericService = new GenericService(_baseRepository);
             lblLog.Text = "Cadastrado em:  por:  Atualizado em:  por: ";
             Novo();
         }
@@ -193,7 +203,7 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
 
         private void chkStatus_Enter(object sender, EventArgs e)
         {
-            chkStatus.Text = chkStatus.Checked ? "Ativo" : "Inativo";
+            AlteraStatusCheckBox(ref chkStatus);
         }
 
         private void txtEmpresa_ButtonClick(object sender, EventArgs e)
@@ -202,8 +212,11 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
             janela.CarregaDados<Domain.Entities.Empresa>("AND ATIVO = 1");
             janela.ShowDialog();
 
-            txtEmpresa.TextoCentro = janela.CodigoSelecionado.ToString();
-            txtEmpresa.TextoDireita = janela.TextoSelecionado;
+            if(janela.CodigoSelecionado > 0)
+            {
+                txtEmpresa.TextoCentro = janela.CodigoSelecionado.ToString();
+                txtEmpresa.TextoDireita = _genericService.ObterDescricao<Domain.Entities.Empresa>(janela.CodigoSelecionado, "RAZAO_SOCIAL");
+            }
 
         }
         #endregion

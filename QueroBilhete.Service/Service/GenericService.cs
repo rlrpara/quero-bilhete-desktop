@@ -1,12 +1,8 @@
-﻿using Newtonsoft.Json;
-using QueroBilhete.Domain.Interfaces;
+﻿using QueroBilhete.Domain.Interfaces;
 using QueroBilhete.Infra.Data.Contex;
-using QueroBilhete.Infra.Utilities.Utilitarios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
 
 namespace QueroBilhete.Service.Service
 {
@@ -20,6 +16,8 @@ namespace QueroBilhete.Service.Service
         #endregion
 
         #region Métodos Privados
+        private static string ObterNomeBanco()
+            => Environment.GetEnvironmentVariable("MYSQL_DATABASE");
         #endregion
 
         #region Métodos Públicos
@@ -29,7 +27,7 @@ namespace QueroBilhete.Service.Service
         }
         public string ObterDescricao<T>(int codigoSelecionado, string coluna) where T : class
         {
-            var sql = $"SELECT {coluna} FROM {GeradorDapper.ObterNomeTabela<T>()} WHERE ID = {codigoSelecionado};";
+            var sql = $"USE {ObterNomeBanco()};SELECT {coluna} FROM {GeradorDapper.ObterNomeTabela<T>()} WHERE ID = {codigoSelecionado};";
             return _baseRepository.BuscarPorQuery<string>(sql);
         }
 

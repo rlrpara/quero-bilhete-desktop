@@ -140,6 +140,7 @@
             this.chkStatus.TabIndex = 3;
             this.chkStatus.Text = "Ativo";
             this.chkStatus.UseVisualStyleBackColor = true;
+            this.chkStatus.Click += new System.EventHandler(this.chkStatus_Enter);
             this.chkStatus.Enter += new System.EventHandler(this.chkStatus_Enter);
             // 
             // label14

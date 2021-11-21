@@ -16,5 +16,6 @@ namespace QueroBilhete.Service.Interface
         int Atualizar<TEntity>(int id, TEntity entidade) where TEntity : class;
         int Excluir<TEntity>(int id) where TEntity : class;
         Task<T> ConsultaGenericaApi<T>(string url) where T : class;
+        public int ObterUltimoRegistro<TEntity>() where TEntity : class;
     }
 }

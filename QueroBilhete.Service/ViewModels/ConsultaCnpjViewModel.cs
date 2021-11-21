@@ -1,4 +1,5 @@
 ﻿using QueroBilhete.Infra.Utilities.ExtensionMethods;
+using System.Collections.Generic;
 
 namespace QueroBilhete.Service.ViewModels
 {
@@ -13,7 +14,7 @@ namespace QueroBilhete.Service.ViewModels
         public string fantasia { get; set; }
         public string porte { get; set; }
         public string natureza_juridica { get; set; }
-        public ConsultaAtividadePrincipalViewModel atividade_principal { get; set; }
+        public IEnumerable<ConsultaAtividadePrincipalViewModel> atividade_principal { get; set; }
         public string logradouro { get; set; }
         public string numero { get; set; }
         public string municipio { get; set; }

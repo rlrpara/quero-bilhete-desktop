@@ -1,15 +1,12 @@
-﻿using Newtonsoft.Json;
-using QueroBilhete.Data.Repositories;
+﻿using QueroBilhete.Data.Repositories;
 using QueroBilhete.Desktop.Enumeradores;
 using QueroBilhete.Desktop.formularios.Modelo;
 using QueroBilhete.Desktop.formularios.Pesquisa;
 using QueroBilhete.Desktop.Globais;
 using QueroBilhete.Infra.Utilities.ExtensionMethods;
-using QueroBilhete.Infra.Utilities.Utilitarios;
 using QueroBilhete.Service.Service;
 using QueroBilhete.Service.ViewModels;
 using System;
-using System.Net.Http;
 using System.Text;
 using System.Windows.Forms;
 
@@ -21,14 +18,15 @@ namespace QueroBilhete.Desktop.formularios.Empresa
         private EmpresaViewModel _empresaViewModel;
         private readonly BaseRepository _baseRepository;
         private EmpresaService _empresaService;
-        private GenericService _genericService;
+        private string ultimoCnpj = "";
         #endregion
 
         #region [Métodos Privados]
         private void Novo()
         {
             AtivaBotoes(EBotoes.Novo);
-            BloquearCampos(false);
+            BloquearCampos(true);
+            Configuracao.LimparCampos(grpCadastro.Controls);
 
             _empresaViewModel = new EmpresaViewModel();
             txtRazaoSocial.Focus();
@@ -176,7 +174,6 @@ namespace QueroBilhete.Desktop.formularios.Empresa
             _baseRepository = new BaseRepository();
             _empresaViewModel = new EmpresaViewModel();
             _empresaService = new EmpresaService(_baseRepository);
-            _genericService = new GenericService(_baseRepository);
             lblLog.Text = "Cadastrado em:  por:  Atualizado em:  por: ";
             Novo();
         }
@@ -246,19 +243,20 @@ namespace QueroBilhete.Desktop.formularios.Empresa
 
         private async void txtCnpj_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (txtCnpj.Texto.Trim().ApenasNumeros().IsNumeric() && (txtCnpj.Texto.Trim().ApenasNumeros().Length == 14))
+            if (txtCnpj.Texto.Trim().ApenasNumeros().Length == 14 && ultimoCnpj != txtCnpj.Texto.ApenasNumeros())
             {
                 var retornoConsulta = await _empresaService.ConsultaGenericaApi<ConsultaCnpjViewModel>($"https://www.receitaws.com.br/v1/cnpj/{txtCnpj.Texto.ApenasNumeros()}");
 
                 if(retornoConsulta != null && retornoConsulta.status.Contains("OK"))
                 {
                     txtRazaoSocial.Texto = retornoConsulta.nome;
-                    txtCnpj.Texto = retornoConsulta.cnpj;
+                    txtCnpj.Texto = retornoConsulta.cnpj.ApenasNumeros();
                     txtCep.Texto = retornoConsulta.cep;
                     txtEstado.Texto = retornoConsulta.uf;
                     txtCidade.Texto = retornoConsulta.municipio;
                 }
             }
+            ultimoCnpj = txtCnpj.Texto.ApenasNumeros();
         }
     }
 }

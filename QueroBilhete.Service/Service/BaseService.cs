@@ -146,5 +146,10 @@ namespace QueroBilhete.Service.Service
 
             return default(T);
         }
+
+        public int ObterUltimoRegistro<TEntity>() where TEntity : class
+        {
+            return _baseRepository.ObterUltimoRegistro<TEntity>();
+        }
     }
 }
