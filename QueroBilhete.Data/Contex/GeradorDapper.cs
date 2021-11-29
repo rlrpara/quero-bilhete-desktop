@@ -112,20 +112,26 @@ namespace QueroBilhete.Infra.Data.Contex
             switch (nomeTabela.ToLower())
             {
                 case "usuario":
-                        sqlInsert.AppendLine("INSERT INTO usuario (           NOME,             EMAIL, SENHA, ID_NIVEL_ACESSO)");
+                        sqlInsert.AppendLine("INSERT INTO usuario (          NOME,             EMAIL, SENHA, ID_NIVEL_ACESSO)");
                         sqlInsert.AppendLine("             VALUES ('Administrador', 'admin@email.com', '123',               1)");
                     break;
                 case "nivel_acesso":
-                    sqlInsert.AppendLine("INSERT INTO nivel_acesso(         TITULO,       DESCRICAO)");
+                    sqlInsert.AppendLine("INSERT INTO nivel_acesso(        TITULO,       DESCRICAO)");
                     sqlInsert.AppendLine("                  VALUES('ADMINISTRADOR', 'ADMINISTRADOR');");
-                    sqlInsert.AppendLine("INSERT INTO nivel_acesso(        TITULO,      DESCRICAO)");
+                    sqlInsert.AppendLine("INSERT INTO nivel_acesso(       TITULO,      DESCRICAO)");
                     sqlInsert.AppendLine("                  VALUES('PROPRIETARIO', 'PROPRIETARIO');");
-                    sqlInsert.AppendLine("INSERT INTO nivel_acesso(    TITULO,  DESCRICAO)");
+                    sqlInsert.AppendLine("INSERT INTO nivel_acesso(   TITULO,  DESCRICAO)");
                     sqlInsert.AppendLine("                  VALUES('VENDEDOR', 'VENDEDOR')");
                     break;
                 case "empresa":
                     sqlInsert.AppendLine("INSERT INTO empresa (RAZAO_SOCIAL,             CNPJ)");
                     sqlInsert.AppendLine("              VALUES(    'PADRAO', '00000000000000')");
+                    break;
+                case "alinhamento":
+                    sqlInsert.AppendLine("INSERT INTO alinhamento(     NOME)");
+                    sqlInsert.AppendLine("                 VALUES('DIREITA');");
+                    sqlInsert.AppendLine("INSERT INTO alinhamento(      NOME)");
+                    sqlInsert.AppendLine("                 VALUES('ESQUERDA');");
                     break;
                 default:
                     break;

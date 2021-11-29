@@ -1,5 +1,10 @@
-﻿using QueroBilhete.Desktop.Enumeradores;
+﻿using QueroBilhete.Data.Repositories;
+using QueroBilhete.Desktop.Enumeradores;
 using QueroBilhete.Desktop.Globais;
+using QueroBilhete.Infra.Data.Contex;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace QueroBilhete.Desktop.formularios.Modelo
@@ -30,6 +35,49 @@ namespace QueroBilhete.Desktop.formularios.Modelo
         protected void AlteraStatusCheckBox(ref CheckBox chkStatus)
         {
             chkStatus.Text = chkStatus.Checked ? "Ativo" : "Inativo";
+        }
+        protected void AddJanela(Form form, EJanela tipoJanela = EJanela.MdiFilho)
+        {
+            if ((int)tipoJanela == 2)
+            {
+                foreach (Form formFilho in this.MdiChildren)
+                {
+                    if (formFilho.GetType() == form.GetType())
+                    {
+                        formFilho.Focus();
+                        return;
+                    }
+                }
+                form.MdiParent = this;
+                form.WindowState = FormWindowState.Maximized;
+                form.Show();
+            }
+            else
+                form.ShowDialog();
+        }
+
+        public void CarregaDados<T>(DataGridView gridDados, BaseRepository baseRepository, string sqlWhere) where T : class
+        {
+            IEnumerable<T> lista = baseRepository.BuscarTodosPorQuery<T>(GeradorDapper.ObterDadosGrid<T>(sqlWhere)).ToList();
+            gridDados.DataSource = lista;
+
+            if (lista.Count() > 0)
+                ConfiguraGrid(gridDados, lista);
+
+        }
+
+        private void ConfiguraGrid<T>(DataGridView dgvDados, IEnumerable<T> lista) where T : class
+        {
+            Configuracao.ConfiguraGrid(dgvDados);
+            var contador = 0;
+            var colunas = GeradorDapper.ObterColunasGrid(lista);
+
+            foreach (var campos in colunas.Replace($"\r\n", "").Split(';').ToArray())
+            {
+                var coluna = campos.Replace(@"\r\n", "").Split('|');
+                Configuracao.GridDados(dgvDados, coluna[1].ToString(), coluna[1].ToString(), 2, Convert.ToInt32(coluna[2]), Convert.ToBoolean(coluna[3]), false, contador);
+                contador += 1;
+            }
         }
         #endregion
 

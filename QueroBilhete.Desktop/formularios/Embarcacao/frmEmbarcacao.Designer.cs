@@ -28,18 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.dgvDados = new System.Windows.Forms.DataGridView();
             this.txtCodigo = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
             this.txtEmpresa = new QueroBilhete.Componentes.TextBox.txtBoxBtnLabel();
             this.panelStatus = new System.Windows.Forms.Panel();
             this.chkStatus = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtNome = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlDados = new System.Windows.Forms.Panel();
+            this.btnNovoGrid = new System.Windows.Forms.Button();
             this.grpCadastro.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDados)).BeginInit();
             this.panelStatus.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.pnlDados.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpCadastro
             // 
+            this.grpCadastro.Controls.Add(this.panel1);
             this.grpCadastro.Controls.Add(this.panelStatus);
             this.grpCadastro.Controls.Add(this.txtNome);
             this.grpCadastro.Controls.Add(this.txtEmpresa);
@@ -85,6 +93,20 @@
             // 
             this.btnNovo.FlatAppearance.BorderSize = 0;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            // 
+            // dgvDados
+            // 
+            this.dgvDados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDados.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDados.Location = new System.Drawing.Point(10, 41);
+            this.dgvDados.MultiSelect = false;
+            this.dgvDados.Name = "dgvDados";
+            this.dgvDados.RowHeadersVisible = false;
+            this.dgvDados.RowTemplate.Height = 25;
+            this.dgvDados.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvDados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDados.Size = new System.Drawing.Size(951, 271);
+            this.dgvDados.TabIndex = 1;
             // 
             // txtCodigo
             // 
@@ -170,6 +192,36 @@
             this.txtNome.TextoStatus = "Nome";
             this.txtNome.VisibleAll = true;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.dgvDados);
+            this.panel1.Controls.Add(this.pnlDados);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 115);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(10);
+            this.panel1.Size = new System.Drawing.Size(971, 322);
+            this.panel1.TabIndex = 19;
+            // 
+            // pnlDados
+            // 
+            this.pnlDados.Controls.Add(this.btnNovoGrid);
+            this.pnlDados.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlDados.Location = new System.Drawing.Point(10, 10);
+            this.pnlDados.Name = "pnlDados";
+            this.pnlDados.Size = new System.Drawing.Size(951, 31);
+            this.pnlDados.TabIndex = 0;
+            // 
+            // btnNovoGrid
+            // 
+            this.btnNovoGrid.Location = new System.Drawing.Point(3, 3);
+            this.btnNovoGrid.Name = "btnNovoGrid";
+            this.btnNovoGrid.Size = new System.Drawing.Size(75, 23);
+            this.btnNovoGrid.TabIndex = 0;
+            this.btnNovoGrid.Text = "Novo";
+            this.btnNovoGrid.UseVisualStyleBackColor = true;
+            this.btnNovoGrid.Click += new System.EventHandler(this.btnNovoGrid_Click);
+            // 
             // frmEmbarcacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -178,8 +230,11 @@
             this.Name = "frmEmbarcacao";
             this.Text = "frmEmbarcacao";
             this.grpCadastro.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDados)).EndInit();
             this.panelStatus.ResumeLayout(false);
             this.panelStatus.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.pnlDados.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,5 +248,9 @@
         private System.Windows.Forms.CheckBox chkStatus;
         private System.Windows.Forms.Label label14;
         private Componentes.TextBox.txtBoxLabel txtNome;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlDados;
+        private System.Windows.Forms.Button btnNovoGrid;
+        private System.Windows.Forms.DataGridView dgvDados;
     }
 }

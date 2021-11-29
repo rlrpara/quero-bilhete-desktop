@@ -91,8 +91,8 @@ namespace QueroBilhete.Data.Database
                     Criar(conexao, GeradorDapper.CriarTabela<Passageiro>(nomeBanco));
                     Criar(conexao, GeradorDapper.CriarTabela<Empresa>(nomeBanco));
                     Criar(conexao, GeradorDapper.CriarTabela<Embarcacao>(nomeBanco));
-                    //Criar(conexao, GeradorDapper.CriarTabela<Usuario>(nomeBanco));
-                    //Criar(conexao, GeradorDapper.CriarTabela<Trajeto>(nomeBanco));
+                    Criar(conexao, GeradorDapper.CriarTabela<EmbarcacaoPoltrona>(nomeBanco));
+                    Criar(conexao, GeradorDapper.CriarTabela<Alinhamento>(nomeBanco));
                     //Criar(conexao, GeradorDapper.CriarTabela<Viagem>(nomeBanco));
                     //Criar(conexao, GeradorDapper.CriarTabela<TipoPassagem>(nomeBanco));
                     //Criar(conexao, GeradorDapper.CriarTabela<Passageiro>(nomeBanco));
@@ -109,6 +109,8 @@ namespace QueroBilhete.Data.Database
                         Criar(conexao, GeradorDapper.InserirDadosPadroes<Usuario>());
                     if (!ExisteDados<Empresa>(conexao))
                         Criar(conexao, GeradorDapper.InserirDadosPadroes<Empresa>());
+                    if (!ExisteDados<Alinhamento>(conexao))
+                        Criar(conexao, GeradorDapper.InserirDadosPadroes<Alinhamento>());
 
                     //executar scripts da versao
                 }

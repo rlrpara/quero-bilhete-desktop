@@ -12,12 +12,11 @@ using System.Windows.Forms;
 
 namespace QueroBilhete.Desktop.formularios.Embarcacao
 {
-    public partial class frmEmbarcacao : frmModelo
+    public partial class frmRegistroPoltrona : frmModelo
     {
         #region [Propriedades Privadas]
-        private EmbarcacaoViewModel _embarcacaoViewModel;
+        private EmbarcacaoPoltronaViewModel _embarcacaoPoltronaViewModel;
         private readonly BaseRepository _baseRepository;
-        private EmbarcacaoService _embarcacaoService;
         private EmbarcacaoPoltronaService _embarcacaoPoltronaService;
         private GenericService _genericService;
         #endregion
@@ -29,29 +28,27 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
             BloquearCampos(false);
             Configuracao.LimparCampos(grpCadastro.Controls);
 
-            _embarcacaoViewModel = new EmbarcacaoViewModel();
+            _embarcacaoPoltronaViewModel = new EmbarcacaoPoltronaViewModel();
             txtCodigo.EnableAll = false;
-            txtEmpresa.Focus();
-            txtEmpresa.Select();
+            txtLetra.Focus();
+            txtLetra.Select();
             chkStatus.Checked = true;
-            pnlDados.Enabled = false;
         }
 
         private void Editar()
         {
             AtivaBotoes(EBotoes.Editar);
             BloquearCampos(false);
-            txtCodigo.Enabled = false;
-            txtEmpresa.Select();
-            txtEmpresa.Focus();
-            pnlDados.Enabled = true;
+            txtCodigo.EnableAll = false;
+            txtLetra.Focus();
+            txtLetra.Select();
         }
 
         private void Excluir()
         {
             if (MessageBox.Show("Deseja remover este registro?", "ATENÇÃO", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                _embarcacaoService.RemoverEmbarcacao(Convert.ToInt32(txtCodigo.Texto));
+                _embarcacaoPoltronaService.RemoverEmbarcacaoPoltrona(Convert.ToInt32(txtCodigo.Texto));
                 Configuracao.LimparCampos(grpCadastro.Controls);
                 AtivaBotoes(EBotoes.Apagar);
                 BloquearCampos(true);
@@ -61,14 +58,11 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
         private void Localizar()
         {
             var janela = new frmPesquisaGenerica();
-            janela.CarregaDados<Domain.Entities.Embarcacao>("AND ATIVO = 1");
+            janela.CarregaDados<Domain.Entities.EmbarcacaoPoltrona>("AND ATIVO = 1");
             janela.ShowDialog();
 
-            if(janela.CodigoSelecionado > 0)
-            {
+            if (janela.CodigoSelecionado > 0)
                 PesquisarDados(janela.CodigoSelecionado);
-                CarregarDadosGrid();
-            }
 
             AtivaBotoes(EBotoes.Pesquisar);
             BloquearCampos(true);
@@ -76,14 +70,20 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
 
         private void PesquisarDados(int codigoSelecionado)
         {
-            _embarcacaoViewModel = codigoSelecionado > 0 ? _embarcacaoService.CarregaEmbarcacao(codigoSelecionado) : new EmbarcacaoViewModel();
-            if (_embarcacaoViewModel != null)
+            _embarcacaoPoltronaViewModel = codigoSelecionado > 0 ? _embarcacaoPoltronaService.CarregaEmbarcacaoPoltrona(codigoSelecionado) : new EmbarcacaoPoltronaViewModel();
+            if (_embarcacaoPoltronaViewModel != null)
             {
-                txtCodigo.Texto = _embarcacaoViewModel.Codigo.ToString();
-                txtEmpresa.TextoCentro = _embarcacaoViewModel.CodigoEmpresa.ToString();
-                txtEmpresa.TextoDireita = _genericService.ObterDescricao<Domain.Entities.Empresa>(_embarcacaoViewModel.CodigoEmpresa, "RAZAO_SOCIAL");
-                txtNome.Texto = _embarcacaoViewModel.Nome;
-                chkStatus.Checked = _embarcacaoViewModel.Ativo;
+                txtCodigo.Texto = _embarcacaoPoltronaViewModel.Codigo.ToString();
+                txtEmbarcacao.TextoCentro = _embarcacaoPoltronaViewModel.CodigoEmbarcacao.ToString();
+                txtEmbarcacao.TextoDireita = _genericService.ObterDescricao<Domain.Entities.Embarcacao>(_embarcacaoPoltronaViewModel.CodigoEmbarcacao, "NOME");
+                txtLetra.Texto = _embarcacaoPoltronaViewModel.Letra;
+                txtInicio.Texto = _embarcacaoPoltronaViewModel.Inicio.ToString();
+                txtFim.Texto = _embarcacaoPoltronaViewModel.Fim.ToString();
+                txtEixoX.Texto = _embarcacaoPoltronaViewModel.EixoX.ToString();
+                txtEixoY.Texto = _embarcacaoPoltronaViewModel.EixoY.ToString();
+                txtTotalColunas.Texto = _embarcacaoPoltronaViewModel.TotalColuna.ToString();
+                txtAlinhamento.TextoCentro = _embarcacaoPoltronaViewModel.Alinhamento.ToString();
+                chkStatus.Checked = _embarcacaoPoltronaViewModel.Ativo;
             }
             else
             {
@@ -99,21 +99,21 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
 
         private void Salvar()
         {
-            _embarcacaoViewModel = ObterDadosEmpresa();
+            _embarcacaoPoltronaViewModel = ObterDados();
 
-            _embarcacaoViewModel.Validate();
+            _embarcacaoPoltronaViewModel.Validate();
 
-            if (_embarcacaoViewModel.Valido)
+            if (_embarcacaoPoltronaViewModel.Valido)
             {
                 AtivaBotoes(EBotoes.Salvar);
                 BloquearCampos(true);
-                if (_embarcacaoViewModel.Codigo == 0)
+                if (_embarcacaoPoltronaViewModel.Codigo == 0)
                 {
-                    _embarcacaoService.AdicionarEmbarcacao(_embarcacaoViewModel);
-                    txtCodigo.Texto = _embarcacaoService.ObterUltimoRegistro<Domain.Entities.Embarcacao>().ToString();
+                    _embarcacaoPoltronaService.AdicionarEmbarcacaoPoltrona(_embarcacaoPoltronaViewModel);
+                    txtCodigo.Texto = _embarcacaoPoltronaService.ObterUltimoRegistro<Domain.Entities.EmbarcacaoPoltrona>().ToString();
                 }
                 else
-                    _embarcacaoService.AtualizarEmbarcacao(_embarcacaoViewModel);
+                    _embarcacaoPoltronaService.AtualizarEmbarcacaoPoltrona(_embarcacaoPoltronaViewModel);
                 PesquisarDados(Convert.ToInt32(!txtCodigo.Texto.IsNumeric() ? "0" : txtCodigo.Texto));
                 AtivaBotoes(EBotoes.Pesquisar);
                 BloquearCampos(true);
@@ -125,11 +125,17 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
             }
         }
 
-        private EmbarcacaoViewModel ObterDadosEmpresa() => new EmbarcacaoViewModel()
+        private EmbarcacaoPoltronaViewModel ObterDados() => new EmbarcacaoPoltronaViewModel()
         {
             Codigo = !txtCodigo.Texto.IsNumeric() ? 0 : Convert.ToInt32(txtCodigo.Texto),
-            CodigoEmpresa = Convert.ToInt32(txtEmpresa.TextoCentro),
-            Nome = txtNome.Texto,
+            CodigoEmbarcacao = Convert.ToInt32(txtEmbarcacao.TextoCentro),
+            Letra = txtLetra.Texto,
+            Inicio = txtInicio.Texto.IsNumeric() ? Convert.ToInt32(txtInicio.Texto) : (int?)null,
+            Fim = txtFim.Texto.IsNumeric() ? Convert.ToInt32(txtFim.Texto) : (int?)null,
+            EixoX = txtEixoX.Texto.IsNumeric() ? Convert.ToInt32(txtEixoX.Texto) : (int?)null,
+            EixoY = txtEixoY.Texto.IsNumeric() ? Convert.ToInt32(txtEixoY.Texto) : (int?)null,
+            TotalColuna = txtTotalColunas.Texto.IsNumeric() ? Convert.ToInt32(txtTotalColunas.Texto) : (int?)null,
+            Alinhamento = txtAlinhamento.TextoCentro.IsNumeric() ? Convert.ToInt32(txtAlinhamento.TextoCentro) : (int?)null,
             Ativo = chkStatus.Checked
         };
 
@@ -138,7 +144,7 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
             var alerta = new StringBuilder();
             alerta.AppendLine("Foram encontrados os serguintes erros:");
 
-            foreach (var item in _embarcacaoViewModel.Mensagens)
+            foreach (var item in _embarcacaoPoltronaViewModel.Mensagens)
                 alerta.AppendLine(item.ToString());
 
             MessageBox.Show(alerta.ToString());
@@ -150,32 +156,19 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
             AtivaBotoes(EBotoes.Cancelar);
             BloquearCampos(true);
         }
-
-        private void ConfiguraGrid()
-        {
-            Configuracao.ConfiguraGrid(dgvDados);
-        }
         #endregion
 
-        private void CarregarDadosGrid()
-        {
-            CarregaDados<Domain.Entities.EmbarcacaoPoltrona>(dgvDados, _baseRepository, $"AND ID_EMBARCACAO = {txtCodigo.Texto.ApenasNumeros()}");
-        }
-
         #region [Construtor]
-        public frmEmbarcacao()
+        public frmRegistroPoltrona()
         {
             InitializeComponent();
             _baseRepository = new BaseRepository();
-            _embarcacaoViewModel = new EmbarcacaoViewModel();
-            _embarcacaoService = new EmbarcacaoService(_baseRepository);
-            _embarcacaoPoltronaService = new EmbarcacaoPoltronaService(_baseRepository);
             _genericService = new GenericService(_baseRepository);
+            _embarcacaoPoltronaService = new EmbarcacaoPoltronaService(_baseRepository);
+            _embarcacaoPoltronaViewModel= new EmbarcacaoPoltronaViewModel();
             lblLog.Text = "Cadastrado em:  por:  Atualizado em:  por: ";
             Novo();
-            ConfiguraGrid();
         }
-
         #endregion
 
         #region [Métodos Formulário]
@@ -219,31 +212,32 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
             Sair();
         }
 
-        private void chkStatus_Enter(object sender, EventArgs e)
-        {
-            AlteraStatusCheckBox(ref chkStatus);
-        }
-
-        private void txtEmpresa_ButtonClick(object sender, EventArgs e)
+        private void txtEmbarcacao_ButtonClick(object sender, EventArgs e)
         {
             var janela = new frmPesquisaGenerica();
-            janela.CarregaDados<Domain.Entities.Empresa>("AND ATIVO = 1");
+            janela.CarregaDados<Domain.Entities.Embarcacao>("AND ATIVO = 1");
             janela.ShowDialog();
 
-            if(janela.CodigoSelecionado > 0)
+            if (janela.CodigoSelecionado > 0)
             {
-                txtEmpresa.TextoCentro = janela.CodigoSelecionado.ToString();
-                txtEmpresa.TextoDireita = _genericService.ObterDescricao<Domain.Entities.Empresa>(janela.CodigoSelecionado, "RAZAO_SOCIAL");
+                txtEmbarcacao.TextoCentro = janela.CodigoSelecionado.ToString();
+                txtEmbarcacao.TextoDireita = _genericService.ObterDescricao<Domain.Entities.Embarcacao>(janela.CodigoSelecionado, "NOME");
             }
-
-        }
-
-        private void btnNovoGrid_Click(object sender, EventArgs e)
-        {
-            AddJanela(new frmRegistroPoltrona(), EJanela.Modal);
-            CarregarDadosGrid();
         }
 
         #endregion
+
+        private void txtAlinhamento_ButtonClick(object sender, EventArgs e)
+        {
+            var janela = new frmPesquisaGenerica();
+            janela.CarregaDados<Domain.Entities.Alinhamento>("AND ATIVO = 1");
+            janela.ShowDialog();
+
+            if (janela.CodigoSelecionado > 0)
+            {
+                txtAlinhamento.TextoCentro = janela.CodigoSelecionado.ToString();
+                txtAlinhamento.TextoDireita = _genericService.ObterDescricao<Domain.Entities.Alinhamento>(janela.CodigoSelecionado, "NOME");
+            }
+        }
     }
 }

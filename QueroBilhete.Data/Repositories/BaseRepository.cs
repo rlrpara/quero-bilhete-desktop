@@ -92,7 +92,7 @@ namespace QueroBilhete.Data.Repositories
             else
             {
                 sqlPesquisa.AppendLine($"USE {_nomeBanco};");
-                sqlPesquisa.AppendLine(query.Trim());
+                sqlPesquisa.AppendLine($"{query.Trim()}");
             }
 
             return _conexao.Query<TEntity>(sqlPesquisa.ToString(), commandTimeout: 80000000, commandType: CommandType.Text);
