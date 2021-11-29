@@ -6,6 +6,7 @@ namespace QueroBilhete.Desktop.Globais
 {
     public static class Gerais
     {
+        public static int Codigo;
         public static string Email = "";
         public static string Senha = "";
         public static bool Logado = false;

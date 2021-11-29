@@ -71,6 +71,8 @@ namespace QueroBilhete.Desktop
         {
             var janela = new frmLogin();
             janela.ShowDialog();
+            statusTexto.Text = $"Usuário: {Gerais.Codigo} - {Gerais.Email.Split('@')[0]}";
+            statusVersao.Text = "Versão 1.0";
         }
 
         private void Home_KeyDown(object sender, KeyEventArgs e)

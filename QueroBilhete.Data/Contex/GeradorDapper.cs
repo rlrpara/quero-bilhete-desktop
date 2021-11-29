@@ -133,6 +133,36 @@ namespace QueroBilhete.Infra.Data.Contex
                     sqlInsert.AppendLine("INSERT INTO alinhamento(      NOME)");
                     sqlInsert.AppendLine("                 VALUES('ESQUERDA');");
                     break;
+                case "tipo_passagem":
+                    sqlInsert.AppendLine("INSERT INTO tipo_passagem (DESCRICAO)");
+                    sqlInsert.AppendLine("                   VALUES ('INTEIRA');");
+                    sqlInsert.AppendLine("INSERT INTO tipo_passagem (DESCRICAO)");
+                    sqlInsert.AppendLine("                   VALUES ('MEIA');");
+                    sqlInsert.AppendLine("INSERT INTO tipo_passagem (DESCRICAO)");
+                    sqlInsert.AppendLine("                   VALUES ('IDOSO');");
+                    sqlInsert.AppendLine("INSERT INTO tipo_passagem (DESCRICAO)");
+                    sqlInsert.AppendLine("                   VALUES ('CRIANCA');");
+                    sqlInsert.AppendLine("INSERT INTO tipo_passagem (DESCRICAO)");
+                    sqlInsert.AppendLine("                   VALUES ('POLICIA');");
+                    sqlInsert.AppendLine("INSERT INTO tipo_passagem (DESCRICAO)");
+                    sqlInsert.AppendLine("                   VALUES ('PESSOA COM DEFICIENCIA');");
+                    sqlInsert.AppendLine("INSERT INTO tipo_passagem (DESCRICAO)");
+                    sqlInsert.AppendLine("                   VALUES ('PREFEITURA');");
+                    sqlInsert.AppendLine("INSERT INTO tipo_passagem (DESCRICAO)");
+                    sqlInsert.AppendLine("                   VALUES ('VEREADOR');");
+                    sqlInsert.AppendLine("INSERT INTO tipo_passagem (DESCRICAO)");
+                    sqlInsert.AppendLine("                   VALUES ('PATROCINIO');");
+                    sqlInsert.AppendLine("INSERT INTO tipo_passagem (DESCRICAO)");
+                    sqlInsert.AppendLine("                   VALUES ('OUTROS');");
+                    break;
+                case "tipo_regime_empresa":
+                    sqlInsert.AppendLine("INSERT INTO tipo_regime_empresa (DESCRICAO)");
+                    sqlInsert.AppendLine("                         VALUES ('1 – SIMPLES NACIONAL');");
+                    sqlInsert.AppendLine("INSERT INTO tipo_regime_empresa (DESCRICAO)");
+                    sqlInsert.AppendLine("                         VALUES ('2 – SIMPLES NACIONAL – EXCESSO DE SUBLIMITE DE RECEITA BRUTA');");
+                    sqlInsert.AppendLine("INSERT INTO tipo_regime_empresa (DESCRICAO)");
+                    sqlInsert.AppendLine("                         VALUES ('3 – REGIME NORMAL');");
+                    break;
                 default:
                     break;
             }

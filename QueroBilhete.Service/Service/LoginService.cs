@@ -24,6 +24,7 @@ namespace QueroBilhete.Service.Service
 
             if(login != null)
             {
+                loginViewModel.Codigo = (int)(login.Codigo > 0 ? login.Codigo : 0);
                 loginViewModel.Email = login.Email;
                 loginViewModel.Senha = login.Senha;
             }

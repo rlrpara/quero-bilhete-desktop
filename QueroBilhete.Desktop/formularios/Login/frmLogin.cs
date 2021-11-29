@@ -23,13 +23,15 @@ namespace QueroBilhete.Desktop.formularios.Login
 
         private async void btnLogin_Click(object sender, System.EventArgs e)
         {
-            Gerais.Logado = ValidaLogin(txtEmail.Text, txtSenha.Text);
+            Gerais.Codigo = ValidaLogin(txtEmail.Text, txtSenha.Text);
+            Gerais.Logado = (Gerais.Codigo > 0);
 
             lblAlerta.Text = Gerais.Logado ? "Liberado" : "Email/Senha inválido.";
 
             if (Gerais.Logado)
             {
                 lblAlerta.Text = "Liberado";
+                Gerais.Email = txtEmail.Text;
                 await PausaComTaskDelay();
                 Close();
             }
@@ -44,19 +46,20 @@ namespace QueroBilhete.Desktop.formularios.Login
             await Task.Delay(1000);
         }
 
-        private bool ValidaLogin(string email, string senha)
+        private int ValidaLogin(string email, string senha)
         {
             var login = new LoginService(baseRepository).logar(email, senha);
 
             if(!string.IsNullOrEmpty(login.Email) && !string.IsNullOrEmpty(login.Senha))
             {
+                Gerais.Codigo = login.Codigo;
                 Gerais.Email = login.Email;
                 Gerais.Senha = login.Senha;
 
-                return true;
+                return login.Codigo;
             }
 
-            return false;
+            return 0;
         }
 
         private void frmLogin_KeyDown(object sender, KeyEventArgs e)
