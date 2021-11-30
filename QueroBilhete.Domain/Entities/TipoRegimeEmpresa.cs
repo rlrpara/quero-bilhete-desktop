@@ -5,7 +5,7 @@ namespace QueroBilhete.Domain.Entities
     [Table(name: "TIPO_REGIME_EMPRESA")]
     public class TipoRegimeEmpresa : Entity
     {
-        [Column("DESCRICAO")]
+        [Column("DESCRICAO", Order = 2)]
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true, UsarNaGrid = true)]
         public string Descricao { get; set; }
     }

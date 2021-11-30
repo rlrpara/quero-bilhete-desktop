@@ -52,6 +52,7 @@ namespace QueroBilhete.Service.Service
             EixoX = embarcacaoPoltrona.EixoX,
             EixoY = embarcacaoPoltrona.EixoY,
             Alinhamento = embarcacaoPoltrona.Alinhamento,
+            TotalColuna = embarcacaoPoltrona.TotalColuna,
             Ativo = embarcacaoPoltrona.Ativo,
             DataCadastro = embarcacaoPoltrona.DataCadastro,
             DataAtualizacao = DateTime.Now
@@ -67,6 +68,7 @@ namespace QueroBilhete.Service.Service
             EixoX = embarcacaoPoltronaViewModel.EixoX,
             EixoY = embarcacaoPoltronaViewModel.EixoY,
             Alinhamento = embarcacaoPoltronaViewModel.Alinhamento,
+            TotalColuna = embarcacaoPoltronaViewModel.TotalColuna,
             Ativo = embarcacaoPoltronaViewModel.Ativo,
             DataCadastro = embarcacaoPoltronaViewModel.DataCadastro,
             DataAtualizacao = DateTime.Now
@@ -87,14 +89,14 @@ namespace QueroBilhete.Service.Service
 
         public EmbarcacaoPoltronaViewModel CarregaEmbarcacaoPoltrona(int codigoSelecionado)
         {
-            var EmbarcacaoEncontrada = _baseRepository.BuscarPorQueryGerador<Embarcacao>(codigoSelecionado == 0 ? "" : $"ID = {codigoSelecionado}");
-            return EmbarcacaoEncontrada != null ? ObterEmbarcacaoPoltrona(_baseRepository.BuscarPorQueryGerador<EmbarcacaoPoltrona>($"ID = {codigoSelecionado}")) : new EmbarcacaoPoltronaViewModel();
+            var embarcacaoEncontrada = _baseRepository.BuscarPorQueryGerador<EmbarcacaoPoltrona>(codigoSelecionado == 0 ? "" : $"ID = {codigoSelecionado}");
+            return embarcacaoEncontrada != null ? ObterEmbarcacaoPoltrona(_baseRepository.BuscarPorQueryGerador<EmbarcacaoPoltrona>($"ID = {codigoSelecionado}")) : new EmbarcacaoPoltronaViewModel();
         }
 
         public bool AdicionarEmbarcacaoPoltrona(EmbarcacaoPoltronaViewModel embarcacaoPoltrona)
         {
-            var EmbarcacaoPoltronaConvertido = ObterEmbarcacaoPoltronaConvertido(embarcacaoPoltrona);
-            return _baseRepository.Adicionar(EmbarcacaoPoltronaConvertido) > 0;
+            var embarcacaoPoltronaConvertido = ObterEmbarcacaoPoltronaConvertido(embarcacaoPoltrona);
+            return _baseRepository.Adicionar(embarcacaoPoltronaConvertido) > 0;
         }
 
         public bool AtualizarEmbarcacaoPoltrona(EmbarcacaoPoltronaViewModel embarcacaoPoltrona)
@@ -102,21 +104,21 @@ namespace QueroBilhete.Service.Service
             if (_baseRepository.BuscarPorQueryGerador<EmbarcacaoPoltrona>(embarcacaoPoltrona.Codigo == 0 ? "" : $"ID = {embarcacaoPoltrona.Codigo}") == null)
                 throw new ArgumentException("Usuário não Encontrado");
 
-            var EmbarcacaoPoltronaConvertido = ObterEmbarcacaoPoltronaConvertido(embarcacaoPoltrona);
+            var embarcacaoPoltronaConvertido = ObterEmbarcacaoPoltronaConvertido(embarcacaoPoltrona);
 
-            return _baseRepository.Atualizar(Convert.ToInt32(EmbarcacaoPoltronaConvertido.Codigo), EmbarcacaoPoltronaConvertido) > 0;
+            return _baseRepository.Atualizar(Convert.ToInt32(embarcacaoPoltronaConvertido.Codigo), embarcacaoPoltronaConvertido) > 0;
         }
 
         public bool RemoverEmbarcacaoPoltrona(int codigo)
         {
-            var EmbarcacaoPoltrona = _baseRepository.BuscarPorQueryGerador<EmbarcacaoPoltrona>(codigo == 0 ? "" : $"ID = {codigo}");
+            var embarcacaoPoltrona = _baseRepository.BuscarPorQueryGerador<EmbarcacaoPoltrona>(codigo == 0 ? "" : $"ID = {codigo}");
 
-            if (EmbarcacaoPoltrona == null)
+            if (embarcacaoPoltrona == null)
                 throw new ArgumentException("Poltrona não Encontrada");
 
-            EmbarcacaoPoltrona.Ativo = false;
+            embarcacaoPoltrona.Ativo = false;
 
-            return _baseRepository.Atualizar(Convert.ToInt32(EmbarcacaoPoltrona.Codigo), EmbarcacaoPoltrona) > 0;
+            return _baseRepository.Atualizar(Convert.ToInt32(embarcacaoPoltrona.Codigo), embarcacaoPoltrona) > 0;
         }
 
         #endregion

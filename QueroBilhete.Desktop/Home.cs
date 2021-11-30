@@ -6,6 +6,7 @@ using QueroBilhete.Desktop.formularios.Login;
 using QueroBilhete.Desktop.formularios.Passageiro;
 using QueroBilhete.Desktop.formularios.PDV;
 using QueroBilhete.Desktop.formularios.Tipo;
+using QueroBilhete.Desktop.formularios.Trajeto;
 using QueroBilhete.Desktop.formularios.Usuario;
 using QueroBilhete.Desktop.Globais;
 using System;
@@ -130,6 +131,21 @@ namespace QueroBilhete.Desktop
         private void tipoDaViagemToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddJanela(new frmTipoViagem());
+        }
+
+        private void tipoDoRegimeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddJanela(new frmTipoRegimeEmpresa());
+        }
+
+        private void tipoDePassagemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddJanela(new frmTipoPassagem());
+        }
+
+        private void trajetoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddJanela(new frmTrajeto());
         }
     }
 }

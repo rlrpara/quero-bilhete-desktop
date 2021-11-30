@@ -41,9 +41,12 @@
             this.embarcaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.passagemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tipoDePassagemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tipoDoRegimeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tipoDaViagemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trajetosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viagemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.passageiroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.trajetoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatóriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vendaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pDVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,10 +55,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusTexto = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusVersao = new System.Windows.Forms.ToolStripStatusLabel();
-            this.trajetoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tipoDoTrajetoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tipoDoRegimeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tipoDaViagemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -149,7 +148,6 @@
             // 
             this.passagemToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tipoDePassagemToolStripMenuItem,
-            this.tipoDoTrajetoToolStripMenuItem,
             this.tipoDoRegimeToolStripMenuItem,
             this.tipoDaViagemToolStripMenuItem});
             this.passagemToolStripMenuItem.Name = "passagemToolStripMenuItem";
@@ -159,8 +157,23 @@
             // tipoDePassagemToolStripMenuItem
             // 
             this.tipoDePassagemToolStripMenuItem.Name = "tipoDePassagemToolStripMenuItem";
-            this.tipoDePassagemToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tipoDePassagemToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.tipoDePassagemToolStripMenuItem.Text = "Tipo de Passagem";
+            this.tipoDePassagemToolStripMenuItem.Click += new System.EventHandler(this.tipoDePassagemToolStripMenuItem_Click);
+            // 
+            // tipoDoRegimeToolStripMenuItem
+            // 
+            this.tipoDoRegimeToolStripMenuItem.Name = "tipoDoRegimeToolStripMenuItem";
+            this.tipoDoRegimeToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.tipoDoRegimeToolStripMenuItem.Text = "Tipo do Regime da Empresa";
+            this.tipoDoRegimeToolStripMenuItem.Click += new System.EventHandler(this.tipoDoRegimeToolStripMenuItem_Click);
+            // 
+            // tipoDaViagemToolStripMenuItem
+            // 
+            this.tipoDaViagemToolStripMenuItem.Name = "tipoDaViagemToolStripMenuItem";
+            this.tipoDaViagemToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.tipoDaViagemToolStripMenuItem.Text = "Tipo da Viagem";
+            this.tipoDaViagemToolStripMenuItem.Click += new System.EventHandler(this.tipoDaViagemToolStripMenuItem_Click);
             // 
             // trajetosToolStripMenuItem
             // 
@@ -180,6 +193,13 @@
             this.passageiroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.passageiroToolStripMenuItem.Text = "Passageiro";
             this.passageiroToolStripMenuItem.Click += new System.EventHandler(this.passageiroToolStripMenuItem_Click);
+            // 
+            // trajetoToolStripMenuItem
+            // 
+            this.trajetoToolStripMenuItem.Name = "trajetoToolStripMenuItem";
+            this.trajetoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.trajetoToolStripMenuItem.Text = "Trajeto";
+            this.trajetoToolStripMenuItem.Click += new System.EventHandler(this.trajetoToolStripMenuItem_Click);
             // 
             // relatóriosToolStripMenuItem
             // 
@@ -239,31 +259,6 @@
             this.statusVersao.Size = new System.Drawing.Size(62, 17);
             this.statusVersao.Text = "Versão: 1.0";
             // 
-            // trajetoToolStripMenuItem
-            // 
-            this.trajetoToolStripMenuItem.Name = "trajetoToolStripMenuItem";
-            this.trajetoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.trajetoToolStripMenuItem.Text = "Trajeto";
-            // 
-            // tipoDoTrajetoToolStripMenuItem
-            // 
-            this.tipoDoTrajetoToolStripMenuItem.Name = "tipoDoTrajetoToolStripMenuItem";
-            this.tipoDoTrajetoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.tipoDoTrajetoToolStripMenuItem.Text = "Tipo do Trajeto";
-            // 
-            // tipoDoRegimeToolStripMenuItem
-            // 
-            this.tipoDoRegimeToolStripMenuItem.Name = "tipoDoRegimeToolStripMenuItem";
-            this.tipoDoRegimeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.tipoDoRegimeToolStripMenuItem.Text = "Tipo do Regime";
-            // 
-            // tipoDaViagemToolStripMenuItem
-            // 
-            this.tipoDaViagemToolStripMenuItem.Name = "tipoDaViagemToolStripMenuItem";
-            this.tipoDaViagemToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.tipoDaViagemToolStripMenuItem.Text = "Tipo da Viagem";
-            this.tipoDaViagemToolStripMenuItem.Click += new System.EventHandler(this.tipoDaViagemToolStripMenuItem_Click);
-            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -317,7 +312,6 @@
         private System.Windows.Forms.ToolStripStatusLabel statusTexto;
         private System.Windows.Forms.ToolStripStatusLabel statusVersao;
         private System.Windows.Forms.ToolStripMenuItem passageiroToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tipoDoTrajetoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tipoDoRegimeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tipoDaViagemToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem trajetoToolStripMenuItem;

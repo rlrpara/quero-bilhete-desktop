@@ -101,6 +101,8 @@ namespace QueroBilhete.Service.ViewModels
             get { return _numero; }
             set { _numero = value; }
         }
+
+        public int CodigoRegimeEmpresa { get; set; } = 0;
         public bool Ativo { get; set; } = true;
 
         public DateTime DataCadastro { get; set; } = DateTime.Now;
@@ -115,6 +117,9 @@ namespace QueroBilhete.Service.ViewModels
 
             if (string.IsNullOrEmpty(Cnpj))
                 AdicionaAlerta("O CNPJ é obrigatório");
+
+            if (CodigoRegimeEmpresa == 0)
+                AdicionaAlerta("Informe o Regime da Empresa");
         }
     }
 }

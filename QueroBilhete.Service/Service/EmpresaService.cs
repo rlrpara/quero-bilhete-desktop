@@ -78,6 +78,7 @@ namespace QueroBilhete.Service.Service
             UId = empresa.UId,
             RazaoSocial = empresa.RazaoSocial,
             Cnpj = empresa.Cnpj,
+            CodigoRegimeEmpresa = empresa.CodigoRegimeEmpresa,
             InscricaoEstadual = empresa.InscricaoEstadual,
             InscricaoMunicipal = empresa.InscricaoMunicipal,
             Telefone = empresa.Telefone,
@@ -119,7 +120,7 @@ namespace QueroBilhete.Service.Service
         public bool AtualizarEmpresa(EmpresaViewModel Empresa)
         {
             if (_baseRepository.BuscarPorQueryGerador<Empresa>(Empresa.Codigo == 0 ? "" : $"ID = {Empresa.Codigo}") == null)
-                throw new ArgumentException("Usuário não Encontrado");
+                throw new ArgumentException("Empresa não Encontrada");
 
             var EmpresaConvertido = ObterEmpresaConvertido(Empresa);
 

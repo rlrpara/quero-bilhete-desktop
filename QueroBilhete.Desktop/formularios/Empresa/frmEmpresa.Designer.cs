@@ -48,6 +48,7 @@
             this.panelStatus = new System.Windows.Forms.Panel();
             this.chkStatus = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.txtRegime = new QueroBilhete.Componentes.TextBox.txtBoxBtnLabel();
             this.grpCadastro.SuspendLayout();
             this.panelStatus.SuspendLayout();
             this.SuspendLayout();
@@ -66,6 +67,7 @@
             this.grpCadastro.Controls.Add(this.txtEmail);
             this.grpCadastro.Controls.Add(this.txtCelular);
             this.grpCadastro.Controls.Add(this.txtTelefone);
+            this.grpCadastro.Controls.Add(this.txtRegime);
             this.grpCadastro.Controls.Add(this.txtIM);
             this.grpCadastro.Controls.Add(this.txtIE);
             this.grpCadastro.Controls.Add(this.txtCnpj);
@@ -119,12 +121,12 @@
             this.txtLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtLogo.EnableAll = false;
             this.txtLogo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtLogo.Location = new System.Drawing.Point(3, 257);
+            this.txtLogo.Location = new System.Drawing.Point(3, 281);
             this.txtLogo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtLogo.Name = "txtLogo";
             this.txtLogo.Size = new System.Drawing.Size(953, 24);
             this.txtLogo.StatuBarComponent = null;
-            this.txtLogo.TabIndex = 10;
+            this.txtLogo.TabIndex = 11;
             this.txtLogo.TextoCentro = null;
             this.txtLogo.TextoDireita = "";
             this.txtLogo.TextoEsquerda = "Logo";
@@ -176,7 +178,6 @@
             this.txtRazaoSocial.Location = new System.Drawing.Point(3, 65);
             this.txtRazaoSocial.Name = "txtRazaoSocial";
             this.txtRazaoSocial.Size = new System.Drawing.Size(953, 24);
-            this.txtRazaoSocial.StatuBarComponent = this.toolStripStatusLabel2;
             this.txtRazaoSocial.TabIndex = 2;
             this.txtRazaoSocial.Texto = "";
             this.txtRazaoSocial.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
@@ -247,10 +248,10 @@
             this.txtTelefone.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtTelefone.EnableAll = true;
             this.txtTelefone.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtTelefone.Location = new System.Drawing.Point(3, 161);
+            this.txtTelefone.Location = new System.Drawing.Point(3, 185);
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(953, 24);
-            this.txtTelefone.TabIndex = 6;
+            this.txtTelefone.TabIndex = 7;
             this.txtTelefone.Texto = "";
             this.txtTelefone.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
             this.txtTelefone.TextoEsquerda = "Telefone";
@@ -265,10 +266,10 @@
             this.txtCelular.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtCelular.EnableAll = true;
             this.txtCelular.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCelular.Location = new System.Drawing.Point(3, 185);
+            this.txtCelular.Location = new System.Drawing.Point(3, 209);
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(953, 24);
-            this.txtCelular.TabIndex = 7;
+            this.txtCelular.TabIndex = 8;
             this.txtCelular.Texto = "";
             this.txtCelular.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
             this.txtCelular.TextoEsquerda = "Celular";
@@ -283,10 +284,10 @@
             this.txtEmail.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtEmail.EnableAll = true;
             this.txtEmail.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtEmail.Location = new System.Drawing.Point(3, 209);
+            this.txtEmail.Location = new System.Drawing.Point(3, 233);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(953, 24);
-            this.txtEmail.TabIndex = 8;
+            this.txtEmail.TabIndex = 9;
             this.txtEmail.Texto = "";
             this.txtEmail.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
             this.txtEmail.TextoEsquerda = "E-Mail";
@@ -301,10 +302,10 @@
             this.txtSite.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtSite.EnableAll = true;
             this.txtSite.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSite.Location = new System.Drawing.Point(3, 233);
+            this.txtSite.Location = new System.Drawing.Point(3, 257);
             this.txtSite.Name = "txtSite";
             this.txtSite.Size = new System.Drawing.Size(953, 24);
-            this.txtSite.TabIndex = 9;
+            this.txtSite.TabIndex = 10;
             this.txtSite.Texto = "";
             this.txtSite.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
             this.txtSite.TextoEsquerda = "Site";
@@ -319,10 +320,10 @@
             this.txtCep.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtCep.EnableAll = true;
             this.txtCep.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCep.Location = new System.Drawing.Point(3, 281);
+            this.txtCep.Location = new System.Drawing.Point(3, 305);
             this.txtCep.Name = "txtCep";
             this.txtCep.Size = new System.Drawing.Size(953, 24);
-            this.txtCep.TabIndex = 11;
+            this.txtCep.TabIndex = 12;
             this.txtCep.Texto = "";
             this.txtCep.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Centro;
             this.txtCep.TextoEsquerda = "CEP";
@@ -338,10 +339,10 @@
             this.txtEstado.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtEstado.EnableAll = true;
             this.txtEstado.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtEstado.Location = new System.Drawing.Point(3, 305);
+            this.txtEstado.Location = new System.Drawing.Point(3, 329);
             this.txtEstado.Name = "txtEstado";
             this.txtEstado.Size = new System.Drawing.Size(953, 24);
-            this.txtEstado.TabIndex = 12;
+            this.txtEstado.TabIndex = 13;
             this.txtEstado.Texto = "";
             this.txtEstado.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Centro;
             this.txtEstado.TextoEsquerda = "Estado";
@@ -356,10 +357,10 @@
             this.txtCidade.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtCidade.EnableAll = true;
             this.txtCidade.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCidade.Location = new System.Drawing.Point(3, 329);
+            this.txtCidade.Location = new System.Drawing.Point(3, 353);
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(953, 24);
-            this.txtCidade.TabIndex = 13;
+            this.txtCidade.TabIndex = 14;
             this.txtCidade.Texto = "";
             this.txtCidade.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
             this.txtCidade.TextoEsquerda = "Cidade";
@@ -374,10 +375,10 @@
             this.txtRua.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtRua.EnableAll = true;
             this.txtRua.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtRua.Location = new System.Drawing.Point(3, 377);
+            this.txtRua.Location = new System.Drawing.Point(3, 401);
             this.txtRua.Name = "txtRua";
             this.txtRua.Size = new System.Drawing.Size(953, 24);
-            this.txtRua.TabIndex = 15;
+            this.txtRua.TabIndex = 16;
             this.txtRua.Texto = "";
             this.txtRua.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
             this.txtRua.TextoEsquerda = "Rua";
@@ -392,10 +393,10 @@
             this.txtNumero.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtNumero.EnableAll = true;
             this.txtNumero.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtNumero.Location = new System.Drawing.Point(3, 401);
+            this.txtNumero.Location = new System.Drawing.Point(3, 425);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(953, 24);
-            this.txtNumero.TabIndex = 16;
+            this.txtNumero.TabIndex = 17;
             this.txtNumero.Texto = "";
             this.txtNumero.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Centro;
             this.txtNumero.TextoEsquerda = "Número";
@@ -410,10 +411,10 @@
             this.txtBairro.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtBairro.EnableAll = true;
             this.txtBairro.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtBairro.Location = new System.Drawing.Point(3, 353);
+            this.txtBairro.Location = new System.Drawing.Point(3, 377);
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(953, 24);
-            this.txtBairro.TabIndex = 14;
+            this.txtBairro.TabIndex = 15;
             this.txtBairro.Texto = "";
             this.txtBairro.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
             this.txtBairro.TextoEsquerda = "Bairro";
@@ -428,7 +429,7 @@
             this.panelStatus.Controls.Add(this.chkStatus);
             this.panelStatus.Controls.Add(this.label14);
             this.panelStatus.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelStatus.Location = new System.Drawing.Point(3, 425);
+            this.panelStatus.Location = new System.Drawing.Point(3, 449);
             this.panelStatus.Name = "panelStatus";
             this.panelStatus.Size = new System.Drawing.Size(953, 25);
             this.panelStatus.TabIndex = 17;
@@ -439,7 +440,7 @@
             this.chkStatus.Location = new System.Drawing.Point(149, 5);
             this.chkStatus.Name = "chkStatus";
             this.chkStatus.Size = new System.Drawing.Size(51, 17);
-            this.chkStatus.TabIndex = 12;
+            this.chkStatus.TabIndex = 18;
             this.chkStatus.Text = "Ativo";
             this.chkStatus.UseVisualStyleBackColor = true;
             this.chkStatus.Click += new System.EventHandler(this.chkStatus_Enter);
@@ -453,6 +454,23 @@
             this.label14.Size = new System.Drawing.Size(38, 13);
             this.label14.TabIndex = 1;
             this.label14.Text = "Status";
+            // 
+            // txtRegime
+            // 
+            this.txtRegime.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtRegime.EnableAll = true;
+            this.txtRegime.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtRegime.Location = new System.Drawing.Point(3, 161);
+            this.txtRegime.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtRegime.Name = "txtRegime";
+            this.txtRegime.Size = new System.Drawing.Size(953, 24);
+            this.txtRegime.StatuBarComponent = null;
+            this.txtRegime.TabIndex = 6;
+            this.txtRegime.TextoCentro = null;
+            this.txtRegime.TextoDireita = "";
+            this.txtRegime.TextoEsquerda = "Regime Tributário";
+            this.txtRegime.TextoStatus = "Regime Tributário";
+            this.txtRegime.ButtonClick += new System.EventHandler(this.txtRegime_ButtonClick);
             // 
             // frmEmpresa
             // 
@@ -491,5 +509,6 @@
         private System.Windows.Forms.Panel panelStatus;
         private System.Windows.Forms.CheckBox chkStatus;
         private System.Windows.Forms.Label label14;
+        private Componentes.TextBox.txtBoxBtnLabel txtRegime;
     }
 }

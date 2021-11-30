@@ -18,6 +18,7 @@ namespace QueroBilhete.Desktop.formularios.Empresa
         private EmpresaViewModel _empresaViewModel;
         private readonly BaseRepository _baseRepository;
         private EmpresaService _empresaService;
+        private GenericService _genericService;
         private string ultimoCnpj = "";
         #endregion
 
@@ -72,6 +73,8 @@ namespace QueroBilhete.Desktop.formularios.Empresa
             {
                 txtCodigo.Texto = _empresaViewModel.Codigo.ToString();
                 txtUid.Texto = _empresaViewModel.UId;
+                txtRegime.TextoCentro = _empresaViewModel.CodigoRegimeEmpresa.ToString();
+                txtRegime.TextoDireita = _genericService.ObterDescricao<Domain.Entities.TipoRegimeEmpresa>(_empresaViewModel.CodigoRegimeEmpresa, "DESCRICAO");
                 txtRazaoSocial.Texto = _empresaViewModel.RazaoSocial;
                 txtCnpj.Texto = _empresaViewModel.Cnpj;
                 txtIE.Texto = _empresaViewModel.InscricaoEstadual;
@@ -132,6 +135,7 @@ namespace QueroBilhete.Desktop.formularios.Empresa
             UId = txtUid.Texto,
             RazaoSocial = txtRazaoSocial.Texto,
             Cnpj = txtCnpj.Texto,
+            CodigoRegimeEmpresa = Convert.ToInt32(string.IsNullOrEmpty(txtRegime.TextoCentro) ? "0" : txtRegime.TextoCentro),
             InscricaoEstadual = txtIE.Texto,
             InscricaoMunicipal = txtIM.Texto,
             Telefone = txtTelefone.Texto,
@@ -174,6 +178,7 @@ namespace QueroBilhete.Desktop.formularios.Empresa
             _baseRepository = new BaseRepository();
             _empresaViewModel = new EmpresaViewModel();
             _empresaService = new EmpresaService(_baseRepository);
+            _genericService = new GenericService(_baseRepository);
             lblLog.Text = "Cadastrado em:  por:  Atualizado em:  por: ";
             Novo();
         }
@@ -257,6 +262,20 @@ namespace QueroBilhete.Desktop.formularios.Empresa
             }
             ultimoCnpj = txtCnpj.Texto.ApenasNumeros();
         }
+
+        private void txtRegime_ButtonClick(object sender, EventArgs e)
+        {
+            var janela = new frmPesquisaGenerica();
+            janela.CarregaDados<Domain.Entities.TipoRegimeEmpresa>("AND ATIVO = 1");
+            janela.ShowDialog();
+
+            if (janela.CodigoSelecionado > 0)
+            {
+                txtRegime.TextoCentro = janela.CodigoSelecionado.ToString();
+                txtRegime.TextoDireita = _genericService.ObterDescricao<Domain.Entities.TipoRegimeEmpresa>(janela.CodigoSelecionado, "DESCRICAO");
+            }
+        }
+
         #endregion
     }
 }
