@@ -124,8 +124,8 @@ namespace QueroBilhete.Infra.Data.Contex
                     sqlInsert.AppendLine("                  VALUES('VENDEDOR', 'VENDEDOR')");
                     break;
                 case "empresa":
-                    sqlInsert.AppendLine("INSERT INTO empresa (RAZAO_SOCIAL,             CNPJ)");
-                    sqlInsert.AppendLine("              VALUES(    'PADRAO', '00000000000000')");
+                    sqlInsert.AppendLine("INSERT INTO empresa (RAZAO_SOCIAL,             CNPJ, TIPO_REGIME_ID)");
+                    sqlInsert.AppendLine("              VALUES(    'PADRAO', '00000000000000',              1)");
                     break;
                 case "alinhamento":
                     sqlInsert.AppendLine("INSERT INTO alinhamento(     NOME)");
@@ -162,6 +162,12 @@ namespace QueroBilhete.Infra.Data.Contex
                     sqlInsert.AppendLine("                         VALUES ('2 – SIMPLES NACIONAL – EXCESSO DE SUBLIMITE DE RECEITA BRUTA');");
                     sqlInsert.AppendLine("INSERT INTO tipo_regime_empresa (DESCRICAO)");
                     sqlInsert.AppendLine("                         VALUES ('3 – REGIME NORMAL');");
+                    break;
+                case "tipo_viagem":
+                    sqlInsert.AppendLine("INSERT INTO tipo_viagem (DESCRICAO)");
+                    sqlInsert.AppendLine("                 VALUES ('00-REGULAR');");
+                    sqlInsert.AppendLine("INSERT INTO tipo_viagem (DESCRICAO)");
+                    sqlInsert.AppendLine("                 VALUES ('01-EXTRA');");
                     break;
                 default:
                     break;

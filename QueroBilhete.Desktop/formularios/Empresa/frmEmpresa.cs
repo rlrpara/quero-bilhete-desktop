@@ -224,7 +224,6 @@ namespace QueroBilhete.Desktop.formularios.Empresa
         {
             AlteraStatusCheckBox(ref chkStatus);
         }
-        #endregion
 
         private async void txtCep_Validated(object sender, EventArgs e)
         {
@@ -247,7 +246,7 @@ namespace QueroBilhete.Desktop.formularios.Empresa
             {
                 var retornoConsulta = await _empresaService.ConsultaGenericaApi<ConsultaCnpjViewModel>($"https://www.receitaws.com.br/v1/cnpj/{txtCnpj.Texto.ApenasNumeros()}");
 
-                if(retornoConsulta != null && retornoConsulta.status.Contains("OK"))
+                if (retornoConsulta != null && retornoConsulta.status.Contains("OK"))
                 {
                     txtRazaoSocial.Texto = retornoConsulta.nome;
                     txtCnpj.Texto = retornoConsulta.cnpj.ApenasNumeros();
@@ -258,5 +257,6 @@ namespace QueroBilhete.Desktop.formularios.Empresa
             }
             ultimoCnpj = txtCnpj.Texto.ApenasNumeros();
         }
+        #endregion
     }
 }

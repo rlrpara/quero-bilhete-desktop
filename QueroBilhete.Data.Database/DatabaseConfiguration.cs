@@ -89,15 +89,16 @@ namespace QueroBilhete.Data.Database
                     Criar(conexao, GeradorDapper.CriarTabela<NivelAcesso>(nomeBanco));
                     Criar(conexao, GeradorDapper.CriarTabela<Usuario>(nomeBanco));
                     Criar(conexao, GeradorDapper.CriarTabela<Passageiro>(nomeBanco));
+                    Criar(conexao, GeradorDapper.CriarTabela<TipoRegimeEmpresa>(nomeBanco));
                     Criar(conexao, GeradorDapper.CriarTabela<Empresa>(nomeBanco));
                     Criar(conexao, GeradorDapper.CriarTabela<Embarcacao>(nomeBanco));
                     Criar(conexao, GeradorDapper.CriarTabela<EmbarcacaoPoltrona>(nomeBanco));
                     Criar(conexao, GeradorDapper.CriarTabela<Alinhamento>(nomeBanco));
                     Criar(conexao, GeradorDapper.CriarTabela<TipoPassagem>(nomeBanco));
-                    Criar(conexao, GeradorDapper.CriarTabela<TipoRegimeEmpresa>(nomeBanco));
-                    //Criar(conexao, GeradorDapper.CriarTabela<Viagem>(nomeBanco));
-                    //Criar(conexao, GeradorDapper.CriarTabela<Passagem>(nomeBanco));
-                    //Criar(conexao, GeradorDapper.CriarTabela<VersaoBanco>(nomeBanco));
+                    Criar(conexao, GeradorDapper.CriarTabela<TipoViagem>(nomeBanco));
+                    Criar(conexao, GeradorDapper.CriarTabela<Trajeto>(nomeBanco));
+                    Criar(conexao, GeradorDapper.CriarTabela<Viagem>(nomeBanco));
+                    Criar(conexao, GeradorDapper.CriarTabela<Passagem>(nomeBanco));
 
                     //Criar procedures
                     Criar(conexao, GeradorDapper.GerarProcedureAddIfColumnNotExists(nomeBanco));
@@ -107,14 +108,16 @@ namespace QueroBilhete.Data.Database
                         Criar(conexao, GeradorDapper.InserirDadosPadroes<NivelAcesso>());
                     if (!ExisteDados<Usuario>(conexao))
                         Criar(conexao, GeradorDapper.InserirDadosPadroes<Usuario>());
+                    if (!ExisteDados<TipoRegimeEmpresa>(conexao))
+                        Criar(conexao, GeradorDapper.InserirDadosPadroes<TipoRegimeEmpresa>());
                     if (!ExisteDados<Empresa>(conexao))
                         Criar(conexao, GeradorDapper.InserirDadosPadroes<Empresa>());
                     if (!ExisteDados<Alinhamento>(conexao))
                         Criar(conexao, GeradorDapper.InserirDadosPadroes<Alinhamento>());
                     if (!ExisteDados<TipoPassagem>(conexao))
                         Criar(conexao, GeradorDapper.InserirDadosPadroes<TipoPassagem>());
-                    if (!ExisteDados<TipoRegimeEmpresa>(conexao))
-                        Criar(conexao, GeradorDapper.InserirDadosPadroes<TipoRegimeEmpresa>());
+                    if (!ExisteDados<TipoViagem>(conexao))
+                        Criar(conexao, GeradorDapper.InserirDadosPadroes<TipoViagem>());
 
                     //executar scripts da versao
                 }
