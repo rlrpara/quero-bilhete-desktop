@@ -155,12 +155,13 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
         {
             Configuracao.ConfiguraGrid(dgvDados);
         }
-        #endregion
 
         private void CarregarDadosGrid()
         {
             CarregaDados<Domain.Entities.EmbarcacaoPoltrona>(dgvDados, _baseRepository, $"AND ID_EMBARCACAO = {txtCodigo.Texto.ApenasNumeros()}");
         }
+
+        #endregion
 
         #region [Construtor]
         public frmEmbarcacao()
@@ -245,5 +246,11 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
         }
 
         #endregion
+
+        private void btnPreview_Click(object sender, EventArgs e)
+        {
+            if(txtCodigo.Texto.IsNumeric())
+                AddJanela(new frmPreviewLayoutEmbarcacao(Convert.ToInt32(txtCodigo.Texto)), EJanela.Modal);
+        }
     }
 }

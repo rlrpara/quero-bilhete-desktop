@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace QueroBilhete.Service.Service
 {
-    public class TrajetoService : BaseService, ITrajeto
+    public class TrajetoService : BaseService, ITrajetoService
     {
         public TrajetoService(IBaseRepository repositorio) : base(repositorio)
         {
@@ -59,9 +59,9 @@ namespace QueroBilhete.Service.Service
         #endregion
 
         #region Métodos Públicos
-        public List<TrajetoViewModel> ObterTodos(string nome)
+        public List<TrajetoViewModel> ObterTodos(string sqlWhere)
         {
-            return ObterTrajetos(_baseRepository.BuscarTodosPorQueryGerador<Trajeto>($"NOME LIKE '%{nome}%'"));
+            return ObterTrajetos(_baseRepository.BuscarTodosPorQueryGerador<Trajeto>(sqlWhere));
         }
 
         public TrajetoViewModel CarregaTrajeto(int codigoSelecionado)

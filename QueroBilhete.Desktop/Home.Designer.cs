@@ -126,21 +126,21 @@
             // empresaToolStripMenuItem
             // 
             this.empresaToolStripMenuItem.Name = "empresaToolStripMenuItem";
-            this.empresaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.empresaToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.empresaToolStripMenuItem.Text = "Empresa";
             this.empresaToolStripMenuItem.Click += new System.EventHandler(this.empresaToolStripMenuItem_Click);
             // 
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
             // embarcaçãoToolStripMenuItem
             // 
             this.embarcaçãoToolStripMenuItem.Name = "embarcaçãoToolStripMenuItem";
-            this.embarcaçãoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.embarcaçãoToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.embarcaçãoToolStripMenuItem.Text = "Embarcação";
             this.embarcaçãoToolStripMenuItem.Click += new System.EventHandler(this.embarcaçãoToolStripMenuItem_Click);
             // 
@@ -151,7 +151,7 @@
             this.tipoDoRegimeToolStripMenuItem,
             this.tipoDaViagemToolStripMenuItem});
             this.passagemToolStripMenuItem.Name = "passagemToolStripMenuItem";
-            this.passagemToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.passagemToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.passagemToolStripMenuItem.Text = "Tabelas";
             // 
             // tipoDePassagemToolStripMenuItem
@@ -178,26 +178,26 @@
             // trajetosToolStripMenuItem
             // 
             this.trajetosToolStripMenuItem.Name = "trajetosToolStripMenuItem";
-            this.trajetosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.trajetosToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.trajetosToolStripMenuItem.Text = "Trajetos";
             // 
             // viagemToolStripMenuItem
             // 
             this.viagemToolStripMenuItem.Name = "viagemToolStripMenuItem";
-            this.viagemToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viagemToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.viagemToolStripMenuItem.Text = "Viagem";
             // 
             // passageiroToolStripMenuItem
             // 
             this.passageiroToolStripMenuItem.Name = "passageiroToolStripMenuItem";
-            this.passageiroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.passageiroToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.passageiroToolStripMenuItem.Text = "Passageiro";
             this.passageiroToolStripMenuItem.Click += new System.EventHandler(this.passageiroToolStripMenuItem_Click);
             // 
             // trajetoToolStripMenuItem
             // 
             this.trajetoToolStripMenuItem.Name = "trajetoToolStripMenuItem";
-            this.trajetoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.trajetoToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.trajetoToolStripMenuItem.Text = "Trajeto";
             this.trajetoToolStripMenuItem.Click += new System.EventHandler(this.trajetoToolStripMenuItem_Click);
             // 
@@ -250,14 +250,14 @@
             // statusTexto
             // 
             this.statusTexto.Name = "statusTexto";
-            this.statusTexto.Size = new System.Drawing.Size(135, 17);
-            this.statusTexto.Text = "Usuário: Rodrigo Ribeiro";
+            this.statusTexto.Size = new System.Drawing.Size(50, 17);
+            this.statusTexto.Text = "Usuário:";
             // 
             // statusVersao
             // 
             this.statusVersao.Name = "statusVersao";
-            this.statusVersao.Size = new System.Drawing.Size(62, 17);
-            this.statusVersao.Text = "Versão: 1.0";
+            this.statusVersao.Size = new System.Drawing.Size(44, 17);
+            this.statusVersao.Text = "Versão:";
             // 
             // Home
             // 

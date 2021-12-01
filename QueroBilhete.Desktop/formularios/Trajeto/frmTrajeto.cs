@@ -25,12 +25,14 @@ namespace QueroBilhete.Desktop.formularios.Trajeto
         private void Novo()
         {
             AtivaBotoes(EBotoes.Novo);
-            BloquearCampos(true);
+            BloquearCampos(false);
             Configuracao.LimparCampos(grpCadastro.Controls);
 
             _trajetoViewModel = new TrajetoViewModel();
+            txtCodigo.Enabled = false;
             txtEmbarcacao.Focus();
             txtEmbarcacao.Select();
+            chkStatus.Checked = true;
         }
 
         private void Editar()
@@ -72,7 +74,7 @@ namespace QueroBilhete.Desktop.formularios.Trajeto
             {
                 txtCodigo.Texto = _trajetoViewModel.Codigo.ToString();
                 txtEmbarcacao.TextoCentro = _trajetoViewModel.CodigoEmbarcacao.ToString();
-                txtEmbarcacao.TextoDireita = _trajetoViewModel.CodigoEmbarcacao.ToString();
+                txtEmbarcacao.TextoDireita = _genericService.ObterDescricao<Domain.Entities.Embarcacao>(_trajetoViewModel.CodigoEmbarcacao, "NOME");
                 txtOrigem.Texto = _trajetoViewModel.Origem;
                 txtDestino.Texto = _trajetoViewModel.Destino;
                 chkStatus.Checked = _trajetoViewModel.Ativo;
@@ -208,6 +210,11 @@ namespace QueroBilhete.Desktop.formularios.Trajeto
                 txtEmbarcacao.TextoCentro = janela.CodigoSelecionado.ToString();
                 txtEmbarcacao.TextoDireita = _genericService.ObterDescricao<Domain.Entities.Embarcacao>(janela.CodigoSelecionado, "NOME");
             }
+        }
+
+        private void chkStatus_Enter(object sender, EventArgs e)
+        {
+            AlteraStatusCheckBox(ref chkStatus);
         }
 
         #endregion

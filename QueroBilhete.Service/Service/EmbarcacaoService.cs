@@ -15,7 +15,7 @@ namespace QueroBilhete.Service.Service
         }
 
         #region Métodos Privados
-        private List<EmbarcacaoViewModel> ObterEmbarcacaos(IEnumerable<Embarcacao> Embarcacaos)
+        private List<EmbarcacaoViewModel> ObterEmbarcacoes(IEnumerable<Embarcacao> Embarcacaos)
         {
             var EmbarcacaoModel = new List<EmbarcacaoViewModel>();
 
@@ -58,9 +58,9 @@ namespace QueroBilhete.Service.Service
         #endregion
 
         #region Métodos Públicos
-        public List<EmbarcacaoViewModel> ObterTodos(string nome)
+        public List<EmbarcacaoViewModel> ObterTodos(string sqlWhere)
         {
-            return ObterEmbarcacaos(_baseRepository.BuscarTodosPorQueryGerador<Embarcacao>($"NOME LIKE '%{nome}%'"));
+            return ObterEmbarcacoes(_baseRepository.BuscarTodosPorQueryGerador<Embarcacao>(sqlWhere));
         }
 
         public EmbarcacaoViewModel CarregaEmbarcacao(int codigoSelecionado)
@@ -69,9 +69,9 @@ namespace QueroBilhete.Service.Service
             return EmbarcacaoEncontrada != null ? ObterEmbarcacao(_baseRepository.BuscarPorQueryGerador<Embarcacao>($"ID = {codigoSelecionado}")) : new EmbarcacaoViewModel();
         }
 
-        public bool AdicionarEmbarcacao(EmbarcacaoViewModel Embarcacao)
+        public bool AdicionarEmbarcacao(EmbarcacaoViewModel embarcacao)
         {
-            var EmbarcacaoConvertido = ObterEmbarcacaoConvertido(Embarcacao);
+            var EmbarcacaoConvertido = ObterEmbarcacaoConvertido(embarcacao);
             return _baseRepository.Adicionar(EmbarcacaoConvertido) > 0;
         }
 

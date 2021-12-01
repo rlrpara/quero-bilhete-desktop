@@ -96,7 +96,6 @@
             this.txtCodigo.Location = new System.Drawing.Point(3, 18);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(794, 24);
-            this.txtCodigo.StatuBarComponent = this.toolStripStatusLabel2;
             this.txtCodigo.TabIndex = 1;
             this.txtCodigo.Texto = "";
             this.txtCodigo.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Centro;
@@ -132,7 +131,6 @@
             this.txtOrigem.Location = new System.Drawing.Point(3, 66);
             this.txtOrigem.Name = "txtOrigem";
             this.txtOrigem.Size = new System.Drawing.Size(794, 24);
-            this.txtOrigem.StatuBarComponent = this.toolStripStatusLabel2;
             this.txtOrigem.TabIndex = 12;
             this.txtOrigem.Texto = "";
             this.txtOrigem.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
@@ -180,6 +178,7 @@
             this.chkStatus.TabIndex = 12;
             this.chkStatus.Text = "Ativo";
             this.chkStatus.UseVisualStyleBackColor = true;
+            this.chkStatus.Enter += new System.EventHandler(this.chkStatus_Enter);
             // 
             // label14
             // 

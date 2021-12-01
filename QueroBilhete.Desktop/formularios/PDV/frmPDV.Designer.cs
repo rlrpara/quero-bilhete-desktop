@@ -116,7 +116,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.label25 = new System.Windows.Forms.Label();
             this.dateTimePicker6 = new System.Windows.Forms.DateTimePicker();
             this.label24 = new System.Windows.Forms.Label();
-            this.cmbTrecho = new System.Windows.Forms.ComboBox();
+            this.cmbTrajeto = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -926,7 +926,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.panel1.Controls.Add(this.label25);
             this.panel1.Controls.Add(this.dateTimePicker6);
             this.panel1.Controls.Add(this.label24);
-            this.panel1.Controls.Add(this.cmbTrecho);
+            this.panel1.Controls.Add(this.cmbTrajeto);
             this.panel1.Controls.Add(this.label22);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -992,17 +992,17 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.label24.TabIndex = 5;
             this.label24.Text = "Data";
             // 
-            // cmbTrecho
+            // cmbTrajeto
             // 
-            this.cmbTrecho.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTrecho.FormattingEnabled = true;
-            this.cmbTrecho.Items.AddRange(new object[] {
+            this.cmbTrajeto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTrajeto.FormattingEnabled = true;
+            this.cmbTrajeto.Items.AddRange(new object[] {
             "Belém - Ponta de Pedras",
             "Ponta de Pedras - Belém"});
-            this.cmbTrecho.Location = new System.Drawing.Point(187, 69);
-            this.cmbTrecho.Name = "cmbTrecho";
-            this.cmbTrecho.Size = new System.Drawing.Size(175, 23);
-            this.cmbTrecho.TabIndex = 2;
+            this.cmbTrajeto.Location = new System.Drawing.Point(187, 69);
+            this.cmbTrajeto.Name = "cmbTrajeto";
+            this.cmbTrajeto.Size = new System.Drawing.Size(175, 23);
+            this.cmbTrajeto.TabIndex = 2;
             // 
             // label22
             // 
@@ -1011,7 +1011,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(42, 15);
             this.label22.TabIndex = 1;
-            this.label22.Text = "Trecho";
+            this.label22.Text = "Trajeto";
             // 
             // frmPDV
             // 
@@ -1024,7 +1024,6 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.KeyPreview = true;
             this.MinimizeBox = false;
             this.Name = "frmPDV";
-            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmPDV";
@@ -1095,7 +1094,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.DateTimePicker dateTimePicker6;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.ComboBox cmbTrecho;
+        private System.Windows.Forms.ComboBox cmbTrajeto;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TabPage tab1;
         private System.Windows.Forms.Panel panelSelecaoAcentos;

@@ -1,6 +1,6 @@
 ﻿namespace QueroBilhete.Service.Interface
 {
-    public interface ITrajeto : IBaseService
+    public interface ITrajetoService : IBaseService
     {
     }
 }

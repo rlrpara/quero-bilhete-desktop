@@ -38,6 +38,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlDados = new System.Windows.Forms.Panel();
             this.btnNovoGrid = new System.Windows.Forms.Button();
+            this.btnPreview = new System.Windows.Forms.Button();
             this.grpCadastro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDados)).BeginInit();
             this.panelStatus.SuspendLayout();
@@ -205,6 +206,7 @@
             // 
             // pnlDados
             // 
+            this.pnlDados.Controls.Add(this.btnPreview);
             this.pnlDados.Controls.Add(this.btnNovoGrid);
             this.pnlDados.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlDados.Location = new System.Drawing.Point(10, 10);
@@ -221,6 +223,16 @@
             this.btnNovoGrid.Text = "Novo";
             this.btnNovoGrid.UseVisualStyleBackColor = true;
             this.btnNovoGrid.Click += new System.EventHandler(this.btnNovoGrid_Click);
+            // 
+            // btnPreview
+            // 
+            this.btnPreview.Location = new System.Drawing.Point(873, 3);
+            this.btnPreview.Name = "btnPreview";
+            this.btnPreview.Size = new System.Drawing.Size(75, 23);
+            this.btnPreview.TabIndex = 1;
+            this.btnPreview.Text = "Preview";
+            this.btnPreview.UseVisualStyleBackColor = true;
+            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
             // frmEmbarcacao
             // 
@@ -252,5 +264,6 @@
         private System.Windows.Forms.Panel pnlDados;
         private System.Windows.Forms.Button btnNovoGrid;
         private System.Windows.Forms.DataGridView dgvDados;
+        private System.Windows.Forms.Button btnPreview;
     }
 }
