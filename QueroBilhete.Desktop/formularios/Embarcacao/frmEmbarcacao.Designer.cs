@@ -37,8 +37,8 @@
             this.txtNome = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlDados = new System.Windows.Forms.Panel();
-            this.btnNovoGrid = new System.Windows.Forms.Button();
             this.btnPreview = new System.Windows.Forms.Button();
+            this.btnNovoGrid = new System.Windows.Forms.Button();
             this.grpCadastro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDados)).BeginInit();
             this.panelStatus.SuspendLayout();
@@ -108,6 +108,7 @@
             this.dgvDados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDados.Size = new System.Drawing.Size(951, 271);
             this.dgvDados.TabIndex = 1;
+            this.dgvDados.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDados_CellDoubleClick);
             // 
             // txtCodigo
             // 
@@ -214,6 +215,17 @@
             this.pnlDados.Size = new System.Drawing.Size(951, 31);
             this.pnlDados.TabIndex = 0;
             // 
+            // btnPreview
+            // 
+            this.btnPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPreview.Location = new System.Drawing.Point(873, 3);
+            this.btnPreview.Name = "btnPreview";
+            this.btnPreview.Size = new System.Drawing.Size(75, 23);
+            this.btnPreview.TabIndex = 1;
+            this.btnPreview.Text = "Preview";
+            this.btnPreview.UseVisualStyleBackColor = true;
+            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
+            // 
             // btnNovoGrid
             // 
             this.btnNovoGrid.Location = new System.Drawing.Point(3, 3);
@@ -223,16 +235,6 @@
             this.btnNovoGrid.Text = "Novo";
             this.btnNovoGrid.UseVisualStyleBackColor = true;
             this.btnNovoGrid.Click += new System.EventHandler(this.btnNovoGrid_Click);
-            // 
-            // btnPreview
-            // 
-            this.btnPreview.Location = new System.Drawing.Point(873, 3);
-            this.btnPreview.Name = "btnPreview";
-            this.btnPreview.Size = new System.Drawing.Size(75, 23);
-            this.btnPreview.TabIndex = 1;
-            this.btnPreview.Text = "Preview";
-            this.btnPreview.UseVisualStyleBackColor = true;
-            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
             // frmEmbarcacao
             // 

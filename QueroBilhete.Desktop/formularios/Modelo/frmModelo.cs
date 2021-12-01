@@ -1,7 +1,9 @@
 ﻿using QueroBilhete.Data.Repositories;
 using QueroBilhete.Desktop.Enumeradores;
 using QueroBilhete.Desktop.Globais;
+using QueroBilhete.Domain.Interfaces;
 using QueroBilhete.Infra.Data.Contex;
+using QueroBilhete.Service.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,18 +18,15 @@ namespace QueroBilhete.Desktop.formularios.Modelo
         {
             Close();
         }
-
         protected void AtivaBotoes(EBotoes acao)
         {
             Configuracao.AtivaBotoes(acao, btnNovo, btnEditar, btnExcluir, btnLocalizar, btnImprimir, btnSalvar, btnCancelar);
         }
-
         protected void AtivaConfiguracaoPadrao()
         {
             AtivaBotoes(EBotoes.Novo);
             Configuracao.LimparCampos(grpCadastro.Controls);
         }
-
         protected void BloquearCampos(bool ativar)
         {
             Configuracao.BloquearCampos(!ativar, grpCadastro.Controls);
@@ -53,9 +52,12 @@ namespace QueroBilhete.Desktop.formularios.Modelo
                 form.Show();
             }
             else
+            {
+                form.StartPosition = FormStartPosition.CenterScreen;
+                form.WindowState = FormWindowState.Normal;
                 form.ShowDialog();
+            }
         }
-
         public void CarregaDados<T>(DataGridView gridDados, BaseRepository baseRepository, string sqlWhere) where T : class
         {
             IEnumerable<T> lista = baseRepository.BuscarTodosPorQuery<T>(GeradorDapper.ObterDadosGrid<T>(sqlWhere)).ToList();
@@ -65,7 +67,6 @@ namespace QueroBilhete.Desktop.formularios.Modelo
                 ConfiguraGrid(gridDados, lista);
 
         }
-
         private void ConfiguraGrid<T>(DataGridView dgvDados, IEnumerable<T> lista) where T : class
         {
             Configuracao.ConfiguraGrid(dgvDados);

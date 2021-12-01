@@ -34,8 +34,8 @@
             // panelSelecaoAcentos
             // 
             this.panelSelecaoAcentos.AutoScroll = true;
+            this.panelSelecaoAcentos.AutoSize = true;
             this.panelSelecaoAcentos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelSelecaoAcentos.Enabled = false;
             this.panelSelecaoAcentos.Location = new System.Drawing.Point(0, 0);
             this.panelSelecaoAcentos.Name = "panelSelecaoAcentos";
             this.panelSelecaoAcentos.Size = new System.Drawing.Size(1147, 735);
@@ -47,9 +47,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1147, 735);
             this.Controls.Add(this.panelSelecaoAcentos);
+            this.KeyPreview = true;
             this.Name = "frmPreviewLayoutEmbarcacao";
             this.Text = "frmPreviewLayoutEmbarcacao";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmPreviewLayoutEmbarcacao_KeyDown);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

@@ -33,6 +33,7 @@ namespace QueroBilhete.Service.Service
                     EixoX = item.EixoX,
                     EixoY = item.EixoY,
                     Alinhamento = item.Alinhamento,
+                    TotalColuna = item.TotalColuna,
                     Ativo = item.Ativo,
                     DataCadastro = item.DataCadastro,
                     DataAtualizacao = DateTime.Now
@@ -77,9 +78,9 @@ namespace QueroBilhete.Service.Service
         #endregion
 
         #region Métodos Públicos
-        public List<EmbarcacaoPoltronaViewModel> ObterTodos(string nome)
+        public List<EmbarcacaoPoltronaViewModel> ObterTodos(string sqlWhere)
         {
-            return ObterEmbarcacaoPoltrona(_baseRepository.BuscarTodosPorQueryGerador<EmbarcacaoPoltrona>($"NOME LIKE '%{nome}%'"));
+            return ObterEmbarcacaoPoltrona(_baseRepository.BuscarTodosPorQueryGerador<EmbarcacaoPoltrona>(sqlWhere));
         }
 
         public List<EmbarcacaoPoltrona> ObterDadosGrid(int codigoEmbarcacao)

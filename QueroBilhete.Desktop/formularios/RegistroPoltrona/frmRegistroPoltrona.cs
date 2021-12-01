@@ -131,12 +131,12 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
             Codigo = !txtCodigo.Texto.IsNumeric() ? 0 : Convert.ToInt32(txtCodigo.Texto),
             CodigoEmbarcacao = Convert.ToInt32(txtEmbarcacao.TextoCentro),
             Letra = txtLetra.Texto,
-            Inicio = txtInicio.Texto.IsNumeric() ? Convert.ToInt32(txtInicio.Texto) : (int?)null,
-            Fim = txtFim.Texto.IsNumeric() ? Convert.ToInt32(txtFim.Texto) : (int?)null,
-            EixoX = txtEixoX.Texto.IsNumeric() ? Convert.ToInt32(txtEixoX.Texto) : (int?)null,
-            EixoY = txtEixoY.Texto.IsNumeric() ? Convert.ToInt32(txtEixoY.Texto) : (int?)null,
-            TotalColuna = txtTotalColunas.Texto.IsNumeric() ? Convert.ToInt32(txtTotalColunas.Texto) : (int?)null,
-            Alinhamento = txtAlinhamento.TextoCentro.IsNumeric() ? Convert.ToInt32(txtAlinhamento.TextoCentro) : (int?)null,
+            Inicio = txtInicio.Texto.IsNumeric() ? Convert.ToInt32(txtInicio.Texto) : 0,
+            Fim = txtFim.Texto.IsNumeric() ? Convert.ToInt32(txtFim.Texto) : 0,
+            EixoX = txtEixoX.Texto.IsNumeric() ? Convert.ToInt32(txtEixoX.Texto) : 0,
+            EixoY = txtEixoY.Texto.IsNumeric() ? Convert.ToInt32(txtEixoY.Texto) : 0,
+            TotalColuna = txtTotalColunas.Texto.IsNumeric() ? Convert.ToInt32(txtTotalColunas.Texto) : 0,
+            Alinhamento = txtAlinhamento.TextoCentro.IsNumeric() ? Convert.ToInt32(txtAlinhamento.TextoCentro) : 0,
             Ativo = chkStatus.Checked
         };
 
@@ -160,7 +160,7 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
         #endregion
 
         #region [Construtor]
-        public frmRegistroPoltrona()
+        public frmRegistroPoltrona(int codigoEmbarcacao = 0)
         {
             InitializeComponent();
             _baseRepository = new BaseRepository();
@@ -169,6 +169,9 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
             _embarcacaoPoltronaViewModel= new EmbarcacaoPoltronaViewModel();
             lblLog.Text = "Cadastrado em:  por:  Atualizado em:  por: ";
             Novo();
+
+            if (codigoEmbarcacao > 0)
+                PesquisarDados(codigoEmbarcacao);
         }
         #endregion
 

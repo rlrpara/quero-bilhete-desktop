@@ -15,8 +15,8 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
     public partial class frmEmbarcacao : frmModelo
     {
         #region [Propriedades Privadas]
-        private EmbarcacaoViewModel _embarcacaoViewModel;
         private readonly BaseRepository _baseRepository;
+        private EmbarcacaoViewModel _embarcacaoViewModel;
         private EmbarcacaoService _embarcacaoService;
         private EmbarcacaoPoltronaService _embarcacaoPoltronaService;
         private GenericService _genericService;
@@ -251,6 +251,16 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
         {
             if(txtCodigo.Texto.IsNumeric())
                 AddJanela(new frmPreviewLayoutEmbarcacao(Convert.ToInt32(txtCodigo.Texto)), EJanela.Modal);
+        }
+
+        private void dgvDados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvDados.Rows.Count > 0)
+            {
+                var codigoSelecionado = Convert.ToInt32(dgvDados.CurrentRow.Cells["Codigo"].Value);
+                AddJanela(new frmRegistroPoltrona(codigoSelecionado), EJanela.Modal);
+                CarregarDadosGrid();
+            }
         }
     }
 }

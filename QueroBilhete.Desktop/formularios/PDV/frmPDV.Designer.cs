@@ -402,10 +402,10 @@ namespace QueroBilhete.Desktop.formularios.PDV
             // panel17
             // 
             this.panel17.Controls.Add(this.panelInformaPessoa);
-            this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(654, 3);
+            this.panel17.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel17.Location = new System.Drawing.Point(653, 3);
             this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(381, 533);
+            this.panel17.Size = new System.Drawing.Size(1032, 533);
             this.panel17.TabIndex = 1;
             // 
             // panelInformaPessoa
@@ -417,7 +417,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.panelInformaPessoa.Enabled = false;
             this.panelInformaPessoa.Location = new System.Drawing.Point(0, 0);
             this.panelInformaPessoa.Name = "panelInformaPessoa";
-            this.panelInformaPessoa.Size = new System.Drawing.Size(381, 533);
+            this.panelInformaPessoa.Size = new System.Drawing.Size(1032, 533);
             this.panelInformaPessoa.TabIndex = 0;
             this.panelInformaPessoa.Visible = false;
             // 
@@ -431,7 +431,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.grpFormaPagto.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpFormaPagto.Location = new System.Drawing.Point(0, 270);
             this.grpFormaPagto.Name = "grpFormaPagto";
-            this.grpFormaPagto.Size = new System.Drawing.Size(381, 163);
+            this.grpFormaPagto.Size = new System.Drawing.Size(1032, 163);
             this.grpFormaPagto.TabIndex = 3;
             this.grpFormaPagto.TabStop = false;
             this.grpFormaPagto.Text = "FORMA PAGAMENTO";
@@ -443,7 +443,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.panel18.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel18.Location = new System.Drawing.Point(3, 131);
             this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(375, 28);
+            this.panel18.Size = new System.Drawing.Size(1026, 28);
             this.panel18.TabIndex = 5;
             // 
             // label10
@@ -473,7 +473,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.panel19.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel19.Location = new System.Drawing.Point(3, 103);
             this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(375, 28);
+            this.panel19.Size = new System.Drawing.Size(1026, 28);
             this.panel19.TabIndex = 4;
             // 
             // label11
@@ -502,7 +502,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.panel21.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel21.Location = new System.Drawing.Point(3, 75);
             this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(375, 28);
+            this.panel21.Size = new System.Drawing.Size(1026, 28);
             this.panel21.TabIndex = 3;
             // 
             // label12
@@ -533,7 +533,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.panel3.Enabled = false;
             this.panel3.Location = new System.Drawing.Point(3, 47);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(375, 28);
+            this.panel3.Size = new System.Drawing.Size(1026, 28);
             this.panel3.TabIndex = 2;
             this.panel3.Visible = false;
             // 
@@ -585,7 +585,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.panel22.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel22.Location = new System.Drawing.Point(3, 19);
             this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(375, 28);
+            this.panel22.Size = new System.Drawing.Size(1026, 28);
             this.panel22.TabIndex = 1;
             // 
             // btnCarteira
@@ -636,7 +636,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.grpPassageiro.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpPassageiro.Location = new System.Drawing.Point(0, 107);
             this.grpPassageiro.Name = "grpPassageiro";
-            this.grpPassageiro.Size = new System.Drawing.Size(381, 163);
+            this.grpPassageiro.Size = new System.Drawing.Size(1032, 163);
             this.grpPassageiro.TabIndex = 2;
             this.grpPassageiro.TabStop = false;
             this.grpPassageiro.Text = "PASSAGEIRO";
@@ -648,7 +648,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.panel26.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel26.Location = new System.Drawing.Point(3, 131);
             this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(375, 28);
+            this.panel26.Size = new System.Drawing.Size(1026, 28);
             this.panel26.TabIndex = 5;
             // 
             // txtNascimento
@@ -676,7 +676,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.panel27.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel27.Location = new System.Drawing.Point(3, 103);
             this.panel27.Name = "panel27";
-            this.panel27.Size = new System.Drawing.Size(375, 28);
+            this.panel27.Size = new System.Drawing.Size(1026, 28);
             this.panel27.TabIndex = 4;
             // 
             // txtNacionalidade
@@ -702,7 +702,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.panel28.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel28.Location = new System.Drawing.Point(3, 75);
             this.panel28.Name = "panel28";
-            this.panel28.Size = new System.Drawing.Size(375, 28);
+            this.panel28.Size = new System.Drawing.Size(1026, 28);
             this.panel28.TabIndex = 3;
             // 
             // txtRg
@@ -728,7 +728,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.panel24.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel24.Location = new System.Drawing.Point(3, 47);
             this.panel24.Name = "panel24";
-            this.panel24.Size = new System.Drawing.Size(375, 28);
+            this.panel24.Size = new System.Drawing.Size(1026, 28);
             this.panel24.TabIndex = 2;
             // 
             // txtNome
@@ -754,7 +754,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.panel29.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel29.Location = new System.Drawing.Point(3, 19);
             this.panel29.Name = "panel29";
-            this.panel29.Size = new System.Drawing.Size(375, 28);
+            this.panel29.Size = new System.Drawing.Size(1026, 28);
             this.panel29.TabIndex = 1;
             // 
             // txtCpf
@@ -783,7 +783,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.grpPassagem.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpPassagem.Location = new System.Drawing.Point(0, 0);
             this.grpPassagem.Name = "grpPassagem";
-            this.grpPassagem.Size = new System.Drawing.Size(381, 107);
+            this.grpPassagem.Size = new System.Drawing.Size(1032, 107);
             this.grpPassagem.TabIndex = 1;
             this.grpPassagem.TabStop = false;
             this.grpPassagem.Text = "PASSAGEM";
@@ -797,7 +797,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.panel25.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel25.Location = new System.Drawing.Point(3, 75);
             this.panel25.Name = "panel25";
-            this.panel25.Size = new System.Drawing.Size(375, 28);
+            this.panel25.Size = new System.Drawing.Size(1026, 28);
             this.panel25.TabIndex = 3;
             // 
             // btnTipoPassagem
@@ -846,7 +846,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.panel23.Enabled = false;
             this.panel23.Location = new System.Drawing.Point(3, 47);
             this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(375, 28);
+            this.panel23.Size = new System.Drawing.Size(1026, 28);
             this.panel23.TabIndex = 2;
             // 
             // label17
@@ -877,7 +877,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.panel30.Enabled = false;
             this.panel30.Location = new System.Drawing.Point(3, 19);
             this.panel30.Name = "panel30";
-            this.panel30.Size = new System.Drawing.Size(375, 28);
+            this.panel30.Size = new System.Drawing.Size(1026, 28);
             this.panel30.TabIndex = 1;
             // 
             // label19
@@ -906,7 +906,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.panelSelecaoAcentos.Enabled = false;
             this.panelSelecaoAcentos.Location = new System.Drawing.Point(3, 3);
             this.panelSelecaoAcentos.Name = "panelSelecaoAcentos";
-            this.panelSelecaoAcentos.Size = new System.Drawing.Size(651, 533);
+            this.panelSelecaoAcentos.Size = new System.Drawing.Size(650, 533);
             this.panelSelecaoAcentos.TabIndex = 0;
             // 
             // panel6
@@ -959,7 +959,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             // dateTimePicker7
             // 
             this.dateTimePicker7.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker7.Location = new System.Drawing.Point(504, 69);
+            this.dateTimePicker7.Location = new System.Drawing.Point(663, 69);
             this.dateTimePicker7.Name = "dateTimePicker7";
             this.dateTimePicker7.ShowUpDown = true;
             this.dateTimePicker7.Size = new System.Drawing.Size(76, 23);
@@ -968,7 +968,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(504, 51);
+            this.label25.Location = new System.Drawing.Point(663, 51);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(33, 15);
             this.label25.TabIndex = 7;
@@ -977,7 +977,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             // dateTimePicker6
             // 
             this.dateTimePicker6.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker6.Location = new System.Drawing.Point(368, 69);
+            this.dateTimePicker6.Location = new System.Drawing.Point(527, 69);
             this.dateTimePicker6.MinDate = new System.DateTime(2021, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker6.Name = "dateTimePicker6";
             this.dateTimePicker6.Size = new System.Drawing.Size(130, 23);
@@ -986,7 +986,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(368, 51);
+            this.label24.Location = new System.Drawing.Point(527, 51);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(31, 15);
             this.label24.TabIndex = 5;
@@ -1001,7 +1001,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             "Ponta de Pedras - Belém"});
             this.cmbTrajeto.Location = new System.Drawing.Point(187, 69);
             this.cmbTrajeto.Name = "cmbTrajeto";
-            this.cmbTrajeto.Size = new System.Drawing.Size(175, 23);
+            this.cmbTrajeto.Size = new System.Drawing.Size(336, 23);
             this.cmbTrajeto.TabIndex = 2;
             // 
             // label22
@@ -1097,7 +1097,6 @@ namespace QueroBilhete.Desktop.formularios.PDV
         private System.Windows.Forms.ComboBox cmbTrajeto;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TabPage tab1;
-        private System.Windows.Forms.Panel panelSelecaoAcentos;
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.ComboBox cmbEmbarcacao;
         private System.Windows.Forms.Label label8;
@@ -1158,5 +1157,6 @@ namespace QueroBilhete.Desktop.formularios.PDV
         private System.Windows.Forms.TextBox txtCrediario;
         private System.Windows.Forms.Button btnCrediario;
         private System.Windows.Forms.Label lblCrediario;
+        private System.Windows.Forms.Panel panelSelecaoAcentos;
     }
 }

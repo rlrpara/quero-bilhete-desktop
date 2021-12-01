@@ -15,26 +15,26 @@ namespace QueroBilhete.Domain.Entities
 
         [Column("INICIO", Order = 4)]
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
-        public int? Inicio { get; set; }
+        public int Inicio { get; set; }
 
         [Column("FIM", Order = 5)]
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
-        public int? Fim { get; set; }
+        public int Fim { get; set; }
 
         [Column("EIXOX", Order = 6)]
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
-        public int? EixoX { get; set; }
+        public int EixoX { get; set; }
 
         [Column("EIXOY", Order = 7)]
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
-        public int? EixoY { get; set; }
+        public int EixoY { get; set; }
 
         [Column("TOTAL_COLUNA", Order = 8)]
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
-        public int? TotalColuna { get; set; }
+        public int TotalColuna { get; set; }
 
         [Column("DIRECAO", Order = 9)]
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true)]
-        public int? Alinhamento { get; set; }
+        public int Alinhamento { get; set; }
     }
 }

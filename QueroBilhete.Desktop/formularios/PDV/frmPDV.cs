@@ -16,6 +16,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
         private readonly BaseRepository _baseRepository;
         private readonly EmpresaService _empresaService;
         private readonly EmbarcacaoService _embarcacaoService;
+        private readonly EmbarcacaoPoltronaService _embarcacaoPoltronaService;
         private readonly TrajetoService _trajetoService;
         private readonly PassagemService _passagemService;
         private readonly PassageiroService _passageiroService;
@@ -64,30 +65,6 @@ namespace QueroBilhete.Desktop.formularios.PDV
             ValoresPadrao();
             AtivaTab(0);
         }
-        private void LayoutSalmista()
-        {
-            //posicao   letra|de|ate|topo|esquerda|colunas|orientacao
-            GerarAssentos("C", 1, 5, 40, 20, 1);
-            GerarAssentos("A", 1, 5, 40, 560, 1);
-
-            GerarAssentos("C", 6, 13, 200, 65, 2, EDirecao.DireitaEsquerda);
-            GerarAssentos("B", 1, 30, 150, 200, 5);
-            GerarAssentos("A", 6, 13, 200, 515, 2);
-
-            GerarAssentos("C", 14, 43, 340, 65, 2, EDirecao.DireitaEsquerda);
-            GerarAssentos("B", 31, 105, 340, 200, 5);
-            GerarAssentos("A", 14, 43, 340, 515, 2);
-
-            GerarAssentos("D", 1, 2, 750, 20, 2);
-            GerarAssentos("D", 3, 7, 750, 200, 5);
-            GerarAssentos("D", 8, 9, 750, 515, 2);
-
-            GerarAssentos("D", 10, 11, 777, 20, 2);
-            GerarAssentos("D", 12, 16, 777, 200, 5);
-            GerarAssentos("D", 17, 18, 777, 515, 2);
-
-            GerarAssentos("D", 19, 30, 815, 47, 12);
-        }
         private void GerarAssentos(string letra, int inicaEm, int terminaEm, int eixoX, int eixoY, int totalColunas, EDirecao direcao = EDirecao.EsquerdaDireita)
         {
             var esquerda = eixoY;
@@ -98,7 +75,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
                 {
                     if (i <= terminaEm)
                     {
-                        DesenhaBotao(letra, i, eixoX, eixoY, panelSelecaoAcentos);
+                        DesenhaBotao(letra, i, eixoX, eixoY, ref panelSelecaoAcentos);
                         if(direcao == EDirecao.EsquerdaDireita) 
                             eixoY += 45;
                         else
@@ -111,7 +88,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
                 eixoX += 25;
             }
         }
-        private void DesenhaBotao(string letra, int numero, int eixoX, int eixoY, Panel painelDesenho)
+        private void DesenhaBotao(string letra, int numero, int eixoX, int eixoY, ref Panel painelDesenho)
         {
             var nomeBotao = $"{letra}{numero.ToString().PadLeft(3, '0')}";
             Button button = new Button();
@@ -124,8 +101,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             button.BackColor = Color.White;
             button.Width = 45;
             button.Height = 25;
-            button.Font = new Font(button.Font.FontFamily, 9);
-            panel1.Controls.Add(button); // here
+            button.Font = new Font(button.Font.FontFamily, (float)(8.26));
             painelDesenho.Controls.Add(button);
         }
         private void botaoAcento(object sender, System.EventArgs e)
@@ -189,11 +165,20 @@ namespace QueroBilhete.Desktop.formularios.PDV
         {
             RemoveControles(panelSelecaoAcentos);
 
-            if (cmbEmbarcacao.Text.Contains("1"))
-                LayoutSalmista();
-            else
-                RemoveControles(panelSelecaoAcentos);
+            CarregarLayout(Convert.ToInt32(cmbEmbarcacao.Text.Split('-')[0]));
         }
+
+        private void CarregarLayout(int codigoEmbarcacao)
+        {
+            var poltronas = _embarcacaoPoltronaService.ObterTodos($"ID_EMBARCACAO = {codigoEmbarcacao}");
+
+            foreach (var item in poltronas)
+            {
+                //posicao          letra|          de|      ate|       topo|   esquerda|          colunas|                 orientacao
+                GerarAssentos(item.Letra, item.Inicio, item.Fim, item.EixoX, item.EixoY, item.TotalColuna, (EDirecao)item.Alinhamento);
+            }
+        }
+
         private void RemoveControles(Panel controles)
         {
             controles.Controls.Clear();
@@ -243,6 +228,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             _trajetoService = new TrajetoService(_baseRepository);
             _passagemService = new PassagemService(_baseRepository);
             _passageiroService = new PassageiroService(_baseRepository);
+            _embarcacaoPoltronaService = new EmbarcacaoPoltronaService(_baseRepository);
             _assentosSelecionados = string.Empty;
             LimpaCampos();
             ValoresPadrao();
