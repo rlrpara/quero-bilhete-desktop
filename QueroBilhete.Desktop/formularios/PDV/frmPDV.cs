@@ -1,5 +1,7 @@
 ﻿using QueroBilhete.Data.Repositories;
 using QueroBilhete.Desktop.Enumeradores;
+using QueroBilhete.Desktop.formularios.Pesquisa;
+using QueroBilhete.Infra.Utilities.ExtensionMethods;
 using QueroBilhete.Service.Service;
 using QueroBilhete.Service.ViewModels;
 using System;
@@ -20,38 +22,18 @@ namespace QueroBilhete.Desktop.formularios.PDV
         private readonly TrajetoService _trajetoService;
         private readonly PassagemService _passagemService;
         private readonly PassageiroService _passageiroService;
+        private readonly TipoPassagemService _tipoPassagemService;
+        private readonly GenericService _genericService;
         private string _assentosSelecionados;
         #endregion
 
         #region Métodos Privados
-        private void AtivaTab(int numero)
-        {
-            tabPdv.SelectedTab = tabPdv.TabPages[numero];
-            tabPdv.Appearance = TabAppearance.FlatButtons;
-            tabPdv.ItemSize = new Size(0, 1);
-            tabPdv.SizeMode = TabSizeMode.Fixed;
-        }
         private void LimpaCampos()
         {
-            foreach (Control c in grpFormaPagto.Controls)
-            {
-                if (c is TextBox)
-                    ((TextBox)c).Text = "";
 
-                if (c is Label)
-                    ((Label)c).Text = "";
-            }
         }
         private void ValoresPadrao()
         {
-            txtNacionalidade.Text = "BRASILEIRA";
-            txtTipoPassagem.Text = "1";
-            lblTipoPassagem.Text = "INTEIRA";
-            txtCarteira.Text = "1";
-            lblCarteira.Text = "DINHEIRO";
-            txtValorPago.Text = "0.00";
-            txtTroco.Text = "0.00";
-            txtTotal.Text = "0.00";
             cmbTrajeto.SelectedIndex = 1;
         }
         private void AbreCaixa()
@@ -60,10 +42,8 @@ namespace QueroBilhete.Desktop.formularios.PDV
         }
         private void FecharCaixa()
         {
-            panelSelecaoAcentos.Enabled = false;
             LimpaCampos();
             ValoresPadrao();
-            AtivaTab(0);
         }
         private void GerarAssentos(string letra, int inicaEm, int terminaEm, int eixoX, int eixoY, int totalColunas, EDirecao direcao = EDirecao.EsquerdaDireita)
         {
@@ -75,11 +55,11 @@ namespace QueroBilhete.Desktop.formularios.PDV
                 {
                     if (i <= terminaEm)
                     {
-                        DesenhaBotao(letra, i, eixoX, eixoY, ref panelSelecaoAcentos);
-                        if(direcao == EDirecao.EsquerdaDireita) 
+                        DesenhaBotao(letra, i, eixoX, eixoY, ref pnlJanela);
+                        //if(direcao == EDirecao.EsquerdaDireita) 
+                        //    eixoY += 45;
+                        //else
                             eixoY += 45;
-                        else
-                            eixoY += -45;
                         i++;
                     }
                 }
@@ -104,24 +84,26 @@ namespace QueroBilhete.Desktop.formularios.PDV
             button.Font = new Font(button.Font.FontFamily, (float)(8.26));
             painelDesenho.Controls.Add(button);
         }
-        private void botaoAcento(object sender, System.EventArgs e)
+        private void botaoAcento(object sender, EventArgs e)
         {
             var botaoClicado = ((Button)sender).Text.ToString();
             var listaAssentos = new StringBuilder();
 
-            foreach (Control c in panelSelecaoAcentos.Controls)
+            foreach (Control control in pnlJanela.Controls)
             {
-                if (c is Button button && button.Tag != null && button.Text == botaoClicado)
+                if (control is Button botaoCor && botaoCor.Tag != null && botaoCor.BackColor == Color.LimeGreen)
+                    botaoCor.BackColor = Color.White;
+
+                if (control is Button button && button.Tag != null && button.Text == botaoClicado)
                 {
-                    ((Button)sender).BackColor = (((Button)sender).BackColor == Color.LimeGreen ? Color.White : Color.LimeGreen);
+                    button.BackColor = (((Button)sender).BackColor == Color.LimeGreen ? Color.White : Color.LimeGreen);
 
-                    if (((Button)sender).BackColor == Color.LimeGreen)
-                        txtAssento.Text = ((Button)sender).Tag.ToString();
-
-                    InformaPassageiroAssento(((Button)sender).Tag.ToString());
+                    if (button.BackColor == Color.LimeGreen)
+                        txtPoltrona.Texto = button.Tag.ToString();
                 }
             }
             _assentosSelecionados = listaAssentos.ToString().Replace($"\r\n", ",");
+            txtTipo.Focus();
         }
         private void btnNovaVenda_Click(object sender, System.EventArgs e)
         {
@@ -133,7 +115,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             {
                 AbreCaixa();
                 MessageBox.Show ($"Inicia nova venda com a data({DateTime.Now:dd/MM/yyyy}) e hora ({DateTime.Now:HH:mm:ss}).");
-                panelSelecaoAcentos.Enabled = true;
+                pnlJanela.Enabled = true;
             }
             else
             {
@@ -149,25 +131,15 @@ namespace QueroBilhete.Desktop.formularios.PDV
         private void FechaVenda()
         {
             MessageBox.Show($"Fecha venda, imprime cupons, salva no banco.");
-            panelSelecaoAcentos.Enabled = false;
-            panelInformaPessoa.Enabled = false;
-            panelInformaPessoa.Visible = false;
+            pnlJanela.Enabled = false;
             LimpaCampos();
-        }
-
-        private void InformaPassageiroAssento(string tag)
-        {
-            panelInformaPessoa.Visible = true;
-            panelInformaPessoa.Enabled = true;
-            txtTipoPassagem.Focus();
         }
         private void txtEmbarcacao_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RemoveControles(panelSelecaoAcentos);
+            RemoveControles(pnlJanela);
 
             CarregarLayout(Convert.ToInt32(cmbEmbarcacao.Text.Split('-')[0]));
         }
-
         private void CarregarLayout(int codigoEmbarcacao)
         {
             var poltronas = _embarcacaoPoltronaService.ObterTodos($"ID_EMBARCACAO = {codigoEmbarcacao}");
@@ -178,12 +150,10 @@ namespace QueroBilhete.Desktop.formularios.PDV
                 GerarAssentos(item.Letra, item.Inicio, item.Fim, item.EixoX, item.EixoY, item.TotalColuna, (EDirecao)item.Alinhamento);
             }
         }
-
         private void RemoveControles(Panel controles)
         {
             controles.Controls.Clear();
         }
-
         private void CarregarDadosPadroes()
         {
             var empresa = _empresaService.CarregaEmpresa(1);
@@ -191,7 +161,6 @@ namespace QueroBilhete.Desktop.formularios.PDV
             ObterDadosComboEmbarcacao(embarcacoes);
             ObterDadosComboTrajeto(cmbEmbarcacao.Text.Split('-')[0]);
         }
-
         private void ObterDadosComboTrajeto(string codigoEmbarcacao)
         {
             var trajeto = _trajetoService.ObterTodos($"ID_EMBARCACAO = {codigoEmbarcacao}");
@@ -203,7 +172,6 @@ namespace QueroBilhete.Desktop.formularios.PDV
             if(cmbTrajeto.Items.Count > 0)
                 cmbTrajeto.SelectedIndex = 0;
         }
-
         private void ObterDadosComboEmbarcacao(List<EmbarcacaoViewModel> embarcacaoViewModel)
         {
             cmbEmbarcacao.Items.Clear();
@@ -211,7 +179,6 @@ namespace QueroBilhete.Desktop.formularios.PDV
                 cmbEmbarcacao.Items.Add($"{item.Codigo} - {item.Nome}");
             cmbEmbarcacao.SelectedIndex = 0;
         }
-
         private void Sair()
         {
             Close();
@@ -229,10 +196,11 @@ namespace QueroBilhete.Desktop.formularios.PDV
             _passagemService = new PassagemService(_baseRepository);
             _passageiroService = new PassageiroService(_baseRepository);
             _embarcacaoPoltronaService = new EmbarcacaoPoltronaService(_baseRepository);
+            _tipoPassagemService = new TipoPassagemService(_baseRepository);
+            _genericService = new GenericService(_baseRepository);
             _assentosSelecionados = string.Empty;
             LimpaCampos();
             ValoresPadrao();
-            AtivaTab(0);
             CarregarDadosPadroes();
         }
 
@@ -299,7 +267,32 @@ namespace QueroBilhete.Desktop.formularios.PDV
             MessageBox.Show("Valida todos os campos. Exibe tela informando a impressão de todas as passagens.");
             FechaVenda();
         }
+        private void txtTipo_ButtonClick(object sender, EventArgs e)
+        {
+            var janela = new frmPesquisaGenerica();
+            janela.CarregaDados<Domain.Entities.TipoPassagem>("AND ATIVO = 1");
+            janela.ShowDialog();
+
+            if (janela.CodigoSelecionado > 0)
+            {
+                txtTipo.TextoCentro = janela.CodigoSelecionado.ToString();
+                txtTipo.TextoDireita = _genericService.ObterDescricao<Domain.Entities.TipoPassagem>(janela.CodigoSelecionado, "DESCRICAO");
+            }
+        }
+
 
         #endregion
+
+        private void txtTipo_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (txtTipo.TextoCentro.IsNumeric())
+                txtTipo.TextoDireita = _genericService.ObterDescricao<Domain.Entities.TipoPassagem>(Convert.ToInt32(txtTipo.TextoCentro), "DESCRICAO");
+        }
+
+        private void txtTipo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.F5)
+                txtTipo_ButtonClick(sender, e);
+        }
     }
 }
