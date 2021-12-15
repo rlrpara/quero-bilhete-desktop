@@ -14,6 +14,11 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
         private readonly EmbarcacaoPoltronaService _embarcacaoPoltronaService;
         #endregion
 
+        #region [Propriedades Públicas]
+        public int eixoX;
+        public int eixoY;
+        #endregion
+
         #region [Métodos Privados]
         private void GerarAssentos(string letra, int inicaEm, int terminaEm, int eixoX, int eixoY, int totalColunas, EDirecao direcao = EDirecao.EsquerdaDireita)
         {
@@ -57,7 +62,7 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
         }
         private void CarregarLayout(int codigoEmbarcacao)
         {
-            var poltronas = _embarcacaoPoltronaService.ObterTodos($"ID_EMBARCACAO = {codigoEmbarcacao}");
+            var poltronas = _embarcacaoPoltronaService.ObterTodos($"ID_EMBARCACAO = {codigoEmbarcacao} AND ATIVO = 1");
 
             foreach (var item in poltronas)
             {
@@ -79,6 +84,8 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
             _baseRepository = new BaseRepository();
             _embarcacaoPoltronaService = new EmbarcacaoPoltronaService(_baseRepository);
             CarregarLayout(codigoEmbarcacao);
+            eixoX = 0;
+            eixoY = 0;
         }
         #endregion
 
@@ -97,6 +104,15 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
                     break;
             }
         }
+
+        private void panelSelecaoAcentos_Click(object sender, System.EventArgs e)
+        {
+            Point coordenadas = panelSelecaoAcentos.PointToClient(Cursor.Position);
+            eixoX = coordenadas.X;
+            eixoY = coordenadas.Y;
+            Close();
+        }
+
         #endregion
     }
 }

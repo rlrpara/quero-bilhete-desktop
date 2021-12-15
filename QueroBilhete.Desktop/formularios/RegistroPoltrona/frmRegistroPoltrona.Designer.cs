@@ -35,20 +35,15 @@
             this.txtAlinhamento = new QueroBilhete.Componentes.TextBox.txtBoxBtnLabel();
             this.txtTotalColunas = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
             this.txtEixoY = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
-            this.txtEixoX = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
             this.txtFim = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
-            this.txtInicio = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
             this.txtLetra = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
             this.txtEmbarcacao = new QueroBilhete.Componentes.TextBox.txtBoxBtnLabel();
             this.txtCodigo = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
+            this.txtInicio = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
+            this.txtEixoX = new QueroBilhete.Componentes.TextBox.txtBoxBtnLabel();
             this.panelDados.SuspendLayout();
             this.panelStatus.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panelDados
-            // 
-            this.panelDados.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panelDados.Size = new System.Drawing.Size(813, 131);
             // 
             // btnSair
             // 
@@ -93,16 +88,16 @@
             // panelDados
             // 
             this.panelDados.Controls.Add(this.panelStatus);
-            this.panelDados.Controls.Add(this.txtAlinhamento);
-            this.panelDados.Controls.Add(this.txtTotalColunas);
             this.panelDados.Controls.Add(this.txtEixoY);
             this.panelDados.Controls.Add(this.txtEixoX);
+            this.panelDados.Controls.Add(this.txtAlinhamento);
+            this.panelDados.Controls.Add(this.txtTotalColunas);
             this.panelDados.Controls.Add(this.txtFim);
             this.panelDados.Controls.Add(this.txtInicio);
             this.panelDados.Controls.Add(this.txtLetra);
             this.panelDados.Controls.Add(this.txtEmbarcacao);
             this.panelDados.Controls.Add(this.txtCodigo);
-            this.panelDados.Location = new System.Drawing.Point(0, 46);
+            this.panelDados.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.panelDados.Size = new System.Drawing.Size(813, 595);
             // 
             // panel1
@@ -122,14 +117,14 @@
             this.panelStatus.Location = new System.Drawing.Point(0, 216);
             this.panelStatus.Name = "panelStatus";
             this.panelStatus.Size = new System.Drawing.Size(813, 25);
-            this.panelStatus.TabIndex = 29;
+            this.panelStatus.TabIndex = 10;
             // 
             // chkStatus
             // 
             this.chkStatus.AutoSize = true;
             this.chkStatus.Location = new System.Drawing.Point(149, 5);
             this.chkStatus.Name = "chkStatus";
-            this.chkStatus.Size = new System.Drawing.Size(52, 17);
+            this.chkStatus.Size = new System.Drawing.Size(51, 17);
             this.chkStatus.TabIndex = 3;
             this.chkStatus.Text = "Ativo";
             this.chkStatus.UseVisualStyleBackColor = true;
@@ -139,7 +134,7 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(94, 6);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(39, 13);
+            this.label14.Size = new System.Drawing.Size(38, 13);
             this.label14.TabIndex = 1;
             this.label14.Text = "Status";
             // 
@@ -148,26 +143,29 @@
             this.txtAlinhamento.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtAlinhamento.EnableAll = true;
             this.txtAlinhamento.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtAlinhamento.Location = new System.Drawing.Point(0, 192);
+            this.txtAlinhamento.Location = new System.Drawing.Point(0, 144);
             this.txtAlinhamento.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtAlinhamento.Name = "txtAlinhamento";
             this.txtAlinhamento.Size = new System.Drawing.Size(813, 24);
             this.txtAlinhamento.StatuBarComponent = null;
-            this.txtAlinhamento.TabIndex = 28;
+            this.txtAlinhamento.TabIndex = 7;
             this.txtAlinhamento.TextoCentro = null;
             this.txtAlinhamento.TextoDireita = "";
             this.txtAlinhamento.TextoEsquerda = "Alinhamento";
             this.txtAlinhamento.TextoStatus = null;
+            this.txtAlinhamento.ButtonClick += new System.EventHandler(this.txtAlinhamento_ButtonClick);
+            this.txtAlinhamento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAlinhamento_KeyDown);
+            this.txtAlinhamento.Validating += new System.ComponentModel.CancelEventHandler(this.txtAlinhamento_Validating);
             // 
             // txtTotalColunas
             // 
             this.txtTotalColunas.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtTotalColunas.EnableAll = true;
             this.txtTotalColunas.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtTotalColunas.Location = new System.Drawing.Point(0, 168);
+            this.txtTotalColunas.Location = new System.Drawing.Point(0, 120);
             this.txtTotalColunas.Name = "txtTotalColunas";
             this.txtTotalColunas.Size = new System.Drawing.Size(813, 24);
-            this.txtTotalColunas.TabIndex = 27;
+            this.txtTotalColunas.TabIndex = 6;
             this.txtTotalColunas.Texto = "";
             this.txtTotalColunas.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Centro;
             this.txtTotalColunas.TextoEsquerda = "Total Colunas";
@@ -182,10 +180,10 @@
             this.txtEixoY.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtEixoY.EnableAll = true;
             this.txtEixoY.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtEixoY.Location = new System.Drawing.Point(0, 144);
+            this.txtEixoY.Location = new System.Drawing.Point(0, 192);
             this.txtEixoY.Name = "txtEixoY";
             this.txtEixoY.Size = new System.Drawing.Size(813, 24);
-            this.txtEixoY.TabIndex = 26;
+            this.txtEixoY.TabIndex = 9;
             this.txtEixoY.Texto = "";
             this.txtEixoY.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Centro;
             this.txtEixoY.TextoEsquerda = "Eixo Y";
@@ -195,24 +193,6 @@
             this.txtEixoY.TextoStatus = "Eixo Y";
             this.txtEixoY.VisibleAll = true;
             // 
-            // txtEixoX
-            // 
-            this.txtEixoX.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtEixoX.EnableAll = true;
-            this.txtEixoX.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtEixoX.Location = new System.Drawing.Point(0, 120);
-            this.txtEixoX.Name = "txtEixoX";
-            this.txtEixoX.Size = new System.Drawing.Size(813, 24);
-            this.txtEixoX.TabIndex = 25;
-            this.txtEixoX.Texto = "";
-            this.txtEixoX.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Centro;
-            this.txtEixoX.TextoEsquerda = "Eixo X";
-            this.txtEixoX.TextoLargura = 60;
-            this.txtEixoX.TextoMaiusculo = true;
-            this.txtEixoX.TextoSenha = false;
-            this.txtEixoX.TextoStatus = "Eixo X";
-            this.txtEixoX.VisibleAll = true;
-            // 
             // txtFim
             // 
             this.txtFim.Dock = System.Windows.Forms.DockStyle.Top;
@@ -221,7 +201,7 @@
             this.txtFim.Location = new System.Drawing.Point(0, 96);
             this.txtFim.Name = "txtFim";
             this.txtFim.Size = new System.Drawing.Size(813, 24);
-            this.txtFim.TabIndex = 24;
+            this.txtFim.TabIndex = 5;
             this.txtFim.Texto = "";
             this.txtFim.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Centro;
             this.txtFim.TextoEsquerda = "Fim";
@@ -231,24 +211,6 @@
             this.txtFim.TextoStatus = "Fim";
             this.txtFim.VisibleAll = true;
             // 
-            // txtInicio
-            // 
-            this.txtInicio.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtInicio.EnableAll = true;
-            this.txtInicio.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtInicio.Location = new System.Drawing.Point(0, 72);
-            this.txtInicio.Name = "txtInicio";
-            this.txtInicio.Size = new System.Drawing.Size(813, 24);
-            this.txtInicio.TabIndex = 23;
-            this.txtInicio.Texto = "";
-            this.txtInicio.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Centro;
-            this.txtInicio.TextoEsquerda = "Início";
-            this.txtInicio.TextoLargura = 60;
-            this.txtInicio.TextoMaiusculo = true;
-            this.txtInicio.TextoSenha = false;
-            this.txtInicio.TextoStatus = "Início";
-            this.txtInicio.VisibleAll = true;
-            // 
             // txtLetra
             // 
             this.txtLetra.Dock = System.Windows.Forms.DockStyle.Top;
@@ -257,7 +219,7 @@
             this.txtLetra.Location = new System.Drawing.Point(0, 48);
             this.txtLetra.Name = "txtLetra";
             this.txtLetra.Size = new System.Drawing.Size(813, 24);
-            this.txtLetra.TabIndex = 22;
+            this.txtLetra.TabIndex = 3;
             this.txtLetra.Texto = "";
             this.txtLetra.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Centro;
             this.txtLetra.TextoEsquerda = "Letra";
@@ -277,11 +239,12 @@
             this.txtEmbarcacao.Name = "txtEmbarcacao";
             this.txtEmbarcacao.Size = new System.Drawing.Size(813, 24);
             this.txtEmbarcacao.StatuBarComponent = null;
-            this.txtEmbarcacao.TabIndex = 21;
+            this.txtEmbarcacao.TabIndex = 2;
             this.txtEmbarcacao.TextoCentro = null;
             this.txtEmbarcacao.TextoDireita = "";
             this.txtEmbarcacao.TextoEsquerda = "Embarcação";
             this.txtEmbarcacao.TextoStatus = null;
+            this.txtEmbarcacao.ButtonClick += new System.EventHandler(this.txtEmbarcacao_ButtonClick);
             // 
             // txtCodigo
             // 
@@ -291,7 +254,7 @@
             this.txtCodigo.Location = new System.Drawing.Point(0, 0);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(813, 24);
-            this.txtCodigo.TabIndex = 20;
+            this.txtCodigo.TabIndex = 1;
             this.txtCodigo.Texto = "";
             this.txtCodigo.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Centro;
             this.txtCodigo.TextoEsquerda = "Código";
@@ -300,6 +263,42 @@
             this.txtCodigo.TextoSenha = false;
             this.txtCodigo.TextoStatus = "Código";
             this.txtCodigo.VisibleAll = true;
+            // 
+            // txtInicio
+            // 
+            this.txtInicio.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtInicio.EnableAll = true;
+            this.txtInicio.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtInicio.Location = new System.Drawing.Point(0, 72);
+            this.txtInicio.Name = "txtInicio";
+            this.txtInicio.Size = new System.Drawing.Size(813, 24);
+            this.txtInicio.TabIndex = 4;
+            this.txtInicio.Texto = "";
+            this.txtInicio.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Centro;
+            this.txtInicio.TextoEsquerda = "Início";
+            this.txtInicio.TextoLargura = 60;
+            this.txtInicio.TextoMaiusculo = true;
+            this.txtInicio.TextoSenha = false;
+            this.txtInicio.TextoStatus = "Início";
+            this.txtInicio.VisibleAll = true;
+            // 
+            // txtEixoX
+            // 
+            this.txtEixoX.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtEixoX.EnableAll = true;
+            this.txtEixoX.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtEixoX.Location = new System.Drawing.Point(0, 168);
+            this.txtEixoX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtEixoX.Name = "txtEixoX";
+            this.txtEixoX.Size = new System.Drawing.Size(813, 24);
+            this.txtEixoX.StatuBarComponent = null;
+            this.txtEixoX.TabIndex = 8;
+            this.txtEixoX.TextoCentro = null;
+            this.txtEixoX.TextoDireita = "";
+            this.txtEixoX.TextoEsquerda = "Eixo X";
+            this.txtEixoX.TextoStatus = null;
+            this.txtEixoX.ButtonClick += new System.EventHandler(this.txtEixoX_ButtonClick);
+            this.txtEixoX.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEixoX_KeyDown);
             // 
             // frmRegistroPoltrona
             // 
@@ -310,7 +309,6 @@
             this.Name = "frmRegistroPoltrona";
             this.Text = "Registro de Poltronas";
             this.Controls.SetChildIndex(this.panel1, 0);
-            this.Controls.SetChildIndex(this.panelDados, 0);
             this.Controls.SetChildIndex(this.panelDados, 0);
             this.panelDados.ResumeLayout(false);
             this.panelStatus.ResumeLayout(false);
@@ -329,11 +327,11 @@
         private Componentes.TextBox.txtBoxBtnLabel txtAlinhamento;
         private Componentes.TextBox.txtBoxLabel txtTotalColunas;
         private Componentes.TextBox.txtBoxLabel txtEixoY;
-        private Componentes.TextBox.txtBoxLabel txtEixoX;
         private Componentes.TextBox.txtBoxLabel txtFim;
-        private Componentes.TextBox.txtBoxLabel txtInicio;
         private Componentes.TextBox.txtBoxLabel txtLetra;
         private Componentes.TextBox.txtBoxBtnLabel txtEmbarcacao;
         private Componentes.TextBox.txtBoxLabel txtCodigo;
+        private Componentes.TextBox.txtBoxLabel txtInicio;
+        private Componentes.TextBox.txtBoxBtnLabel txtEixoX;
     }
 }

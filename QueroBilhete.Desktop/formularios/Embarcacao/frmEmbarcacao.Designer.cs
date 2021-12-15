@@ -119,6 +119,7 @@
             this.dgvDados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDados.Size = new System.Drawing.Size(941, 361);
             this.dgvDados.TabIndex = 1;
+            this.dgvDados.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDados_CellDoubleClick);
             // 
             // pnlDados
             // 
@@ -139,6 +140,7 @@
             this.btnPreview.TabIndex = 1;
             this.btnPreview.Text = "Preview";
             this.btnPreview.UseVisualStyleBackColor = true;
+            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
             // btnNovoGrid
             // 
@@ -148,6 +150,7 @@
             this.btnNovoGrid.TabIndex = 0;
             this.btnNovoGrid.Text = "Novo";
             this.btnNovoGrid.UseVisualStyleBackColor = true;
+            this.btnNovoGrid.Click += new System.EventHandler(this.btnNovoGrid_Click);
             // 
             // panelStatus
             // 
@@ -211,6 +214,9 @@
             this.txtEmpresa.TextoDireita = "";
             this.txtEmpresa.TextoEsquerda = "Empresa";
             this.txtEmpresa.TextoStatus = "Empresa";
+            this.txtEmpresa.ButtonClick += new System.EventHandler(this.txtEmpresa_ButtonClick);
+            this.txtEmpresa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEmpresa_KeyDown);
+            this.txtEmpresa.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmpresa_Validating);
             // 
             // txtCodigo
             // 

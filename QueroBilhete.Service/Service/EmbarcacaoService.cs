@@ -65,7 +65,7 @@ namespace QueroBilhete.Service.Service
 
         public EmbarcacaoViewModel CarregaEmbarcacao(int codigoSelecionado)
         {
-            var EmbarcacaoEncontrada = _baseRepository.BuscarPorQueryGerador<Embarcacao>(codigoSelecionado == 0 ? "" : $"ID = {codigoSelecionado}");
+            var EmbarcacaoEncontrada = _baseRepository.BuscarPorQueryGerador<Embarcacao>(codigoSelecionado == 0 ? "" : $"ID = {codigoSelecionado} AND ATIVO = 1");
             return EmbarcacaoEncontrada != null ? ObterEmbarcacao(_baseRepository.BuscarPorQueryGerador<Embarcacao>($"ID = {codigoSelecionado}")) : new EmbarcacaoViewModel();
         }
 

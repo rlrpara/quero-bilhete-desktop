@@ -79,7 +79,7 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
                 txtLetra.Texto = _embarcacaoPoltronaViewModel.Letra;
                 txtInicio.Texto = _embarcacaoPoltronaViewModel.Inicio.ToString();
                 txtFim.Texto = _embarcacaoPoltronaViewModel.Fim.ToString();
-                txtEixoX.Texto = _embarcacaoPoltronaViewModel.EixoX.ToString();
+                txtEixoX.TextoCentro = _embarcacaoPoltronaViewModel.EixoX.ToString();
                 txtEixoY.Texto = _embarcacaoPoltronaViewModel.EixoY.ToString();
                 txtTotalColunas.Texto = _embarcacaoPoltronaViewModel.TotalColuna.ToString();
                 txtAlinhamento.TextoCentro = _embarcacaoPoltronaViewModel.Alinhamento.ToString();
@@ -133,7 +133,7 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
             Letra = txtLetra.Texto,
             Inicio = txtInicio.Texto.IsNumeric() ? Convert.ToInt32(txtInicio.Texto) : 0,
             Fim = txtFim.Texto.IsNumeric() ? Convert.ToInt32(txtFim.Texto) : 0,
-            EixoX = txtEixoX.Texto.IsNumeric() ? Convert.ToInt32(txtEixoX.Texto) : 0,
+            EixoX = txtEixoX.TextoCentro.IsNumeric() ? Convert.ToInt32(txtEixoX.TextoCentro) : 0,
             EixoY = txtEixoY.Texto.IsNumeric() ? Convert.ToInt32(txtEixoY.Texto) : 0,
             TotalColuna = txtTotalColunas.Texto.IsNumeric() ? Convert.ToInt32(txtTotalColunas.Texto) : 0,
             Alinhamento = txtAlinhamento.TextoCentro.IsNumeric() ? Convert.ToInt32(txtAlinhamento.TextoCentro) : 0,
@@ -160,7 +160,7 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
         #endregion
 
         #region [Construtor]
-        public frmRegistroPoltrona(int codigoEmbarcacao = 0)
+        public frmRegistroPoltrona(int codigoEmbarcacao = 0, int codigoPoltrona = 0)
         {
             InitializeComponent();
             _baseRepository = new BaseRepository();
@@ -170,8 +170,10 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
             lblLog.Text = "Cadastrado em:  por:  Atualizado em:  por: ";
             Novo();
 
-            if (codigoEmbarcacao > 0)
-                PesquisarDados(codigoEmbarcacao);
+            if (codigoEmbarcacao > 0 && codigoPoltrona == 0)
+                txtEmbarcacao.TextoCentro = codigoEmbarcacao.ToString();
+            else if(codigoEmbarcacao > 0 && codigoPoltrona > 0)
+                PesquisarDados(codigoPoltrona);
         }
         #endregion
 
@@ -229,8 +231,6 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
             }
         }
 
-        #endregion
-
         private void txtAlinhamento_ButtonClick(object sender, EventArgs e)
         {
             var janela = new frmPesquisaGenerica();
@@ -242,6 +242,49 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
                 txtAlinhamento.TextoCentro = janela.CodigoSelecionado.ToString();
                 txtAlinhamento.TextoDireita = _genericService.ObterDescricao<Domain.Entities.Alinhamento>(janela.CodigoSelecionado, "NOME");
             }
+        }
+
+        private void txtEixoX_ButtonClick(object sender, EventArgs e)
+        {
+            if (txtEmbarcacao.TextoCentro.IsNumeric() && (txtInicio.Texto.IsNumeric() && txtFim.Texto.IsNumeric() && !string.IsNullOrWhiteSpace(txtLetra.Texto)))
+            {
+                var janela = new frmPreviewLayoutEmbarcacao(Convert.ToInt32(txtEmbarcacao.TextoCentro));
+                janela.ShowDialog();
+                int eixox = janela.eixoX;
+                int eixoy = janela.eixoY;
+
+                if (eixox > 0)
+                {
+                    txtEixoX.TextoCentro = eixox.ToString();
+                    txtEixoY.Texto = eixoy.ToString();
+                }
+            }
+            else
+                MessageBox.Show("Campos Letra/Inicio/Fim devem ser informados");
+        }
+
+        private void txtEixoX_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F5)
+            {
+                txtEixoX_ButtonClick(sender, e);
+            }
+        }
+
+        #endregion
+
+        private void txtAlinhamento_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F5)
+            {
+                txtAlinhamento_ButtonClick(sender, e);
+            }
+        }
+
+        private void txtAlinhamento_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            txtAlinhamento.TextoDireita = (!txtAlinhamento.TextoCentro.IsNumeric())
+                ? "" : _genericService.ObterDescricao<Domain.Entities.Alinhamento>(Convert.ToInt32(txtAlinhamento.TextoCentro), "NOME");
         }
     }
 }

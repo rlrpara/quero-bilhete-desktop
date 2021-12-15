@@ -50,9 +50,9 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.panelDados = new System.Windows.Forms.GroupBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.chkStatus = new System.Windows.Forms.CheckBox();
             this.panelStatus = new System.Windows.Forms.Panel();
+            this.chkStatus = new System.Windows.Forms.CheckBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.txtNumero = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
             this.txtRua = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
             this.txtBairro = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
@@ -320,14 +320,15 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             this.panelDados.TabIndex = 2;
             this.panelDados.TabStop = false;
             // 
-            // label14
+            // panelStatus
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(94, 6);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(39, 13);
-            this.label14.TabIndex = 1;
-            this.label14.Text = "Status";
+            this.panelStatus.Controls.Add(this.chkStatus);
+            this.panelStatus.Controls.Add(this.label14);
+            this.panelStatus.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelStatus.Location = new System.Drawing.Point(3, 306);
+            this.panelStatus.Name = "panelStatus";
+            this.panelStatus.Size = new System.Drawing.Size(996, 25);
+            this.panelStatus.TabIndex = 12;
             // 
             // chkStatus
             // 
@@ -341,15 +342,14 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             this.chkStatus.Click += new System.EventHandler(this.chkStatus_Enter);
             this.chkStatus.Enter += new System.EventHandler(this.chkStatus_Enter);
             // 
-            // panelStatus
+            // label14
             // 
-            this.panelStatus.Controls.Add(this.chkStatus);
-            this.panelStatus.Controls.Add(this.label14);
-            this.panelStatus.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelStatus.Location = new System.Drawing.Point(3, 306);
-            this.panelStatus.Name = "panelStatus";
-            this.panelStatus.Size = new System.Drawing.Size(996, 25);
-            this.panelStatus.TabIndex = 12;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(94, 6);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(39, 13);
+            this.label14.TabIndex = 1;
+            this.label14.Text = "Status";
             // 
             // txtNumero
             // 
@@ -600,6 +600,7 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Usuario";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmUsuario_KeyDown);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);

@@ -40,6 +40,7 @@
             this.panelSelecaoAcentos.Name = "panelSelecaoAcentos";
             this.panelSelecaoAcentos.Size = new System.Drawing.Size(1147, 735);
             this.panelSelecaoAcentos.TabIndex = 1;
+            this.panelSelecaoAcentos.Click += new System.EventHandler(this.panelSelecaoAcentos_Click);
             // 
             // frmPreviewLayoutEmbarcacao
             // 

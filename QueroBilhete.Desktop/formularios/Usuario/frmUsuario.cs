@@ -272,5 +272,20 @@ namespace QueroBilhete.Desktop.formularios.Usuario
         }
 
         #endregion
+
+        private void frmUsuario_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    SelectNextControl(this.ActiveControl, !e.Shift, true, true, true);
+                    break;
+                case Keys.Escape:
+                    Sair();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

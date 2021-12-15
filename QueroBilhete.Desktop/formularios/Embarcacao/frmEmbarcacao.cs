@@ -158,7 +158,7 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
 
         private void CarregarDadosGrid()
         {
-            CarregaDados<Domain.Entities.EmbarcacaoPoltrona>(dgvDados, _baseRepository, $"AND ID_EMBARCACAO = {txtCodigo.Texto.ApenasNumeros()}");
+            CarregaDados<Domain.Entities.EmbarcacaoPoltrona>(dgvDados, _baseRepository, $"AND ID_EMBARCACAO = {txtCodigo.Texto.ApenasNumeros()} AND ATIVO = 1");
         }
 
         #endregion
@@ -241,11 +241,9 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
 
         private void btnNovoGrid_Click(object sender, EventArgs e)
         {
-            AddJanela(new frmRegistroPoltrona(), EJanela.Modal);
+            AddJanela(new frmRegistroPoltrona(Convert.ToInt32(txtCodigo.Texto), 0), EJanela.Modal);
             CarregarDadosGrid();
         }
-
-        #endregion
 
         private void btnPreview_Click(object sender, EventArgs e)
         {
@@ -258,8 +256,24 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
             if (dgvDados.Rows.Count > 0)
             {
                 var codigoSelecionado = Convert.ToInt32(dgvDados.CurrentRow.Cells["Codigo"].Value);
-                AddJanela(new frmRegistroPoltrona(codigoSelecionado), EJanela.Modal);
+                AddJanela(new frmRegistroPoltrona(Convert.ToInt32(txtCodigo.Texto), codigoSelecionado), EJanela.Modal);
                 CarregarDadosGrid();
+            }
+        }
+
+        private void txtEmpresa_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            txtEmpresa.TextoDireita = (!txtEmpresa.TextoCentro.IsNumeric())
+                ? "" : _genericService.ObterDescricao<Domain.Entities.Empresa>(Convert.ToInt32(txtEmpresa.TextoCentro), "RAZAO_SOCIAL");
+        }
+
+        #endregion
+
+        private void txtEmpresa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F5)
+            {
+                txtEmpresa_ButtonClick(sender, e);
             }
         }
     }
