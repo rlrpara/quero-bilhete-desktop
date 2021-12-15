@@ -103,8 +103,8 @@ namespace QueroBilhete.Service.ViewModels
         }
 
         public int CodigoRegimeEmpresa { get; set; } = 0;
+        public int CodigoAmbiente { get; set; }
         public bool Ativo { get; set; } = true;
-
         public DateTime DataCadastro { get; set; } = DateTime.Now;
         public DateTime DataAtualizacao { get; set; } = DateTime.Now;
 
@@ -120,6 +120,9 @@ namespace QueroBilhete.Service.ViewModels
 
             if (CodigoRegimeEmpresa == 0)
                 AdicionaAlerta("Informe o Regime da Empresa");
+
+            if (CodigoAmbiente == 0)
+                AdicionaAlerta("Informe o Codigo do Ambiente de Transmissão");
         }
     }
 }

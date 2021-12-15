@@ -124,8 +124,8 @@ namespace QueroBilhete.Infra.Data.Contex
                     sqlInsert.AppendLine("                  VALUES('VENDEDOR', 'VENDEDOR')");
                     break;
                 case "empresa":
-                    sqlInsert.AppendLine("INSERT INTO empresa (RAZAO_SOCIAL,             CNPJ, TIPO_REGIME_ID)");
-                    sqlInsert.AppendLine("              VALUES(    'PADRAO', '00000000000000',              1)");
+                    sqlInsert.AppendLine("INSERT INTO empresa (RAZAO_SOCIAL,             CNPJ, TIPO_REGIME_ID, AMBIENTE_ID)");
+                    sqlInsert.AppendLine("              VALUES(    'PADRAO', '00000000000000',              1,           1)");
                     break;
                 case "alinhamento":
                     sqlInsert.AppendLine("INSERT INTO alinhamento(     NOME)");
@@ -168,6 +168,12 @@ namespace QueroBilhete.Infra.Data.Contex
                     sqlInsert.AppendLine("                 VALUES ('00-REGULAR');");
                     sqlInsert.AppendLine("INSERT INTO tipo_viagem (DESCRICAO)");
                     sqlInsert.AppendLine("                 VALUES ('01-EXTRA');");
+                    break;
+                case "ambiente_servidor":
+                    sqlInsert.AppendLine("INSERT INTO ambiente_servidor (NOME)");
+                    sqlInsert.AppendLine("                       VALUES ('HOMOLOGACAO');");
+                    sqlInsert.AppendLine("INSERT INTO ambiente_servidor (NOME)");
+                    sqlInsert.AppendLine("                       VALUES ('PRODUCAO');");
                     break;
                 default:
                     break;
@@ -413,10 +419,11 @@ namespace QueroBilhete.Infra.Data.Contex
                     {
                         string tabelaChaveEstrangeira = $"{opcoesBase.ChaveEstrangeira.ToLower()}";
                         string campoChaveEstrangeira = $"{nomeCampo}";
+                        string nomeChave = $"FK_{ObterNomeTabela<T>()}_{campoChaveEstrangeira}".ToUpper();
 
-                        sqlConstraint.AppendLine($"CALL PROC_DROP_FOREIGN_KEY('{ObterNomeTabela<T>()}', 'FK_{ObterNomeTabela<T>()}_ID_{tabelaChaveEstrangeira}');");
+                        sqlConstraint.AppendLine($"CALL PROC_DROP_FOREIGN_KEY('{ObterNomeTabela<T>()}', '{nomeChave}');");
                         sqlConstraint.AppendLine($"ALTER TABLE {nomeBanco}.{ObterNomeTabela<T>()}");
-                        sqlConstraint.AppendLine($"ADD CONSTRAINT FK_{ObterNomeTabela<T>()}_ID_{tabelaChaveEstrangeira} FOREIGN KEY ({campoChaveEstrangeira})");
+                        sqlConstraint.AppendLine($"ADD CONSTRAINT {nomeChave} FOREIGN KEY ({campoChaveEstrangeira})");
                         sqlConstraint.AppendLine($"REFERENCES {nomeBanco}.{tabelaChaveEstrangeira} (ID) ON DELETE NO ACTION ON UPDATE NO ACTION;{Environment.NewLine}");
                     }
                 }

@@ -28,7 +28,7 @@ namespace QueroBilhete.Desktop.formularios.Usuario
 
         private void BloquearCampos(bool ativar)
         {
-            Configuracao.BloquearCampos(!ativar, grpCadastro.Controls);
+            Configuracao.BloquearCampos(!ativar, panelDados.Controls);
             txtCodigo.EnableAll = !ativar;
             txtUid.EnableAll = !ativar;
             txtNome.EnableAll = !ativar;
@@ -53,14 +53,14 @@ namespace QueroBilhete.Desktop.formularios.Usuario
         private void AtivaConfiguracaoPadrao()
         {
             AtivaBotoes(EBotoes.Novo);
-            Configuracao.LimparCampos(grpCadastro.Controls);
+            Configuracao.LimparCampos(panelDados.Controls);
         }
 
         private void Novo()
         {
             AtivaBotoes(EBotoes.Novo);
             BloquearCampos(false);
-            Configuracao.LimparCampos(grpCadastro.Controls);
+            Configuracao.LimparCampos(panelDados.Controls);
 
             _usuarioViewModel = new UsuarioViewModel();
             txtCodigo.EnableAll = false;
@@ -83,7 +83,7 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             if (MessageBox.Show("Deseja remover este registro?", "ATENÇÃO", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 _usuarioService.RemoverUsuario(Convert.ToInt32(txtCodigo.Texto));
-                Configuracao.LimparCampos(grpCadastro.Controls);
+                Configuracao.LimparCampos(panelDados.Controls);
                 AtivaBotoes(EBotoes.Apagar);
                 BloquearCampos(true);
             }
@@ -123,7 +123,7 @@ namespace QueroBilhete.Desktop.formularios.Usuario
             }
             else
             {
-                Configuracao.LimparCampos(grpCadastro.Controls);
+                Configuracao.LimparCampos(panelDados.Controls);
             }
         }
 
@@ -191,7 +191,7 @@ namespace QueroBilhete.Desktop.formularios.Usuario
 
         private void Cancelar()
         {
-            Configuracao.LimparCampos(grpCadastro.Controls);
+            Configuracao.LimparCampos(panelDados.Controls);
             AtivaBotoes(EBotoes.Cancelar);
             BloquearCampos(true);
         }

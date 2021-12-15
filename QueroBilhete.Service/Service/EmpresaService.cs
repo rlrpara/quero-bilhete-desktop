@@ -68,6 +68,8 @@ namespace QueroBilhete.Service.Service
             Bairro = empresa.Bairro,
             Rua = empresa.Rua,
             Numero = empresa.Numero,
+            CodigoRegimeEmpresa = empresa.CodigoRegimeEmpresa,
+            CodigoAmbiente = empresa.CodigoAmbiente,
             DataCadastro = empresa.DataCadastro,
             DataAtualizacao = DateTime.Now
         };
@@ -93,6 +95,7 @@ namespace QueroBilhete.Service.Service
             Rua = empresa.Rua,
             Numero = empresa.Numero,
             Ativo = empresa.Ativo,
+            CodigoAmbiente = empresa.CodigoAmbiente,
             DataCadastro = empresa.DataCadastro,
             DataAtualizacao = DateTime.Now
         };

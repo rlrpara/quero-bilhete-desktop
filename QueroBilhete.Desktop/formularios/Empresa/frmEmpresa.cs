@@ -27,7 +27,7 @@ namespace QueroBilhete.Desktop.formularios.Empresa
         {
             AtivaBotoes(EBotoes.Novo);
             BloquearCampos(true);
-            Configuracao.LimparCampos(grpCadastro.Controls);
+            Configuracao.LimparCampos(panelDados.Controls);
 
             _empresaViewModel = new EmpresaViewModel();
             txtRazaoSocial.Focus();
@@ -48,7 +48,7 @@ namespace QueroBilhete.Desktop.formularios.Empresa
             if (MessageBox.Show("Deseja remover este registro?", "ATENÇÃO", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 _empresaService.RemoverEmpresa(Convert.ToInt32(txtCodigo.Texto));
-                Configuracao.LimparCampos(grpCadastro.Controls);
+                Configuracao.LimparCampos(panelDados.Controls);
                 AtivaBotoes(EBotoes.Apagar);
                 BloquearCampos(true);
             }
@@ -73,7 +73,7 @@ namespace QueroBilhete.Desktop.formularios.Empresa
             {
                 txtCodigo.Texto = _empresaViewModel.Codigo.ToString();
                 txtUid.Texto = _empresaViewModel.UId;
-                txtRegime.TextoCentro = _empresaViewModel.CodigoRegimeEmpresa.ToString();
+                txtRegime.TextoCentro = _empresaViewModel.CodigoRegimeEmpresa == 0 ? "" : _empresaViewModel.CodigoRegimeEmpresa.ToString();
                 txtRegime.TextoDireita = _genericService.ObterDescricao<Domain.Entities.TipoRegimeEmpresa>(_empresaViewModel.CodigoRegimeEmpresa, "DESCRICAO");
                 txtRazaoSocial.Texto = _empresaViewModel.RazaoSocial;
                 txtCnpj.Texto = _empresaViewModel.Cnpj;
@@ -90,11 +90,13 @@ namespace QueroBilhete.Desktop.formularios.Empresa
                 txtBairro.Texto = _empresaViewModel.Bairro;
                 txtRua.Texto = _empresaViewModel.Rua;
                 txtNumero.Texto = _empresaViewModel.Numero.ToString();
+                txtAmbiente.TextoCentro = _empresaViewModel.CodigoAmbiente == 0 ? "" : _empresaViewModel.CodigoAmbiente.ToString();
+                txtAmbiente.TextoDireita = _genericService.ObterDescricao<Domain.Entities.Ambiente>(_empresaViewModel.CodigoAmbiente, "NOME");
                 chkStatus.Checked = _empresaViewModel.Ativo;
             }
             else
             {
-                Configuracao.LimparCampos(grpCadastro.Controls);
+                Configuracao.LimparCampos(panelDados.Controls);
             }
         }
 
@@ -149,6 +151,7 @@ namespace QueroBilhete.Desktop.formularios.Empresa
             Bairro = txtBairro.Texto,
             Rua = txtRua.Texto,
             Numero = txtNumero.Texto.IsNumeric() ? Convert.ToInt32(txtNumero.Texto) : (int?)null,
+            CodigoAmbiente = txtAmbiente.TextoCentro.IsNumeric() ? Convert.ToInt32(txtAmbiente.TextoCentro) : 0,
             Ativo = chkStatus.Checked
         };
 
@@ -165,7 +168,7 @@ namespace QueroBilhete.Desktop.formularios.Empresa
 
         private void Cancelar()
         {
-            Configuracao.LimparCampos(grpCadastro.Controls);
+            Configuracao.LimparCampos(panelDados.Controls);
             AtivaBotoes(EBotoes.Cancelar);
             BloquearCampos(true);
         }
@@ -274,8 +277,54 @@ namespace QueroBilhete.Desktop.formularios.Empresa
                 txtRegime.TextoCentro = janela.CodigoSelecionado.ToString();
                 txtRegime.TextoDireita = _genericService.ObterDescricao<Domain.Entities.TipoRegimeEmpresa>(janela.CodigoSelecionado, "DESCRICAO");
             }
+            else
+                txtRegime.TextoDireita = "";
+        }
+
+
+        private void txtAmbiente_ButtonClick(object sender, EventArgs e)
+        {
+            var janela = new frmPesquisaGenerica();
+            janela.CarregaDados<Domain.Entities.Ambiente>("AND ATIVO = 1");
+            janela.ShowDialog();
+
+            if (janela.CodigoSelecionado > 0)
+            {
+                txtAmbiente.TextoCentro = janela.CodigoSelecionado.ToString();
+                txtAmbiente.TextoDireita = _genericService.ObterDescricao<Domain.Entities.Ambiente>(janela.CodigoSelecionado, "NOME");
+            }
+            else
+                txtAmbiente.TextoCentro = "";
+        }
+
+        private void txtAmbiente_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            txtAmbiente.TextoDireita = (!txtAmbiente.TextoCentro.IsNumeric())
+                ? "" : _genericService.ObterDescricao<Domain.Entities.Ambiente>(Convert.ToInt32(txtAmbiente.TextoCentro), "NOME");
         }
 
         #endregion
+
+        private void txtRegime_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            txtRegime.TextoDireita = (!txtRegime.TextoCentro.IsNumeric())
+                ? "" : _genericService.ObterDescricao<Domain.Entities.TipoRegimeEmpresa>(Convert.ToInt32(txtRegime.TextoCentro), "DESCRICAO");
+        }
+
+        private void txtRegime_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.F5)
+            {
+                txtRegime_ButtonClick(sender, e);
+            }
+        }
+
+        private void txtAmbiente_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F5)
+            {
+                txtAmbiente_ButtonClick(sender, e);
+            }
+        }
     }
 }

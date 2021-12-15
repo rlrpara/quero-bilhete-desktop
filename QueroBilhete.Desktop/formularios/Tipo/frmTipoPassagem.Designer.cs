@@ -33,16 +33,13 @@
             this.label14 = new System.Windows.Forms.Label();
             this.txtDescricao = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
             this.txtCodigo = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
-            this.grpCadastro.SuspendLayout();
+            this.panelDados.SuspendLayout();
             this.panelStatus.SuspendLayout();
             this.SuspendLayout();
             // 
-            // grpCadastro
+            // panelDados
             // 
-            this.grpCadastro.Controls.Add(this.panelStatus);
-            this.grpCadastro.Controls.Add(this.txtDescricao);
-            this.grpCadastro.Controls.Add(this.txtCodigo);
-            this.grpCadastro.Size = new System.Drawing.Size(800, 382);
+            this.panelDados.Size = new System.Drawing.Size(800, 52);
             // 
             // btnSair
             // 
@@ -84,15 +81,23 @@
             this.btnNovo.FlatAppearance.BorderSize = 0;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
+            // panelDados
+            // 
+            this.panelDados.Controls.Add(this.panelStatus);
+            this.panelDados.Controls.Add(this.txtDescricao);
+            this.panelDados.Controls.Add(this.txtCodigo);
+            this.panelDados.Location = new System.Drawing.Point(0, 98);
+            this.panelDados.Size = new System.Drawing.Size(800, 404);
+            // 
             // panelStatus
             // 
             this.panelStatus.Controls.Add(this.chkStatus);
             this.panelStatus.Controls.Add(this.label14);
             this.panelStatus.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelStatus.Location = new System.Drawing.Point(3, 66);
+            this.panelStatus.Location = new System.Drawing.Point(0, 48);
             this.panelStatus.Name = "panelStatus";
-            this.panelStatus.Size = new System.Drawing.Size(794, 25);
-            this.panelStatus.TabIndex = 21;
+            this.panelStatus.Size = new System.Drawing.Size(800, 25);
+            this.panelStatus.TabIndex = 24;
             // 
             // chkStatus
             // 
@@ -118,11 +123,11 @@
             this.txtDescricao.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtDescricao.EnableAll = true;
             this.txtDescricao.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtDescricao.Location = new System.Drawing.Point(3, 42);
+            this.txtDescricao.Location = new System.Drawing.Point(0, 24);
             this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(794, 24);
+            this.txtDescricao.Size = new System.Drawing.Size(800, 24);
             this.txtDescricao.StatuBarComponent = this.toolStripStatusLabel2;
-            this.txtDescricao.TabIndex = 20;
+            this.txtDescricao.TabIndex = 23;
             this.txtDescricao.Texto = "";
             this.txtDescricao.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
             this.txtDescricao.TextoEsquerda = "Descrição";
@@ -137,11 +142,11 @@
             this.txtCodigo.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtCodigo.EnableAll = true;
             this.txtCodigo.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCodigo.Location = new System.Drawing.Point(3, 18);
+            this.txtCodigo.Location = new System.Drawing.Point(0, 0);
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(794, 24);
+            this.txtCodigo.Size = new System.Drawing.Size(800, 24);
             this.txtCodigo.StatuBarComponent = this.toolStripStatusLabel2;
-            this.txtCodigo.TabIndex = 19;
+            this.txtCodigo.TabIndex = 22;
             this.txtCodigo.Texto = "";
             this.txtCodigo.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Centro;
             this.txtCodigo.TextoEsquerda = "Código";
@@ -155,10 +160,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 524);
             this.Name = "frmTipoPassagem";
             this.Text = "frmTipoPassagem";
-            this.grpCadastro.ResumeLayout(false);
+            this.panelDados.ResumeLayout(false);
             this.panelStatus.ResumeLayout(false);
             this.panelStatus.PerformLayout();
             this.ResumeLayout(false);

@@ -72,5 +72,9 @@ namespace QueroBilhete.Domain.Entities
         [Column("TIPO_REGIME_ID", Order = 18)]
         [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true, UsarNaGrid = false, ChaveEstrangeira = "TIPO_REGIME_EMPRESA")]
         public int CodigoRegimeEmpresa { get; set; }
+
+        [Column("AMBIENTE_ID", Order = 19)]
+        [OpcoesBase(UsarNoBancoDeDados = true, UsarParaBuscar = true, UsarNaGrid = false, ChaveEstrangeira = "AMBIENTE_SERVIDOR")]
+        public int CodigoAmbiente { get; set; }
     }
 }

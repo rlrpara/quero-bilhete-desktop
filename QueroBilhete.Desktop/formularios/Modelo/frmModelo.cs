@@ -25,11 +25,11 @@ namespace QueroBilhete.Desktop.formularios.Modelo
         protected void AtivaConfiguracaoPadrao()
         {
             AtivaBotoes(EBotoes.Novo);
-            Configuracao.LimparCampos(grpCadastro.Controls);
+            Configuracao.LimparCampos(panelDados.Controls);
         }
         protected void BloquearCampos(bool ativar)
         {
-            Configuracao.BloquearCampos(!ativar, grpCadastro.Controls);
+            Configuracao.BloquearCampos(!ativar, panelDados.Controls);
         }
         protected void AlteraStatusCheckBox(ref CheckBox chkStatus)
         {

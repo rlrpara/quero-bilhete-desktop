@@ -28,21 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtCodigo = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
-            this.txtDescricao = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
             this.panelStatus = new System.Windows.Forms.Panel();
             this.chkStatus = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.grpCadastro.SuspendLayout();
+            this.txtDescricao = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
+            this.txtCodigo = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
+            this.panelDados.SuspendLayout();
             this.panelStatus.SuspendLayout();
             this.SuspendLayout();
             // 
-            // grpCadastro
+            // panelDados
             // 
-            this.grpCadastro.Controls.Add(this.panelStatus);
-            this.grpCadastro.Controls.Add(this.txtDescricao);
-            this.grpCadastro.Controls.Add(this.txtCodigo);
-            this.grpCadastro.Size = new System.Drawing.Size(831, 400);
+            this.panelDados.Size = new System.Drawing.Size(831, 71);
             // 
             // btnSair
             // 
@@ -84,53 +81,23 @@
             this.btnNovo.FlatAppearance.BorderSize = 0;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
-            // txtCodigo
+            // panelDados
             // 
-            this.txtCodigo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtCodigo.EnableAll = true;
-            this.txtCodigo.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCodigo.Location = new System.Drawing.Point(3, 18);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(825, 24);
-            this.txtCodigo.StatuBarComponent = this.toolStripStatusLabel2;
-            this.txtCodigo.TabIndex = 1;
-            this.txtCodigo.Texto = "";
-            this.txtCodigo.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Centro;
-            this.txtCodigo.TextoEsquerda = "Código";
-            this.txtCodigo.TextoLargura = 90;
-            this.txtCodigo.TextoMaiusculo = false;
-            this.txtCodigo.TextoSenha = false;
-            this.txtCodigo.TextoStatus = "Código";
-            this.txtCodigo.VisibleAll = true;
-            // 
-            // txtDescricao
-            // 
-            this.txtDescricao.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtDescricao.EnableAll = true;
-            this.txtDescricao.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtDescricao.Location = new System.Drawing.Point(3, 42);
-            this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(825, 24);
-            this.txtDescricao.StatuBarComponent = this.toolStripStatusLabel2;
-            this.txtDescricao.TabIndex = 3;
-            this.txtDescricao.Texto = "";
-            this.txtDescricao.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
-            this.txtDescricao.TextoEsquerda = "Descrição";
-            this.txtDescricao.TextoLargura = 500;
-            this.txtDescricao.TextoMaiusculo = true;
-            this.txtDescricao.TextoSenha = false;
-            this.txtDescricao.TextoStatus = "Descrição";
-            this.txtDescricao.VisibleAll = true;
+            this.panelDados.Controls.Add(this.panelStatus);
+            this.panelDados.Controls.Add(this.txtDescricao);
+            this.panelDados.Controls.Add(this.txtCodigo);
+            this.panelDados.Location = new System.Drawing.Point(0, 117);
+            this.panelDados.Size = new System.Drawing.Size(831, 329);
             // 
             // panelStatus
             // 
             this.panelStatus.Controls.Add(this.chkStatus);
             this.panelStatus.Controls.Add(this.label14);
             this.panelStatus.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelStatus.Location = new System.Drawing.Point(3, 66);
+            this.panelStatus.Location = new System.Drawing.Point(0, 48);
             this.panelStatus.Name = "panelStatus";
-            this.panelStatus.Size = new System.Drawing.Size(825, 25);
-            this.panelStatus.TabIndex = 18;
+            this.panelStatus.Size = new System.Drawing.Size(831, 25);
+            this.panelStatus.TabIndex = 21;
             // 
             // chkStatus
             // 
@@ -151,14 +118,52 @@
             this.label14.TabIndex = 1;
             this.label14.Text = "Status";
             // 
-            // TipoViagem
+            // txtDescricao
+            // 
+            this.txtDescricao.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtDescricao.EnableAll = true;
+            this.txtDescricao.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtDescricao.Location = new System.Drawing.Point(0, 24);
+            this.txtDescricao.Name = "txtDescricao";
+            this.txtDescricao.Size = new System.Drawing.Size(831, 24);
+            this.txtDescricao.StatuBarComponent = this.toolStripStatusLabel2;
+            this.txtDescricao.TabIndex = 20;
+            this.txtDescricao.Texto = "";
+            this.txtDescricao.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
+            this.txtDescricao.TextoEsquerda = "Descrição";
+            this.txtDescricao.TextoLargura = 500;
+            this.txtDescricao.TextoMaiusculo = true;
+            this.txtDescricao.TextoSenha = false;
+            this.txtDescricao.TextoStatus = "Descrição";
+            this.txtDescricao.VisibleAll = true;
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtCodigo.EnableAll = true;
+            this.txtCodigo.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtCodigo.Location = new System.Drawing.Point(0, 0);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(831, 24);
+            this.txtCodigo.StatuBarComponent = this.toolStripStatusLabel2;
+            this.txtCodigo.TabIndex = 19;
+            this.txtCodigo.Texto = "";
+            this.txtCodigo.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Centro;
+            this.txtCodigo.TextoEsquerda = "Código";
+            this.txtCodigo.TextoLargura = 90;
+            this.txtCodigo.TextoMaiusculo = false;
+            this.txtCodigo.TextoSenha = false;
+            this.txtCodigo.TextoStatus = "Código";
+            this.txtCodigo.VisibleAll = true;
+            // 
+            // frmTipoViagem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(831, 468);
-            this.Name = "TipoViagem";
+            this.Name = "frmTipoViagem";
             this.Text = "TipoViagem";
-            this.grpCadastro.ResumeLayout(false);
+            this.panelDados.ResumeLayout(false);
             this.panelStatus.ResumeLayout(false);
             this.panelStatus.PerformLayout();
             this.ResumeLayout(false);
@@ -168,10 +173,10 @@
 
         #endregion
 
-        private Componentes.TextBox.txtBoxLabel txtCodigo;
-        private Componentes.TextBox.txtBoxLabel txtDescricao;
         private System.Windows.Forms.Panel panelStatus;
         private System.Windows.Forms.CheckBox chkStatus;
         private System.Windows.Forms.Label label14;
+        private Componentes.TextBox.txtBoxLabel txtDescricao;
+        private Componentes.TextBox.txtBoxLabel txtCodigo;
     }
 }

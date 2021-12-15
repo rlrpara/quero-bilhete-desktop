@@ -48,7 +48,7 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.lblLog = new System.Windows.Forms.Label();
-            this.grpCadastro = new System.Windows.Forms.GroupBox();
+            this.panelDados = new System.Windows.Forms.Panel();
             this.statusStrip1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -268,21 +268,21 @@
             this.lblLog.Text = "Cadastrado em: 28/09/2021 por: Rodrigo Ribeiro Atualizado em: 28/09/2021 por: Rod" +
     "rigo Ribeiro";
             // 
-            // grpCadastro
+            // panelDados
             // 
-            this.grpCadastro.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grpCadastro.Location = new System.Drawing.Point(0, 46);
-            this.grpCadastro.Name = "grpCadastro";
-            this.grpCadastro.Size = new System.Drawing.Size(822, 457);
-            this.grpCadastro.TabIndex = 10;
-            this.grpCadastro.TabStop = false;
+            this.panelDados.AutoScroll = true;
+            this.panelDados.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDados.Location = new System.Drawing.Point(0, 46);
+            this.panelDados.Name = "panelDados";
+            this.panelDados.Size = new System.Drawing.Size(822, 457);
+            this.panelDados.TabIndex = 11;
             // 
             // frmModelo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(822, 525);
-            this.Controls.Add(this.grpCadastro);
+            this.Controls.Add(this.panelDados);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.statusStrip1);
@@ -312,7 +312,6 @@
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
-        protected System.Windows.Forms.GroupBox grpCadastro;
         protected System.Windows.Forms.StatusStrip statusStrip1;
         protected System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         protected System.Windows.Forms.Button btnSair;
@@ -324,5 +323,6 @@
         protected System.Windows.Forms.Button btnEditar;
         protected System.Windows.Forms.Button btnNovo;
         protected System.Windows.Forms.Label lblLog;
+        protected System.Windows.Forms.Panel panelDados;
     }
 }

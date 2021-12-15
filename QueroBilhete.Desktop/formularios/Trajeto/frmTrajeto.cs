@@ -26,7 +26,7 @@ namespace QueroBilhete.Desktop.formularios.Trajeto
         {
             AtivaBotoes(EBotoes.Novo);
             BloquearCampos(false);
-            Configuracao.LimparCampos(grpCadastro.Controls);
+            Configuracao.LimparCampos(panelDados.Controls);
 
             _trajetoViewModel = new TrajetoViewModel();
             txtCodigo.Enabled = false;
@@ -49,7 +49,7 @@ namespace QueroBilhete.Desktop.formularios.Trajeto
             if (MessageBox.Show("Deseja remover este registro?", "ATENÇÃO", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 _trajetoService.RemoverTrajeto(Convert.ToInt32(txtCodigo.Texto));
-                Configuracao.LimparCampos(grpCadastro.Controls);
+                Configuracao.LimparCampos(panelDados.Controls);
                 AtivaBotoes(EBotoes.Apagar);
                 BloquearCampos(true);
             }
@@ -81,7 +81,7 @@ namespace QueroBilhete.Desktop.formularios.Trajeto
             }
             else
             {
-                Configuracao.LimparCampos(grpCadastro.Controls);
+                Configuracao.LimparCampos(panelDados.Controls);
             }
         }
 
@@ -138,7 +138,7 @@ namespace QueroBilhete.Desktop.formularios.Trajeto
 
         private void Cancelar()
         {
-            Configuracao.LimparCampos(grpCadastro.Controls);
+            Configuracao.LimparCampos(panelDados.Controls);
             AtivaBotoes(EBotoes.Cancelar);
             BloquearCampos(true);
         }

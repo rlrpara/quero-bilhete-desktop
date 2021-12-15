@@ -27,7 +27,7 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
         {
             AtivaBotoes(EBotoes.Novo);
             BloquearCampos(false);
-            Configuracao.LimparCampos(grpCadastro.Controls);
+            //Configuracao.LimparCampos(grpCadastro.Controls);
 
             _embarcacaoViewModel = new EmbarcacaoViewModel();
             txtCodigo.EnableAll = false;
@@ -52,7 +52,7 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
             if (MessageBox.Show("Deseja remover este registro?", "ATENÇÃO", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 _embarcacaoService.RemoverEmbarcacao(Convert.ToInt32(txtCodigo.Texto));
-                Configuracao.LimparCampos(grpCadastro.Controls);
+                //Configuracao.LimparCampos(grpCadastro.Controls);
                 AtivaBotoes(EBotoes.Apagar);
                 BloquearCampos(true);
             }
@@ -87,7 +87,7 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
             }
             else
             {
-                Configuracao.LimparCampos(grpCadastro.Controls);
+                //Configuracao.LimparCampos(grpCadastro.Controls);
             }
         }
 
@@ -146,7 +146,7 @@ namespace QueroBilhete.Desktop.formularios.Embarcacao
 
         private void Cancelar()
         {
-            Configuracao.LimparCampos(grpCadastro.Controls);
+            //Configuracao.LimparCampos(grpCadastro.Controls);
             AtivaBotoes(EBotoes.Cancelar);
             BloquearCampos(true);
         }

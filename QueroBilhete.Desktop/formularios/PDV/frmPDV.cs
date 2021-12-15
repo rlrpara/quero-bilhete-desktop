@@ -1,6 +1,7 @@
 ﻿using QueroBilhete.Data.Repositories;
 using QueroBilhete.Desktop.Enumeradores;
 using QueroBilhete.Desktop.formularios.Pesquisa;
+using QueroBilhete.Desktop.Globais;
 using QueroBilhete.Infra.Utilities.ExtensionMethods;
 using QueroBilhete.Service.Service;
 using QueroBilhete.Service.ViewModels;
@@ -24,13 +25,14 @@ namespace QueroBilhete.Desktop.formularios.PDV
         private readonly PassageiroService _passageiroService;
         private readonly TipoPassagemService _tipoPassagemService;
         private readonly GenericService _genericService;
+        
         private string _assentosSelecionados;
         #endregion
 
         #region Métodos Privados
         private void LimpaCampos()
         {
-
+            Configuracao.LimparCampos(panelDadosPassagem.Controls);
         }
         private void ValoresPadrao()
         {
@@ -38,73 +40,73 @@ namespace QueroBilhete.Desktop.formularios.PDV
         }
         private void AbreCaixa()
         {
-            MessageBox.Show("Abre o caixa quando estiver fechado para o dia");
+
         }
         private void FecharCaixa()
         {
             LimpaCampos();
             ValoresPadrao();
         }
-        private void GerarAssentos(string letra, int inicaEm, int terminaEm, int eixoX, int eixoY, int totalColunas, EDirecao direcao = EDirecao.EsquerdaDireita)
-        {
-            var esquerda = eixoY;
+        //private void GerarAssentos(string letra, int inicaEm, int terminaEm, int eixoX, int eixoY, int totalColunas, EDirecao direcao = EDirecao.EsquerdaDireita)
+        //{
+        //    var esquerda = eixoY;
 
-            for (int i = inicaEm; i <= terminaEm; i++)
-            {
-                for (int c = 0; c < totalColunas; c++)
-                {
-                    if (i <= terminaEm)
-                    {
-                        DesenhaBotao(letra, i, eixoX, eixoY, ref pnlJanela);
-                        //if(direcao == EDirecao.EsquerdaDireita) 
-                        //    eixoY += 45;
-                        //else
-                            eixoY += 45;
-                        i++;
-                    }
-                }
-                i--;
-                eixoY = esquerda;
-                eixoX += 25;
-            }
-        }
-        private void DesenhaBotao(string letra, int numero, int eixoX, int eixoY, ref Panel painelDesenho)
-        {
-            var nomeBotao = $"{letra}{numero.ToString().PadLeft(3, '0')}";
-            Button button = new Button();
-            button.Left = eixoY;
-            button.Top = eixoX;
-            button.Click += botaoAcento;
-            button.Name = nomeBotao;
-            button.Text = nomeBotao;
-            button.Tag = nomeBotao;
-            button.BackColor = Color.White;
-            button.Width = 45;
-            button.Height = 25;
-            button.Font = new Font(button.Font.FontFamily, (float)(8.26));
-            painelDesenho.Controls.Add(button);
-        }
-        private void botaoAcento(object sender, EventArgs e)
-        {
-            var botaoClicado = ((Button)sender).Text.ToString();
-            var listaAssentos = new StringBuilder();
+        //    for (int i = inicaEm; i <= terminaEm; i++)
+        //    {
+        //        for (int c = 0; c < totalColunas; c++)
+        //        {
+        //            if (i <= terminaEm)
+        //            {
+        //                DesenhaBotao(letra, i, eixoX, eixoY, ref pnlJanela);
+        //                //if(direcao == EDirecao.EsquerdaDireita) 
+        //                //    eixoY += 45;
+        //                //else
+        //                    eixoY += 45;
+        //                i++;
+        //            }
+        //        }
+        //        i--;
+        //        eixoY = esquerda;
+        //        eixoX += 25;
+        //    }
+        //}
+        //private void DesenhaBotao(string letra, int numero, int eixoX, int eixoY, ref Panel painelDesenho)
+        //{
+        //    var nomeBotao = $"{letra}{numero.ToString().PadLeft(3, '0')}";
+        //    Button button = new Button();
+        //    button.Left = eixoY;
+        //    button.Top = eixoX;
+        //    button.Click += botaoAcento;
+        //    button.Name = nomeBotao;
+        //    button.Text = nomeBotao;
+        //    button.Tag = nomeBotao;
+        //    button.BackColor = Color.White;
+        //    button.Width = 45;
+        //    button.Height = 25;
+        //    button.Font = new Font(button.Font.FontFamily, (float)(8.26));
+        //    painelDesenho.Controls.Add(button);
+        //}
+        //private void botaoAcento(object sender, EventArgs e)
+        //{
+        //    var botaoClicado = ((Button)sender).Text.ToString();
+        //    var listaAssentos = new StringBuilder();
 
-            foreach (Control control in pnlJanela.Controls)
-            {
-                if (control is Button botaoCor && botaoCor.Tag != null && botaoCor.BackColor == Color.LimeGreen)
-                    botaoCor.BackColor = Color.White;
+        //    foreach (Control control in pnlJanela.Controls)
+        //    {
+        //        if (control is Button botaoCor && botaoCor.Tag != null && botaoCor.BackColor == Color.LimeGreen)
+        //            botaoCor.BackColor = Color.White;
 
-                if (control is Button button && button.Tag != null && button.Text == botaoClicado)
-                {
-                    button.BackColor = (((Button)sender).BackColor == Color.LimeGreen ? Color.White : Color.LimeGreen);
+        //        if (control is Button button && button.Tag != null && button.Text == botaoClicado)
+        //        {
+        //            button.BackColor = (((Button)sender).BackColor == Color.LimeGreen ? Color.White : Color.LimeGreen);
 
-                    if (button.BackColor == Color.LimeGreen)
-                        txtPoltrona.Texto = button.Tag.ToString();
-                }
-            }
-            _assentosSelecionados = listaAssentos.ToString().Replace($"\r\n", ",");
-            txtTipo.Focus();
-        }
+        //            if (button.BackColor == Color.LimeGreen)
+        //                txtPoltrona.TextoCentro = button.Tag.ToString();
+        //        }
+        //    }
+        //    _assentosSelecionados = listaAssentos.ToString().Replace($"\r\n", ",");
+        //    txtTipo.Focus();
+        //}
         private void btnNovaVenda_Click(object sender, System.EventArgs e)
         {
             NovaVenda();
@@ -114,8 +116,9 @@ namespace QueroBilhete.Desktop.formularios.PDV
             if (layoutSelecionado())
             {
                 AbreCaixa();
-                MessageBox.Show ($"Inicia nova venda com a data({DateTime.Now:dd/MM/yyyy}) e hora ({DateTime.Now:HH:mm:ss}).");
-                pnlJanela.Enabled = true;
+                LimpaCampos();
+                ResetaValoresCalculo();
+                CarregaGrid();
             }
             else
             {
@@ -124,6 +127,19 @@ namespace QueroBilhete.Desktop.formularios.PDV
                 cmbEmbarcacao.DroppedDown = true;
             }
         }
+
+        private void CarregaGrid()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ResetaValoresCalculo()
+        {
+            lblValorBruto.Text = "R$ 0,00";
+            lblValorSaldo.Text = "R$ 0,00";
+            lblValorTroco.Text = "R$ 0,00";
+        }
+
         private bool layoutSelecionado()
         {
             return !string.IsNullOrEmpty(cmbEmbarcacao.Text);
@@ -131,13 +147,10 @@ namespace QueroBilhete.Desktop.formularios.PDV
         private void FechaVenda()
         {
             MessageBox.Show($"Fecha venda, imprime cupons, salva no banco.");
-            pnlJanela.Enabled = false;
             LimpaCampos();
         }
         private void txtEmbarcacao_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RemoveControles(pnlJanela);
-
             CarregarLayout(Convert.ToInt32(cmbEmbarcacao.Text.Split('-')[0]));
         }
         private void CarregarLayout(int codigoEmbarcacao)
@@ -147,7 +160,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             foreach (var item in poltronas)
             {
                 //posicao          letra|          de|      ate|       topo|   esquerda|          colunas|                 orientacao
-                GerarAssentos(item.Letra, item.Inicio, item.Fim, item.EixoX, item.EixoY, item.TotalColuna, (EDirecao)item.Alinhamento);
+                //GerarAssentos(item.Letra, item.Inicio, item.Fim, item.EixoX, item.EixoY, item.TotalColuna, (EDirecao)item.Alinhamento);
             }
         }
         private void RemoveControles(Panel controles)

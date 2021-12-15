@@ -29,11 +29,11 @@ namespace QueroBilhete.Desktop.formularios.PDV
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Passagem = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,18 +54,30 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.btnF2 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.txtValorTroco = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
+            this.panelDadosPassagem = new System.Windows.Forms.Panel();
+            this.gboxSituacao = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.gboxPagamento = new System.Windows.Forms.GroupBox();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.lblValorSaldo = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.lblValorTroco = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtValorPago = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
-            this.txtValor = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.lblValorBruto = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.txtFormaPagamento = new QueroBilhete.Componentes.TextBox.txtBoxBtnLabel();
-            this.txtPoltrona = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
+            this.gboxPassageiro = new System.Windows.Forms.GroupBox();
             this.txtNacionalidade = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
             this.txtRG = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
             this.txtNome = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
             this.txtCPF = new QueroBilhete.Componentes.TextBox.txtBoxLabel();
+            this.gboxPassagem = new System.Windows.Forms.GroupBox();
+            this.txtPoltrona = new QueroBilhete.Componentes.TextBox.txtBoxBtnLabel();
             this.txtTipo = new QueroBilhete.Componentes.TextBox.txtBoxBtnLabel();
-            this.pnlJanela = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmbEmbarcacao = new System.Windows.Forms.ComboBox();
@@ -78,7 +90,14 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.panelDadosPassagem.SuspendLayout();
+            this.gboxSituacao.SuspendLayout();
+            this.gboxPagamento.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.gboxPassageiro.SuspendLayout();
+            this.gboxPassagem.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -104,14 +123,14 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowEditingIcon = false;
-            this.dataGridView1.Size = new System.Drawing.Size(503, 570);
+            this.dataGridView1.Size = new System.Drawing.Size(643, 570);
             this.dataGridView1.TabIndex = 0;
             // 
             // Id
             // 
             this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Id.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Id.DefaultCellStyle = dataGridViewCellStyle6;
             this.Id.FillWeight = 26.6417F;
             this.Id.HeaderText = "Cód.";
             this.Id.Name = "Id";
@@ -121,8 +140,8 @@ namespace QueroBilhete.Desktop.formularios.PDV
             // Passagem
             // 
             this.Passagem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.Passagem.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Passagem.DefaultCellStyle = dataGridViewCellStyle7;
             this.Passagem.FillWeight = 279.1878F;
             this.Passagem.HeaderText = "Descricao";
             this.Passagem.Name = "Passagem";
@@ -131,8 +150,8 @@ namespace QueroBilhete.Desktop.formularios.PDV
             // Qtd
             // 
             this.Qtd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Qtd.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Qtd.DefaultCellStyle = dataGridViewCellStyle8;
             this.Qtd.FillWeight = 52.32397F;
             this.Qtd.HeaderText = "Qtd.";
             this.Qtd.Name = "Qtd";
@@ -142,8 +161,8 @@ namespace QueroBilhete.Desktop.formularios.PDV
             // ValorUnitario
             // 
             this.ValorUnitario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ValorUnitario.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ValorUnitario.DefaultCellStyle = dataGridViewCellStyle9;
             this.ValorUnitario.FillWeight = 63.46081F;
             this.ValorUnitario.HeaderText = "Preço";
             this.ValorUnitario.Name = "ValorUnitario";
@@ -153,8 +172,8 @@ namespace QueroBilhete.Desktop.formularios.PDV
             // ValorTotal
             // 
             this.ValorTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ValorTotal.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ValorTotal.DefaultCellStyle = dataGridViewCellStyle10;
             this.ValorTotal.FillWeight = 78.3857F;
             this.ValorTotal.HeaderText = "Total";
             this.ValorTotal.Name = "ValorTotal";
@@ -294,8 +313,7 @@ namespace QueroBilhete.Desktop.formularios.PDV
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.panel3);
-            this.panel4.Controls.Add(this.pnlJanela);
+            this.panel4.Controls.Add(this.panelDadosPassagem);
             this.panel4.Controls.Add(this.panel6);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 100);
@@ -303,51 +321,134 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.panel4.Size = new System.Drawing.Size(1549, 570);
             this.panel4.TabIndex = 5;
             // 
-            // panel3
+            // panelDadosPassagem
             // 
-            this.panel3.Controls.Add(this.txtValorTroco);
-            this.panel3.Controls.Add(this.txtValorPago);
-            this.panel3.Controls.Add(this.txtValor);
-            this.panel3.Controls.Add(this.txtFormaPagamento);
-            this.panel3.Controls.Add(this.txtPoltrona);
-            this.panel3.Controls.Add(this.txtNacionalidade);
-            this.panel3.Controls.Add(this.txtRG);
-            this.panel3.Controls.Add(this.txtNome);
-            this.panel3.Controls.Add(this.txtCPF);
-            this.panel3.Controls.Add(this.txtTipo);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(657, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(389, 570);
-            this.panel3.TabIndex = 6;
+            this.panelDadosPassagem.Controls.Add(this.gboxSituacao);
+            this.panelDadosPassagem.Controls.Add(this.gboxPagamento);
+            this.panelDadosPassagem.Controls.Add(this.gboxPassageiro);
+            this.panelDadosPassagem.Controls.Add(this.gboxPassagem);
+            this.panelDadosPassagem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDadosPassagem.Location = new System.Drawing.Point(0, 0);
+            this.panelDadosPassagem.Name = "panelDadosPassagem";
+            this.panelDadosPassagem.Size = new System.Drawing.Size(906, 570);
+            this.panelDadosPassagem.TabIndex = 6;
             // 
-            // txtValorTroco
+            // gboxSituacao
             // 
-            this.txtValorTroco.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtValorTroco.EnableAll = false;
-            this.txtValorTroco.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtValorTroco.Location = new System.Drawing.Point(0, 216);
-            this.txtValorTroco.Name = "txtValorTroco";
-            this.txtValorTroco.Size = new System.Drawing.Size(389, 24);
-            this.txtValorTroco.TabIndex = 10;
-            this.txtValorTroco.Texto = "";
-            this.txtValorTroco.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Direita;
-            this.txtValorTroco.TextoEsquerda = "Troco";
-            this.txtValorTroco.TextoLargura = 90;
-            this.txtValorTroco.TextoMaiusculo = true;
-            this.txtValorTroco.TextoSenha = false;
-            this.txtValorTroco.TextoStatus = "Troco";
-            this.txtValorTroco.VisibleAll = true;
+            this.gboxSituacao.Controls.Add(this.label2);
+            this.gboxSituacao.Controls.Add(this.label1);
+            this.gboxSituacao.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gboxSituacao.Location = new System.Drawing.Point(0, 402);
+            this.gboxSituacao.Name = "gboxSituacao";
+            this.gboxSituacao.Size = new System.Drawing.Size(906, 58);
+            this.gboxSituacao.TabIndex = 15;
+            this.gboxSituacao.TabStop = false;
+            this.gboxSituacao.Text = "SITUACAO";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(153, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 15);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Liberado";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(95, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(39, 15);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Status";
+            // 
+            // gboxPagamento
+            // 
+            this.gboxPagamento.Controls.Add(this.panel9);
+            this.gboxPagamento.Controls.Add(this.panel8);
+            this.gboxPagamento.Controls.Add(this.txtValorPago);
+            this.gboxPagamento.Controls.Add(this.panel7);
+            this.gboxPagamento.Controls.Add(this.txtFormaPagamento);
+            this.gboxPagamento.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gboxPagamento.Location = new System.Drawing.Point(0, 206);
+            this.gboxPagamento.Margin = new System.Windows.Forms.Padding(5);
+            this.gboxPagamento.Name = "gboxPagamento";
+            this.gboxPagamento.Size = new System.Drawing.Size(906, 196);
+            this.gboxPagamento.TabIndex = 14;
+            this.gboxPagamento.TabStop = false;
+            this.gboxPagamento.Text = "PAGAMENTO";
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.lblValorSaldo);
+            this.panel9.Controls.Add(this.label9);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel9.Location = new System.Drawing.Point(3, 115);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(900, 24);
+            this.panel9.TabIndex = 18;
+            // 
+            // lblValorSaldo
+            // 
+            this.lblValorSaldo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblValorSaldo.ForeColor = System.Drawing.Color.Black;
+            this.lblValorSaldo.Location = new System.Drawing.Point(151, 4);
+            this.lblValorSaldo.Name = "lblValorSaldo";
+            this.lblValorSaldo.Size = new System.Drawing.Size(88, 17);
+            this.lblValorSaldo.TabIndex = 3;
+            this.lblValorSaldo.Text = "R$ 0,00";
+            this.lblValorSaldo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(99, 4);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(36, 15);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Saldo";
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.lblValorTroco);
+            this.panel8.Controls.Add(this.label6);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel8.Location = new System.Drawing.Point(3, 91);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(900, 24);
+            this.panel8.TabIndex = 17;
+            // 
+            // lblValorTroco
+            // 
+            this.lblValorTroco.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblValorTroco.ForeColor = System.Drawing.Color.Red;
+            this.lblValorTroco.Location = new System.Drawing.Point(151, 4);
+            this.lblValorTroco.Name = "lblValorTroco";
+            this.lblValorTroco.Size = new System.Drawing.Size(88, 17);
+            this.lblValorTroco.TabIndex = 3;
+            this.lblValorTroco.Text = "R$ 20,00";
+            this.lblValorTroco.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(99, 4);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 15);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Troco";
             // 
             // txtValorPago
             // 
             this.txtValorPago.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtValorPago.EnableAll = true;
             this.txtValorPago.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtValorPago.Location = new System.Drawing.Point(0, 192);
+            this.txtValorPago.Location = new System.Drawing.Point(3, 67);
             this.txtValorPago.Name = "txtValorPago";
-            this.txtValorPago.Size = new System.Drawing.Size(389, 24);
-            this.txtValorPago.TabIndex = 9;
+            this.txtValorPago.Size = new System.Drawing.Size(900, 24);
+            this.txtValorPago.TabIndex = 13;
             this.txtValorPago.Texto = "";
             this.txtValorPago.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Direita;
             this.txtValorPago.TextoEsquerda = "Pago";
@@ -357,67 +458,76 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.txtValorPago.TextoStatus = "Pago";
             this.txtValorPago.VisibleAll = true;
             // 
-            // txtValor
+            // panel7
             // 
-            this.txtValor.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtValor.EnableAll = false;
-            this.txtValor.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtValor.Location = new System.Drawing.Point(0, 168);
-            this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(389, 24);
-            this.txtValor.TabIndex = 8;
-            this.txtValor.Texto = "";
-            this.txtValor.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Direita;
-            this.txtValor.TextoEsquerda = "Valor";
-            this.txtValor.TextoLargura = 90;
-            this.txtValor.TextoMaiusculo = true;
-            this.txtValor.TextoSenha = false;
-            this.txtValor.TextoStatus = "Valor";
-            this.txtValor.VisibleAll = true;
+            this.panel7.Controls.Add(this.lblValorBruto);
+            this.panel7.Controls.Add(this.label4);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel7.Location = new System.Drawing.Point(3, 43);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(900, 24);
+            this.panel7.TabIndex = 16;
+            // 
+            // lblValorBruto
+            // 
+            this.lblValorBruto.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblValorBruto.ForeColor = System.Drawing.Color.Green;
+            this.lblValorBruto.Location = new System.Drawing.Point(151, 4);
+            this.lblValorBruto.Name = "lblValorBruto";
+            this.lblValorBruto.Size = new System.Drawing.Size(88, 17);
+            this.lblValorBruto.TabIndex = 3;
+            this.lblValorBruto.Text = "R$ 20,00";
+            this.lblValorBruto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(102, 4);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(33, 15);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Valor";
             // 
             // txtFormaPagamento
             // 
             this.txtFormaPagamento.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtFormaPagamento.EnableAll = true;
             this.txtFormaPagamento.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtFormaPagamento.Location = new System.Drawing.Point(0, 144);
+            this.txtFormaPagamento.Location = new System.Drawing.Point(3, 19);
             this.txtFormaPagamento.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtFormaPagamento.Name = "txtFormaPagamento";
-            this.txtFormaPagamento.Size = new System.Drawing.Size(389, 24);
+            this.txtFormaPagamento.Size = new System.Drawing.Size(900, 24);
             this.txtFormaPagamento.StatuBarComponent = null;
-            this.txtFormaPagamento.TabIndex = 11;
+            this.txtFormaPagamento.TabIndex = 15;
             this.txtFormaPagamento.TextoCentro = null;
             this.txtFormaPagamento.TextoDireita = "";
             this.txtFormaPagamento.TextoEsquerda = "Forma Pagamento";
             this.txtFormaPagamento.TextoStatus = null;
             // 
-            // txtPoltrona
+            // gboxPassageiro
             // 
-            this.txtPoltrona.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtPoltrona.EnableAll = true;
-            this.txtPoltrona.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPoltrona.Location = new System.Drawing.Point(0, 120);
-            this.txtPoltrona.Name = "txtPoltrona";
-            this.txtPoltrona.Size = new System.Drawing.Size(389, 24);
-            this.txtPoltrona.TabIndex = 6;
-            this.txtPoltrona.Texto = "";
-            this.txtPoltrona.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Centro;
-            this.txtPoltrona.TextoEsquerda = "Poltrona";
-            this.txtPoltrona.TextoLargura = 90;
-            this.txtPoltrona.TextoMaiusculo = true;
-            this.txtPoltrona.TextoSenha = false;
-            this.txtPoltrona.TextoStatus = "Poltrona";
-            this.txtPoltrona.VisibleAll = true;
+            this.gboxPassageiro.Controls.Add(this.txtNacionalidade);
+            this.gboxPassageiro.Controls.Add(this.txtRG);
+            this.gboxPassageiro.Controls.Add(this.txtNome);
+            this.gboxPassageiro.Controls.Add(this.txtCPF);
+            this.gboxPassageiro.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gboxPassageiro.Location = new System.Drawing.Point(0, 77);
+            this.gboxPassageiro.Name = "gboxPassageiro";
+            this.gboxPassageiro.Padding = new System.Windows.Forms.Padding(5);
+            this.gboxPassageiro.Size = new System.Drawing.Size(906, 129);
+            this.gboxPassageiro.TabIndex = 13;
+            this.gboxPassageiro.TabStop = false;
+            this.gboxPassageiro.Text = "PASSAGEIRO";
             // 
             // txtNacionalidade
             // 
             this.txtNacionalidade.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtNacionalidade.EnableAll = true;
             this.txtNacionalidade.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtNacionalidade.Location = new System.Drawing.Point(0, 96);
+            this.txtNacionalidade.Location = new System.Drawing.Point(5, 93);
             this.txtNacionalidade.Name = "txtNacionalidade";
-            this.txtNacionalidade.Size = new System.Drawing.Size(389, 24);
-            this.txtNacionalidade.TabIndex = 5;
+            this.txtNacionalidade.Size = new System.Drawing.Size(896, 24);
+            this.txtNacionalidade.TabIndex = 9;
             this.txtNacionalidade.Texto = "Brasileira";
             this.txtNacionalidade.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
             this.txtNacionalidade.TextoEsquerda = "Nacionalidade";
@@ -432,10 +542,10 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.txtRG.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtRG.EnableAll = true;
             this.txtRG.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtRG.Location = new System.Drawing.Point(0, 72);
+            this.txtRG.Location = new System.Drawing.Point(5, 69);
             this.txtRG.Name = "txtRG";
-            this.txtRG.Size = new System.Drawing.Size(389, 24);
-            this.txtRG.TabIndex = 4;
+            this.txtRG.Size = new System.Drawing.Size(896, 24);
+            this.txtRG.TabIndex = 8;
             this.txtRG.Texto = "";
             this.txtRG.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
             this.txtRG.TextoEsquerda = "RG";
@@ -450,10 +560,10 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.txtNome.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtNome.EnableAll = true;
             this.txtNome.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtNome.Location = new System.Drawing.Point(0, 48);
+            this.txtNome.Location = new System.Drawing.Point(5, 45);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(389, 24);
-            this.txtNome.TabIndex = 3;
+            this.txtNome.Size = new System.Drawing.Size(896, 24);
+            this.txtNome.TabIndex = 7;
             this.txtNome.Texto = "";
             this.txtNome.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
             this.txtNome.TextoEsquerda = "Nome";
@@ -468,10 +578,10 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.txtCPF.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtCPF.EnableAll = true;
             this.txtCPF.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCPF.Location = new System.Drawing.Point(0, 24);
+            this.txtCPF.Location = new System.Drawing.Point(5, 21);
             this.txtCPF.Name = "txtCPF";
-            this.txtCPF.Size = new System.Drawing.Size(389, 24);
-            this.txtCPF.TabIndex = 2;
+            this.txtCPF.Size = new System.Drawing.Size(896, 24);
+            this.txtCPF.TabIndex = 6;
             this.txtCPF.Texto = "";
             this.txtCPF.TextoAlinhamento = QueroBilhete.Componentes.Enumeradores.EAlinhamento.Esquerda;
             this.txtCPF.TextoEsquerda = "CPF";
@@ -481,43 +591,58 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.txtCPF.TextoStatus = "CPF";
             this.txtCPF.VisibleAll = true;
             // 
+            // gboxPassagem
+            // 
+            this.gboxPassagem.Controls.Add(this.txtPoltrona);
+            this.gboxPassagem.Controls.Add(this.txtTipo);
+            this.gboxPassagem.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gboxPassagem.Location = new System.Drawing.Point(0, 0);
+            this.gboxPassagem.Name = "gboxPassagem";
+            this.gboxPassagem.Padding = new System.Windows.Forms.Padding(5);
+            this.gboxPassagem.Size = new System.Drawing.Size(906, 77);
+            this.gboxPassagem.TabIndex = 12;
+            this.gboxPassagem.TabStop = false;
+            this.gboxPassagem.Text = "PASSAGEM";
+            // 
+            // txtPoltrona
+            // 
+            this.txtPoltrona.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtPoltrona.EnableAll = true;
+            this.txtPoltrona.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtPoltrona.Location = new System.Drawing.Point(5, 45);
+            this.txtPoltrona.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtPoltrona.Name = "txtPoltrona";
+            this.txtPoltrona.Size = new System.Drawing.Size(896, 24);
+            this.txtPoltrona.StatuBarComponent = null;
+            this.txtPoltrona.TabIndex = 2;
+            this.txtPoltrona.TextoCentro = null;
+            this.txtPoltrona.TextoDireita = "";
+            this.txtPoltrona.TextoEsquerda = "Poltrona";
+            this.txtPoltrona.TextoStatus = null;
+            // 
             // txtTipo
             // 
             this.txtTipo.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtTipo.EnableAll = true;
             this.txtTipo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtTipo.Location = new System.Drawing.Point(0, 0);
+            this.txtTipo.Location = new System.Drawing.Point(5, 21);
             this.txtTipo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtTipo.Name = "txtTipo";
-            this.txtTipo.Size = new System.Drawing.Size(389, 24);
+            this.txtTipo.Size = new System.Drawing.Size(896, 24);
             this.txtTipo.StatuBarComponent = null;
-            this.txtTipo.TabIndex = 0;
+            this.txtTipo.TabIndex = 1;
             this.txtTipo.TextoCentro = null;
             this.txtTipo.TextoDireita = "";
             this.txtTipo.TextoEsquerda = "Tipo Passagem";
             this.txtTipo.TextoStatus = null;
-            this.txtTipo.ButtonClick += new System.EventHandler(this.txtTipo_ButtonClick);
-            this.txtTipo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTipo_KeyDown);
-            this.txtTipo.Validating += new System.ComponentModel.CancelEventHandler(this.txtTipo_Validating);
-            // 
-            // pnlJanela
-            // 
-            this.pnlJanela.AutoScroll = true;
-            this.pnlJanela.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlJanela.Enabled = false;
-            this.pnlJanela.Location = new System.Drawing.Point(0, 0);
-            this.pnlJanela.Name = "pnlJanela";
-            this.pnlJanela.Padding = new System.Windows.Forms.Padding(3);
-            this.pnlJanela.Size = new System.Drawing.Size(657, 570);
-            this.pnlJanela.TabIndex = 5;
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.dataGridView1);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel6.Location = new System.Drawing.Point(1046, 0);
+            this.panel6.Location = new System.Drawing.Point(906, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(503, 570);
+            this.panel6.Size = new System.Drawing.Size(643, 570);
             this.panel6.TabIndex = 4;
             // 
             // panel1
@@ -614,7 +739,18 @@ namespace QueroBilhete.Desktop.formularios.PDV
             this.panel2.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
+            this.panelDadosPassagem.ResumeLayout(false);
+            this.gboxSituacao.ResumeLayout(false);
+            this.gboxSituacao.PerformLayout();
+            this.gboxPagamento.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.gboxPassageiro.ResumeLayout(false);
+            this.gboxPassagem.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -626,7 +762,6 @@ namespace QueroBilhete.Desktop.formularios.PDV
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel pnlJanela;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -652,16 +787,29 @@ namespace QueroBilhete.Desktop.formularios.PDV
         private System.Windows.Forms.Button btnF7;
         private System.Windows.Forms.Button btnF12;
         private System.Windows.Forms.Button btnF11;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panelDadosPassagem;
+        private System.Windows.Forms.GroupBox gboxPassagem;
+        private Componentes.TextBox.txtBoxBtnLabel txtPoltrona;
         private Componentes.TextBox.txtBoxBtnLabel txtTipo;
-        private Componentes.TextBox.txtBoxLabel txtCPF;
-        private Componentes.TextBox.txtBoxLabel txtNome;
-        private Componentes.TextBox.txtBoxLabel txtRG;
-        private Componentes.TextBox.txtBoxLabel txtPoltrona;
+        private System.Windows.Forms.GroupBox gboxPassageiro;
         private Componentes.TextBox.txtBoxLabel txtNacionalidade;
+        private Componentes.TextBox.txtBoxLabel txtRG;
+        private Componentes.TextBox.txtBoxLabel txtNome;
+        private Componentes.TextBox.txtBoxLabel txtCPF;
+        private System.Windows.Forms.GroupBox gboxPagamento;
         private Componentes.TextBox.txtBoxLabel txtValorPago;
-        private Componentes.TextBox.txtBoxLabel txtValor;
-        private Componentes.TextBox.txtBoxLabel txtValorTroco;
         private Componentes.TextBox.txtBoxBtnLabel txtFormaPagamento;
+        private System.Windows.Forms.GroupBox gboxSituacao;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label lblValorBruto;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Label lblValorSaldo;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label lblValorTroco;
+        private System.Windows.Forms.Label label6;
     }
 }
