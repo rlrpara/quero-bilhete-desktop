@@ -1,5 +1,6 @@
 ﻿using QueroBilhete.Domain.Entities;
 using QueroBilhete.Domain.Interfaces;
+using QueroBilhete.Infra.Data.Repositories;
 using QueroBilhete.Service.Interface;
 using QueroBilhete.Service.ViewModels;
 using System;
@@ -9,9 +10,11 @@ namespace QueroBilhete.Service.Service
 {
     public class EmpresaService : BaseService, IEmpresaService
     {
+        private readonly IEmpresaRepository _empresaRepository;
         public EmpresaService(IBaseRepository repositorio)
             : base(repositorio)
         {
+            _empresaRepository = new EmpresaRepository();
         }
 
         #region Métodos Privados

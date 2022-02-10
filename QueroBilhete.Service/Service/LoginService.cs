@@ -1,36 +1,33 @@
-﻿using QueroBilhete.Domain.Entities;
-using QueroBilhete.Domain.Interfaces;
+﻿using QueroBilhete.Domain.Interfaces;
+using QueroBilhete.Infra.Data.Repositories;
 using QueroBilhete.Service.Interface;
 using QueroBilhete.Service.ViewModels;
-using System;
 
 namespace QueroBilhete.Service.Service
 {
     public class LoginService : BaseService, ILoginService
     {
+        private readonly LoginRepository _loginRepository;
+
         public LoginService(IBaseRepository repositorio)
             : base(repositorio)
         {
+            _loginRepository = new LoginRepository(repositorio);
         }
 
         public LoginViewModel logar(string email, string senha)
         {
-            var loginViewModel = new LoginViewModel();
-
-            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(senha))
-                return loginViewModel;
-
-            var login = _baseRepository.BuscarPorQueryGerador<Login>($"EMAIL = '{email}' AND SENHA = '{senha}'");
-
-            if(login != null)
+            var login = _loginRepository.logar(email, senha);
+            if (login == null) return null;
+            else
             {
-                loginViewModel.Codigo = (int)(login.Codigo > 0 ? login.Codigo : 0);
-                loginViewModel.Email = login.Email;
-                loginViewModel.Senha = login.Senha;
-            }
-
-            return loginViewModel;
-
+                return new LoginViewModel
+                {
+                    Codigo = (int)(login.Codigo > 0 ? login.Codigo : 0),
+                    Email = login.Email,
+                    Senha = login.Senha
+                };
+           }
         }
     }
 }

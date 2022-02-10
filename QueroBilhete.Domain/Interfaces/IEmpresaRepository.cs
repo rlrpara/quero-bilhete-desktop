@@ -2,7 +2,7 @@
 
 namespace QueroBilhete.Domain.Interfaces
 {
-    public interface ILoginRepository : IBaseRepository
+    public interface IEmpresaRepository : IBaseRepository
     {
     }
 }
