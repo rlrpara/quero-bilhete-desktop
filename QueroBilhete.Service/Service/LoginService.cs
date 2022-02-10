@@ -8,14 +8,18 @@ namespace QueroBilhete.Service.Service
 {
     public class LoginService : BaseService, ILoginService
     {
+        #region [Propriedades Privadas]
         private readonly LoginRepository _loginRepository;
+        #endregion
 
-        public LoginService(IBaseRepository repositorio)
-            : base(repositorio)
+        #region [Construtor]
+        public LoginService(IBaseRepository repositorio) : base(repositorio)
         {
             _loginRepository = new LoginRepository(repositorio);
         }
+        #endregion
 
+        #region [Métodos Públicos]
         public LoginViewModel Logar(string email, string senha)
         {
             Login login = _loginRepository.Logar(email, senha);
@@ -30,5 +34,6 @@ namespace QueroBilhete.Service.Service
 
             return null;
         }
+        #endregion
     }
 }
