@@ -12,7 +12,7 @@ namespace QueroBilhete.Infra.Data.Repositories
             _repositorio = repositorio;
         }
 
-        public Login logar(string email, string senha)
+        public Login Logar(string email, string senha)
         {
             return _repositorio.BuscarPorQueryGerador<Login>($"EMAIL = '{email}' AND SENHA = '{senha}'");
         }

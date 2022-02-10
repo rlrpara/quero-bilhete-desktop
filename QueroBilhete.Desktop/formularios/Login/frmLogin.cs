@@ -48,7 +48,7 @@ namespace QueroBilhete.Desktop.formularios.Login
 
         private int ValidaLogin(string email, string senha)
         {
-            var login = new LoginService(baseRepository).logar(email, senha);
+            var login = new LoginService(baseRepository).Logar(email, senha);
 
             if(!string.IsNullOrEmpty(login.Email) && !string.IsNullOrEmpty(login.Senha))
             {
